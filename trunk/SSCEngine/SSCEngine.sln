@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSCEngine", "SSCEngine\SSCEngine.csproj", "{F1C34544-A51E-4014-BC66-B3D29340CBFB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Windows Phone = Debug|Windows Phone
+		Release|Windows Phone = Release|Windows Phone
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F1C34544-A51E-4014-BC66-B3D29340CBFB}.Debug|Windows Phone.ActiveCfg = Debug|Windows Phone
+		{F1C34544-A51E-4014-BC66-B3D29340CBFB}.Debug|Windows Phone.Build.0 = Debug|Windows Phone
+		{F1C34544-A51E-4014-BC66-B3D29340CBFB}.Release|Windows Phone.ActiveCfg = Release|Windows Phone
+		{F1C34544-A51E-4014-BC66-B3D29340CBFB}.Release|Windows Phone.Build.0 = Release|Windows Phone
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
