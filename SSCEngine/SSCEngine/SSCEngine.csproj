@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{F1C34544-A51E-4014-BC66-B3D29340CBFB}</ProjectGuid>
+    <ProjectTypeGuids>{6D335F3A-9D43-41b4-9D22-F6F17C4BE596};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">Windows Phone</Platform>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SSCEngine</RootNamespace>
+    <AssemblyName>SSCEngine</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <XnaRefreshLevel>1</XnaRefreshLevel>
+    <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
+    <XnaPlatform>Windows Phone</XnaPlatform>
+    <XnaProfile>Reach</XnaProfile>
+    <XnaCrossPlatformGroupID>3eea6ea4-5a52-4e92-b0ac-4b96954fcaeb</XnaCrossPlatformGroupID>
+    <XnaOutputType>Library</XnaOutputType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Windows Phone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Windows Phone\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;WINDOWS_PHONE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoStdLib>true</NoStdLib>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <XnaCompressContent>false</XnaCompressContent>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Windows Phone' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Windows Phone\Release</OutputPath>
+    <DefineConstants>TRACE;WINDOWS_PHONE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoStdLib>true</NoStdLib>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <XnaCompressContent>false</XnaCompressContent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Xna.Framework" />
+    <Reference Include="Microsoft.Xna.Framework.Game" />
+    <Reference Include="Microsoft.Xna.Framework.Graphics" />
+    <Reference Include="Microsoft.Xna.Framework.GamerServices" />
+    <Reference Include="Microsoft.Xna.Framework.Input.Touch" />
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Net" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Audio\Sound.cs" />
+    <Compile Include="Audio\SoundResourceLoader.cs" />
+    <Compile Include="Control\Button.cs" />
+    <Compile Include="Control\IListViewItem.cs" />
+    <Compile Include="Control\ListView.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResourceManagement\Implement\BaseResourceManager.cs" />
+    <Compile Include="ResourceManagement\Implement\ContentResourceLoader.cs" />
+    <Compile Include="ResourceManagement\IResourceLoader.cs" />
+    <Compile Include="ResourceManagement\IResourceManager.cs" />
+    <Compile Include="ResourceManagement\SCSResourceManager.cs" />
+    <Compile Include="ScreenManagement\GameScreenState.cs" />
+    <Compile Include="ScreenManagement\IGameScreen.cs" />
+    <Compile Include="ScreenManagement\IGameScreenBank.cs" />
+    <Compile Include="ScreenManagement\IGameScreenFactory.cs" />
+    <Compile Include="ScreenManagement\IGameScreenManager.cs" />
+    <Compile Include="ScreenManagement\Implement\BaseGameScreen.cs" />
+    <Compile Include="ScreenManagement\Implement\BaseGameScreenBank.cs" />
+    <Compile Include="ScreenManagement\Implement\BaseGameScreenManager.cs" />
+    <Compile Include="ScreenManagement\Implement\BaseGameScreenManagerFactory.cs" />
+    <Compile Include="ScreenManagement\Implement\IGameScreenManagerFactory.cs" />
+    <Compile Include="ServiceManagement\Implement\BaseServiceCollection.cs" />
+    <Compile Include="ServiceManagement\IService.cs" />
+    <Compile Include="ServiceManagement\IServiceCollection.cs" />
+    <Compile Include="Services\Audio\AudioManager.cs" />
+    <Compile Include="Services\Input\InputHandle.cs" />
+    <Compile Include="Services\SCSServices.cs" />
+    <Compile Include="Services\Sprite\SpitePlayer.cs" />
+    <Compile Include="Sprite\FramesGenerator.cs" />
+    <Compile Include="Sprite\Implements\Sprite.cs" />
+    <Compile Include="Sprite\Implements\SpriteData.cs" />
+    <Compile Include="Sprite\Implements\SpriteGraphicData.cs" />
+    <Compile Include="Sprite\Implements\SpriteMetadata.cs" />
+    <Compile Include="Sprite\ISprite.cs" />
+    <Compile Include="Sprite\ISpriteData.cs" />
+    <Compile Include="Sprite\ISpriteFramesBank.cs" />
+    <Compile Include="Sprite\SpriteFramesBank.cs" />
+    <Compile Include="Sprite\SpriteModel.cs" />
+    <Compile Include="Sprite\SpriteResourceLoader.cs" />
+    <Compile Include="Utils\Adapters\DrawableGameComponentAsSpriteModel.cs" />
+    <Compile Include="Utils\Camera2D.cs" />
+    <Compile Include="Utils\GameObject\ICompleteable.cs" />
+    <Compile Include="Utils\GameObject\MPB\IBrush.cs" />
+    <Compile Include="Utils\GameObject\MPB\IProcessor.cs" />
+    <Compile Include="Utils\GameObject\MPB\MPBObject.cs" />
+    <Compile Include="Utils\GameObject\MUD\DrawableAdapter.cs" />
+    <Compile Include="Utils\GameObject\MUD\ISpriteBatchDrawable.cs" />
+    <Compile Include="Utils\GameObject\MUD\MUD.cs" />
+    <Compile Include="Utils\Mathematics\GMath.cs" />
+    <Compile Include="Utils\Mathematics\GRandom.cs" />
+    <Compile Include="Utils\Patterns\IFactory.cs" />
+    <Compile Include="Utils\XMLReader.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
+  <!--
+      To modify your build process, add your task inside one of the targets below and uncomment it. 
+      Other similar extension points exist, see Microsoft.Common.targets.
+      <Target Name="BeforeBuild">
+      </Target>
+      <Target Name="AfterBuild">
+      </Target>
+    -->
+</Project>
