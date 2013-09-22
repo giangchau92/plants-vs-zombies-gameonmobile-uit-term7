@@ -79,6 +79,14 @@
     <Compile Include="ScreenManagement\Implement\BaseGameScreenManager.cs" />
     <Compile Include="ScreenManagement\Implement\BaseGameScreenManagerFactory.cs" />
     <Compile Include="ScreenManagement\Implement\IGameScreenManagerFactory.cs" />
+    <Compile Include="Serialization\IDeserializer.cs" />
+    <Compile Include="Serialization\ISerializable.cs" />
+    <Compile Include="Serialization\ISerialization.cs" />
+    <Compile Include="Serialization\ISerializer.cs" />
+    <Compile Include="Serialization\XmlSerialization\XmlDeserializer.cs" />
+    <Compile Include="Serialization\XmlSerialization\XmlSerialization.cs" />
+    <Compile Include="Serialization\XmlSerialization\XmlSerializer.cs" />
+    <Compile Include="Serialization\XNASerializationHelper\XNASerialization.cs" />
     <Compile Include="ServiceManagement\Implement\BaseServiceCollection.cs" />
     <Compile Include="ServiceManagement\IService.cs" />
     <Compile Include="ServiceManagement\IServiceCollection.cs" />
@@ -111,6 +119,7 @@
     <Compile Include="Utils\Patterns\IFactory.cs" />
     <Compile Include="Utils\XMLReader.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <!--
