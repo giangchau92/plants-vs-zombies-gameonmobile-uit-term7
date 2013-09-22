@@ -29,7 +29,7 @@ namespace SSCEngine.Serialization.XNASerializationHelper
         #endregion
 
         #region Serializes
-        void Serialize(ISerializer serializer, string name, Vector2 v)
+        public void Serialize(ISerializer serializer, string name, Vector2 v)
         {
             ISerializer subSer = serializer.SubSerializer(name);
 
@@ -37,7 +37,7 @@ namespace SSCEngine.Serialization.XNASerializationHelper
             subSer.SerializeString(tagY, v.Y);
         }
 
-        void Serialize(ISerializer serializer, string name, Rectangle r)
+        public void Serialize(ISerializer serializer, string name, Rectangle r)
         {
             ISerializer subSer = serializer.SubSerializer(name);
 
@@ -50,14 +50,14 @@ namespace SSCEngine.Serialization.XNASerializationHelper
 
 
         #region Deseralizes
-        Vector2 SerializeVector2(IDeserializer deserializer, string serName)
+        public Vector2 DeserializeVector2(IDeserializer deserializer, string serName)
         {
             IDeserializer subDeser = deserializer.SubDeserializer(serName);
 
             return new Vector2((float) subDeser.DeserializeDouble(tagX), (float) subDeser.DeserializeDouble(tagY));
         }
 
-        Rectangle SerializeRectangle(IDeserializer deserializer, string serName)
+        public Rectangle DeserializeRectangle(IDeserializer deserializer, string serName)
         {
             IDeserializer subDeser = deserializer.SubDeserializer(serName);
 

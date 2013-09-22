@@ -8,7 +8,9 @@ namespace SSCEngine.Serialization
 {
     public interface ISerialization
     {
-        ISerializer CreateSerializer(Stream s);
-        IDeserializer CreateDeserializer(Stream s);
+        ISerializer Serialize(Stream s);
+        IDeserializer Deserialize(Stream s);
+
+        void CompleteSerialization(Stream s);
     }
 }
