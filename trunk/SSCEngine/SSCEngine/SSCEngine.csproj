@@ -63,6 +63,11 @@
     <Compile Include="Control\Button.cs" />
     <Compile Include="Control\IListViewItem.cs" />
     <Compile Include="Control\ListView.cs" />
+    <Compile Include="GestureHandling\BaseGestureHandling\Touch.cs" />
+    <Compile Include="GestureHandling\BaseGestureHandling\TouchController.cs" />
+    <Compile Include="GestureHandling\ITouch.cs" />
+    <Compile Include="GestureHandling\ITouchController.cs" />
+    <Compile Include="GestureHandling\TouchPositions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResourceManagement\Implement\BaseResourceManager.cs" />
     <Compile Include="ResourceManagement\Implement\ContentResourceLoader.cs" />
