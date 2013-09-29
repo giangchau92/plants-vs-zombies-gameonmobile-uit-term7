@@ -7,7 +7,7 @@ using System.Text;
 
 namespace SSCEngine.GestureHandling.BaseGestureHandling
 {
-    internal class Touch : ITouch
+    class Touch : ITouch
     {
         public Touch(TouchLocation location, /*GestureType type, */TouchPositions positions)
         {
