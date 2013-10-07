@@ -5,39 +5,76 @@ using System.Text;
 
 namespace SSCEngine.GestureHandling.BaseGestureHandling
 {
-    class BaseGestureDispatcher<GH> : List<IGestureTarget<GH>>, IGestureDispatcher<GH> where GH : IGestureHandler
+    class BaseGestureDispatcher : Dictionary<Type, List<IGestureTarget>>, IGestureDispatcher
     {
-        public void AddTarget(IGestureTarget<GH> gTarget)
-        {
-            this.Add(gTarget);
-        }
+        private Dictionary<Type, IDispatchAdapter> adapters = new Dictionary<Type,IDispatchAdapter>();
 
-        public void RemoveTarget(IGestureTarget<GH> gTarget)
+        public void AddTarget<GE>(IGestureTarget<GE> gTarget) where GE : IGestureEvent
         {
-            this.Remove(gTarget);
-        }
-
-        public void Dispatch(GH gHandler)
-        {
-            List<IGestureTarget<GH>> targets = new List<IGestureTarget<GH>>(this);
-            targets.Sort(IGestureTarget<GH>.Comparer.Instance);
-
-            foreach (IGestureTarget<GH> target in targets)
+            if (!this.ContainsKey(typeof(GE)))
             {
-                target.ReceivedGesture(gHandler);
+                this.Add(typeof(GE), new List<IGestureTarget>());
+                this.adapters.Add(typeof(GE), new DispatchAdapter<GE>());
             }
 
-            for (int i = 0; i < this.Count; )
+            this[typeof(GE)].Add(gTarget);
+        }
+
+        public void RemoveTarget<GE>(IGestureTarget<GE> gTarget) where GE : IGestureEvent
+        {
+            if (this.ContainsKey(typeof(GE)))
             {
-                if (this.ElementAt(i).IsGestureCompleted)
+                this[typeof(GE)].Remove(gTarget);
+
+                if (this[typeof(GE)].Count == 0)
                 {
-                    this.RemoveAt(i);
-                }
-                else
-                {
-                    ++i;
+                    this.Remove(typeof(GE));
+                    this.adapters.Remove(typeof(GE));
                 }
             }
+        }
+
+        public void Dispatch(IGestureEvent gEvent)
+        {
+            if (this.ContainsKey(gEvent.GetType()) && this.adapters.ContainsKey(gEvent.GetType()))
+            {
+                // dispatch gesture
+                var dispatchAdapter = this.adapters[gEvent.GetType()];
+                IEnumerable<IGestureTarget> targets = new List<IGestureTarget>(this[gEvent.GetType()]);
+                dispatchAdapter.Dispatch(gEvent, targets);
+
+                // remove completed targets
+                var realTargets = this[gEvent.GetType()];
+                realTargets.Clear();
+                foreach (var target in targets)
+                {
+                    if (!target.IsGestureCompleted)
+                    {
+                        realTargets.Add(target);
+                    }
+                }
+            }
+        }
+
+        private class DispatchAdapter<GE> : IDispatchAdapter where GE : IGestureEvent
+        {
+            public void Dispatch(IGestureEvent e, IEnumerable<IGestureTarget> targets)
+            {
+                var ge = (GE) e;
+                if (ge == null)
+                    return;
+
+                foreach (var target in targets)
+                {
+                    var specTarget = target as IGestureTarget<GE>;
+                    specTarget.ReceivedGesture(ge);
+                }
+            }
+        }
+
+        private interface IDispatchAdapter
+        {
+            void Dispatch(IGestureEvent e, IEnumerable<IGestureTarget> targets);
         }
     }
 }

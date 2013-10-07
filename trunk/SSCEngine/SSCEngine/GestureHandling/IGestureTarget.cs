@@ -5,41 +5,44 @@ using System.Text;
 
 namespace SSCEngine.GestureHandling
 {
-    public interface IGestureTarget<GestureHandler> where GestureHandler : IGestureHandler
+    public class GestureTargetComparer : IComparer<IGestureTarget>
+    {
+        private GestureTargetComparer()
+        {
+        }
+
+        public static GestureTargetComparer Instance { get; private set; }
+
+        static GestureTargetComparer()
+        {
+            Instance = new GestureTargetComparer();
+        }
+
+        #region IComparer<IGestureTarget> Members
+
+        public int Compare(IGestureTarget x, IGestureTarget y)
+        {
+            if (x.Priority > y.Priority)
+                return 1;
+            else if (x.Priority == y.Priority)
+                return 0;
+
+            return -1;
+        }
+
+        #endregion
+    }
+
+    public interface IGestureTarget
     {
         uint Priority { get; }
         bool IsExclusive { get; }
 
-        void ReceivedGesture(GestureHandler gHandler);
-
         bool IsGestureCompleted { get; }
+    }
 
-        public class Comparer : IComparer<IGestureTarget<GestureHandler>>
-        {
-            private Comparer()
-            {
-            }
-
-            public static Comparer Instance { get; private set; }
-
-            static Comparer()
-            {
-                Instance = new Comparer();
-            }
-
-            #region IComparer<IGestureTarget<GestureHandler>> Members
-
-            public int Compare(IGestureTarget<GestureHandler> x, IGestureTarget<GestureHandler> y)
-            {
-                if (x.Priority > y.Priority)
-                    return 1;
-                else if (x.Priority == y.Priority)
-                    return 0;
-
-                return -1;
-            }
-
-            #endregion
-        }
+    public interface IGestureTarget<GestureEvent> : IGestureTarget where GestureEvent : IGestureEvent
+    {
+        void ReceivedGesture(GestureEvent gHandler);
     }
 }

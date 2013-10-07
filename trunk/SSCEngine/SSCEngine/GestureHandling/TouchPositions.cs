@@ -9,6 +9,7 @@ namespace SSCEngine.GestureHandling
     public struct TouchPositions
     {
         public TouchPositions(Vector2 current, Vector2 last, Vector2 begin)
+            : this()
         {
             this.Current = current;
             this.Last = last;
