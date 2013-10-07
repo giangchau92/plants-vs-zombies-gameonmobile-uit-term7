@@ -55,7 +55,6 @@ namespace SCSEngine.Utils.GameObject.MUD
 
         public event OnCompletedHandler OnCompleted;
 
-
         #endregion
     }
 }

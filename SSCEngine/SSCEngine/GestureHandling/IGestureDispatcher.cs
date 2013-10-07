@@ -5,11 +5,11 @@ using System.Text;
 
 namespace SSCEngine.GestureHandling
 {
-    public interface IGestureDispatcher<GestureHandler> where GestureHandler : IGestureHandler
+    public interface IGestureDispatcher
     {
-        void AddTarget(IGestureTarget<GestureHandler> gTarget);
-        void RemoveTarget(IGestureTarget<GestureHandler> gTarget);
+        void AddTarget<GestureEvent>(IGestureTarget<GestureEvent> gTarget) where GestureEvent : IGestureEvent;
+        void RemoveTarget<GestureEvent>(IGestureTarget<GestureEvent> gTarget) where GestureEvent : IGestureEvent;
 
-        void Dispatch(GestureHandler gHandler);
+        void Dispatch(IGestureEvent gEvent);
     }
 }
