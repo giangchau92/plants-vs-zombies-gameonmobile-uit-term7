@@ -11,10 +11,12 @@ namespace SSCEngine.GestureHandling.Implements.Detectors
         public ICollection<IGestureEvent> DetectGesture(ICollection<ITouch> touches)
         {
             List<IGestureEvent> drags = new List<IGestureEvent>(touches.Count);
+            float minDrap = 20 * 20;
 
             foreach (var touch in touches)
             {
-                drags.Add(new FreeDrag(touch));
+                if (touch.Positions.Delta.LengthSquared() > minDrap)
+                    drags.Add(new FreeDrag(touch));
             }
 
             return drags;

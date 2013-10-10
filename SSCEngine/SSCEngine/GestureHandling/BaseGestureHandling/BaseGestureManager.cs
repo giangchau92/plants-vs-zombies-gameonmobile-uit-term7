@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input.Touch;
 using System;
 using System.Collections.Generic;
@@ -45,7 +45,8 @@ namespace SSCEngine.GestureHandling.BaseGestureHandling
             this.touchController.Update(TouchPanel.GetState(), gameTime);
             ICollection<ITouch> touches = this.touchController.Touches;
 
-            List<IGestureEvent> gestures = new List<IGestureEvent>();
+            List<IGestureEvent> gestures = new List<IGestureEvent>(); // info ex: freedrag class
+            // Gom nhóm và tạo các gesture
             foreach (var detector in this.detectors)
             {
                 gestures.AddRange(detector.DetectGesture(touches));
