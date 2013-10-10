@@ -27,6 +27,7 @@ namespace SSCEngine.GestureHandling.BaseGestureHandling
             foreach (TouchLocation touchLocation in toucheCollection)
             {
                 bool isBegin = true;
+                
                 foreach (ITouch lastTouch in touchesCopy)
                 {
                     if (lastTouch.SystemTouch.Id == touchLocation.Id)

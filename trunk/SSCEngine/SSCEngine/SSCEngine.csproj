@@ -75,8 +75,10 @@
     <Compile Include="GestureHandling\IGestureManager.cs" />
     <Compile Include="GestureHandling\IGestureTarget.cs" />
     <Compile Include="GestureHandling\Implements\Detectors\FreeDragDetector.cs" />
+    <Compile Include="GestureHandling\Implements\Detectors\TapDetector.cs" />
     <Compile Include="GestureHandling\Implements\Events\FreeDrag.cs" />
     <Compile Include="GestureHandling\DefaultGestureHandlingFactory.cs" />
+    <Compile Include="GestureHandling\Implements\Events\Tap.cs" />
     <Compile Include="GestureHandling\ITouch.cs" />
     <Compile Include="GestureHandling\ITouchController.cs" />
     <Compile Include="GestureHandling\TouchPositions.cs" />
