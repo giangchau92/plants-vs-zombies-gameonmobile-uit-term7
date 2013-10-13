@@ -34,6 +34,7 @@ namespace SSCEngine.GestureHandling
         {
             gMan.AddDetector(new FreeDragDetector());
             gMan.AddDetector(new TapDetector());
+            gMan.AddDetector(new FreeTapDetector());
         }
     }
 }

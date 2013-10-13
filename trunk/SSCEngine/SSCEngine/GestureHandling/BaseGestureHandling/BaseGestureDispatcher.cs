@@ -8,7 +8,6 @@ namespace SSCEngine.GestureHandling.BaseGestureHandling
     class BaseGestureDispatcher : Dictionary<Type, List<IGestureTarget>>, IGestureDispatcher
     {
         private Dictionary<Type, IDispatchAdapter> adapters = new Dictionary<Type,IDispatchAdapter>();
-
         public BaseGestureDispatcher()
         {
             this.Enabled = true;
@@ -64,7 +63,6 @@ namespace SSCEngine.GestureHandling.BaseGestureHandling
         private class DispatchAdapter<GE> : IDispatchAdapter where GE : IGestureEvent
         {
             private Dictionary<int, IGestureTarget<GE>> handledTargets = new Dictionary<int, IGestureTarget<GE>>();
-            private Dictionary<IGestureTarget<GE>, GestureHandleType> lastHandleTypes = new Dictionary<IGestureTarget<GE>, GestureHandleType>();
 
             public void Dispatch(IGestureEvent e, IEnumerable<IGestureTarget> targets)
             {
@@ -75,15 +73,9 @@ namespace SSCEngine.GestureHandling.BaseGestureHandling
                 if (this.handledTargets.ContainsKey(e.Touch.SystemTouch.Id))
                 {
                     IGestureTarget<GE> target = this.handledTargets[e.Touch.SystemTouch.Id];
-                    GestureHandleType handleType = target.CheckHandleGesture(ge, GestureHandleType.Exclusive);
-                    if (handleType != GestureHandleType.None)
+                    if (!target.ReceivedGesture(ge))
                     {
-                        target.ReceivedGesture(ge);
-                    }
-
-                    if (handleType != GestureHandleType.Exclusive)
-                    {
-                        this.handledTargets.Remove(e.Touch.SystemTouch.Id);
+                        this.handledTargets.Remove(ge.Touch.SystemTouch.Id);
                     }
                 }
                 else
@@ -91,19 +83,13 @@ namespace SSCEngine.GestureHandling.BaseGestureHandling
                     foreach (var target in targets)
                     {
                         var specTarget = target as IGestureTarget<GE>;
-                        switch (specTarget.CheckHandleGesture(ge))
+                        if (specTarget.IsHandleGesture(ge))
                         {
-                            case GestureHandleType.Handled:
-                                specTarget.ReceivedGesture(ge);
+                            if (specTarget.ReceivedGesture(ge))
+                            {
+                                this.handledTargets.Add(ge.Touch.SystemTouch.Id, specTarget);
                                 break;
-                            case GestureHandleType.Exclusive:
-                                this.handledTargets.Add(e.Touch.SystemTouch.Id, specTarget);
-                                specTarget.ReceivedGesture(ge);
-                                return;
-                            case GestureHandleType.None:
-                                break;
-                            default:
-                                break;
+                            }
                         }
                     }
                 }

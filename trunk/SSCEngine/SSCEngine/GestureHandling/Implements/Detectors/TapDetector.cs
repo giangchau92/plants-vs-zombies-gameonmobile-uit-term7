@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework.Input.Touch;
 using SSCEngine.GestureHandling.Implements.Events;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,6 @@ namespace SSCEngine.GestureHandling.Implements.Detectors
     public class TapDetector : IGestureDetector
     {
         float minTap = 100*100;
-        private List<IGestureEvent> listTap = new List<IGestureEvent>();
 
         public ICollection<IGestureEvent> DetectGesture(ICollection<ITouch> touches)
         {
@@ -17,9 +17,11 @@ namespace SSCEngine.GestureHandling.Implements.Detectors
 
             foreach (var item in touches)
             {
-                if (item.SystemTouch.State == Microsoft.Xna.Framework.Input.Touch.TouchLocationState.Released
-                    && item.Positions.TotalDelta.LengthSquared() < minTap)
+                if (item.SystemTouch.State == TouchLocationState.Released
+                    && item.Positions.TotalDelta.LengthSquared() <= minTap)
+                {
                     taps.Add(new Tap(item));
+                }
             }
 
             return taps;
