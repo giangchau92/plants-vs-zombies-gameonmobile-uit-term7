@@ -68,7 +68,7 @@
     <Compile Include="GestureHandling\BaseGestureHandling\BaseGestureManager.cs" />
     <Compile Include="GestureHandling\BaseGestureHandling\Touch.cs" />
     <Compile Include="GestureHandling\BaseGestureHandling\TouchController.cs" />
-    <Compile Include="GestureHandling\IDefaultGestureHandlingFactory.cs" />
+    <Compile Include="GestureHandling\IGestureHandlingFactory.cs" />
     <Compile Include="GestureHandling\IGestureDispatcher.cs" />
     <Compile Include="GestureHandling\IGestureEvent.cs" />
     <Compile Include="GestureHandling\IGestureDetector.cs" />
@@ -144,7 +144,6 @@
     <Compile Include="Utils\Patterns\IFactory.cs" />
     <Compile Include="Utils\XMLReader.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <!--

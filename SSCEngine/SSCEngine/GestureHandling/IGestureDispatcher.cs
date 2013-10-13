@@ -11,5 +11,7 @@ namespace SSCEngine.GestureHandling
         void RemoveTarget<GestureEvent>(IGestureTarget<GestureEvent> gTarget) where GestureEvent : IGestureEvent;
 
         void Dispatch(IGestureEvent gEvent);
+
+        bool Enabled { get; set; }
     }
 }
