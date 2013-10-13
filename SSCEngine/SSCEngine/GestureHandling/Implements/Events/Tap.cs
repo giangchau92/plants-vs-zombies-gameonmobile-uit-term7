@@ -10,7 +10,7 @@ namespace SSCEngine.GestureHandling.Implements.Events
         public Tap(ITouch tap)
             : base(1)
         {
-            this.gestureTouches.Add(Touch);
+            this.gestureTouches.Add(tap);
         }
     }
 }

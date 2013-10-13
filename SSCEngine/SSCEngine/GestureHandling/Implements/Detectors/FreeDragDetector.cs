@@ -1,4 +1,5 @@
 using SSCEngine.GestureHandling.Implements.Events;
+using Microsoft.Xna.Framework.Input.Touch;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +12,11 @@ namespace SSCEngine.GestureHandling.Implements.Detectors
         public ICollection<IGestureEvent> DetectGesture(ICollection<ITouch> touches)
         {
             List<IGestureEvent> drags = new List<IGestureEvent>(touches.Count);
-            float minDrap = 20 * 20;
+            float minDrag = 20 * 20;
 
             foreach (var touch in touches)
             {
-                if (touch.Positions.Delta.LengthSquared() > minDrap)
+                if (touch.Positions.TotalDelta.LengthSquared() >= minDrag)
                     drags.Add(new FreeDrag(touch));
             }
 

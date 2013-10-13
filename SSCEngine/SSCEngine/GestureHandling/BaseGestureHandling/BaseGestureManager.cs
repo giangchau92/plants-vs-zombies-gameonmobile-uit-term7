@@ -50,7 +50,12 @@ namespace SSCEngine.GestureHandling.BaseGestureHandling
             // Gom nhóm và tạo các gesture
             foreach (var detector in this.detectors)
             {
-                gestures.AddRange(detector.DetectGesture(touches));
+                var detectedGestures = detector.DetectGesture(touches);
+                //IEnumerable<IGestureEvent> detectedGestures = new List<IGestureEvent>(0);
+                if (detectedGestures != null)
+                {
+                    gestures.AddRange(detectedGestures);
+                }
             }
 
             var copyDispatchers = new List<IGestureDispatcher>(this.dispatchers);
@@ -61,7 +66,6 @@ namespace SSCEngine.GestureHandling.BaseGestureHandling
                     foreach (var gesture in gestures)
                     {
                         dispatcher.Dispatch(gesture);
-                        Debug.WriteLine(string.Format("{0} -- {1}", gesture, gesture.Touch.Positions.Current));
                     }
                 }
             }

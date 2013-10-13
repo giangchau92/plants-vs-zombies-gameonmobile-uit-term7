@@ -60,9 +60,13 @@
   <ItemGroup>
     <Compile Include="Audio\Sound.cs" />
     <Compile Include="Audio\SoundResourceLoader.cs" />
-    <Compile Include="Control\Button.cs" />
-    <Compile Include="Control\IListViewItem.cs" />
-    <Compile Include="Control\ListView.cs" />
+    <Compile Include="Control\Backup\Button.cs" />
+    <Compile Include="Control\ICanvas.cs" />
+    <Compile Include="Control\Backup\IListViewItem.cs" />
+    <Compile Include="Control\IRegion.cs" />
+    <Compile Include="Control\IUIContainer.cs" />
+    <Compile Include="Control\IUIControl.cs" />
+    <Compile Include="Control\Backup\ListView.cs" />
     <Compile Include="GestureHandling\BaseGestureHandling\BaseGestureEvent.cs" />
     <Compile Include="GestureHandling\BaseGestureHandling\BaseGestureDispatcher.cs" />
     <Compile Include="GestureHandling\BaseGestureHandling\BaseGestureManager.cs" />
@@ -141,6 +145,7 @@
     <Compile Include="Utils\GameObject\MUD\MUD.cs" />
     <Compile Include="Utils\Mathematics\GMath.cs" />
     <Compile Include="Utils\Mathematics\GRandom.cs" />
+    <Compile Include="Utils\Mathematics\RectangleF.cs" />
     <Compile Include="Utils\Patterns\IFactory.cs" />
     <Compile Include="Utils\XMLReader.cs" />
   </ItemGroup>
