@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SSCEngine.GestureHandling
 {
-    public interface IGestureManager : IUpdateable
+    public interface IGestureManager : IUpdateable, IGameComponent
     {
         void AddDetector(IGestureDetector gDetector);
         void RemoveDetector(IGestureDetector gDetector);

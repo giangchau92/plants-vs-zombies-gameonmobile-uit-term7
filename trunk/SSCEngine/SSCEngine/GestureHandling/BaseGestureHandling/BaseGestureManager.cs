@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Input.Touch;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
@@ -55,9 +56,13 @@ namespace SSCEngine.GestureHandling.BaseGestureHandling
             var copyDispatchers = new List<IGestureDispatcher>(this.dispatchers);
             foreach (var dispatcher in copyDispatchers)
             {
-                foreach (var gesture in gestures)
+                if (dispatcher.Enabled)
                 {
-                    dispatcher.Dispatch(gesture);
+                    foreach (var gesture in gestures)
+                    {
+                        dispatcher.Dispatch(gesture);
+                        Debug.WriteLine(string.Format("{0} -- {1}", gesture, gesture.Touch.Positions.Current));
+                    }
                 }
             }
 

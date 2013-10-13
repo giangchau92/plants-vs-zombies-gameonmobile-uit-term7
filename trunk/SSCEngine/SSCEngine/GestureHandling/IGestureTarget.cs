@@ -36,13 +36,20 @@ namespace SSCEngine.GestureHandling
     public interface IGestureTarget
     {
         uint Priority { get; }
-        bool IsExclusive { get; }
 
         bool IsGestureCompleted { get; }
     }
 
+    public enum GestureHandleType
+    {
+        None,
+        Handled,
+        Exclusive
+    }
+
     public interface IGestureTarget<GestureEvent> : IGestureTarget where GestureEvent : IGestureEvent
     {
-        void ReceivedGesture(GestureEvent gHandler);
+        void ReceivedGesture(GestureEvent gEvent);
+        GestureHandleType CheckHandleGesture(GestureEvent gEvent, GestureHandleType lastHandleType);
     }
 }
