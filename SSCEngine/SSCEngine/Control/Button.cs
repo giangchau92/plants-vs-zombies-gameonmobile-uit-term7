@@ -1,241 +1,161 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Resources;
-using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input.Touch;
-using SCSEngine.Audio;
-using SCSEngine.ResourceManagement;
-using SCSEngine.Services;
-using SCSEngine.Services.Audio;
-using SCSEngine.Sprite;
-using SCSEngine.Utils.Adapters;
+using SSCEngine.GestureHandling;
+using SSCEngine.GestureHandling.Implements.Events;
+using SSCEngine.Utils.Mathematics;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Text;
 
-namespace SCSEngine.Control
+namespace SSCEngine.Control
 {
-    /*
-    public class Button : DrawableGameComponent
+    public delegate void ButtonEventHandler(Button button);
+
+    public class Button : BaseUIControl, IGestureTarget<FreeTap>
     {
-        #region Fields
-        public enum Button_State
-        {
-            NORMAL,
-            HOLD,
-            TOUCHED
-        }
+        #region Draw
+        public Texture2D NormalImage { get; set; }
+        public Texture2D HoldImage { get; set; }
 
-        private ISprite normal_img;
-        private ISprite hold_img;
-        private SCSServices services;
-
-        public Sound PressedSound { get; set; }
-
-        private Button_State state;
-
-        public event EventHandler OnPressed;
-        public event EventHandler OnReleased;
-
-        public string ButtonName { get; set; }
+        public bool IsOverlay = false;
         #endregion
 
-        #region Properties
-
-        private Rectangle bound;
-
-        public Rectangle Bound
-        {
-            get { return bound; }
-            set { bound = value; }
-        }
-
+        #region ButtonDrawState
+        public enum ButtonState { Normal, Hold };
+        public ButtonState State { get; private set; }
         #endregion
 
-        public Button(Game game, String buttonName, ISprite normal, ISprite hold)
-            : base(gamePage)
+        #region Events
+        event ButtonEventHandler OnPressed;
+        event ButtonEventHandler OnTouched; //Released
+        event ButtonEventHandler OnHold;
+
+        private void uiOnPressed()
         {
-            this.normal_img = normal;
-            this.hold_img = hold;
-            this.ButtonName = buttonName;
-
-            this.services = (game.Services.GetService(typeof(SCSServices)) as SCSServices);
-
-            this.state = Button_State.NORMAL;
-        }
-
-        public Button(Game game, String buttonName, ISprite normal, ISprite hold, Sound touchSound)
-            : base(gamePage)
-        {
-            this.normal_img = normal;
-            this.hold_img = hold;
-            this.ButtonName = buttonName;
-            this.PressedSound = touchSound;
-
-            this.state = Button_State.NORMAL;
-        }
-
-        public override void Update(GameTime gameTime)
-        {
-            base.Update(gameTime);
-        }
-
-        public override void Draw(GameTime gameTime)
-        {
-            if (state == Button_State.HOLD)
-            {
-                this.services.SpritePlayer.Draw(hold_img, this.bound, Color.White);
-            }
-            else
-            {
-                this.services.SpritePlayer.Draw(normal_img, this.bound, Color.White);
-            }
-
-            base.Draw(gameTime);
-        }
-
-        public void Tap(Vector2 position, TouchLocationState state)
-        {
-            if (state == TouchLocationState.Moved || state == TouchLocationState.Pressed)
-            {
-                if (state == TouchLocationState.Pressed)
-                {
-                    this.buttonOnPressed();
-                }
-
-                this.state = Button_State.HOLD;
-            }
-            else
-            {
-                this.state = Button_State.NORMAL;
-                this.buttonOnReleased();
-            }
-        }
-
-        public void Drag(Vector2 begin, Vector2 current, TouchLocationState state)
-        {
-            if (state == TouchLocationState.Moved)
-            {
-                if (this.Contains((int) current.X, (int) current.Y))
-                {
-                    this.state = Button_State.HOLD;
-                }
-                else
-                {
-                    this.state = Button_State.NORMAL;
-                }
-            }
-            else if (state == TouchLocationState.Released)
-            {
-                if (this.Contains((int)current.X, (int)current.Y))
-                {
-                    this.buttonOnReleased();
-                }
-
-                this.state = Button_State.NORMAL;
-            }
-        }
-
-        private void buttonOnPressed()
-        {
-            try
-            {
-                if (this.PressedSound != null)
-                {
-                    services.AudioManager.PlaySound(this.PressedSound, true, false);
-                }
-            }
-            catch (System.Exception)
-            {
-
-            }
-
             if (this.OnPressed != null)
             {
-                this.OnPressed(this, null);
+                this.OnPressed(this);
             }
         }
-
-        private void buttonOnReleased()
-        {
-            if (this.OnReleased != null)
-            {
-                this.OnReleased(this, null);
-            }
-        }
-
-        public bool IsTouchCompleted()
-        {
-            return false;
-        }
-
-        public bool Contains(int x, int y)
-        {
-            return this.bound.Contains(x, y);
-        }
-
-        public bool CanMultitouch { get { return false; } }
-        public bool CanSweep { get { return false; } }
-        public bool CanDrag { get { return false; } }
-    }
-  */
-
-    public delegate void OnButtonTouchedHandler(Button sender, EventArgs args);
-
-    public abstract class Button : DrawableGameComponentAsSpriteModel
-    {
-        public ISprite Background { get; set; }
-
-        private Vector2 size;
-        public Vector2 Size
-        {
-            get { return size; }
-            set { size = value; }
-        }
-
-        public event OnButtonTouchedHandler OnTouched;
-
-        private SCSServices services;
-
-        public Button(Game game, ISprite background)
-            : base(game)
-        {
-            this.services = game.Services.GetService(typeof(SCSServices)) as SCSServices;
-            this.Background = background;
-        }
-
-        public override void Update(GameTime gameTime)
-        {
-            foreach (GestureSample gesture in this.services.InputHandle.Gestures)
-            {
-                if (gesture.GestureType == GestureType.Tap && this.Contains(gesture.Position))
-                {
-                    this.controlOnTouched();
-                }
-            }
-
-            base.Update(gameTime);
-        }
-
-        protected virtual void controlOnTouched()
+        private void uiOnTouched()
         {
             if (this.OnTouched != null)
             {
-                this.OnTouched(this, null);
+                this.OnTouched(this);
             }
         }
+        private void uiOnHold()
+        {
+            if (this.OnHold != null)
+            {
+                this.OnHold(this);
+            }
+        }
+        #endregion
+
+        public override void RegisterGestures(IGestureDispatcher dispatcher)
+        {
+            dispatcher.AddTarget<FreeTap>(this);
+        }
+
+        public override void LeaveGestures(IGestureDispatcher dispatcher)
+        {
+            this.IsGestureCompleted = true;
+        }
+
+        public bool ReceivedGesture(FreeTap gEvent)
+        {
+            if (this.Canvas.Bound.Contains(gEvent.Current) && (gEvent.Touch.SystemTouch.State != TouchLocationState.Released))
+            {
+                if (this.State == ButtonState.Normal)
+                {
+                    this.uiOnPressed();
+                }
+                else
+                {
+                    this.uiOnHold();
+                }
+
+                this.State = ButtonState.Hold;
+            }
+            else
+            {
+                this.State = ButtonState.Normal;
+            }
+
+            if (gEvent.Touch.SystemTouch.State == TouchLocationState.Released)
+            {
+                this.uiOnTouched();
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool IsHandleGesture(FreeTap gEvent)
+        {
+            return ((gEvent.Touch.SystemTouch.State == TouchLocationState.Pressed) && this.Canvas.Bound.Contains(gEvent.Current));
+        }
+
+        public uint Priority
+        {
+            get { return 0; }
+        }
+
+        public bool IsGestureCompleted { get; private set; }
+
+        private SpriteBatch sprBatch;
 
         public override void Draw(GameTime gameTime)
         {
-            if (this.Visible)
+            if (null == sprBatch)
+                return;
+
+            sprBatch.Begin();
+            if ((this.NormalImage != null) && (this.IsOverlay || this.State == ButtonState.Normal))
             {
-                this.Background.TimeStep(gameTime);
-                this.services.SpritePlayer.Draw(this.Background, this);
+                sprBatch.Draw(this.NormalImage, this.Canvas.Bound.Rectangle, this.Canvas.Content.Rectangle, Color.White);
             }
+
+            if ((this.HoldImage != null) && (this.State == ButtonState.Hold))
+            {
+                sprBatch.Draw(this.HoldImage, this.Canvas.Bound.Rectangle, this.Canvas.Content.Rectangle, Color.White);
+            }
+            sprBatch.End();
 
             base.Draw(gameTime);
         }
 
-        protected abstract bool Contains(Vector2 pos);
+        public void FitSizeByImage()
+        {
+            Texture2D img = (this.NormalImage != null) ? (this.NormalImage) : (this.HoldImage != null) ? (this.HoldImage) : (null);
+            if (img == null)
+                return;
+
+            this.Canvas.Content.Position = Vector2.Zero;
+            this.Canvas.Content.Size = new Vector2(img.Width, img.Height);
+            
+            this.Canvas.Bound.Size = this.Canvas.Content.Size;
+        }
+
+
+        public Button(Game game, SpriteBatch spriteBatch)
+            : base(game)
+        {
+            this.sprBatch = spriteBatch;
+        }
+
+        public Button(Game game, SpriteBatch spriteBatch,Texture2D normal, Texture2D hold)
+            : base(game)
+        {
+            this.sprBatch = spriteBatch;
+            this.NormalImage = normal;
+            this.HoldImage = hold;
+
+            this.FitSizeByImage();
+        }
     }
 }
