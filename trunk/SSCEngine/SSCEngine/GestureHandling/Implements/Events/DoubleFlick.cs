@@ -10,8 +10,6 @@ namespace SSCEngine.GestureHandling.Implements.Events
 {
     public class DoubleFlick : BaseGestureHandling.BaseGestureEvent
     {
-        private float minAngle = 10f; // 10 degree
-
         public DoubleFlick(ITouch touch1, ITouch touch2)
             : base(2)
         {
