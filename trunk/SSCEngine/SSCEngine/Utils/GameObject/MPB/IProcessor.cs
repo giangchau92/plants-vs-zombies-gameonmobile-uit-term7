@@ -8,6 +8,12 @@ namespace SCSEngine.Utils.GameObject.MPB
 {
     public interface IProcessor<E>
     {
+        
         void Update(E e, GameTime gameTime);
     }
 }
+//public interface IProcessor<E>
+//{
+
+//    void Update(E e, GameTime gameTime);
+//}
