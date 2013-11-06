@@ -8,28 +8,43 @@ using SCSEngine.ServiceManagement;
 using SCSEngine.Services.Audio;
 using SCSEngine.Services.Input;
 using SCSEngine.Services.Sprite;
+using SCSEngine.ResourceManagement;
 
 namespace SCSEngine.Services
 {
     public class SCSServices
     {
-        public SCSServices(Game game, SpriteBatch sprBatch)
+        private static SCSServices _instance = null;
+
+        public static SCSServices Instance
         {
-            this.Game = game;
-            this.SpriteBatch = sprBatch;
-            this.SpritePlayer = new SpritePlayer(this.SpriteBatch);
-            this.AudioManager = new AudioManager(this.Game);
-            this.InputHandle = new InputHandle();
+            get
+            {
+                if (_instance == null)
+                    _instance = new SCSServices();
+                return _instance;
+            }
         }
 
-        public Game Game { get; private set; }
+        public SCSServices()
+        {
+        //    this.Game = game;
+        //    this.SpriteBatch = sprBatch;
+        //    this.SpritePlayer = new SpritePlayer(this.SpriteBatch);
+        //    this.AudioManager = new AudioManager(this.Game);
+        //    this.InputHandle = new InputHandle();
+        }
 
-        public SpriteBatch SpriteBatch { get; private set; }
+        public Game Game { get; set; }
 
-        public SpritePlayer SpritePlayer { get; private set; }
+        public SpriteBatch SpriteBatch { get; set; }
 
-        public AudioManager AudioManager { get; private set; }
+        public SpritePlayer SpritePlayer { get; set; }
 
-        public InputHandle InputHandle { get; private set; }
+        public AudioManager AudioManager { get; set; }
+
+        public InputHandle InputHandle { get; set; }
+
+        public IResourceManager ResourceManager { get; set; }
     }
 }
