@@ -16,6 +16,7 @@ namespace PlantVsZombie.GameComponents.Components
         public RenderComponent()
         {
             currentTexture = SCSServices.Instance.ResourceManager.GetResource<Texture2D>("zombie_stand");
+            //debug
             int a;
             a = 1;
         }

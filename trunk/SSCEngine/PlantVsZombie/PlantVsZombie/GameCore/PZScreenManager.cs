@@ -18,6 +18,5 @@ namespace PlantVsZombie.GameCore
             TestScreenFactory testFactory = new TestScreenFactory(this);
             this.Bank.AddScreenFactory("Test", testFactory);
         }
-
     }
 }
