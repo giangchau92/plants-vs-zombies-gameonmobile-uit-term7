@@ -15,7 +15,6 @@ namespace PlantVsZombie.GameScreen.ScreenFactory
             this.manager = screenManager;
         }
 
-
         public IGameScreen CreateGameScreen()
         {
             return new TestScreen(this.manager);

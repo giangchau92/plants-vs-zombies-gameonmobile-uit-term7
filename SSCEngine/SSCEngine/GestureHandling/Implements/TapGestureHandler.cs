@@ -41,6 +41,6 @@ namespace SSCEngine.GestureHandling.Implements
             }
         }
 
-        event OnHasGestureHandler OnHasGesture;
+        public event OnHasGestureHandler OnHasGesture;
     }
 }
