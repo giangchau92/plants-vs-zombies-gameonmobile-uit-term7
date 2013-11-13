@@ -64,6 +64,17 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GameComponents\Behaviors\BaseBehavior.cs" />
+    <Compile Include="GameComponents\Behaviors\BaseLogicBehavior.cs" />
+    <Compile Include="GameComponents\Behaviors\Plant\PL_NormalLogicBehavior.cs" />
+    <Compile Include="GameComponents\Behaviors\Plant\PL_NormalShootRenderBehavior.cs" />
+    <Compile Include="GameComponents\Behaviors\Plant\PL_NormalStandRenderBehavior.cs" />
+    <Compile Include="GameComponents\Behaviors\Zombie\Z_NormalEatingRenderBehavior.cs" />
+    <Compile Include="GameComponents\Behaviors\Zombie\Z_NormalLogicBehavior.cs" />
+    <Compile Include="GameComponents\Behaviors\Zombie\Z_NormalRunBehavior.cs" />
+    <Compile Include="GameComponents\Behaviors\Zombie\Z_NormalRunRenderBahavior.cs" />
+    <Compile Include="GameComponents\Behaviors\Zombie\Z_NormalStandBehavior.cs" />
+    <Compile Include="GameComponents\Behaviors\Zombie\Z_NormalStandRenderBehavior.cs" />
     <Compile Include="GameComponents\Components\LogicComponent.cs" />
     <Compile Include="GameComponents\Components\LogicComponentFactory.cs" />
     <Compile Include="GameComponents\Components\PhysicComponentFactory.cs" />
@@ -72,10 +83,15 @@
     <Compile Include="GameComponents\GameMessage.cs" />
     <Compile Include="GameComponents\Components\MoveComponent.cs" />
     <Compile Include="GameComponents\Components\MoveComponentFactory.cs" />
+    <Compile Include="GameComponents\GameMessages\CollisionDetectedMsg.cs" />
+    <Compile Include="GameComponents\GameMessages\MoveBehaviorChangeMsg.cs" />
+    <Compile Include="GameComponents\GameMessages\RenderBehaviorChangeMsg.cs" />
     <Compile Include="GameComponents\ObjectEntity.cs" />
     <Compile Include="GameComponents\Components\PhysicComponent.cs" />
+    <Compile Include="GameCore\PZObjectManager.cs" />
     <Compile Include="GameCore\PZResourceManager.cs" />
     <Compile Include="GameCore\PZScreenManager.cs" />
+    <Compile Include="GameObjects\NormalPlant.cs" />
     <Compile Include="GameObjects\NormalZombie.cs" />
     <Compile Include="GameScreen\ScreenFactory\TestScreenFactory.cs" />
     <Compile Include="GameScreen\TestScreen.cs" />
@@ -108,9 +124,7 @@
       <XnaReferenceType>Content</XnaReferenceType>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="GameComponents\States\MoveStates\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <!--

@@ -9,7 +9,12 @@ namespace PlantVsZombie.GameComponents
     public enum MessageType
     {
         FRAME_UPDATE,
-        FRAME_DRAW
+        FRAME_DRAW,
+
+        CHANGE_MOVE_BEHAVIOR,
+        CHANGE_RENDER_BEHAVIOR,
+
+        COLLISON_DETECT
     }
     public class GameMessage : IMessage<MessageType>
     {
@@ -19,11 +24,29 @@ namespace PlantVsZombie.GameComponents
             get { return _messageType; }
         }
 
-        public GameMessage(MessageType message)
+        public GameMessage(MessageType message, object sender)
         {
             this._messageType = message;
+            DestinationObjectId = 0;
         }
 
-        
+        public bool Handled
+        {
+            get;
+            set;
+        }
+
+        public ulong DestinationObjectId
+        {
+            get;
+            set;
+        }
+
+
+        public object Sender
+        {
+            get;
+            set;
+        }
     }
 }

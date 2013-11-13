@@ -7,6 +7,7 @@ namespace SSCEngine.Utils.GameObject.Component
 {
     public interface IEntity<T>
     {
+        ulong ObjectId { get; set; }
         IDictionary<Type, IComponent<T>> Components { get; }
         bool AddComponent(IComponent<T> component);
         void RemoveComponent(IComponent<T> component);

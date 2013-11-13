@@ -10,26 +10,45 @@ using PlantVsZombie.GameComponents;
 using PlantVsZombie.GameObjects;
 using Microsoft.Xna.Framework.Graphics;
 using SCSEngine.Services;
+using Microsoft.Xna.Framework.Input.Touch;
+using PlantVsZombie.GameCore;
+using PlantVsZombie.GameComponents.GameMessages;
 
 namespace PlantVsZombie.GameScreen
 {
     public class TestScreen : BaseGameScreen
     {
-        List<ObjectEntity> listObject = new List<ObjectEntity>();
+        PZObjectManager objectManager = PZObjectManager.Instance;
 
         public TestScreen(IGameScreenManager screenManager)
             : base(screenManager)
         {
-            listObject.Add(new NormalZombie());
+            
+            objectManager.AddObject(new NormalPlant());
         }
 
         public override void Update(GameTime gameTime)
         {
-            IMessage<MessageType> updateMessage = new GameMessage(MessageType.FRAME_UPDATE);
-            foreach (var obj in listObject)
+            IMessage<MessageType> updateMessage = new GameMessage(MessageType.FRAME_UPDATE, this);
+            updateMessage.DestinationObjectId = 0; // For all object
+
+            objectManager.SendMessage(updateMessage, gameTime);
+
+            TouchCollection touches = TouchPanel.GetState();
+            if (touches.Count != 0 && objectManager.GetObjects().Count < 2)
             {
-                obj.OnMessage(updateMessage, gameTime);
+                //MoveBehaviorChangeMsg moveMsg = new MoveBehaviorChangeMsg(MessageType.CHANGE_MOVE_BEHAVIOR, this);
+                //moveMsg.MoveBehaviorType = GameComponents.Components.eMoveBehaviorType.NORMAL_RUNNING;
+                
+
+                //RenderBehaviorChangeMsg renderMsg = new RenderBehaviorChangeMsg(MessageType.CHANGE_RENDER_BEHAVIOR, this);
+                //renderMsg.RenderBehaviorType = GameComponents.Components.eMoveRenderBehaviorType.ZO_NORMAL_RUNNING;
+
+                //objectManager.SendMessage(moveMsg, gameTime);
+                //objectManager.SendMessage(renderMsg, gameTime);
+                objectManager.AddObject(new NormalZombie());
             }
+
             base.Update(gameTime);
         }
 
@@ -38,13 +57,11 @@ namespace PlantVsZombie.GameScreen
             SpriteBatch spriteBatch = SCSServices.Instance.SpriteBatch;
             spriteBatch.Begin();
 
-            IMessage<MessageType> updateMessage = new GameMessage(MessageType.FRAME_DRAW);
-            foreach (var obj in listObject)
-            {
-                obj.OnMessage(updateMessage, gameTime);
-            }
-            base.Draw(gameTime);
+            IMessage<MessageType> updateMessage = new GameMessage(MessageType.FRAME_DRAW, this);
+            updateMessage.DestinationObjectId = 0;
+            objectManager.SendMessage(updateMessage, gameTime);
 
+            base.Draw(gameTime);
             spriteBatch.End();
         }
     }
