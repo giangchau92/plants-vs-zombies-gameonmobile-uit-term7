@@ -11,7 +11,19 @@ namespace SSCEngine.GestureHandling.Implements.Detectors
     {
         public override void DetectGesture(ICollection<ITouch> touches, Microsoft.Xna.Framework.GameTime gameTime)
         {
-            throw new NotImplementedException();
+            this.gestures.BeginTrace();
+            foreach (var touch in touches)
+            {
+                if (this.gestures.ContainsKey(touch))
+                {
+                    this.gestures.GetAndMarkTracedObject(touch);
+                }
+                else
+                {
+                    this.gestures.Add(touch, new FreeTap(touch));
+                }
+            }
+            this.gestures.EndTrace();
         }
     }
 }

@@ -175,6 +175,7 @@
     <Compile Include="Utils\Mathematics\GRandom.cs" />
     <Compile Include="Utils\Mathematics\RectangleF.cs" />
     <Compile Include="Utils\Patterns\IFactory.cs" />
+    <Compile Include="Utils\TracedDictionary.cs" />
     <Compile Include="Utils\XMLReader.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -35,13 +35,14 @@ namespace SSCEngine.GestureHandling.BaseGestureHandling
 
         internal void UpdateLocation(TouchLocation touchLocation)
         {
-            if (this.TouchID != touchLocation.Id)
+            if (this.TouchID == touchLocation.Id)
             {
                 this.systemTouch = touchLocation;
-                this.positions.Current = touchLocation.Position;
+                this.positions.UpdateLocation(touchLocation.Position);
+                return;
             }
 
-            throw new InvalidOperationException();
+            throw new InvalidOperationException(string.Format("TouchLocation id({0}) must be matched with TouchID({1})", touchLocation.Id, TouchID));
         }
     }
 }

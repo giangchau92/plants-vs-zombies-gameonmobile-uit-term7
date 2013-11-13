@@ -7,6 +7,7 @@ using SSCEngine.GestureHandling.Implements.Events;
 using SSCEngine.Utils.Mathematics;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using IListViewItem = SSCEngine.Control.IUIControl;
@@ -48,15 +49,17 @@ namespace SSCEngine.Control
         {
             CRectangleF tmpOffset = this.Clipper.OffsetClip(this.Canvas.Content, this.Field);
             Vector2 translate = this.Field.Position + this.Canvas.Bound.Position + this.Canvas.Content.Position;
+            ICanvas oldItemFrame = new BaseCanvas();
             for (int i = 0; i < controls.Count; ++i)
             {
                 var item = controls[i];
-                if (this.Clipper.Clip(item.Canvas, tmpOffset))
-                {
-                    item.Canvas.Bound.Position += translate;
-                    item.Draw(gameTime);
-                    item.Canvas.Bound.Position -= translate;
-                }
+                oldItemFrame.Bound.Alter(item.Canvas.Bound);
+                oldItemFrame.Content.Alter(item.Canvas.Content);
+                item.Canvas.Bound.Position += translate;
+                Debug.WriteLine(string.Format("Item pos:{0} and drawPos:{1}", oldItemFrame.Bound.Position, item.Canvas.Bound.Position));
+                item.Draw(gameTime);
+                item.Canvas.Bound.Alter(oldItemFrame.Bound);
+                item.Canvas.Content.Alter(oldItemFrame.Content);
             }
 
             base.Draw(gameTime);
@@ -103,6 +106,7 @@ namespace SSCEngine.Control
                     return false;
                 case TouchLocationState.Moved:
                     this.Gesturer.Move(gEvent.Touch.Positions.Delta);
+                    Debug.WriteLine(string.Format("Current Drag Position: {0}", gEvent.Touch.Positions.Current));
                     break;
             }
 

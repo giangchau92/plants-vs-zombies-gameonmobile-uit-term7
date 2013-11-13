@@ -40,6 +40,7 @@ namespace TestGesture
 
             // Frame rate is 30 fps by default for Windows Phone.
             TargetElapsedTime = TimeSpan.FromTicks(333333 / 2);
+            //this.IsFixedTimeStep = false;
 
             // Extend battery life under lock.
             InactiveSleepTime = TimeSpan.FromSeconds(1);
@@ -81,17 +82,26 @@ namespace TestGesture
             this.resMan = new SCSResourceManager(this.Content);
             // TODO: use this.Content to load your game content here
 
-            PictureBox pb = new PictureBox(this, spriteBatch);
-            pb.Image = resMan.GetResource<Texture2D>("img");
-            pb.FitSizeByImage();
 
             ListView lv = new ListView(this, HorizontalListViewFactory.Instance);
-            lv.AddItem(pb);
             lv.Canvas.Bound.Size.X = 1000;
             lv.Canvas.Bound.Size.Y = 100;
-            lv.Canvas.Content.Size.X = 1000;
+            lv.Canvas.Content.Size.X = 500;
             lv.Canvas.Content.Size.Y = 100;
+            for (int i = 0; i < 10; ++i)
+            {
+                PictureBox pb = new PictureBox(this, spriteBatch);
+                pb.Image = resMan.GetResource<Texture2D>("img");
+                pb.FitSizeByImage();
+                lv.AddItem(pb);
+            }
             this.uiManager.Add(lv);
+
+            //Button bt = new Button(this, spriteBatch);
+            //bt.NormalImage = resMan.GetResource<Texture2D>("img");
+            //bt.HoldImage = resMan.GetResource<Texture2D>("img2");
+            //bt.FitSizeByImage();
+            //this.uiManager.Add(bt);
         }
 
         /// <summary>
@@ -116,7 +126,15 @@ namespace TestGesture
 
             // TODO: Add your update logic here
 
+            try
+            {
                 base.Update(gameTime);
+                //Debug.WriteLine(string.Format("Eslaped: {0}", gameTime.ElapsedGameTime.TotalMilliseconds));
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+            }
         }
 
         /// <summary>

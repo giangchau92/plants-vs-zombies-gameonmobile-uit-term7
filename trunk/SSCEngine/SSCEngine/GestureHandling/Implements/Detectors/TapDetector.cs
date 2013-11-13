@@ -14,6 +14,15 @@ namespace SSCEngine.GestureHandling.Implements.Detectors
 
         public override void DetectGesture(ICollection<ITouch> touches, GameTime gameTime)
         {
+            this.gestures.BeginTrace();
+            foreach (ITouch touch in touches)
+            {
+                if (touch.SystemTouch.State == TouchLocationState.Released)
+                {
+                    this.gestures.Add(touch, new Tap(touch));
+                }
+            }
+            this.gestures.EndTrace();
         }
     }
 }

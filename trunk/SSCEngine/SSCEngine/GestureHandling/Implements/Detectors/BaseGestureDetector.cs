@@ -1,3 +1,4 @@
+using SSCEngine.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,10 +20,10 @@ namespace SSCEngine.GestureHandling.Implements.Detectors
         {
             get
             {
-                return gestures;
+                return gestures.Values;
             }
         }
-        protected ICollection<GE> gestures = new LinkedList<GE>();
+        protected TracedDictionary<ITouch, GE> gestures = new TracedDictionary<ITouch, GE>();
 
         public abstract void DetectGesture(ICollection<ITouch> touches, Microsoft.Xna.Framework.GameTime gameTime);
     }
