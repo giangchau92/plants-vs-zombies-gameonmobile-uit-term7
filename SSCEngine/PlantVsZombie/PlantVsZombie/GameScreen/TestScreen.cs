@@ -13,6 +13,7 @@ using SCSEngine.Services;
 using Microsoft.Xna.Framework.Input.Touch;
 using PlantVsZombie.GameCore;
 using PlantVsZombie.GameComponents.GameMessages;
+using System.Diagnostics;
 
 namespace PlantVsZombie.GameScreen
 {
@@ -25,6 +26,7 @@ namespace PlantVsZombie.GameScreen
         {
             
             objectManager.AddObject(new NormalPlant());
+            TouchPanel.EnabledGestures = GestureType.Tap;
         }
 
         public override void Update(GameTime gameTime)
@@ -34,22 +36,18 @@ namespace PlantVsZombie.GameScreen
 
             objectManager.SendMessage(updateMessage, gameTime);
 
-            TouchCollection touches = TouchPanel.GetState();
-            if (touches.Count != 0 && objectManager.GetObjects().Count < 2)
+            while (TouchPanel.IsGestureAvailable)
             {
-                //MoveBehaviorChangeMsg moveMsg = new MoveBehaviorChangeMsg(MessageType.CHANGE_MOVE_BEHAVIOR, this);
-                //moveMsg.MoveBehaviorType = GameComponents.Components.eMoveBehaviorType.NORMAL_RUNNING;
-                
-
-                //RenderBehaviorChangeMsg renderMsg = new RenderBehaviorChangeMsg(MessageType.CHANGE_RENDER_BEHAVIOR, this);
-                //renderMsg.RenderBehaviorType = GameComponents.Components.eMoveRenderBehaviorType.ZO_NORMAL_RUNNING;
-
-                //objectManager.SendMessage(moveMsg, gameTime);
-                //objectManager.SendMessage(renderMsg, gameTime);
-                objectManager.AddObject(new NormalZombie());
+                GestureSample gesture = TouchPanel.ReadGesture();
+                if (gesture.GestureType == GestureType.Tap)
+                {
+                    objectManager.AddObject(new NormalZombie());
+                }
             }
 
             base.Update(gameTime);
+            Debug.WriteLine(string.Format("Eslaped: {0}", gameTime.ElapsedGameTime.TotalMilliseconds));
+
         }
 
         public override void Draw(GameTime gameTime)

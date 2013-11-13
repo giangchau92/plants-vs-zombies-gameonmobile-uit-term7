@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework.Media;
 using SCSEngine.ResourceManagement;
 using PlantVsZombie.GameCore;
 using SCSEngine.Services;
+using System.Diagnostics;
 
 namespace PlantVsZombie
 {
@@ -31,10 +32,11 @@ namespace PlantVsZombie
             Content.RootDirectory = "Content";
 
             // Frame rate is 30 fps by default for Windows Phone.
-            TargetElapsedTime = TimeSpan.FromTicks(333333);
+            TargetElapsedTime = TimeSpan.FromTicks(333333);//166666 333333
 
             // Extend battery life under lock.
             InactiveSleepTime = TimeSpan.FromSeconds(1);
+            this.IsFixedTimeStep = false;
         }
 
         /// <summary>
@@ -100,7 +102,9 @@ namespace PlantVsZombie
 
             // TODO: Add your update logic here
             screenManager.Update(gameTime);
+            Debug.WriteLine(string.Format("Eslaped: {0}", gameTime.ElapsedGameTime.TotalMilliseconds));
             base.Update(gameTime);
+            
         }
 
         /// <summary>
@@ -112,9 +116,7 @@ namespace PlantVsZombie
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-            //spriteBatch.Begin();
             screenManager.Draw(gameTime);
-            //spriteBatch.End();
 
             base.Draw(gameTime);
         }
