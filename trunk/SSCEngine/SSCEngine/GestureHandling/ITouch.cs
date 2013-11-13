@@ -8,6 +8,8 @@ namespace SSCEngine.GestureHandling
 {
     public interface ITouch
     {
+        int TouchID { get; }
+
         TouchLocation SystemTouch { get; }
         //GestureType Type { get; }
 

@@ -9,17 +9,39 @@ namespace SSCEngine.GestureHandling.BaseGestureHandling
 {
     class Touch : ITouch
     {
-        public Touch(TouchLocation location, /*GestureType type, */TouchPositions positions)
+        public Touch(TouchLocation location)
         {
-            this.SystemTouch = location;
-            //this.Type = type;
-            this.Positions = positions;
+            this.systemTouch = location;
+            this.TouchID = location.Id;
+            this.positions.Begin = this.systemTouch.Position;
+            this.positions.Current = this.systemTouch.Position;
         }
 
-        public TouchLocation SystemTouch { get; private set; }
+        internal TouchLocation systemTouch;
 
-        //public GestureType Type { get; private set; }
+        public TouchLocation SystemTouch
+        {
+            get { return systemTouch; }
+        }
 
-        public TouchPositions Positions { get; private set; }
+        internal TouchPositions positions;
+
+        public TouchPositions Positions
+        {
+            get { return positions; }
+        }
+
+        public int TouchID { get; private set; }
+
+        internal void UpdateLocation(TouchLocation touchLocation)
+        {
+            if (this.TouchID != touchLocation.Id)
+            {
+                this.systemTouch = touchLocation;
+                this.positions.Current = touchLocation.Position;
+            }
+
+            throw new InvalidOperationException();
+        }
     }
 }

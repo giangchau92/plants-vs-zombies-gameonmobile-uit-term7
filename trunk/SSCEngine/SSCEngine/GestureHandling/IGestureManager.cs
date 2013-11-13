@@ -8,8 +8,8 @@ namespace SSCEngine.GestureHandling
 {
     public interface IGestureManager : IUpdateable, IGameComponent
     {
-        void AddDetector(IGestureDetector gDetector);
-        void RemoveDetector(IGestureDetector gDetector);
+        void AddDetector<GestureEvent>(IGestureDetector<GestureEvent> gDetector) where GestureEvent : IGestureEvent;
+        void RemoveDetector<GestureEvent>(IGestureDetector<GestureEvent> gDetector) where GestureEvent : IGestureEvent;
 
         void AddDispatcher(IGestureDispatcher gDispatcher);
         void RemoveDispatcher(IGestureDispatcher gDispatcher);

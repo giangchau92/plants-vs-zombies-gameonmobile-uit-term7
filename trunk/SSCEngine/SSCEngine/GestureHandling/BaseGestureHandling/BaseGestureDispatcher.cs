@@ -5,9 +5,9 @@ using System.Text;
 
 namespace SSCEngine.GestureHandling.BaseGestureHandling
 {
-    class BaseGestureDispatcher : Dictionary<Type, List<IGestureTarget>>, IGestureDispatcher
+    class BaseGestureDispatcher : IGestureDispatcher
     {
-        private Dictionary<Type, IDispatchAdapter> adapters = new Dictionary<Type,IDispatchAdapter>();
+        private IDictionary<int, IStrongTargetStorage> adapters = new Dictionary<int, IStrongTargetStorage>();
         public BaseGestureDispatcher()
         {
             this.Enabled = true;
@@ -15,80 +15,60 @@ namespace SSCEngine.GestureHandling.BaseGestureHandling
 
         public void AddTarget<GE>(IGestureTarget<GE> gTarget) where GE : IGestureEvent
         {
-            if (!this.ContainsKey(typeof(GE)))
+            int geHash = typeof(GE).GetHashCode();
+            if (!this.adapters.ContainsKey(geHash))
             {
-                this.Add(typeof(GE), new List<IGestureTarget>());
-                this.adapters.Add(typeof(GE), new DispatchAdapter<GE>());
+                this.adapters.Add(geHash, new StrongTargetStorage<GE>());
             }
 
-            this[typeof(GE)].Add(gTarget);
+            StrongTargetStorage<GE> targetStorage = this.adapters[geHash] as StrongTargetStorage<GE>;
+            targetStorage.Add(gTarget);
         }
 
         public void RemoveTarget<GE>(IGestureTarget<GE> gTarget) where GE : IGestureEvent
         {
-            if (this.ContainsKey(typeof(GE)))
+            int geHash = typeof(GE).GetHashCode();
+            if (this.adapters.ContainsKey(geHash))
             {
-                this[typeof(GE)].Remove(gTarget);
+                StrongTargetStorage<GE> targetStorage = this.adapters[geHash] as StrongTargetStorage<GE>;
+                targetStorage.Remove(gTarget);
 
-                if (this[typeof(GE)].Count == 0)
+                if (targetStorage.Count == 0)
                 {
-                    this.Remove(typeof(GE));
-                    this.adapters.Remove(typeof(GE));
+                    this.adapters.Remove(geHash);
                 }
             }
+
         }
 
-        public void Dispatch(IGestureEvent gEvent)
+        public void Dispatch<GestureEvent>(GestureEvent gEvent) where GestureEvent : IGestureEvent
         {
-            if (this.ContainsKey(gEvent.GetType()) && this.adapters.ContainsKey(gEvent.GetType()))
+            int geHash = typeof(GestureEvent).GetHashCode();
+            if (this.adapters.ContainsKey(geHash))
             {
-                // dispatch gesture
-                var dispatchAdapter = this.adapters[gEvent.GetType()];
-                IEnumerable<IGestureTarget> targets = new List<IGestureTarget>(this[gEvent.GetType()]);
-                dispatchAdapter.Dispatch(gEvent, targets);
+                StrongTargetStorage<GestureEvent> targetStorage = this.adapters[geHash] as StrongTargetStorage<GestureEvent>;
 
-                // remove completed targets
-                var realTargets = this[gEvent.GetType()];
-                realTargets.Clear();
-                foreach (var target in targets)
+                foreach (IGestureTarget<GestureEvent> gTarget in targetStorage)
                 {
-                    if (!target.IsGestureCompleted)
+                    if (targetStorage.HandledTargets.ContainsKey(gEvent.Touch.TouchID))
                     {
-                        realTargets.Add(target);
-                    }
-                }
-            }
-        }
-
-        private class DispatchAdapter<GE> : IDispatchAdapter where GE : IGestureEvent
-        {
-            private Dictionary<int, IGestureTarget<GE>> handledTargets = new Dictionary<int, IGestureTarget<GE>>();
-
-            public void Dispatch(IGestureEvent e, IEnumerable<IGestureTarget> targets)
-            {
-                var ge = (GE) e;
-                if (ge == null)
-                    return;
-
-                if (this.handledTargets.ContainsKey(e.Touch.SystemTouch.Id))
-                {
-                    IGestureTarget<GE> target = this.handledTargets[e.Touch.SystemTouch.Id];
-                    if (!target.ReceivedGesture(ge))
-                    {
-                        this.handledTargets.Remove(ge.Touch.SystemTouch.Id);
-                    }
-                }
-                else
-                {
-                    foreach (var target in targets)
-                    {
-                        var specTarget = target as IGestureTarget<GE>;
-                        if (specTarget.IsHandleGesture(ge))
+                        IGestureTarget<GestureEvent> target = targetStorage.HandledTargets[gEvent.Touch.TouchID];
+                        if (!target.ReceivedGesture(gEvent))
                         {
-                            if (specTarget.ReceivedGesture(ge))
+                            targetStorage.HandledTargets.Remove(gEvent.Touch.SystemTouch.Id);
+                        }
+                    }
+                    else
+                    {
+                        foreach (var target in targetStorage)
+                        {
+                            if (target.IsHandleGesture(gEvent))
                             {
-                                this.handledTargets.Add(ge.Touch.SystemTouch.Id, specTarget);
-                                break;
+                                if (target.ReceivedGesture(gEvent))
+                                {
+                                    targetStorage.HandledTargets.Add(gEvent.Touch.TouchID, target);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -96,9 +76,17 @@ namespace SSCEngine.GestureHandling.BaseGestureHandling
             }
         }
 
-        private interface IDispatchAdapter
+        private class StrongTargetStorage<GE> : List<IGestureTarget<GE>>, IStrongTargetStorage where GE : IGestureEvent
         {
-            void Dispatch(IGestureEvent e, IEnumerable<IGestureTarget> targets);
+            private Dictionary<int, IGestureTarget<GE>> handledTargets = new Dictionary<int, IGestureTarget<GE>>();
+            public Dictionary<int, IGestureTarget<GE>> HandledTargets
+            {
+                get { return handledTargets; }
+            }
+        }
+
+        private interface IStrongTargetStorage
+        {
         }
 
 
