@@ -91,6 +91,7 @@
     <Compile Include="GameCore\PZObjectManager.cs" />
     <Compile Include="GameCore\PZResourceManager.cs" />
     <Compile Include="GameCore\PZScreenManager.cs" />
+    <Compile Include="GameObjects\NormalBullet.cs" />
     <Compile Include="GameObjects\NormalPlant.cs" />
     <Compile Include="GameObjects\NormalZombie.cs" />
     <Compile Include="GameScreen\ScreenFactory\TestScreenFactory.cs" />
