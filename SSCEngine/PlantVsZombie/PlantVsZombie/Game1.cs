@@ -71,7 +71,8 @@ namespace PlantVsZombie
             SCSServices.Instance.AudioManager = new SCSEngine.Services.Audio.AudioManager(this);
             SCSServices.Instance.ResourceManager = resourceManager;
 
-
+            SpriteFont font = Content.Load<SpriteFont>("DebugFont");
+            SCSServices.Instance.DebugFont = font;
             // Screeen management
             screenManager = new PZScreenManager(this);
             screenManager.AddExclusive(screenManager.Bank.GetNewScreen("Test"));

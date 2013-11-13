@@ -46,5 +46,7 @@ namespace SCSEngine.Services
         public InputHandle InputHandle { get; set; }
 
         public IResourceManager ResourceManager { get; set; }
+
+        public SpriteFont DebugFont { get; set; }
     }
 }

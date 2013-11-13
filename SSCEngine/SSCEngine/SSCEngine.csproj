@@ -158,6 +158,7 @@
     <Compile Include="Sprite\SpriteResourceLoader.cs" />
     <Compile Include="Utils\Adapters\DrawableGameComponentAsSpriteModel.cs" />
     <Compile Include="Utils\Camera2D.cs" />
+    <Compile Include="Utils\GameObject\Component\IBehavior.cs" />
     <Compile Include="Utils\GameObject\Component\IComponent.cs" />
     <Compile Include="Utils\GameObject\Component\IEntity.cs" />
     <Compile Include="Utils\GameObject\Component\IMessage.cs" />

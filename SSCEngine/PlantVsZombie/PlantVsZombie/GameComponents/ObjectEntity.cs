@@ -10,6 +10,7 @@ namespace PlantVsZombie.GameComponents
 {
     public class ObjectEntity : IEntity<MessageType>, IComponent<MessageType>
     {
+        public bool Remove { get; set; }
         private IDictionary<Type, IComponent<MessageType>> _components = new Dictionary<Type, IComponent<MessageType>>();
         public IDictionary<Type, IComponent<MessageType>> Components
         {
@@ -45,12 +46,15 @@ namespace PlantVsZombie.GameComponents
 
         public ObjectEntity()
         {
+            Remove = false;
         }
 
         public virtual void OnMessage(IMessage<MessageType> message, GameTime gameTime)
         {
             foreach (KeyValuePair<Type, IComponent<MessageType>> component in this._components)
             {
+                if (message.Handled)
+                    break;
                 component.Value.OnMessage(message, gameTime);
             }
         }
@@ -73,6 +77,13 @@ namespace PlantVsZombie.GameComponents
             {
                 throw new NotImplementedException();
             }
+        }
+
+
+        public ulong ObjectId
+        {
+            get;
+            set;
         }
     }
 }
