@@ -10,7 +10,7 @@ namespace SSCEngine.GestureHandling.BaseGestureHandling
 {
     class BaseGestureManager : GameComponent, IGestureManager
     {
-        private List<IGestureDetector> detectors = new List<IGestureDetector>();
+        private IDictionary<int, IStrongGestureManager> subManager = new Dictionary<int, IStrongGestureManager>();   // key is gesture event hash
         private List<IGestureDispatcher> dispatchers = new List<IGestureDispatcher>();
 
         private ITouchController touchController;
@@ -21,14 +21,14 @@ namespace SSCEngine.GestureHandling.BaseGestureHandling
             this.touchController = touchController;
         }
 
-        public void AddDetector(IGestureDetector gDetector)
+        public void AddDetector<GestureEvent>(IGestureDetector<GestureEvent> gDetector) where GestureEvent : IGestureEvent
         {
-            this.detectors.Add(gDetector);
+            this.subManager.Add(gDetector.GestureEventHash , new StrongGestureManager<GestureEvent>(gDetector, this.dispatchers));
         }
 
-        public void RemoveDetector(IGestureDetector gDetector)
+        public void RemoveDetector<GestureEvent>(IGestureDetector<GestureEvent> gDetector) where GestureEvent : IGestureEvent
         {
-            this.detectors.Remove(gDetector);
+            this.subManager.Remove(gDetector.GestureEventHash);
         }
 
         public void AddDispatcher(IGestureDispatcher gDispatcher)
@@ -48,26 +48,9 @@ namespace SSCEngine.GestureHandling.BaseGestureHandling
 
             List<IGestureEvent> gestures = new List<IGestureEvent>(); // info ex: freedrag class
             // Gom nhóm và tạo các gesture
-            foreach (var detector in this.detectors)
+            foreach (var man in this.subManager)
             {
-                var detectedGestures = detector.DetectGesture(touches);
-                //IEnumerable<IGestureEvent> detectedGestures = new List<IGestureEvent>(0);
-                if (detectedGestures != null)
-                {
-                    gestures.AddRange(detectedGestures);
-                }
-            }
-
-            var copyDispatchers = new List<IGestureDispatcher>(this.dispatchers);
-            foreach (var dispatcher in copyDispatchers)
-            {
-                if (dispatcher.Enabled)
-                {
-                    foreach (var gesture in gestures)
-                    {
-                        dispatcher.Dispatch(gesture);
-                    }
-                }
+                man.Value.Update(touches, gameTime);
             }
 
             base.Update(gameTime);

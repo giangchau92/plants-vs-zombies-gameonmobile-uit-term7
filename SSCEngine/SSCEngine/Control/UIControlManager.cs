@@ -50,9 +50,9 @@ namespace SSCEngine.Control
         {
             this.gestureDispatcher.RemoveTarget<GestureEvent>(gTarget);
         }
-        public void Dispatch(IGestureEvent gEvent)
+        public void Dispatch<GE>(GE gEvent) where GE : IGestureEvent
         {
-            this.gestureDispatcher.Dispatch(gEvent);
+            this.gestureDispatcher.Dispatch<GE>(gEvent);
         }
 
         public override void Update(GameTime gameTime)

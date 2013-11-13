@@ -7,18 +7,11 @@ using Microsoft.Xna.Framework.Input.Touch;
 
 namespace SSCEngine.GestureHandling.Implements.Detectors
 {
-    public class FreeTapDetector : IGestureDetector
+    public class FreeTapDetector : BaseGestureDetector<FreeTap>
     {
-        public ICollection<IGestureEvent> DetectGesture(ICollection<ITouch> touches)
+        public override void DetectGesture(ICollection<ITouch> touches, Microsoft.Xna.Framework.GameTime gameTime)
         {
-            List<IGestureEvent> taps = new List<IGestureEvent>(touches.Count);
-
-            foreach (var touch in touches)
-            {
-                taps.Add(new FreeTap(touch, (touch.SystemTouch.State == TouchLocationState.Released)));
-            }
-
-            return taps;
+            throw new NotImplementedException();
         }
     }
 }

@@ -11,38 +11,45 @@ namespace SSCEngine.GestureHandling.BaseGestureHandling
     {
         private const int MaxGestures = 4;
         private static readonly Vector2 InvalidPosition = new Vector2(int.MinValue, int.MinValue);
+        private IDictionary<int, ITouch> touchesTracer;
 
         public TouchController()
         {
-            this.Touches = new List<ITouch>(MaxGestures);
+            this.touchesTracer = new Dictionary<int, ITouch>(2*MaxGestures);
         }
 
-        public ICollection<ITouch> Touches { get; private set; }
-
-        public void Update(TouchCollection toucheCollection, GameTime gameTime)
+        public ICollection<ITouch> Touches
         {
-            List<ITouch> touchesCopy = new List<ITouch>(Touches);
-            this.Touches.Clear();
-
-            foreach (TouchLocation touchLocation in toucheCollection)
+            get
             {
-                bool isBegin = true;
-                
-                foreach (ITouch lastTouch in touchesCopy)
-                {
-                    if (lastTouch.SystemTouch.Id == touchLocation.Id)
-                    {
-                        Touches.Add(new Touch(touchLocation, new TouchPositions(touchLocation.Position, lastTouch.Positions.Current, lastTouch.Positions.Begin)));
+                return touchesTracer.Values;
+            }
+        }
 
-                        isBegin = false;
-                        break;
-                    }
-                }
+        private List<int> releasedTouchIDs = new List<int>(MaxGestures);
+        public void Update(TouchCollection touchesCollection, GameTime gameTime)
+        {
+            releasedTouchIDs.Clear();
+            releasedTouchIDs.AddRange(touchesTracer.Keys);
 
-                if (isBegin)
+            foreach (TouchLocation touchLocation in touchesCollection)
+            {
+                if (this.touchesTracer.ContainsKey(touchLocation.Id))
                 {
-                    Touches.Add(new Touch(touchLocation, new TouchPositions(touchLocation.Position, InvalidPosition, touchLocation.Position)));
+                    Touch touch = this.touchesTracer[touchLocation.Id] as Touch;
+                    touch.UpdateLocation(touchLocation);
+
+                    releasedTouchIDs.Remove(touchLocation.Id);
                 }
+                else
+                {
+                    this.touchesTracer.Add(touchLocation.Id, new Touch(touchLocation));
+                }
+            }
+
+            foreach (int releasedTouch in this.releasedTouchIDs)
+            {
+                this.touchesTracer.Remove(releasedTouch);
             }
         }
     }

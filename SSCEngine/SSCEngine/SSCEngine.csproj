@@ -85,6 +85,7 @@
     <Compile Include="GestureHandling\BaseGestureHandling\BaseGestureDispatcher.cs" />
     <Compile Include="GestureHandling\BaseGestureHandling\BaseGestureEvent.cs" />
     <Compile Include="GestureHandling\BaseGestureHandling\BaseGestureManager.cs" />
+    <Compile Include="GestureHandling\BaseGestureHandling\IStrongGestureManager.cs" />
     <Compile Include="GestureHandling\BaseGestureHandling\Touch.cs" />
     <Compile Include="GestureHandling\BaseGestureHandling\TouchController.cs" />
     <Compile Include="GestureHandling\DefaultGestureHandlingFactory.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="GestureHandling\IGestureHandlingFactory.cs" />
     <Compile Include="GestureHandling\IGestureManager.cs" />
     <Compile Include="GestureHandling\IGestureTarget.cs" />
+    <Compile Include="GestureHandling\Implements\Detectors\BaseGestureDetector.cs" />
     <Compile Include="GestureHandling\Implements\Detectors\DoubleDragDetector.cs" />
     <Compile Include="GestureHandling\Implements\Detectors\DoubleFlickDetector.cs" />
     <Compile Include="GestureHandling\Implements\Detectors\FreeDragDetector.cs" />
