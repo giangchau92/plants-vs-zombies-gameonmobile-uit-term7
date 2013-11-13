@@ -22,5 +22,11 @@ namespace SSCEngine.GestureHandling
 
         public Vector2 Delta { get { return Current - Last; } }
         public Vector2 TotalDelta { get { return Current - Begin; } }
+
+        public void UpdateLocation(Vector2 newLocation)
+        {
+            this.Last = Current;
+            this.Current = newLocation;
+        }
     }
 }

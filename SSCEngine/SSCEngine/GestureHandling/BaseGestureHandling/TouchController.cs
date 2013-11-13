@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input.Touch;
+using SSCEngine.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +12,10 @@ namespace SSCEngine.GestureHandling.BaseGestureHandling
     {
         private const int MaxGestures = 4;
         private static readonly Vector2 InvalidPosition = new Vector2(int.MinValue, int.MinValue);
-        private IDictionary<int, ITouch> touchesTracer;
+        private TracedDictionary<int, ITouch> touchesTracer = new TracedDictionary<int,ITouch>();
 
         public TouchController()
         {
-            this.touchesTracer = new Dictionary<int, ITouch>(2*MaxGestures);
         }
 
         public ICollection<ITouch> Touches
@@ -26,20 +26,15 @@ namespace SSCEngine.GestureHandling.BaseGestureHandling
             }
         }
 
-        private List<int> releasedTouchIDs = new List<int>(MaxGestures);
         public void Update(TouchCollection touchesCollection, GameTime gameTime)
         {
-            releasedTouchIDs.Clear();
-            releasedTouchIDs.AddRange(touchesTracer.Keys);
-
+            this.touchesTracer.BeginTrace();
             foreach (TouchLocation touchLocation in touchesCollection)
             {
                 if (this.touchesTracer.ContainsKey(touchLocation.Id))
                 {
-                    Touch touch = this.touchesTracer[touchLocation.Id] as Touch;
+                    Touch touch = this.touchesTracer.GetAndMarkTracedObject(touchLocation.Id) as Touch;
                     touch.UpdateLocation(touchLocation);
-
-                    releasedTouchIDs.Remove(touchLocation.Id);
                 }
                 else
                 {
@@ -47,10 +42,7 @@ namespace SSCEngine.GestureHandling.BaseGestureHandling
                 }
             }
 
-            foreach (int releasedTouch in this.releasedTouchIDs)
-            {
-                this.touchesTracer.Remove(releasedTouch);
-            }
+            this.touchesTracer.EndTrace();
         }
     }
 }

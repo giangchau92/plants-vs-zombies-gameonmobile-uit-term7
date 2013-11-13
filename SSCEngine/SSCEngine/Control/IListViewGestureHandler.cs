@@ -32,13 +32,13 @@ namespace SSCEngine.Control
         public void Move(Vector2 delta)
         {
             this.velocity += delta.Y;
-            this.deccelerator += velocity;
+            this.deccelerator = velocity;
         }
 
         public void Release(Vector2 delta)
         {
             this.velocity += delta.Y;
-            this.deccelerator += ((this.velocity >= 0)?1:-1)*baseDecelerator;
+            this.deccelerator = this.velocity * baseDecelerator;
         }
 
         public void UpdateOffset(CRectangleF offset)
@@ -48,6 +48,7 @@ namespace SSCEngine.Control
                 offset.Position.Y += this.velocity;
                 float oldVel = this.velocity;
                 this.velocity -= this.deccelerator;
+                this.deccelerator *= (1f + this.baseDecelerator);
 
                 if (oldVel * this.velocity <= 0)
                 {
@@ -75,12 +76,13 @@ namespace SSCEngine.Control
         public void Move(Vector2 delta)
         {
             this.velocity = delta.X;
+            //Debug.WriteLine("Set veloc with delta: {0}", delta);
         }
 
         public void Release(Vector2 delta)
         {
             this.velocity = lastVel;
-            this.deccelerator = baseDecelerator;
+            this.deccelerator = this.velocity * baseDecelerator;
         }
 
         private const float minVel = 6;
@@ -93,8 +95,9 @@ namespace SSCEngine.Control
                 this.lastVel = this.velocity;
                 if (this.deccelerator != 0)
                 {
-                    this.velocity /= this.deccelerator;
-                    if (Math.Abs(this.velocity) <= minVel)
+                    this.velocity -= this.deccelerator;
+                    this.deccelerator *= 1.4f;
+                    if (this.velocity * this.lastVel <= 0f)
                     {
                         this.velocity = 0;
                         this.deccelerator = 0;

@@ -45,7 +45,7 @@ namespace SSCEngine.Control
 
         public override IListViewGestureHandler CreateGesturer()
         {
-            return new VerticalListViewGestureHandler(2f);
+            return new VerticalListViewGestureHandler(0.05f);
         }
     }
 
@@ -69,7 +69,7 @@ namespace SSCEngine.Control
 
         public override IListViewGestureHandler CreateGesturer()
         {
-            return new HorizontalListViewGestureHandler(1.7f);
+            return new HorizontalListViewGestureHandler(0.05f);
         }
     }
 }
