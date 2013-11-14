@@ -38,28 +38,30 @@ namespace PlantVsZombie.GameCore
         public void RemoveObject(ulong id)
         {
             if (_listObject.ContainsKey(id))
-                _listObject[id].Remove = true;
+                //_listObject[id].Remove = true;
+                _listObject.Remove(id);
         }
 
         public void SendMessage(IMessage<MessageType> message, GameTime gameTime)
         {
             if (message.DestinationObjectId == 0)
             {
-                List<ObjectEntity> backList = new List<ObjectEntity>();
-                foreach (var item in _listObject)
+                //List<ObjectEntity> backList = new List<ObjectEntity>();
+                IDictionary<ulong, ObjectEntity> listCopy = new Dictionary<ulong, ObjectEntity>(_listObject);
+                foreach (var item in listCopy)
                 {
                     item.Value.OnMessage(message, gameTime);
-                    backList.Add(item.Value);
+                    //backList.Add(item.Value);
                 }
 
-                // Delete die object
-                while (backList.Count != 0)
-                {
-                    if (backList[0].Remove)
-                        _listObject.Remove(backList[0].ObjectId);
+                //// Delete die object
+                //while (backList.Count != 0)
+                //{
+                //    if (backList[0].Remove)
+                //        _listObject.Remove(backList[0].ObjectId);
 
-                    backList.RemoveAt(0);
-                }
+                //    backList.RemoveAt(0);
+                //}
             }
             else
             {

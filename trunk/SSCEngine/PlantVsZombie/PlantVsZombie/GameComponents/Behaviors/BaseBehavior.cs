@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using SSCEngine.Utils.GameObject.Component;
+using Microsoft.Xna.Framework;
 
 namespace PlantVsZombie.GameComponents.Behaviors
 {
     public class BaseBehavior : IBehavior<MessageType>
     {
-        public virtual void Update(Microsoft.Xna.Framework.GameTime gameTime)
+        public virtual void Update(IMessage<MessageType> message, GameTime gameTime)
         {
         }
 

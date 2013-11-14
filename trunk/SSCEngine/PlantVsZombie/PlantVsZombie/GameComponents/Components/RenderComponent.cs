@@ -16,7 +16,9 @@ namespace PlantVsZombie.GameComponents.Components
         ZO_NORMAL_EATING,
         STANDING,
 
-        PL_SHOOTING
+        PL_SHOOTING,
+
+        B_FLYING
     }
 
     public class RenderComponent : IComponent<MessageType>
@@ -40,7 +42,7 @@ namespace PlantVsZombie.GameComponents.Components
             switch (message.MessageType)
             {
                 case MessageType.FRAME_DRAW:
-                    draw(gameTime);
+                    draw(message, gameTime);
                     break;
                 case MessageType.CHANGE_RENDER_BEHAVIOR:
                     RenderBehaviorChangeMsg msg = message as RenderBehaviorChangeMsg;
@@ -53,9 +55,9 @@ namespace PlantVsZombie.GameComponents.Components
             }
         }
 
-        private void draw(GameTime gameTime)
+        private void draw(IMessage<MessageType> message, GameTime gameTime)
         {
-            currentBehavior.Update(gameTime);
+            currentBehavior.Update(message, gameTime);
             // Draw health
             LogicComponent logicCOm = this.Owner.GetComponent(typeof(LogicComponent)) as LogicComponent;
             MoveComponent moveCOm = this.Owner.GetComponent(typeof(MoveComponent)) as MoveComponent;

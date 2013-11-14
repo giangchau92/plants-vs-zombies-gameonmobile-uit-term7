@@ -75,7 +75,7 @@ namespace PlantVsZombie.GameComponents.Components
 
         private void CheckCollision(GameTime gameTime)
         {
-            IDictionary<ulong, ObjectEntity> objs = PZObjectManager.Instance.GetObjects();
+            IDictionary<ulong, ObjectEntity> objs = new Dictionary<ulong, ObjectEntity>(PZObjectManager.Instance.GetObjects());
 
             bool isCollision = false;
             foreach (var item in objs)

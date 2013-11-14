@@ -11,7 +11,8 @@ namespace PlantVsZombie.GameComponents.Components
     public enum eMoveBehaviorType
     {
         NORMAL_RUNNING,
-        STANDING
+        STANDING,
+        NORMAL_FLYING
     }
     public class MoveComponent : IComponent<MessageType>
     {
@@ -39,7 +40,7 @@ namespace PlantVsZombie.GameComponents.Components
             switch (message.MessageType)
             {
                 case MessageType.FRAME_UPDATE:
-                    currentBehavior.Update(gameTime);
+                    currentBehavior.Update(message, gameTime);
                     break;
                 case MessageType.CHANGE_MOVE_BEHAVIOR:
                     MoveBehaviorChangeMsg msg = message as MoveBehaviorChangeMsg;

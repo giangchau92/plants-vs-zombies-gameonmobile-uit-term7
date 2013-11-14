@@ -40,7 +40,7 @@ namespace PlantVsZombie.GameComponents.Components
             {
                 case MessageType.FRAME_UPDATE:
                     if (LogicBehavior != null)
-                        LogicBehavior.Update(gameTime);
+                        LogicBehavior.Update(message, gameTime);
                     break;
                 case MessageType.COLLISON_DETECT:
                     if (LogicBehavior != null)
