@@ -5,13 +5,14 @@ using System.Text;
 using PlantVsZombie.GameComponents.Behaviors;
 using Microsoft.Xna.Framework;
 using PlantVsZombie.GameComponents.Components;
+using SSCEngine.Utils.GameObject.Component;
 
 namespace PlantVsZombie.GameComponents.Behaviors.Zombie
 {
     public class Z_NormalStandBehavior : BaseBehavior
     {
         private Vector2 vel = new Vector2(0, 0);
-        public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
+        public override void Update(IMessage<MessageType> message, Microsoft.Xna.Framework.GameTime gameTime)
         {
             MoveComponent moveCom = this.Owner as MoveComponent;
             if (moveCom == null)
@@ -19,7 +20,7 @@ namespace PlantVsZombie.GameComponents.Behaviors.Zombie
 
             moveCom.Velocity = vel;
             moveCom.UpdatePosition(gameTime);
-            base.Update(gameTime);
+            base.Update(message, gameTime);
         }
     }
 }

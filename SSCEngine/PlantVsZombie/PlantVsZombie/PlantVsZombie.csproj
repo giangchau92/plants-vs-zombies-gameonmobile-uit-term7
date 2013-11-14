@@ -66,6 +66,9 @@
   <ItemGroup>
     <Compile Include="GameComponents\Behaviors\BaseBehavior.cs" />
     <Compile Include="GameComponents\Behaviors\BaseLogicBehavior.cs" />
+    <Compile Include="GameComponents\Behaviors\Bullet\B_NormalFlyBehavior.cs" />
+    <Compile Include="GameComponents\Behaviors\Bullet\B_NormalFlyRenderBehavior.cs" />
+    <Compile Include="GameComponents\Behaviors\Bullet\B_NormalLogicBehavior.cs" />
     <Compile Include="GameComponents\Behaviors\Plant\PL_NormalLogicBehavior.cs" />
     <Compile Include="GameComponents\Behaviors\Plant\PL_NormalShootRenderBehavior.cs" />
     <Compile Include="GameComponents\Behaviors\Plant\PL_NormalStandRenderBehavior.cs" />

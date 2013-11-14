@@ -19,7 +19,7 @@ namespace PlantVsZombie.GameComponents.Behaviors.Zombie
     {
         private eNormalZombieState ZombieState { get; set; } // Chỉ dùng cục bộ 
 
-        public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
+        public override void Update(IMessage<MessageType> message, Microsoft.Xna.Framework.GameTime gameTime)
         {
             // 
             ZombieState = eNormalZombieState.RUNNING;
@@ -31,7 +31,7 @@ namespace PlantVsZombie.GameComponents.Behaviors.Zombie
             {
                 PlantVsZombie.GameCore.PZObjectManager.Instance.RemoveObject(this.Owner.Owner.ObjectId);
             }
-            base.Update(gameTime);
+            base.Update(message, gameTime);
         }
 
         public override void OnCollison(IMessage<MessageType> msg, GameTime gameTime)
