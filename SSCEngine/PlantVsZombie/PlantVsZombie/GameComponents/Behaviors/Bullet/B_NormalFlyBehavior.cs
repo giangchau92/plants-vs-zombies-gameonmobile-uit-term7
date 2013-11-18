@@ -1,17 +1,16 @@
+using Microsoft.Xna.Framework;
+using PlantVsZombie.GameComponents.Components;
+using SSCEngine.Utils.GameObject.Component;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using PlantVsZombie.GameComponents.Behaviors;
-using Microsoft.Xna.Framework;
-using PlantVsZombie.GameComponents.Components;
-using SSCEngine.Utils.GameObject.Component;
 
-namespace PlantVsZombie.GameComponents.Behaviors.Zombie
+namespace PlantVsZombie.GameComponents.Behaviors.Bullet
 {
-    public class Z_NormalStandBehavior : BaseBehavior
+    public class B_NormalFlyBehavior : BaseBehavior
     {
-        private Vector2 vel = new Vector2(0, 0);
+        private Vector2 vel = new Vector2(200, 0);
         public override void Update(IMessage<MessageType> message, Microsoft.Xna.Framework.GameTime gameTime)
         {
             MoveComponent moveCom = this.Owner as MoveComponent;
@@ -19,7 +18,7 @@ namespace PlantVsZombie.GameComponents.Behaviors.Zombie
                 throw new Exception("MormalRunBehavior: Owner must be MoveComponent!");
 
             moveCom.Velocity = vel;
-            //moveCom.UpdatePosition(gameTime); // no need to recalculator
+            moveCom.UpdatePosition(gameTime);
             base.Update(message, gameTime);
         }
     }

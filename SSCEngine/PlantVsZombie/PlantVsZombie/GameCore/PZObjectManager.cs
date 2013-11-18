@@ -38,7 +38,6 @@ namespace PlantVsZombie.GameCore
         public void RemoveObject(ulong id)
         {
             if (_listObject.ContainsKey(id))
-                //_listObject[id].Remove = true;
                 _listObject.Remove(id);
         }
 
@@ -46,22 +45,13 @@ namespace PlantVsZombie.GameCore
         {
             if (message.DestinationObjectId == 0)
             {
-                //List<ObjectEntity> backList = new List<ObjectEntity>();
                 IDictionary<ulong, ObjectEntity> listCopy = new Dictionary<ulong, ObjectEntity>(_listObject);
                 foreach (var item in listCopy)
                 {
+                    if (message.Handled)
+                        break;
                     item.Value.OnMessage(message, gameTime);
-                    //backList.Add(item.Value);
                 }
-
-                //// Delete die object
-                //while (backList.Count != 0)
-                //{
-                //    if (backList[0].Remove)
-                //        _listObject.Remove(backList[0].ObjectId);
-
-                //    backList.RemoveAt(0);
-                //}
             }
             else
             {
@@ -73,6 +63,11 @@ namespace PlantVsZombie.GameCore
         public IDictionary<ulong, ObjectEntity> GetObjects()
         {
             return this._listObject;
+        }
+
+        public IDictionary<ulong, ObjectEntity> GetCopyObjects()
+        {
+            return new Dictionary<ulong, ObjectEntity>(this._listObject);
         }
     }
 }

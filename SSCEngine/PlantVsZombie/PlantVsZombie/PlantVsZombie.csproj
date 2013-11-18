@@ -91,6 +91,8 @@
     <Compile Include="GameComponents\GameMessages\RenderBehaviorChangeMsg.cs" />
     <Compile Include="GameComponents\ObjectEntity.cs" />
     <Compile Include="GameComponents\Components\PhysicComponent.cs" />
+    <Compile Include="GameCore\PZBoard.cs" />
+    <Compile Include="GameCore\PZObjectFactory.cs" />
     <Compile Include="GameCore\PZObjectManager.cs" />
     <Compile Include="GameCore\PZResourceManager.cs" />
     <Compile Include="GameCore\PZScreenManager.cs" />
@@ -100,6 +102,9 @@
     <Compile Include="GameScreen\ScreenFactory\TestScreenFactory.cs" />
     <Compile Include="GameScreen\TestScreen.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="PlantVsZombie_2013_11_15_14_26_10.sap" />
+    <None Include="PlantVsZombie_2013_11_15_14_31_04.sap" />
+    <None Include="PlantVsZombie_2013_11_15_14_34_48.sap" />
     <None Include="Properties\AppManifest.xml">
       <XnaPlatformSpecific>true</XnaPlatformSpecific>
     </None>
