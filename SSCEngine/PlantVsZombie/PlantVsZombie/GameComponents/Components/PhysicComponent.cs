@@ -70,7 +70,7 @@ namespace PlantVsZombie.GameComponents.Components
                 _frame = Bound;
                 return;
             }
-            _frame = new Rectangle((int)moveCom.Position.X, (int)moveCom.Position.Y, Bound.Width, Bound.Height);
+            _frame = new Rectangle((int)moveCom.Position.X, (int)moveCom.Position.Y - Bound.Height, Bound.Width, Bound.Height);
         }
 
         private void CheckCollision(GameTime gameTime)

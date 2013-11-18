@@ -25,7 +25,7 @@ namespace PlantVsZombie.GameObjects
             this.AddComponent(renCOm);
             // Physic component
             PhysicComponent phyCOm = PhysicComponentFactory.CreateComponent();
-            phyCOm.Bound = new Microsoft.Xna.Framework.Rectangle(0, 0, 50, 100);
+            phyCOm.Bound = new Microsoft.Xna.Framework.Rectangle(0, 0, 100, 55);
             this.AddComponent(phyCOm);
             // Logic component
             LogicComponent logicCOm = LogicComponentFactory.CreateComponent();

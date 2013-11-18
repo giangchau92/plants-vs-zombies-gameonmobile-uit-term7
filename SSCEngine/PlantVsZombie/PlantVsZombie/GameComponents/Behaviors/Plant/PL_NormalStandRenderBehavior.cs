@@ -29,11 +29,13 @@ namespace PlantVsZombie.GameComponents.Behaviors.Plant
             //SpriteBatch spriteBatch = SCSServices.Instance.SpriteBatch;
             MoveComponent moveCom = Owner.Owner.GetComponent(typeof(MoveComponent)) as MoveComponent;
 
+            PhysicComponent physCom = Owner.Owner.GetComponent(typeof(PhysicComponent)) as PhysicComponent;
+
             if (moveCom == null)
                 throw new Exception("NormalStandRenderBehaviorP: Move Components not exist!");
             //spriteBatch.Draw(texture, moveCom.Position, Color.White);
             sprite.TimeStep(gameTime);
-            SCSServices.Instance.SpritePlayer.Draw(sprite, moveCom.Position, Color.White);
+            SCSServices.Instance.SpritePlayer.Draw(sprite, new Vector2(physCom.Frame.X, physCom.Frame.Y), Color.White);
 
             base.Update(message, gameTime);
         }

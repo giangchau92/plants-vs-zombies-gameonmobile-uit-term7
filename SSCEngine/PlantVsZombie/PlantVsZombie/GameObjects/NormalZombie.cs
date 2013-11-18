@@ -24,11 +24,10 @@ namespace PlantVsZombie.GameObjects
             RenderComponent renCOm = RenderComponentFactory.CreateComponent();
             renCOm.AddBehavior(eMoveRenderBehaviorType.ZO_NORMAL_RUNNING, new Z_NormalRunRenderBahavior());
             renCOm.AddBehavior(eMoveRenderBehaviorType.ZO_NORMAL_EATING, new Z_NormalEatingRenderBehavior());
-            renCOm.AddBehavior(eMoveRenderBehaviorType.STANDING, new Z_NormalStandRenderBehavior());
             this.AddComponent(renCOm);
             // Physic component
             PhysicComponent phyCOm = PhysicComponentFactory.CreateComponent();
-            phyCOm.Bound = new Microsoft.Xna.Framework.Rectangle(0, 0, 50, 100);
+            phyCOm.Bound = new Microsoft.Xna.Framework.Rectangle(0, 0, 73, 100);
             this.AddComponent(phyCOm);
             // Logic component
             LogicComponent logicCOm = LogicComponentFactory.CreateComponent();

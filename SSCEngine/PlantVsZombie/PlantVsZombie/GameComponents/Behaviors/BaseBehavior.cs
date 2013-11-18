@@ -25,5 +25,10 @@ namespace PlantVsZombie.GameComponents.Behaviors
                 _owner = value;
             }
         }
+
+        public virtual void OnLoad()
+        {
+            
+        }
     }
 }

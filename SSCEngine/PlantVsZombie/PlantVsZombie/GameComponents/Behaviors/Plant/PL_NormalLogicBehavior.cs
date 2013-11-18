@@ -21,6 +21,7 @@ namespace PlantVsZombie.GameComponents.Behaviors.Plant
         eNormalPlantState PlantState { get; set; }
         TimeSpan currentTimeShoot = TimeSpan.Zero;
         TimeSpan shootTime = new TimeSpan(0, 0, 0, 0, 500);
+        Vector2 shootPoint = new Vector2(90, 45);
 
         public override void Update(IMessage<MessageType> msg, GameTime gameTime)
         {
@@ -52,7 +53,8 @@ namespace PlantVsZombie.GameComponents.Behaviors.Plant
                 {
 
                     NormalBullet bullet = new NormalBullet();
-                    bullet.SetPosition((this.Owner.Owner.GetComponent(typeof(MoveComponent)) as MoveComponent).Position);
+                    Vector2 pos = (this.Owner.Owner.GetComponent(typeof(MoveComponent)) as MoveComponent).Position;
+                    bullet.SetPosition(new Vector2(pos.X + shootPoint.X, pos.Y - shootPoint.Y));
                     PZObjectManager.Instance.AddObject(bullet);
                     currentTimeShoot = TimeSpan.Zero;
                 }
