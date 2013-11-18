@@ -10,7 +10,6 @@ namespace PlantVsZombie.GameComponents
 {
     public class ObjectEntity : IEntity<MessageType>, IComponent<MessageType>
     {
-        public bool Remove { get; set; }
         private IDictionary<Type, IComponent<MessageType>> _components = new Dictionary<Type, IComponent<MessageType>>();
         public IDictionary<Type, IComponent<MessageType>> Components
         {
@@ -46,7 +45,6 @@ namespace PlantVsZombie.GameComponents
 
         public ObjectEntity()
         {
-            Remove = false;
         }
 
         public virtual void OnMessage(IMessage<MessageType> message, GameTime gameTime)

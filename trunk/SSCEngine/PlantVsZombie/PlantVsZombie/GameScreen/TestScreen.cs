@@ -14,19 +14,43 @@ using Microsoft.Xna.Framework.Input.Touch;
 using PlantVsZombie.GameCore;
 using PlantVsZombie.GameComponents.GameMessages;
 using System.Diagnostics;
+using SCSEngine.Sprite;
 
 namespace PlantVsZombie.GameScreen
 {
     public class TestScreen : BaseGameScreen
     {
         PZObjectManager objectManager = PZObjectManager.Instance;
+        PZBoard gameBoard;
 
         public TestScreen(IGameScreenManager screenManager)
             : base(screenManager)
         {
-            
-            objectManager.AddObject(new NormalPlant());
+            //objectManager.AddObject(new NormalPlant());
             TouchPanel.EnabledGestures = GestureType.Tap;
+
+            // Init game data
+            initSpriteBank();
+
+            gameBoard = new PZBoard(9, 5);
+            gameBoard.Board = new int[,]{
+                {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {1, 0, 0, 0, 0, 0, 0, 0, 0},
+                {1, 0, 0, 0, 0, 0, 0, 0, 0},
+                {1, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0}
+            };
+            // Gen object
+
+            for (int i = 0; i < 5; i++)
+                for (int j = 0; j < 9; j++)
+                {
+                    int type = gameBoard.Board[i, j];
+                    if (type == 1)
+                    {
+                        objectManager.AddObject(PZObjectFactory.Instance.createPlant(gameBoard.GetPositonAt(i, j)));
+                    }
+                }
         }
 
         public override void Update(GameTime gameTime)
@@ -46,8 +70,6 @@ namespace PlantVsZombie.GameScreen
             }
 
             base.Update(gameTime);
-            Debug.WriteLine(string.Format("Eslaped: {0}", gameTime.ElapsedGameTime.TotalMilliseconds));
-
         }
 
         public override void Draw(GameTime gameTime)
@@ -56,11 +78,20 @@ namespace PlantVsZombie.GameScreen
             spriteBatch.Begin();
 
             IMessage<MessageType> updateMessage = new GameMessage(MessageType.FRAME_DRAW, this);
-            updateMessage.DestinationObjectId = 0;
+            updateMessage.DestinationObjectId = 0; // For every object
             objectManager.SendMessage(updateMessage, gameTime);
 
             base.Draw(gameTime);
             spriteBatch.End();
+        }
+
+        private void initSpriteBank()
+        {
+            if (SpriteFramesBank.Instance.Contains("DoublePea"))
+                return;
+
+            SpriteFramesBank.Instance.Add("DoublePea", FramesGenerator.Generate(100, 55, 1024, 40));
+            //100, 55, 10, 40
         }
     }
 }

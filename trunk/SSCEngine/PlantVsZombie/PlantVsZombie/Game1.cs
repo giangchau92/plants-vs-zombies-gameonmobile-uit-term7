@@ -13,6 +13,7 @@ using SCSEngine.ResourceManagement;
 using PlantVsZombie.GameCore;
 using SCSEngine.Services;
 using System.Diagnostics;
+using PlantVsZombie.GameComponents.Components;
 
 namespace PlantVsZombie
 {
@@ -37,6 +38,7 @@ namespace PlantVsZombie
             // Extend battery life under lock.
             InactiveSleepTime = TimeSpan.FromSeconds(1);
             this.IsFixedTimeStep = false;
+
         }
 
         /// <summary>
@@ -72,6 +74,7 @@ namespace PlantVsZombie
             SCSServices.Instance.SpritePlayer = new SCSEngine.Services.Sprite.SpritePlayer(spriteBatch);
             SCSServices.Instance.AudioManager = new SCSEngine.Services.Audio.AudioManager(this);
             SCSServices.Instance.ResourceManager = resourceManager;
+            SCSServices.Instance.SpritePlayer = new SCSEngine.Services.Sprite.SpritePlayer(spriteBatch);
 
             SpriteFont font = Content.Load<SpriteFont>("DebugFont");
             SCSServices.Instance.DebugFont = font;
@@ -103,6 +106,7 @@ namespace PlantVsZombie
             // TODO: Add your update logic here
             screenManager.Update(gameTime);
             Debug.WriteLine(string.Format("Eslaped: {0}", gameTime.ElapsedGameTime.TotalMilliseconds));
+
             base.Update(gameTime);
             
         }

@@ -34,16 +34,15 @@ namespace PlantVsZombie.GameComponents.Behaviors.Plant
                 MoveComponent obj1 = this.Owner.Owner.GetComponent(typeof(MoveComponent)) as MoveComponent;
                 MoveComponent obj2 = item.Value.GetComponent(typeof(MoveComponent)) as MoveComponent;
 
-                if (obj2.Position.Y == obj1.Position.Y && (obj1.Position.X < obj2.Position.X) && (obj2.Owner as NormalZombie) != null)
+                if (obj2.Position.Y == obj1.Position.Y && (obj1.Position.X < obj2.Position.X) && obj2.Position.X < SCSServices.Instance.Game.GraphicsDevice.Viewport.Width
+                    && (obj2.Owner as NormalZombie) != null)
                 {
                     // Change to shoot
-
-                    RenderBehaviorChangeMsg renderMsg = new RenderBehaviorChangeMsg(MessageType.CHANGE_RENDER_BEHAVIOR, this);
-                    renderMsg.RenderBehaviorType = GameComponents.Components.eMoveRenderBehaviorType.PL_SHOOTING;
-                    renderMsg.DestinationObjectId = this.Owner.Owner.ObjectId;
+                    //RenderBehaviorChangeMsg renderMsg = new RenderBehaviorChangeMsg(MessageType.CHANGE_RENDER_BEHAVIOR, this);
+                    //renderMsg.RenderBehaviorType = GameComponents.Components.eMoveRenderBehaviorType.PL_SHOOTING;
+                    //renderMsg.DestinationObjectId = this.Owner.Owner.ObjectId;
                     
-                    //PZObjectManager.Instance.SendMessage(moveMsg, gameTime);
-                    PZObjectManager.Instance.SendMessage(renderMsg, gameTime);
+                    //PZObjectManager.Instance.SendMessage(renderMsg, gameTime);
                     PlantState = eNormalPlantState.SHOOTING;
                 }
             }
@@ -67,7 +66,7 @@ namespace PlantVsZombie.GameComponents.Behaviors.Plant
                 throw new Exception("PL_NormalLogicBehavior: Expect Logic Component");
             if (logicCOm.Health < 0)
             {
-                PlantVsZombie.GameCore.PZObjectManager.Instance.RemoveObject(this.Owner.Owner.ObjectId);
+                PZObjectManager.Instance.RemoveObject(this.Owner.Owner.ObjectId);
             }
             base.Update(msg, gameTime);
         }
@@ -77,9 +76,6 @@ namespace PlantVsZombie.GameComponents.Behaviors.Plant
             CollisionDetectedMsg message = msg as CollisionDetectedMsg;
             if (msg == null)
                 throw new Exception("PL_NormalLogicBehavior: message is not CollisionDetectedMsg");
-
-            int a;
-            a = 1;
 
             base.OnCollison(msg, gameTime);
         }
