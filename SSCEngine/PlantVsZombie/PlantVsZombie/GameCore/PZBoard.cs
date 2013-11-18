@@ -10,7 +10,7 @@ namespace PlantVsZombie.GameCore
     {
         public int[,] Board { get; set; }
         public const int Width = 60;
-        public const int Height = 100;
+        public const int Height = 101;
 
         public Vector2 Position { get; set; }
 
