@@ -79,7 +79,10 @@ namespace PlantVsZombie.GameComponents.Components
         public void ChangeBehavior(eMoveRenderBehaviorType typeBehavior)
         {
             if (supportBehaviors.ContainsKey(typeBehavior))
+            {
                 currentBehavior = supportBehaviors[typeBehavior];
+                currentBehavior.OnLoad();
+            }
         }
     }
 }

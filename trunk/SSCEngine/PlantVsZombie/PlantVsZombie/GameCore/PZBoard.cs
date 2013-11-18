@@ -25,5 +25,13 @@ namespace PlantVsZombie.GameCore
             Vector2 result = Position + new Vector2(col * Width, row * Height);
             return result;
         }
+
+        public Vector2 GetPositionAtPoint(Vector2 point)
+        {
+            Vector2 delta = point - Position;
+
+            Vector2 result = Position + new Vector2((int)(delta.X / Width + 1) * Width, (int)(delta.Y / Height + 1) * Height);
+            return result;
+        }
     }
 }

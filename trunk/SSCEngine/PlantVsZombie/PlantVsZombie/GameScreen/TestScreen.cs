@@ -35,10 +35,10 @@ namespace PlantVsZombie.GameScreen
             gameBoard = new PZBoard(9, 5);
             gameBoard.Board = new int[,]{
                 {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {1, 0, 1, 0, 0, 0, 0, 0, 0},
                 {1, 0, 0, 0, 0, 0, 0, 0, 0},
                 {1, 0, 0, 0, 0, 0, 0, 0, 0},
-                {1, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0}
+                {0, 1, 0, 0, 0, 0, 0, 0, 0}
             };
             // Gen object
 
@@ -65,7 +65,8 @@ namespace PlantVsZombie.GameScreen
                 GestureSample gesture = TouchPanel.ReadGesture();
                 if (gesture.GestureType == GestureType.Tap)
                 {
-                    objectManager.AddObject(new NormalZombie());
+                    //objectManager.AddObject(new NormalZombie());
+                    objectManager.AddObject(PZObjectFactory.Instance.createZombie(gameBoard.GetPositionAtPoint(gesture.Position)));
                 }
             }
 
@@ -91,6 +92,8 @@ namespace PlantVsZombie.GameScreen
                 return;
 
             SpriteFramesBank.Instance.Add("DoublePea", FramesGenerator.Generate(100, 55, 1024, 40));
+            SpriteFramesBank.Instance.Add("Zombies/Nameless/Walk", FramesGenerator.Generate(73, 100, 1024, 16));
+            SpriteFramesBank.Instance.Add("Zombies/Nameless/Attack", FramesGenerator.Generate(89, 101, 1024, 16));
             //100, 55, 10, 40
         }
     }

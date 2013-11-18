@@ -32,5 +32,15 @@ namespace PlantVsZombie.GameCore
 
             return plant;
         }
+
+        public NormalZombie createZombie(Vector2 pos)
+        {
+            NormalZombie zom = new NormalZombie();
+
+            MoveComponent moveCom = zom.GetComponent(typeof(MoveComponent)) as MoveComponent;
+            moveCom.Position = pos;
+
+            return zom;
+        }
     }
 }

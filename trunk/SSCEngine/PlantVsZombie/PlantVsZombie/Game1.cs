@@ -104,6 +104,7 @@ namespace PlantVsZombie
                 this.Exit();
 
             // TODO: Add your update logic here
+            SCSServices.Instance.GameTime = gameTime;
             screenManager.Update(gameTime);
             Debug.WriteLine(string.Format("Eslaped: {0}", gameTime.ElapsedGameTime.TotalMilliseconds));
 

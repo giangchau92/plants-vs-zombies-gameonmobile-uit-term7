@@ -11,6 +11,7 @@ namespace PlantVsZombie.GameComponents.Behaviors.Zombie
     public class Z_NormalRunBehavior : BaseBehavior
     {
         private Vector2 vel = new Vector2(-100, 0);
+
         public override void Update(IMessage<MessageType> message, Microsoft.Xna.Framework.GameTime gameTime)
         {
             MoveComponent moveCom = this.Owner as MoveComponent;
