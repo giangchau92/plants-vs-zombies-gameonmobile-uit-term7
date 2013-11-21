@@ -14,8 +14,8 @@ namespace PlantVsZombie.GameComponents.Components
     {
         ZO_NORMAL_RUNNING,
         ZO_NORMAL_EATING,
-        STANDING,
 
+        STANDING,
         PL_SHOOTING,
 
         B_FLYING
@@ -80,6 +80,8 @@ namespace PlantVsZombie.GameComponents.Components
         {
             if (supportBehaviors.ContainsKey(typeBehavior))
             {
+                if (currentBehavior != null)
+                    currentBehavior.UnLoad();
                 currentBehavior = supportBehaviors[typeBehavior];
                 currentBehavior.OnLoad();
             }

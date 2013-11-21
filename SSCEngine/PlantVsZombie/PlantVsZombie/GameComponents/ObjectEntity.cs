@@ -49,7 +49,7 @@ namespace PlantVsZombie.GameComponents
 
         public virtual void OnMessage(IMessage<MessageType> message, GameTime gameTime)
         {
-            foreach (KeyValuePair<Type, IComponent<MessageType>> component in this._components)
+            foreach (var component in this._components)
             {
                 if (message.Handled)
                     break;
