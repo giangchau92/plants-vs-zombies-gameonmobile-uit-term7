@@ -27,10 +27,13 @@ namespace SSCEngine.Control
             : base(game)
         {
             this.Canvas = new BaseCanvas();
+            this.IsGestureCompleted = false;
         }
 
         public abstract void RegisterGestures(GestureHandling.IGestureDispatcher dispatcher);
 
         public abstract void LeaveGestures(GestureHandling.IGestureDispatcher dispatcher);
+
+        public bool IsGestureCompleted { get; protected set; }
     }
 }

@@ -32,7 +32,7 @@ namespace TestGesture
         public override void Draw(GameTime gameTime)
         {
             this.sBatch.Begin();
-            this.sBatch.Draw(this.img, position, color);
+            this.sBatch.Draw(this.img, position, null, color, 0f, new Vector2(this.img.Width / 2, this.img.Height / 2), 1f, SpriteEffects.None, 0f);
             this.sBatch.End();
 
             base.Draw(gameTime);
@@ -52,6 +52,7 @@ namespace TestGesture
             if (gEvent.Touch.SystemTouch.State == TouchLocationState.Released)
             {
                 color = GRandom.RandomSolidColor();
+                return false;
             }
 
             return true;

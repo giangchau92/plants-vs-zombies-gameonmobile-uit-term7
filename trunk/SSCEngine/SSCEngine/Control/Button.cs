@@ -33,26 +33,29 @@ namespace SSCEngine.Control
         event ButtonEventHandler OnTouched; //Released
         event ButtonEventHandler OnHold;
 
-        private void uiOnPressed()
+        protected void uiOnPressed()
         {
             if (this.OnPressed != null)
             {
                 this.OnPressed(this);
             }
         }
-        private void uiOnTouched()
+        protected void uiOnTouched()
         {
             if (this.OnTouched != null)
             {
                 this.OnTouched(this);
             }
         }
-        private void uiOnHold()
+        protected void uiOnHold()
         {
             if (this.OnHold != null)
             {
                 this.OnHold(this);
             }
+        }
+        protected void uiOnOutSide()
+        {
         }
         #endregion
 
@@ -66,7 +69,7 @@ namespace SSCEngine.Control
             this.IsGestureCompleted = true;
         }
 
-        public bool ReceivedGesture(FreeTap gEvent)
+        public virtual bool ReceivedGesture(FreeTap gEvent)
         {
             if (this.Canvas.Bound.Contains(gEvent.Current) && (gEvent.Touch.SystemTouch.State != TouchLocationState.Released))
             {
@@ -84,6 +87,7 @@ namespace SSCEngine.Control
             else
             {
                 this.State = ButtonState.Normal;
+                this.uiOnOutSide();
             }
 
             if (gEvent.Touch.SystemTouch.State == TouchLocationState.Released)
@@ -95,14 +99,15 @@ namespace SSCEngine.Control
             return true;
         }
 
-        public bool IsHandleGesture(FreeTap gEvent)
+        public virtual bool IsHandleGesture(FreeTap gEvent)
         {
             return ((gEvent.Touch.SystemTouch.State == TouchLocationState.Pressed) && this.Canvas.Bound.Contains(gEvent.Current));
         }
 
         public uint Priority
         {
-            get { return 0; }
+            get;
+            set;
         }
 
         public bool IsGestureCompleted { get; private set; }
@@ -146,6 +151,7 @@ namespace SSCEngine.Control
             : base(game)
         {
             this.sprBatch = spriteBatch;
+            this.Priority = 0;
         }
 
         public Button(Game game, SpriteBatch spriteBatch,Texture2D normal, Texture2D hold)
@@ -154,6 +160,7 @@ namespace SSCEngine.Control
             this.sprBatch = spriteBatch;
             this.NormalImage = normal;
             this.HoldImage = hold;
+            this.Priority = 0;
 
             this.FitSizeByImage();
         }

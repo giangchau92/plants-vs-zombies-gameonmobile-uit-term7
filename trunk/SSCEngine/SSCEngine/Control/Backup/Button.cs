@@ -180,62 +180,62 @@ namespace SCSEngine.Control
     }
   */
 
-    public delegate void OnButtonTouchedHandler(Button sender, EventArgs args);
+    //public delegate void OnButtonTouchedHandler(Button sender, EventArgs args);
 
-    public abstract class Button : DrawableGameComponentAsSpriteModel
-    {
-        public ISprite Background { get; set; }
+    //public abstract class Button : DrawableGameComponentAsSpriteModel
+    //{
+    //    public ISprite Background { get; set; }
 
-        private Vector2 size;
-        public Vector2 Size
-        {
-            get { return size; }
-            set { size = value; }
-        }
+    //    private Vector2 size;
+    //    public Vector2 Size
+    //    {
+    //        get { return size; }
+    //        set { size = value; }
+    //    }
 
-        public event OnButtonTouchedHandler OnTouched;
+    //    public event OnButtonTouchedHandler OnTouched;
 
-        private SCSServices services;
+    //    private SCSServices services;
 
-        public Button(Game game, ISprite background)
-            : base(game)
-        {
-            this.services = game.Services.GetService(typeof(SCSServices)) as SCSServices;
-            this.Background = background;
-        }
+    //    public Button(Game game, ISprite background)
+    //        : base(game)
+    //    {
+    //        this.services = game.Services.GetService(typeof(SCSServices)) as SCSServices;
+    //        this.Background = background;
+    //    }
 
-        public override void Update(GameTime gameTime)
-        {
-            foreach (GestureSample gesture in this.services.InputHandle.Gestures)
-            {
-                if (gesture.GestureType == GestureType.Tap && this.Contains(gesture.Position))
-                {
-                    this.controlOnTouched();
-                }
-            }
+    //    public override void Update(GameTime gameTime)
+    //    {
+    //        foreach (GestureSample gesture in this.services.InputHandle.Gestures)
+    //        {
+    //            if (gesture.GestureType == GestureType.Tap && this.Contains(gesture.Position))
+    //            {
+    //                this.controlOnTouched();
+    //            }
+    //        }
 
-            base.Update(gameTime);
-        }
+    //        base.Update(gameTime);
+    //    }
 
-        protected virtual void controlOnTouched()
-        {
-            if (this.OnTouched != null)
-            {
-                this.OnTouched(this, null);
-            }
-        }
+    //    protected virtual void controlOnTouched()
+    //    {
+    //        if (this.OnTouched != null)
+    //        {
+    //            this.OnTouched(this, null);
+    //        }
+    //    }
 
-        public override void Draw(GameTime gameTime)
-        {
-            if (this.Visible)
-            {
-                this.Background.TimeStep(gameTime);
-                this.services.SpritePlayer.Draw(this.Background, this);
-            }
+    //    public override void Draw(GameTime gameTime)
+    //    {
+    //        if (this.Visible)
+    //        {
+    //            this.Background.TimeStep(gameTime);
+    //            this.services.SpritePlayer.Draw(this.Background, this);
+    //        }
 
-            base.Draw(gameTime);
-        }
+    //        base.Draw(gameTime);
+    //    }
 
-        protected abstract bool Contains(Vector2 pos);
-    }
+    //    protected abstract bool Contains(Vector2 pos);
+    //}
 }

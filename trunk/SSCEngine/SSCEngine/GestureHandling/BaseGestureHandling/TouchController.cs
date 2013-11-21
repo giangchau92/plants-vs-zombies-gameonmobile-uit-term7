@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Input.Touch;
 using SSCEngine.Utils;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
@@ -28,6 +29,8 @@ namespace SSCEngine.GestureHandling.BaseGestureHandling
 
         public void Update(TouchCollection touchesCollection, GameTime gameTime)
         {
+            //long ticks = DateTime.Now.Ticks;
+            //Debug.WriteLine("TouchController update begin {0}", ticks);
             this.touchesTracer.BeginTrace();
             foreach (TouchLocation touchLocation in touchesCollection)
             {
@@ -43,6 +46,7 @@ namespace SSCEngine.GestureHandling.BaseGestureHandling
             }
 
             this.touchesTracer.EndTrace();
+            //Debug.WriteLine("TouchController update end {0}, esp: {1}", DateTime.Now.Ticks, DateTime.Now.Ticks - ticks);
         }
     }
 }
