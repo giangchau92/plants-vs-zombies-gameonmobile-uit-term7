@@ -30,5 +30,11 @@ namespace PlantVsZombie.GameComponents.Behaviors
         {
             
         }
+
+
+        public virtual void UnLoad()
+        {
+
+        }
     }
 }

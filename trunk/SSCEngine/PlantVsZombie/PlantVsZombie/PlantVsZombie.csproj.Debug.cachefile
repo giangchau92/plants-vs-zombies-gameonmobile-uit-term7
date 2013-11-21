@@ -4,8 +4,12 @@ Content\zombie_die.xnb
 Content\zombie_run.xnb
 Content\zombie_stand.xnb
 Content\bullet.xnb
-Content\DoublePea.xnb
 Content\Zombies\Nameless\Attack.xnb
 Content\Zombies\Nameless\Death.xnb
 Content\Zombies\Nameless\Walk.xnb
 Content\DebugFont.xnb
+Content\Bullets\B_Pea.xnb
+Content\Plants\DoublePea\DoublePea.xnb
+Content\Plants\IcePea\IcePea.xnb
+Content\Bullets\B_IcePea.xnb
+GameScreen\Zombies.xml

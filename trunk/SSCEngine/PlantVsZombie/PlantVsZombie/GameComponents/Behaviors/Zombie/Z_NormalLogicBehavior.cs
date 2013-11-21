@@ -8,6 +8,7 @@ using System.Text;
 using PlantVsZombie.GameCore;
 using PlantVsZombie.GameObjects;
 using PlantVsZombie.GameComponents.Components;
+using PlantVsZombie.GameObjects.Implements;
 
 namespace PlantVsZombie.GameComponents.Behaviors.Zombie
 {
@@ -50,9 +51,10 @@ namespace PlantVsZombie.GameComponents.Behaviors.Zombie
                 return;
             }
 
-            NormalPlant plant = message.TargetCollision as NormalPlant;
+            BasePlant plant = message.TargetCollision as BasePlant;
 
-            // Send message change to 
+            // Collision detected;
+            // Send message change behavior
             if (plant != null)
             {
                 changeEatBehavivor(gameTime);

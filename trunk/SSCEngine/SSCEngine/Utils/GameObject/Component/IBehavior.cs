@@ -9,6 +9,7 @@ namespace SSCEngine.Utils.GameObject.Component
     public interface IBehavior<T>
     {
         void OnLoad();
+        void UnLoad();
         void Update(IMessage<T> message, GameTime gameTime);
         IComponent<T> Owner { get; set; }
     }

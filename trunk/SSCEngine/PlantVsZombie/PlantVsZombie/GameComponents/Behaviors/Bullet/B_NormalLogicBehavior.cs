@@ -8,6 +8,7 @@ using PlantVsZombie.GameComponents.GameMessages;
 using PlantVsZombie.GameObjects;
 using PlantVsZombie.GameComponents.Components;
 using PlantVsZombie.GameCore;
+using PlantVsZombie.GameObjects.Implements;
 
 namespace PlantVsZombie.GameComponents.Behaviors.Bullet
 {

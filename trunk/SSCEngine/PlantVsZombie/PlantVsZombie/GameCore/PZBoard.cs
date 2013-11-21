@@ -30,7 +30,7 @@ namespace PlantVsZombie.GameCore
         {
             Vector2 delta = point - Position;
 
-            Vector2 result = Position + new Vector2((int)(delta.X / Width + 1) * Width, (int)(delta.Y / Height + 1) * Height);
+            Vector2 result = Position + new Vector2((int)(delta.X / Width ) * Width, (int)(delta.Y / Height + 1) * Height);
             return result;
         }
     }

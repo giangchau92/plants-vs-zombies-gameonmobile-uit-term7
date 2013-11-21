@@ -57,7 +57,7 @@ namespace PlantVsZombie.GameComponents.Components
             }
         }
 
-        private void UpdateFrame()
+        public void UpdateFrame()
         {
             if (_owner == null)
             {

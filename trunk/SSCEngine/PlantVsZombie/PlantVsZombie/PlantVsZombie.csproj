@@ -66,23 +66,22 @@
   <ItemGroup>
     <Compile Include="GameComponents\Behaviors\BaseBehavior.cs" />
     <Compile Include="GameComponents\Behaviors\BaseLogicBehavior.cs" />
-    <Compile Include="GameComponents\Behaviors\Bullet\B_NormalFlyBehavior.cs" />
-    <Compile Include="GameComponents\Behaviors\Bullet\B_NormalFlyRenderBehavior.cs" />
+    <Compile Include="GameComponents\Behaviors\Bullet\B_IceBulletLogicBehavior.cs" />
     <Compile Include="GameComponents\Behaviors\Bullet\B_NormalLogicBehavior.cs" />
-    <Compile Include="GameComponents\Behaviors\Plant\PL_NormalLogicBehavior.cs" />
-    <Compile Include="GameComponents\Behaviors\Plant\PL_NormalShootRenderBehavior.cs" />
-    <Compile Include="GameComponents\Behaviors\Plant\PL_NormalStandRenderBehavior.cs" />
-    <Compile Include="GameComponents\Behaviors\Zombie\Z_NormalEatingRenderBehavior.cs" />
+    <Compile Include="GameComponents\Behaviors\Plant\P_IcePlantLogicBehavior.cs" />
+    <Compile Include="GameComponents\Behaviors\Plant\P_NormalLogicBehavior.cs" />
     <Compile Include="GameComponents\Behaviors\Zombie\Z_NormalLogicBehavior.cs" />
-    <Compile Include="GameComponents\Behaviors\Zombie\Z_NormalRunBehavior.cs" />
-    <Compile Include="GameComponents\Behaviors\Zombie\Z_NormalRunRenderBahavior.cs" />
-    <Compile Include="GameComponents\Behaviors\Zombie\Z_NormalStandBehavior.cs" />
-    <Compile Include="GameComponents\Behaviors\Zombie\Z_NormalStandRenderBehavior.cs" />
+    <Compile Include="GameComponents\Behaviors\Implements\MoveBehavior.cs" />
+    <Compile Include="GameComponents\Behaviors\Implements\RenderBehavior.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="GameComponents\Components\LogicComponent.cs" />
     <Compile Include="GameComponents\Components\LogicComponentFactory.cs" />
     <Compile Include="GameComponents\Components\PhysicComponentFactory.cs" />
     <Compile Include="GameComponents\Components\RenderComponent.cs" />
     <Compile Include="GameComponents\Components\RenderComponentFactory.cs" />
+    <Compile Include="GameComponents\Effect\IEffect.cs" />
+    <Compile Include="GameComponents\Effect\Implements\SlowMoveEffect.cs" />
     <Compile Include="GameComponents\GameMessage.cs" />
     <Compile Include="GameComponents\Components\MoveComponent.cs" />
     <Compile Include="GameComponents\Components\MoveComponentFactory.cs" />
@@ -96,15 +95,18 @@
     <Compile Include="GameCore\PZObjectManager.cs" />
     <Compile Include="GameCore\PZResourceManager.cs" />
     <Compile Include="GameCore\PZScreenManager.cs" />
-    <Compile Include="GameObjects\NormalBullet.cs" />
-    <Compile Include="GameObjects\NormalPlant.cs" />
-    <Compile Include="GameObjects\NormalZombie.cs" />
+    <Compile Include="GameObjects\BaseBullet.cs" />
+    <Compile Include="GameObjects\BasePlant.cs" />
+    <Compile Include="GameObjects\BaseZombie.cs" />
+    <Compile Include="GameObjects\GameObjectCenter.cs" />
+    <Compile Include="GameObjects\Implements\IceBullet.cs" />
+    <Compile Include="GameObjects\Implements\IcePlant.cs" />
+    <Compile Include="GameObjects\Implements\NormalBullet.cs" />
+    <Compile Include="GameObjects\Implements\NormalPlant.cs" />
+    <Compile Include="GameObjects\Implements\NormalZombie.cs" />
     <Compile Include="GameScreen\ScreenFactory\TestScreenFactory.cs" />
     <Compile Include="GameScreen\TestScreen.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <None Include="PlantVsZombie_2013_11_15_14_26_10.sap" />
-    <None Include="PlantVsZombie_2013_11_15_14_31_04.sap" />
-    <None Include="PlantVsZombie_2013_11_15_14_34_48.sap" />
     <None Include="Properties\AppManifest.xml">
       <XnaPlatformSpecific>true</XnaPlatformSpecific>
     </None>
@@ -116,12 +118,19 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
+    <Content Include="GameScreen\Zombies.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="PhoneGameThumb.png">
       <XnaPlatformSpecific>true</XnaPlatformSpecific>
     </Content>
     <Content Include="Background.png">
       <XnaPlatformSpecific>true</XnaPlatformSpecific>
     </Content>
+    <Content Include="Xml\XMLFile1.xml" />
+    <Content Include="Xml\Zombies.xml" />
+    <Content Include="Zombies.xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\SSCEngine\SSCEngine.csproj">

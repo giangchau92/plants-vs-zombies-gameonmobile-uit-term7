@@ -15,6 +15,9 @@ using PlantVsZombie.GameCore;
 using PlantVsZombie.GameComponents.GameMessages;
 using System.Diagnostics;
 using SCSEngine.Sprite;
+using System.Xml;
+using System.IO;
+using System.Xml.Linq;
 
 namespace PlantVsZombie.GameScreen
 {
@@ -23,11 +26,13 @@ namespace PlantVsZombie.GameScreen
         PZObjectManager objectManager = PZObjectManager.Instance;
         PZBoard gameBoard;
 
+        bool isPlant = true;
+
         public TestScreen(IGameScreenManager screenManager)
             : base(screenManager)
         {
             //objectManager.AddObject(new NormalPlant());
-            TouchPanel.EnabledGestures = GestureType.Tap;
+            TouchPanel.EnabledGestures = GestureType.Tap | GestureType.Hold;
 
             // Init game data
             initSpriteBank();
@@ -35,10 +40,10 @@ namespace PlantVsZombie.GameScreen
             gameBoard = new PZBoard(9, 5);
             gameBoard.Board = new int[,]{
                 {0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {1, 0, 1, 0, 0, 0, 0, 0, 0},
-                {1, 0, 0, 0, 0, 0, 0, 0, 0},
-                {1, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 1, 0, 0, 0, 0, 0, 0, 0}
+                {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0}
             };
             // Gen object
 
@@ -49,16 +54,22 @@ namespace PlantVsZombie.GameScreen
                     if (type == 1)
                     {
                         objectManager.AddObject(PZObjectFactory.Instance.createPlant(gameBoard.GetPositonAt(i, j)));
+                    } else if (type == 2)
+                    {
+                        objectManager.AddObject(PZObjectFactory.Instance.createIcePlant(gameBoard.GetPositonAt(i, j)));
                     }
                 }
+
+
+            XDocument mXDocument = new XDocument();
+            mXDocument = XDocument.Load("Xml\\XMLFile1.xml");
+            
+            int a;
+            a = 1;
         }
 
         public override void Update(GameTime gameTime)
         {
-            IMessage<MessageType> updateMessage = new GameMessage(MessageType.FRAME_UPDATE, this);
-            updateMessage.DestinationObjectId = 0; // For all object
-
-            objectManager.SendMessage(updateMessage, gameTime);
 
             while (TouchPanel.IsGestureAvailable)
             {
@@ -68,7 +79,22 @@ namespace PlantVsZombie.GameScreen
                     //objectManager.AddObject(new NormalZombie());
                     objectManager.AddObject(PZObjectFactory.Instance.createZombie(gameBoard.GetPositionAtPoint(gesture.Position)));
                 }
+                else if (gesture.GestureType == GestureType.Hold)
+                {
+                    if (isPlant)
+                        objectManager.AddObject(PZObjectFactory.Instance.createPlant(gameBoard.GetPositionAtPoint(gesture.Position)));
+                    else
+                        objectManager.AddObject(PZObjectFactory.Instance.createIcePlant(gameBoard.GetPositionAtPoint(gesture.Position)));
+                    isPlant = !isPlant;
+                }
             }
+
+            IMessage<MessageType> updateMessage = new GameMessage(MessageType.FRAME_UPDATE, this);
+            updateMessage.DestinationObjectId = 0; // For all object
+
+            objectManager.SendMessage(updateMessage, gameTime);
+
+            
 
             base.Update(gameTime);
         }
@@ -81,7 +107,7 @@ namespace PlantVsZombie.GameScreen
             IMessage<MessageType> updateMessage = new GameMessage(MessageType.FRAME_DRAW, this);
             updateMessage.DestinationObjectId = 0; // For every object
             objectManager.SendMessage(updateMessage, gameTime);
-
+            
             base.Draw(gameTime);
             spriteBatch.End();
         }
@@ -91,9 +117,11 @@ namespace PlantVsZombie.GameScreen
             if (SpriteFramesBank.Instance.Contains("DoublePea"))
                 return;
 
-            SpriteFramesBank.Instance.Add("DoublePea", FramesGenerator.Generate(100, 55, 1024, 40));
+            SpriteFramesBank.Instance.Add("Plants/DoublePea/DoublePea", FramesGenerator.Generate(100, 55, 1024, 40));
+            SpriteFramesBank.Instance.Add("Plants/IcePea/IcePea", FramesGenerator.Generate(118, 63, 1024, 33));
             SpriteFramesBank.Instance.Add("Zombies/Nameless/Walk", FramesGenerator.Generate(73, 100, 1024, 16));
             SpriteFramesBank.Instance.Add("Zombies/Nameless/Attack", FramesGenerator.Generate(89, 101, 1024, 16));
+            SpriteFramesBank.Instance.Add("Bullets/B_Pea", FramesGenerator.Generate(29, 22, 29, 1));
             //100, 55, 10, 40
         }
     }

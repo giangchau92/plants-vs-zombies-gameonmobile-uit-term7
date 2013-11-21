@@ -28,8 +28,8 @@ namespace SCSEngine.Sprite
 
             x += frameWidth;
 
-            if (x >= maxWidth)
-            {
+            if (x + frameWidth>= maxWidth)
+            { 
                 x = 0;
                 y += frameHeight;
             }
