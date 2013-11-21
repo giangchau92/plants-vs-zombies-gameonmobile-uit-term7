@@ -14,7 +14,7 @@ using IListViewItem = SSCEngine.Control.IUIControl;
 
 namespace SSCEngine.Control
 {
-    public class ListView : BaseUIControl, IGestureTarget<FreeDrag>
+    public class ListView : BaseUIControl, IGestureTarget<FreeTap>
     {
         private List<IListViewItem> controls = new List<IListViewItem>();
         public IEnumerable<IListViewItem> Components
@@ -40,7 +40,7 @@ namespace SSCEngine.Control
 
         public override void Update(GameTime gameTime)
         {
-            this.Gesturer.UpdateOffset(this.Field);
+            this.Gesturer.UpdateOffset(this.Field, this.Canvas.Content);
 
             base.Update(gameTime);
         }
@@ -53,13 +53,9 @@ namespace SSCEngine.Control
             for (int i = 0; i < controls.Count; ++i)
             {
                 var item = controls[i];
-                oldItemFrame.Bound.Alter(item.Canvas.Bound);
-                oldItemFrame.Content.Alter(item.Canvas.Content);
                 item.Canvas.Bound.Position += translate;
-                Debug.WriteLine(string.Format("Item pos:{0} and drawPos:{1}", oldItemFrame.Bound.Position, item.Canvas.Bound.Position));
                 item.Draw(gameTime);
-                item.Canvas.Bound.Alter(oldItemFrame.Bound);
-                item.Canvas.Content.Alter(oldItemFrame.Content);
+                item.Canvas.Bound.Position -= translate;
             }
 
             base.Draw(gameTime);
@@ -97,23 +93,25 @@ namespace SSCEngine.Control
             }
         }
 
-        public bool ReceivedGesture(FreeDrag gEvent)
+        public bool ReceivedGesture(FreeTap gEvent)
         {
             switch (gEvent.Touch.SystemTouch.State)
             {
+                case TouchLocationState.Pressed:
+                    this.Gesturer.Move(Vector2.Zero);
+                    break;
                 case TouchLocationState.Released:
                     this.Gesturer.Release(gEvent.Touch.Positions.Delta);
                     return false;
                 case TouchLocationState.Moved:
                     this.Gesturer.Move(gEvent.Touch.Positions.Delta);
-                    Debug.WriteLine(string.Format("Current Drag Position: {0}", gEvent.Touch.Positions.Current));
                     break;
             }
 
             return true;
         }
 
-        public bool IsHandleGesture(FreeDrag gEvent)
+        public bool IsHandleGesture(FreeTap gEvent)
         {
             return this.Canvas.Bound.Contains(gEvent.Touch.Positions.Begin);
         }
@@ -127,7 +125,7 @@ namespace SSCEngine.Control
 
         public override void RegisterGestures(IGestureDispatcher dispatcher)
         {
-            dispatcher.AddTarget<FreeDrag>(this);
+            dispatcher.AddTarget<FreeTap>(this);
         }
 
         public override void LeaveGestures(IGestureDispatcher dispatcher)

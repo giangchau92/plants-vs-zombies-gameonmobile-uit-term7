@@ -48,27 +48,26 @@ namespace SSCEngine.GestureHandling.BaseGestureHandling
             {
                 StrongTargetStorage<GestureEvent> targetStorage = this.adapters[geHash] as StrongTargetStorage<GestureEvent>;
 
-                foreach (IGestureTarget<GestureEvent> gTarget in targetStorage)
+                if (targetStorage.HandledTargets.ContainsKey(gEvent.Touch.TouchID))
                 {
-                    if (targetStorage.HandledTargets.ContainsKey(gEvent.Touch.TouchID))
+                    IGestureTarget<GestureEvent> target = targetStorage.HandledTargets[gEvent.Touch.TouchID];
+                    if (!target.ReceivedGesture(gEvent))
                     {
-                        IGestureTarget<GestureEvent> target = targetStorage.HandledTargets[gEvent.Touch.TouchID];
-                        if (!target.ReceivedGesture(gEvent))
-                        {
-                            targetStorage.HandledTargets.Remove(gEvent.Touch.SystemTouch.Id);
-                        }
+                        targetStorage.HandledTargets.Remove(gEvent.Touch.SystemTouch.Id);
                     }
-                    else
+                }
+                else
+                {
+                    IEnumerable<IGestureTarget<GestureEvent>> copyTargets = new LinkedList<IGestureTarget<GestureEvent>>(targetStorage);
+
+                    foreach (var target in copyTargets)
                     {
-                        foreach (var target in targetStorage)
+                        if (target.IsHandleGesture(gEvent))
                         {
-                            if (target.IsHandleGesture(gEvent))
+                            if (target.ReceivedGesture(gEvent))
                             {
-                                if (target.ReceivedGesture(gEvent))
-                                {
-                                    targetStorage.HandledTargets.Add(gEvent.Touch.TouchID, target);
-                                    break;
-                                }
+                                targetStorage.HandledTargets.Add(gEvent.Touch.TouchID, target);
+                                break;
                             }
                         }
                     }

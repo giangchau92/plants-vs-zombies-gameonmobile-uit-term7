@@ -15,6 +15,7 @@ using SCSEngine.Mathematics;
 using SSCEngine.GestureHandling.Implements.Events;
 using System.Diagnostics;
 using SSCEngine.Control;
+using SSCEngine.GestureHandling.Implements.Detectors;
 
 namespace TestGesture
 {
@@ -59,9 +60,9 @@ namespace TestGesture
             // KHOI TAO GESTURE MANAGER
             this.gestureMan = DefaultGestureHandlingFactory.Instance.CreateManager(this);
             // INIT CAC GESTURE DETECTOR CO BAN, NEU MUON THEM NUA THI CU ADD DETECTURE VAO MANAGER
-            DefaultGestureHandlingFactory.Instance.InitDetectors(gestureMan);
+            this.gestureMan.AddDetector<FreeTap>(new FreeTapDetector());
             // ADD GESTURE MANAGER VAO COMPONENTS CUA GAME, MOI GAME THUONG CHI TAO MOT GESTURE MANAGER
-            this.Components.Add(gestureMan);
+            //this.Components.Add(gestureMan);
 
             this.uiManager = new UIControlManager(this, DefaultGestureHandlingFactory.Instance);
             this.gestureMan.AddDispatcher(uiManager);
@@ -82,26 +83,14 @@ namespace TestGesture
             this.resMan = new SCSResourceManager(this.Content);
             // TODO: use this.Content to load your game content here
 
-
-            ListView lv = new ListView(this, HorizontalListViewFactory.Instance);
-            lv.Canvas.Bound.Size.X = 1000;
-            lv.Canvas.Bound.Size.Y = 100;
-            lv.Canvas.Content.Size.X = 500;
-            lv.Canvas.Content.Size.Y = 100;
             for (int i = 0; i < 10; ++i)
             {
-                PictureBox pb = new PictureBox(this, spriteBatch);
-                pb.Image = resMan.GetResource<Texture2D>("img");
-                pb.FitSizeByImage();
-                lv.AddItem(pb);
+                HighlightedButton button = new HighlightedButton(this, new PvZButtonDraw(this.spriteBatch, resMan.GetResource<Texture2D>("img")));
+                button.Canvas.Bound.Position = new Vector2(110 * i, 10);
+                button.Canvas.Bound.Size = new Vector2(100f, 100f);
+                button.OnTouchLeave += this.OnLeave;
+                this.uiManager.Add(button);
             }
-            this.uiManager.Add(lv);
-
-            //Button bt = new Button(this, spriteBatch);
-            //bt.NormalImage = resMan.GetResource<Texture2D>("img");
-            //bt.HoldImage = resMan.GetResource<Texture2D>("img2");
-            //bt.FitSizeByImage();
-            //this.uiManager.Add(bt);
         }
 
         /// <summary>
@@ -128,8 +117,8 @@ namespace TestGesture
 
             try
             {
+                this.gestureMan.Update(gameTime);
                 base.Update(gameTime);
-                //Debug.WriteLine(string.Format("Eslaped: {0}", gameTime.ElapsedGameTime.TotalMilliseconds));
             }
             catch (Exception e)
             {
@@ -147,6 +136,16 @@ namespace TestGesture
 
             // TODO: Add your drawing code here
             base.Draw(gameTime);
+        }
+
+        public void OnLeave(HighlightedButton button, FreeTap leaveGesture)
+        {
+            if (leaveGesture.Current.Y >= 110)
+            {
+                DragObject obj = new DragObject(this, this.spriteBatch, resMan.GetResource<Texture2D>("img"), leaveGesture.Current);
+                this.Components.Add(obj);
+                this.uiManager.AddTarget<FreeTap>(obj);
+            }
         }
     }
 }

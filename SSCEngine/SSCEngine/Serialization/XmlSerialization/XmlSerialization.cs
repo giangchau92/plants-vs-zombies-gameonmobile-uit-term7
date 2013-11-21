@@ -34,7 +34,7 @@ namespace SSCEngine.Serialization.XmlSerialization
         public IDeserializer Deserialize(System.IO.Stream s)
         {
             XDocument doc = XDocument.Load(s);
-            Debug.WriteLine(doc.ToString());
+            //Debug.WriteLine(doc.ToString());
 
             return new XmlDeserializer(doc.Root);
         }

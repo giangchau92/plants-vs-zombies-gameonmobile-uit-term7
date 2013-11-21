@@ -10,12 +10,14 @@ namespace SSCEngine.Control
     public class PictureBox : BaseUIControl
     {
         public Texture2D Image { get; set; }
+        public Color Color { get; set; }
 
         private SpriteBatch spriteBatch;
         public PictureBox(Game game, SpriteBatch sprBatch)
             : base(game)
         {
             this.spriteBatch = sprBatch;
+            this.Color = Color.White;
         }
 
         public PictureBox(Game game, Texture2D img, SpriteBatch sprBatch)
@@ -30,7 +32,7 @@ namespace SSCEngine.Control
             if (this.Image != null)
             {
                 this.spriteBatch.Begin();
-                this.spriteBatch.Draw(this.Image, this.Canvas.Bound.Rectangle, this.Canvas.Content.Rectangle, Color.White);
+                this.spriteBatch.Draw(this.Image, this.Canvas.Bound.Rectangle, this.Canvas.Content.Rectangle, this.Color);
                 this.spriteBatch.End();
             }
 

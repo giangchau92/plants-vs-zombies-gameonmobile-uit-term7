@@ -27,49 +27,46 @@ namespace SSCEngine.Control
 
     public class VerticalListViewFactory : BaseListViewFactory
     {
-        private VerticalListViewFactory()
-        {
-        }
+        private float cellWidth, cellPad, decel;
 
-        public static VerticalListViewFactory Instance { get; private set; }
-
-        static VerticalListViewFactory()
+        public VerticalListViewFactory(float cellWidth, float cellPadding, float decelRatio)
         {
-            Instance = new VerticalListViewFactory();
+            this.cellWidth = cellWidth;
+            this.cellPad = cellPadding;
+            this.decel = decelRatio;
         }
 
         public override IListViewArrange CreateArranger()
         {
-            return new VerticalListViewArrange(100f, 10f);
+            return new VerticalListViewArrange(cellWidth, cellPad);
         }
 
         public override IListViewGestureHandler CreateGesturer()
         {
-            return new VerticalListViewGestureHandler(0.05f);
+            return new VerticalListViewGestureHandler(decel);
         }
     }
 
     public class HorizontalListViewFactory : BaseListViewFactory
     {
-        private HorizontalListViewFactory()
-        {
-        }
+        private float cellWidth, cellPad, decel, maxBounces;
 
-        public static HorizontalListViewFactory Instance { get; private set; }
-
-        static HorizontalListViewFactory()
+        public HorizontalListViewFactory(float cellWidth, float cellPadding, float decelRatio, float maxBounces)
         {
-            Instance = new HorizontalListViewFactory();
+            this.cellWidth = cellWidth;
+            this.cellPad = cellPadding;
+            this.decel = decelRatio;
+            this.maxBounces = maxBounces;
         }
 
         public override IListViewArrange CreateArranger()
         {
-            return new HorizontalListViewArrange(100f, 10f);
+            return new HorizontalListViewArrange(cellWidth, cellPad);
         }
 
         public override IListViewGestureHandler CreateGesturer()
         {
-            return new HorizontalListViewGestureHandler(0.05f);
+            return new HorizontalListViewGestureHandler(decel, maxBounces);
         }
     }
 }
