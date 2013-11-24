@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 using SCSEngine.Mathematics;
 using Microsoft.Xna.Framework.Input.Touch;
 
-namespace SSCEngine.GestureHandling.Implements.Events
+namespace SCSEngine.GestureHandling.Implements.Events
 {
     public class DoubleFlick : BaseGestureHandling.BaseGestureEvent
     {

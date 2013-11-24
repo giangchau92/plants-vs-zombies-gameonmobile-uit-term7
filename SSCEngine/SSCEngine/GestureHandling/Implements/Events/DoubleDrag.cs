@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 
-namespace SSCEngine.GestureHandling.Implements.Events
+namespace SCSEngine.GestureHandling.Implements.Events
 {
     public class DoubleDrag : BaseGestureHandling.BaseGestureEvent
     {

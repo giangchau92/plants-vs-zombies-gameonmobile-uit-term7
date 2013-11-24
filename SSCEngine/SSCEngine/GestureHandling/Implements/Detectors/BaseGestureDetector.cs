@@ -1,10 +1,10 @@
-using SSCEngine.Utils;
+using SCSEngine.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SSCEngine.GestureHandling.Implements.Detectors
+namespace SCSEngine.GestureHandling.Implements.Detectors
 {
     public abstract class BaseGestureDetector<GE> : IGestureDetector<GE> where GE : IGestureEvent
     {

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SSCEngine.Utils.Mathematics
+namespace SCSEngine.Utils.Mathematics
 {
     public struct RectangleF : IEquatable<RectangleF>
     {

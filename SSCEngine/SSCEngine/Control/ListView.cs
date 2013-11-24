@@ -1,18 +1,18 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input.Touch;
-using SSCEngine.Control.Clipping;
-using SSCEngine.GestureHandling;
-using SSCEngine.GestureHandling.Implements.Events;
-using SSCEngine.Utils.Mathematics;
+using SCSEngine.Control.Clipping;
+using SCSEngine.GestureHandling;
+using SCSEngine.GestureHandling.Implements.Events;
+using SCSEngine.Utils.Mathematics;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
-using IListViewItem = SSCEngine.Control.IUIControl;
+using IListViewItem = SCSEngine.Control.IUIControl;
 
-namespace SSCEngine.Control
+namespace SCSEngine.Control
 {
     public class ListView : BaseUIControl, IGestureTarget<FreeTap>
     {

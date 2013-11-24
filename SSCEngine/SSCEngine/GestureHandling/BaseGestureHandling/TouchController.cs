@@ -1,13 +1,13 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input.Touch;
-using SSCEngine.Utils;
+using SCSEngine.Utils;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
-namespace SSCEngine.GestureHandling.BaseGestureHandling
+namespace SCSEngine.GestureHandling.BaseGestureHandling
 {
     internal class TouchController : ITouchController
     {

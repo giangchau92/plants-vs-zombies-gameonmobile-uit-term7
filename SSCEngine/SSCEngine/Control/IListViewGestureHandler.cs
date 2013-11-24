@@ -1,12 +1,12 @@
 using Microsoft.Xna.Framework;
-using SSCEngine.Utils.Mathematics;
+using SCSEngine.Utils.Mathematics;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
-namespace SSCEngine.Control
+namespace SCSEngine.Control
 {
     public interface IListViewGestureHandler
     {

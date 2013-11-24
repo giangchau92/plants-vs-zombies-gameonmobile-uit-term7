@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SSCEngine.Utils
+namespace SCSEngine.Utils
 {
     public class TracedDictionary<K, V> : Dictionary<K, V>
     {

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Linq;
 
-namespace SSCEngine.Serialization.XmlSerialization
+namespace SCSEngine.Serialization.XmlSerialization
 {
     public class XmlSerialization : ISerialization
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SSCEngine.Utils.GameObject.Component
+namespace SCSEngine.Utils.GameObject.Component
 {
     public interface IEntity<T>
     {

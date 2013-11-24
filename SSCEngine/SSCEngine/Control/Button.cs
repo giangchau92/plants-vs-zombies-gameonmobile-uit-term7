@@ -1,16 +1,16 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input.Touch;
-using SSCEngine.GestureHandling;
-using SSCEngine.GestureHandling.Implements.Events;
-using SSCEngine.Utils.Mathematics;
+using SCSEngine.GestureHandling;
+using SCSEngine.GestureHandling.Implements.Events;
+using SCSEngine.Utils.Mathematics;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
-namespace SSCEngine.Control
+namespace SCSEngine.Control
 {
     public delegate void ButtonEventHandler(Button button);
 

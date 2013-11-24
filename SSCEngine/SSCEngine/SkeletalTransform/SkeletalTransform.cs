@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SSCEngine.SkeletalTransform
+namespace SCSEngine.SkeletalTransform
 {
     internal class SkeletalTransform : ISkeletalTransform
     {

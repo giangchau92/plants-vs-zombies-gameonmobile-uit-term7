@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SSCEngine.GestureHandling.Implements.Events
+namespace SCSEngine.GestureHandling.Implements.Events
 {
     public class FreeDrag : BaseGestureHandling.BaseGestureEvent
     {

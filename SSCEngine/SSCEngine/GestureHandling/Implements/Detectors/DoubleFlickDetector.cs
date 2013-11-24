@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input.Touch;
-using SSCEngine.GestureHandling.Implements.Events;
+using SCSEngine.GestureHandling.Implements.Events;
 
-namespace SSCEngine.GestureHandling.Implements.Detectors
+namespace SCSEngine.GestureHandling.Implements.Detectors
 {
     public class DoubleFlickDetector : BaseGestureDetector<DoubleFlick>
     {

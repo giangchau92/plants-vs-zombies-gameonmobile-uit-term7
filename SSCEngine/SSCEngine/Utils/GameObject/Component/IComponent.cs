@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
-using SSCEngine.Serialization;
+using SCSEngine.Serialization;
 
 
-namespace SSCEngine.Utils.GameObject.Component
+namespace SCSEngine.Utils.GameObject.Component
 {
     public interface IComponent<T> : ISerializable
     {

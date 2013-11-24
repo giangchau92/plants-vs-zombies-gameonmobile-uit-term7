@@ -1,10 +1,10 @@
-using SSCEngine.Control.Clipping;
+using SCSEngine.Control.Clipping;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SSCEngine.Control
+namespace SCSEngine.Control
 {
     public interface IListViewFactory
     {
