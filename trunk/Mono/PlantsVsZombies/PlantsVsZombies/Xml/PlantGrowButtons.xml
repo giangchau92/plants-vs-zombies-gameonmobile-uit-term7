@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<GrowSystems>
+  <PlantShadows>
+    <Shadow>
+      <Name>Single Pea</Name>
+      <Picture>SinglePeaShadow.png</Picture>
+      <Plant>Single Pea</Plant>
+    </Shadow>
+  </PlantShadows>
+  
+  <Buttons>
+    <Button>
+      <Name>Single Pea</Name>
+      <DrawComponent>
+        <Type>Standard</Type>
+        <Data>
+          <Picture>SinglePea_btn.png</Picture>
+        </Data>
+      </DrawComponent>
+      <Shadow>Single Pea</Shadow>
+    </Button>
+  </Buttons>
+</GrowSystems>
