@@ -106,6 +106,9 @@
     <Compile Include="GameObjects\Implements\NormalZombie.cs" />
     <Compile Include="GameScreen\ScreenFactory\TestScreenFactory.cs" />
     <Compile Include="GameScreen\TestScreen.cs" />
+    <Compile Include="GrowSystem\PvZGrowButton.cs" />
+    <Compile Include="GrowSystem\PvZGrowList.cs" />
+    <Compile Include="GrowSystem\PvZPlantShadow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="Properties\AppManifest.xml">
       <XnaPlatformSpecific>true</XnaPlatformSpecific>
@@ -124,9 +127,16 @@
     <Content Include="Background.png">
       <XnaPlatformSpecific>true</XnaPlatformSpecific>
     </Content>
-    <EmbeddedResource Include="Xml\Zombies.xml">
+    <Content Include="Xml\XMLFile1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Xml\PlantGrowButtons.xml">
       <SubType>Designer</SubType>
-    </EmbeddedResource>
+    </Content>
+    <Content Include="Xml\Zombies.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Zombies.xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\SSCEngine\SSCEngine.csproj">
