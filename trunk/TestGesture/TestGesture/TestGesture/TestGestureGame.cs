@@ -145,6 +145,8 @@ namespace TestGesture
                 DragObject obj = new DragObject(this, this.spriteBatch, resMan.GetResource<Texture2D>("img"), leaveGesture.Current);
                 this.Components.Add(obj);
                 this.uiManager.AddTarget<FreeTap>(obj);
+
+                button.CooldownInTime(6000);
             }
         }
     }

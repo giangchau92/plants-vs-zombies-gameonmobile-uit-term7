@@ -287,7 +287,7 @@ namespace SSCEngine.Utils.Mathematics
         // Parameters:
         //   value:
         //     The Rectangle to evaluate.
-        public bool Contains(RectangleF value)
+        public bool Contains(CRectangleF value)
         {
             return (this.Position.X <= value.Position.X && this.Position.X + this.Size.X >= value.Position.X + value.Size.X &&
                 this.Position.Y <= value.Position.Y && this.Position.Y + this.Size.Y >= value.Position.Y + value.Size.Y);
