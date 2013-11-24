@@ -14,6 +14,10 @@ using PlantVsZombie.GameCore;
 using SCSEngine.Services;
 using System.Diagnostics;
 using PlantVsZombie.GameComponents.Components;
+using System.Xml.Linq;
+using System.Reflection;
+using System.IO;
+using PlantVsZombie.GameObjects;
 
 namespace PlantVsZombie
 {
@@ -81,6 +85,9 @@ namespace PlantVsZombie
             // Screeen management
             screenManager = new PZScreenManager(this);
             screenManager.AddExclusive(screenManager.Bank.GetNewScreen("Test"));
+
+            // Test
+            GameObjectCenter.Instance.InitEnity();
         }
         
         /// <summary>

@@ -61,11 +61,7 @@ namespace PlantVsZombie.GameScreen
                 }
 
 
-            XDocument mXDocument = new XDocument();
-            mXDocument = XDocument.Load("Xml\\XMLFile1.xml");
-            
-            int a;
-            a = 1;
+           
         }
 
         public override void Update(GameTime gameTime)

@@ -30,7 +30,7 @@ namespace PlantVsZombie.GameObjects.Implements
             // Run
             moveBehavior = new MoveBehavior();
             moveBehavior.Velocity = new Vector2(-100, 0);
-            moveCOm.AddBehavior(eMoveBehaviorType.NORMAL_RUNNING, moveBehavior);
+            moveCOm.AddBehavior(eMoveBehaviorType.RUNNING, moveBehavior);
             this.AddComponent(moveCOm);
             
             // Physic component

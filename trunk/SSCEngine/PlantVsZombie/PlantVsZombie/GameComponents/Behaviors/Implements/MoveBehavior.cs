@@ -16,7 +16,7 @@ namespace PlantVsZombie.GameComponents.Behaviors.Implements
         public MoveBehavior()
             : base()
         {
-            Velocity = Vector2.Zero;
+            VelocityAdd = Velocity = Vector2.Zero;
         }
 
         public override void Update(IMessage<MessageType> message, Microsoft.Xna.Framework.GameTime gameTime)
@@ -29,6 +29,12 @@ namespace PlantVsZombie.GameComponents.Behaviors.Implements
             VelocityAdd = Vector2.Zero;
             moveCom.UpdatePosition(gameTime);
             base.Update(message, gameTime);
+        }
+
+        public static MoveBehavior CreateBehavior()
+        {
+            MoveBehavior result = new MoveBehavior();
+            return result;
         }
     }
 }

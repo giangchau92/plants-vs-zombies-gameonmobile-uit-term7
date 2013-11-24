@@ -118,19 +118,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
-    <Content Include="GameScreen\Zombies.xml">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="PhoneGameThumb.png">
       <XnaPlatformSpecific>true</XnaPlatformSpecific>
     </Content>
     <Content Include="Background.png">
       <XnaPlatformSpecific>true</XnaPlatformSpecific>
     </Content>
-    <Content Include="Xml\XMLFile1.xml" />
-    <Content Include="Xml\Zombies.xml" />
-    <Content Include="Zombies.xml" />
+    <EmbeddedResource Include="Xml\Zombies.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\SSCEngine\SSCEngine.csproj">

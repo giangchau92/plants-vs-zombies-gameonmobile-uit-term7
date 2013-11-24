@@ -5,12 +5,14 @@ using System.Text;
 using SSCEngine.Utils.GameObject.Component;
 using Microsoft.Xna.Framework;
 using PlantVsZombie.GameComponents.GameMessages;
+using SSCEngine.Serialization.XNASerializationHelper;
+using PlantVsZombie.GameComponents.Behaviors.Implements;
 
 namespace PlantVsZombie.GameComponents.Components
 {
     public enum eMoveBehaviorType
     {
-        NORMAL_RUNNING,
+        RUNNING,
         STANDING,
         NORMAL_FLYING
     }
@@ -78,6 +80,31 @@ namespace PlantVsZombie.GameComponents.Components
         public IBehavior<MessageType> GetCurrentBehavior()
         {
             return this.currentBehavior;
+        }
+
+        public void Serialize(SSCEngine.Serialization.ISerializer serializer)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Deserialize(SSCEngine.Serialization.IDeserializer deserializer)
+        {
+            var behDesers = deserializer.DeserializeAll("Behavior");
+            foreach (var behDeser in behDesers)
+            {
+                string type = behDeser.DeserializeString("type");
+                eMoveBehaviorType moveBehType = eMoveBehaviorType.STANDING;
+                if (type == "xml_move_stand")
+                    moveBehType = eMoveBehaviorType.STANDING;
+                else if (type == "xml_move_run")
+                    moveBehType = eMoveBehaviorType.RUNNING;
+
+                Vector2 velocity = XNASerialization.Instance.DeserializeVector2(behDeser, "Velocity");
+                MoveBehavior moveBeh = MoveBehavior.CreateBehavior();
+                moveBeh.Velocity = velocity;
+
+                this.AddBehavior(moveBehType, moveBeh);
+            }
         }
     }
 }
