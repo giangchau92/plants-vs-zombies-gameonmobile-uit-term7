@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SSCEngine.GestureHandling
+namespace SCSEngine.GestureHandling
 {
     public delegate void OnHasGestureHandler(IGestureHandler gesture, EventArgs args);
 

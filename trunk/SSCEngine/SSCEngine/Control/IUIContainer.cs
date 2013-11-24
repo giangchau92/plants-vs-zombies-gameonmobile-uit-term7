@@ -1,9 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
-using SSCEngine.GestureHandling;
+using SCSEngine.GestureHandling;
 using System;
 using System.Collections.Generic;
 
-namespace SSCEngine.Control
+namespace SCSEngine.Control
 {
     public interface IUIContainer : IGestureDispatcher, IDrawable
     {

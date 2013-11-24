@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using SSCEngine.GestureHandling.Implements.Events;
+using SCSEngine.GestureHandling.Implements.Events;
 using Microsoft.Xna.Framework.Input.Touch;
 
-namespace SSCEngine.GestureHandling.Implements.Detectors
+namespace SCSEngine.GestureHandling.Implements.Detectors
 {
     public class FreeTapDetector : BaseGestureDetector<FreeTap>
     {

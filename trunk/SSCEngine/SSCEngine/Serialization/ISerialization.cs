@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace SSCEngine.Serialization
+namespace SCSEngine.Serialization
 {
     public interface ISerialization
     {

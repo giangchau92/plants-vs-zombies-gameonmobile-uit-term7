@@ -5,7 +5,7 @@ using System.Text;
 using System.Xml;
 using System.Xml.Linq;
 
-namespace SSCEngine.Serialization.XmlSerialization
+namespace SCSEngine.Serialization.XmlSerialization
 {
     internal class XmlSerializer : ISerializer
     {

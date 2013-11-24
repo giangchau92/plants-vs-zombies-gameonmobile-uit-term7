@@ -1,13 +1,13 @@
 using Microsoft.Xna.Framework;
-using SSCEngine.GestureHandling.Implements.Detectors;
+using SCSEngine.GestureHandling.Implements.Detectors;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SSCEngine.GestureHandling
+namespace SCSEngine.GestureHandling
 {
-    public class DefaultGestureHandlingFactory : SSCEngine.GestureHandling.IGestureHandlingFactory
+    public class DefaultGestureHandlingFactory : SCSEngine.GestureHandling.IGestureHandlingFactory
     {
         private DefaultGestureHandlingFactory()
         {

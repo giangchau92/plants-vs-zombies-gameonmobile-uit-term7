@@ -1,12 +1,12 @@
 using Microsoft.Xna.Framework;
-using SSCEngine.GestureHandling;
+using SCSEngine.GestureHandling;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
-namespace SSCEngine.Control
+namespace SCSEngine.Control
 {
     public class UIControlManager : DrawableGameComponent, IGestureDispatcher, IUIContainer
     {

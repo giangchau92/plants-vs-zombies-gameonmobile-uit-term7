@@ -1,11 +1,11 @@
 using Microsoft.Xna.Framework;
-using SSCEngine.Utils.Mathematics;
+using SCSEngine.Utils.Mathematics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SSCEngine.Control.Clipping
+namespace SCSEngine.Control.Clipping
 {
     public class RectangleClipping
     {

@@ -1,11 +1,11 @@
-using SSCEngine.GestureHandling.Implements.Events;
+using SCSEngine.GestureHandling.Implements.Events;
 using Microsoft.Xna.Framework.Input.Touch;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SSCEngine.GestureHandling.Implements.Detectors
+namespace SCSEngine.GestureHandling.Implements.Detectors
 {
     class FreeDragDetector : BaseGestureDetector<FreeDrag>
     {

@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input.Touch;
 
-namespace SSCEngine.GestureHandling.Implements.Events
+namespace SCSEngine.GestureHandling.Implements.Events
 {
     public class FreeTap : BaseGestureHandling.BaseGestureEvent
     {

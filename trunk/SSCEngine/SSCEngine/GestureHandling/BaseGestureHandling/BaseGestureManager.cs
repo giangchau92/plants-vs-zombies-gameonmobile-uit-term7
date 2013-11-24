@@ -6,7 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
-namespace SSCEngine.GestureHandling.BaseGestureHandling
+namespace SCSEngine.GestureHandling.BaseGestureHandling
 {
     class BaseGestureManager : GameComponent, IGestureManager
     {
