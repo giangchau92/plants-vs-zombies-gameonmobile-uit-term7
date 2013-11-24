@@ -92,7 +92,7 @@ namespace PlantVsZombie.GameComponents.Behaviors.Zombie
         private void changeRunBehavior(GameTime gameTime)
         {
             MoveBehaviorChangeMsg moveMsg1 = new MoveBehaviorChangeMsg(MessageType.CHANGE_MOVE_BEHAVIOR, this);
-            moveMsg1.MoveBehaviorType = Components.eMoveBehaviorType.NORMAL_RUNNING;
+            moveMsg1.MoveBehaviorType = Components.eMoveBehaviorType.RUNNING;
             moveMsg1.DestinationObjectId = this.Owner.Owner.ObjectId;
 
             RenderBehaviorChangeMsg renderMsg1 = new RenderBehaviorChangeMsg(MessageType.CHANGE_RENDER_BEHAVIOR, this);

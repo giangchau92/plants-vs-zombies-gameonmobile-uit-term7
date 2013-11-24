@@ -4,12 +4,15 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using SSCEngine.Utils.GameObject.Component;
+using SSCEngine.Serialization;
 
 
 namespace PlantVsZombie.GameComponents
 {
+    public enum eObjectType { PLANT, ZOMBIE}
     public class ObjectEntity : IEntity<MessageType>, IComponent<MessageType>
     {
+        public eObjectType ObjectType { get; set; }
         private IDictionary<Type, IComponent<MessageType>> _components = new Dictionary<Type, IComponent<MessageType>>();
         public IDictionary<Type, IComponent<MessageType>> Components
         {
@@ -45,6 +48,16 @@ namespace PlantVsZombie.GameComponents
 
         public ObjectEntity()
         {
+        }
+
+        public ObjectEntity(ObjectEntity other)
+        {
+            ObjectType = other.ObjectType;
+            // Clone component
+            foreach (var item in other._components)
+            {
+                
+            }
         }
 
         public virtual void OnMessage(IMessage<MessageType> message, GameTime gameTime)
@@ -83,5 +96,53 @@ namespace PlantVsZombie.GameComponents
             get;
             set;
         }
+    }
+
+    public class IObjectEntityFactory : ISerializable
+    {
+        private const string tagName = "Name";
+        private const string tagComponents = "Components";
+        private const string tagComponent = "Component";
+
+        ICollection<IComponent<MessageType>> components = new List<IComponent<MessageType>>();
+        string name;
+
+        IComponentFactory componentFactory;
+
+        public void Serialize(ISerializer serializer)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Deserialize(IDeserializer deserializer)
+        {
+            this.name = deserializer.DeserializeString(tagName);
+            IDeserializer componentsDeser = deserializer.SubDeserializer(tagComponents);
+
+            var componentDesers = componentsDeser.DeserializeAll(tagComponent);
+            foreach (var cDeser in componentDesers)
+            {
+                string type = cDeser.DeserializeString("type");
+                var component = componentFactory.CreateComponent(type);
+
+                component.Deserialize(cDeser);
+
+                this.components.Add(component);
+            }
+        }
+
+        public ObjectEntity CreateEntity()
+        {
+            ObjectEntity entity = new ObjectEntity();
+            foreach (var component in this.components)
+            {
+                entity.AddComponent(component);
+            }
+        }
+    }
+
+    public interface IComponentFactory
+    {
+        IComponent<MessageType> CreateComponent(string type);
     }
 }

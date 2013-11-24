@@ -64,5 +64,11 @@ namespace PlantVsZombie.GameComponents.Behaviors.Implements
         {
             base.UnLoad();
         }
+
+        public static RenderBehavior CreateBehavior()
+        {
+            RenderBehavior result = new RenderBehavior();
+            return result;
+        }
     }
 }
