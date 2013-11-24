@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSCEngine", "SSCEngine\SSCEngine.csproj", "{F1C34544-A51E-4014-BC66-B3D29340CBFB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCSEngine", "SSCEngine\SCSEngine.csproj", "{F1C34544-A51E-4014-BC66-B3D29340CBFB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlantVsZombie", "PlantVsZombie\PlantVsZombie\PlantVsZombie.csproj", "{27A5B435-20BD-4D90-B549-9A7896D2789C}"
 EndProject
-Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "PlantVsZombieContent", "PlantVsZombie\PlantVsZombieContent\PlantVsZombieContent.contentproj", "{7E1AEA27-D136-4D12-A814-ED2BAD914C7B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlantVsZombieContent", "PlantVsZombie\PlantVsZombieContent\PlantVsZombieContent.contentproj", "{7E1AEA27-D136-4D12-A814-ED2BAD914C7B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,4 +1,4 @@
-using SSCEngine.Utils.GameObject.Component;
+using SCSEngine.Utils.GameObject.Component;
 using System;
 using System.Collections.Generic;
 using System.Linq;

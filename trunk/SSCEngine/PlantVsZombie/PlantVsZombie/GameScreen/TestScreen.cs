@@ -5,7 +5,7 @@ using System.Text;
 using SCSEngine.ScreenManagement.Implement;
 using SCSEngine.ScreenManagement;
 using Microsoft.Xna.Framework;
-using SSCEngine.Utils.GameObject.Component;
+using SCSEngine.Utils.GameObject.Component;
 using PlantVsZombie.GameComponents;
 using PlantVsZombie.GameObjects;
 using Microsoft.Xna.Framework.Graphics;

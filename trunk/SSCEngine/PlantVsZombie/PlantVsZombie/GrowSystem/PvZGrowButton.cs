@@ -1,9 +1,9 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input.Touch;
-using SSCEngine.Control;
-using SSCEngine.GestureHandling;
-using SSCEngine.GestureHandling.Implements.Events;
-using SSCEngine.Serialization;
+using SCSEngine.Control;
+using SCSEngine.GestureHandling;
+using SCSEngine.GestureHandling.Implements.Events;
+using SCSEngine.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;

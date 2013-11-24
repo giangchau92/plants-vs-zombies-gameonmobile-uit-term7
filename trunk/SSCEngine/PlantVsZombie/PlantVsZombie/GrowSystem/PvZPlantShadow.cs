@@ -4,10 +4,10 @@ using Microsoft.Xna.Framework.Input.Touch;
 using SCSEngine.Services;
 using SCSEngine.Services.Sprite;
 using SCSEngine.Sprite;
-using SSCEngine.Control;
-using SSCEngine.GestureHandling;
-using SSCEngine.GestureHandling.Implements.Events;
-using SSCEngine.Serialization;
+using SCSEngine.Control;
+using SCSEngine.GestureHandling;
+using SCSEngine.GestureHandling.Implements.Events;
+using SCSEngine.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,12 +29,12 @@ namespace PlantVsZombie.GrowSystem
             this.PlantName = plantName;
         }
 
-        public override void RegisterGestures(SSCEngine.GestureHandling.IGestureDispatcher dispatcher)
+        public override void RegisterGestures(SCSEngine.GestureHandling.IGestureDispatcher dispatcher)
         {
             dispatcher.AddTarget<FreeTap>(this);
         }
 
-        public override void LeaveGestures(SSCEngine.GestureHandling.IGestureDispatcher dispatcher)
+        public override void LeaveGestures(SCSEngine.GestureHandling.IGestureDispatcher dispatcher)
         {
             this.IsGestureCompleted = true;
         }
@@ -72,6 +72,11 @@ namespace PlantVsZombie.GrowSystem
         public bool IsHandleGesture(FreeTap gEvent)
         {
             return this.Canvas.Bound.Contains(gEvent.Current);
+        }
+
+        public uint Priority
+        {
+            get { return 0; }
         }
     }
 

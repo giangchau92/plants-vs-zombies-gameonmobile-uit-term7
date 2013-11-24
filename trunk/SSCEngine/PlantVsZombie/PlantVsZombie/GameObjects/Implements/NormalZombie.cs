@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using SSCEngine.Utils.GameObject.Component;
+using SCSEngine.Utils.GameObject.Component;
 using PlantVsZombie.GameComponents.Components;
 using PlantVsZombie.GameComponents;
 using PlantVsZombie.GameComponents.Behaviors.Zombie;
