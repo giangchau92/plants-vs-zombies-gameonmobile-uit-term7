@@ -139,13 +139,14 @@
     <Content Include="Zombies.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\SSCEngine\SSCEngine.csproj">
+    <ProjectReference Include="..\..\SSCEngine\SCSEngine.csproj">
       <Project>{F1C34544-A51E-4014-BC66-B3D29340CBFB}</Project>
-      <Name>SSCEngine</Name>
+      <Name>SCSEngine</Name>
     </ProjectReference>
     <ProjectReference Include="..\PlantVsZombieContent\PlantVsZombieContent.contentproj">
-      <Name>PlantVsZombieContent</Name>
+      <Name>PlantVsZombieContent %28Content%29</Name>
       <XnaReferenceType>Content</XnaReferenceType>
+      <Project>{7E1AEA27-D136-4D12-A814-ED2BAD914C7B}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

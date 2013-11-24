@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 using SCSEngine.Services;
 using SCSEngine.Services.Sprite;
 using SCSEngine.Sprite;
-using SSCEngine.Control;
+using SCSEngine.Control;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -80,11 +80,11 @@ namespace PlantVsZombie.GrowSystem
             grButton.Canvas.Bound.Size.Y = this.Canvas.Content.Size.Y;
         }
 
-        public override void RegisterGestures(SSCEngine.GestureHandling.IGestureDispatcher dispatcher)
+        public override void RegisterGestures(SCSEngine.GestureHandling.IGestureDispatcher dispatcher)
         {
         }
 
-        public override void LeaveGestures(SSCEngine.GestureHandling.IGestureDispatcher dispatcher)
+        public override void LeaveGestures(SCSEngine.GestureHandling.IGestureDispatcher dispatcher)
         {
         }
 
@@ -125,7 +125,7 @@ namespace PlantVsZombie.GrowSystem
             base.Draw(gameTime);
         }
 
-        private void OnGrowButtonTouchLeaved(PvZGrowButton button, SSCEngine.GestureHandling.Implements.Events.FreeTap leaveGesture)
+        private void OnGrowButtonTouchLeaved(PvZGrowButton button, SCSEngine.GestureHandling.Implements.Events.FreeTap leaveGesture)
         {
             if (!this.Canvas.Bound.Contains(leaveGesture.Current))
             {

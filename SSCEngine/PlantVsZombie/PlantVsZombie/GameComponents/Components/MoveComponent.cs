@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using SSCEngine.Utils.GameObject.Component;
+using SCSEngine.Utils.GameObject.Component;
 using Microsoft.Xna.Framework;
 using PlantVsZombie.GameComponents.GameMessages;
-using SSCEngine.Serialization.XNASerializationHelper;
+using SCSEngine.Serialization.XNASerializationHelper;
 using PlantVsZombie.GameComponents.Behaviors.Implements;
 
 namespace PlantVsZombie.GameComponents.Components
@@ -82,12 +82,12 @@ namespace PlantVsZombie.GameComponents.Components
             return this.currentBehavior;
         }
 
-        public void Serialize(SSCEngine.Serialization.ISerializer serializer)
+        public void Serialize(SCSEngine.Serialization.ISerializer serializer)
         {
             throw new NotImplementedException();
         }
 
-        public void Deserialize(SSCEngine.Serialization.IDeserializer deserializer)
+        public void Deserialize(SCSEngine.Serialization.IDeserializer deserializer)
         {
             var behDesers = deserializer.DeserializeAll("Behavior");
             foreach (var behDeser in behDesers)

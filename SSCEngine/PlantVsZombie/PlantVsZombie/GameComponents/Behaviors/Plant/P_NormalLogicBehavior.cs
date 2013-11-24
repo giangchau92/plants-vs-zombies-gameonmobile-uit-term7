@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
-using SSCEngine.Utils.GameObject.Component;
+using SCSEngine.Utils.GameObject.Component;
 using PlantVsZombie.GameComponents.GameMessages;
 using PlantVsZombie.GameComponents.Components;
 using PlantVsZombie.GameCore;
