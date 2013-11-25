@@ -6,7 +6,6 @@ using SCSEngine.Utils.GameObject.Component;
 using Microsoft.Xna.Framework;
 using PlantVsZombies.GameCore;
 using PlantVsZombies.GameComponents.GameMessages;
-using PlantsVsZombies.GameComponents;
 
 namespace PlantVsZombies.GameComponents.Components
 {

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using SCSEngine.Utils.GameObject.Component;
 using Microsoft.Xna.Framework;
-using PlantsVsZombies.GameComponents;
 
 namespace PlantVsZombies.GameComponents.Behaviors
 {

@@ -12,14 +12,14 @@ namespace PlantsVsZombies
     /// <summary>
     /// This is the main type for your game
     /// </summary>
-    public class Game1 : Game
+    public class PvZGame : Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
         PZScreenManager screenManager;
 
-        public Game1()
+        public PvZGame()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
@@ -52,30 +52,38 @@ namespace PlantsVsZombies
         /// </summary>
         protected override void LoadContent()
         {
-            // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+            try
+            {
+                // Create a new SpriteBatch, which can be used to draw textures.
+                spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
-            // Add Resource Manager
-            IResourceManager resourceManager = new PZResourceManager(this.Content);
-            this.Services.AddService(typeof(IResourceManager), resourceManager);
-             //Load sprite data
-             //SCSService
-            SCSServices.Instance.Game = this;
-            SCSServices.Instance.SpriteBatch = spriteBatch;
-            SCSServices.Instance.SpritePlayer = new SCSEngine.Services.Sprite.SpritePlayer(spriteBatch);
-            SCSServices.Instance.AudioManager = new SCSEngine.Services.Audio.AudioManager(this);
-            SCSServices.Instance.ResourceManager = resourceManager;
-            SCSServices.Instance.SpritePlayer = new SCSEngine.Services.Sprite.SpritePlayer(spriteBatch);
+                // TODO: use this.Content to load your game content here
+                // Add Resource Manager
+                IResourceManager resourceManager = new PZResourceManager(this.Content);
+                this.Services.AddService(typeof(IResourceManager), resourceManager);
+                //Load sprite data
+                //SCSService
+                SCSServices.Instance.Game = this;
+                SCSServices.Instance.SpriteBatch = spriteBatch;
+                SCSServices.Instance.SpritePlayer = new SCSEngine.Services.Sprite.SpritePlayer(spriteBatch);
+                SCSServices.Instance.AudioManager = new SCSEngine.Services.Audio.AudioManager(this);
+                SCSServices.Instance.ResourceManager = resourceManager;
+                SCSServices.Instance.SpritePlayer = new SCSEngine.Services.Sprite.SpritePlayer(spriteBatch);
 
-            SpriteFont font = Content.Load<SpriteFont>("Fonts/DebugFont");
-            SCSServices.Instance.DebugFont = font;
-            //Screeen management
-            screenManager = new PZScreenManager(this);
-            screenManager.AddExclusive(screenManager.Bank.GetNewScreen("Test"));
+                SpriteFont font = Content.Load<SpriteFont>("DebugFont");
+                SCSServices.Instance.DebugFont = font;
 
-            //Test
-            GameObjectCenter.Instance.InitEnity();
+                //Test
+                GameObjectCenter.Instance.InitEnity();
+
+                //Screeen management
+                screenManager = new PZScreenManager(this);
+                screenManager.AddExclusive(screenManager.Bank.GetNewScreen("Test"));
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("Load content error {0}", e);
+            }
         }
 
         /// <summary>
@@ -96,12 +104,20 @@ namespace PlantsVsZombies
         {
             // Allows the game to exit
 
-            // TODO: Add your update logic here
-            SCSServices.Instance.GameTime = gameTime;
-            screenManager.Update(gameTime);
-            //Debug.WriteLine(string.Format("Eslaped: {0}", gameTime.ElapsedGameTime.TotalMilliseconds));
+            try
+            {
 
-            base.Update(gameTime);
+                // TODO: Add your update logic here
+                SCSServices.Instance.GameTime = gameTime;
+                screenManager.Update(gameTime);
+                //Debug.WriteLine(string.Format("Eslaped: {0}", gameTime.ElapsedGameTime.TotalMilliseconds));
+
+                base.Update(gameTime);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("Update error {0}", e);
+            }
 
         }
 
@@ -113,10 +129,17 @@ namespace PlantsVsZombies
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
-            screenManager.Draw(gameTime);
+            try
+            {
+                // TODO: Add your drawing code here
+                screenManager.Draw(gameTime);
 
-            base.Draw(gameTime);
+                base.Draw(gameTime);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("Draw error {0}", e);
+            }
         }
     }
 }

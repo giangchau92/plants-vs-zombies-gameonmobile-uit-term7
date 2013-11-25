@@ -10,7 +10,6 @@ using PlantVsZombies.GameCore;
 using SCSEngine.Services;
 using PlantVsZombies.GameObjects;
 using PlantVsZombies.GameObjects.Implements;
-using PlantsVsZombies.GameComponents;
 
 namespace PlantVsZombies.GameComponents.Behaviors.Plant
 {

@@ -7,7 +7,6 @@ using Microsoft.Xna.Framework;
 using PlantVsZombies.GameComponents.GameMessages;
 using SCSEngine.Serialization.XNASerializationHelper;
 using PlantVsZombies.GameComponents.Behaviors.Implements;
-using PlantsVsZombies.GameComponents;
 
 namespace PlantVsZombies.GameComponents.Components
 {

@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using PlantsVsZombies.GameComponents;
 using PlantVsZombies.GameComponents.Components;
 using SCSEngine.Utils.GameObject.Component;
 using System;
