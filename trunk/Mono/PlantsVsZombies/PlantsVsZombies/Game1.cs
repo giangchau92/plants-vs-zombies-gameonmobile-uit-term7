@@ -1,5 +1,10 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using PlantVsZombie.GameCore;
+using PlantVsZombie.GameObjects;
+using SCSEngine.ResourceManagement;
+using SCSEngine.Services;
+using System;
 
 namespace PlantsVsZombies
 {
@@ -89,8 +94,6 @@ namespace PlantsVsZombies
         protected override void Update(GameTime gameTime)
         {
             // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-                this.Exit();
 
             // TODO: Add your update logic here
             SCSServices.Instance.GameTime = gameTime;
