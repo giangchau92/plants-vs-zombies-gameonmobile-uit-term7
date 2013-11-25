@@ -13,6 +13,7 @@ using SCSEngine.ResourceManagement;
 using SCSEngine.Services;
 using SCSEngine.Sprite;
 using PlantVsZombie.GameComponents.Behaviors.Zombie;
+using SCSEngine.Serialization.XmlSerialization;
 
 namespace PlantVsZombie.GameObjects
 {
@@ -31,7 +32,7 @@ namespace PlantVsZombie.GameObjects
 
         private const string zombie_config = "PlantVsZombie.Xml.Zombies.xml";
 
-        private IDictionary<string, ObjectEntity> objectTemplates = new Dictionary<string, ObjectEntity>();
+        private IDictionary<string, ObjectEntityFactory> objectTemplates = new Dictionary<string, ObjectEntityFactory>();
 
         public void InitEnity()
         {
@@ -43,11 +44,9 @@ namespace PlantVsZombie.GameObjects
         {
             if (objectTemplates.ContainsKey(te))
             {
-                if (objectTemplates[te].ObjectType == eObjectType.ZOMBIE)
-                {
-                    BaseZombie clone = new BaseZombie(objectTemplates[te]);
-                }
+                return objectTemplates[te].CreateEntity();
             }
+            return null;
         }
 
         private XDocument getXml(string config_url)
@@ -65,71 +64,12 @@ namespace PlantVsZombie.GameObjects
             XDocument docs = getXml(zombie_config);
             foreach (XElement item in docs.Root.Nodes())
             {
-                BaseZombie zombie = new BaseZombie();
+                string name = item.Element("Name").Value;
+                ObjectEntityFactory objectFac = new ObjectEntityFactory();
+                //XmlDeserializer deser = new XmlDeserializer(item);
+                objectFac.CreateEntity();
 
-                string name = item.Attribute("name").Value;
-                XElement components = item.Element("Components");
-                foreach (var component in components.Elements("Component"))
-                {
-                    string type = component.Attribute("type").Value;
-                    var behaviors = component.Elements("Behavior");
-
-                    switch (type)
-                    {
-                        case "xml_move":
-                            // MOVE COMPONNET
-                            MoveComponent moveComponent = MoveComponentFactory.CreateComponent();
-                            foreach (XElement behavior in behaviors)
-                            {
-                                string typeBe = behavior.Attribute("type").Value;
-                                MoveBehavior moveBeha = MoveBehavior.CreateBehavior();
-                                int velX = Int32.Parse(behavior.Attribute("velocityX").Value);
-                                int velY = Int32.Parse(behavior.Attribute("velocityY").Value);
-                                moveBeha.Velocity = new Vector2(velX, velY);
-                                if (typeBe == "xml_move_stand")
-                                    moveComponent.AddBehavior(eMoveBehaviorType.STANDING, moveBeha);
-                                else if (typeBe == "xml_move_run")
-                                    moveComponent.AddBehavior(eMoveBehaviorType.RUNNING, moveBeha);
-                            }
-                            zombie.AddComponent(moveComponent);
-                            break;
-                        case "xml_render":
-                            // RENDER COMPONENT
-                            RenderComponent renderComponent = RenderComponentFactory.CreateComponent();
-                            foreach (XElement behavior in behaviors)
-                            {
-                                string typeBe = behavior.Attribute("type").Value;
-                                RenderBehavior renderBeha = RenderBehavior.CreateBehavior();
-                                string resource = behavior.Attribute("resourceName").Value;
-                                renderBeha.Sprite = resourceManager.GetResource<ISprite>(resource);
-                                if (typeBe == "xml_render_eat")
-                                    renderComponent.AddBehavior(eMoveRenderBehaviorType.ZO_NORMAL_EATING, renderBeha);
-                                else if (typeBe == "xml_render_run")
-                                    renderComponent.AddBehavior(eMoveRenderBehaviorType.ZO_NORMAL_RUNNING, renderBeha);
-                            }
-                            zombie.AddComponent(renderComponent);
-                            break;
-                        case "xml_physic":
-                            // PHYSIC COMPONENT
-                            PhysicComponent physicComponent = PhysicComponentFactory.CreateComponent();
-                            zombie.AddComponent(physicComponent);
-                            break;
-                        case "xml_logic":
-                            // LOGIC COMPONENT
-                            LogicComponent logicComponent = LogicComponentFactory.CreateComponent();
-                            string typeCo = component.Attribute("behavior").Value;
-                            if (typeCo == "xml_NormalZombie")
-                                logicComponent.LogicBehavior = new Z_NormalLogicBehavior();
-                            zombie.AddComponent(logicComponent);
-                            break;
-                        default:
-                            break;
-                    }
-                    
-                }
-
-                zombie.ObjectType = eObjectType.ZOMBIE;
-                this.objectTemplates.Add(name, zombie);
+                this.objectTemplates.Add(name, objectFac);
             }
         }
 

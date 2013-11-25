@@ -12,10 +12,10 @@ namespace PlantVsZombie.GameCore
 {
     public class PZResourceManager : BaseResourceManager
     {
-        public PZResourceManager(GraphicsDevice graphicDevice)
+        public PZResourceManager(ContentManager content)
             : base()
         {
-            this.AddResourceLoader(new AssetTexture2DLoader(graphicDevice, @"Assets\"));
+            this.AddResourceLoader(new GameContentResourceLoader<Texture2D>(content));
             this.AddResourceLoader(new SpriteResourceLoader(this, SpriteFramesBank.Instance));
         }
     }

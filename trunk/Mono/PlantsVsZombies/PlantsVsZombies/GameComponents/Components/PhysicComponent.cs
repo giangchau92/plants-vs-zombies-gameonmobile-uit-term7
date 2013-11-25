@@ -6,6 +6,7 @@ using SCSEngine.Utils.GameObject.Component;
 using Microsoft.Xna.Framework;
 using PlantVsZombie.GameCore;
 using PlantVsZombie.GameComponents.GameMessages;
+using PlantsVsZombies.GameComponents;
 
 namespace PlantVsZombie.GameComponents.Components
 {
@@ -105,6 +106,23 @@ namespace PlantVsZombie.GameComponents.Components
 
                 PZObjectManager.Instance.SendMessage(colMsg, gameTime);
             }
+        }
+
+        public void Serialize(SCSEngine.Serialization.ISerializer serializer)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Deserialize(SCSEngine.Serialization.IDeserializer deserializer)
+        {
+            
+        }
+
+
+        IComponent<MessageType> IComponent<MessageType>.Clone()
+        {
+            PhysicComponent physCom = PhysicComponentFactory.CreateComponent();
+            return physCom;
         }
     }
 }

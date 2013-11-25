@@ -13,7 +13,7 @@ using System.Text;
 
 namespace PlantVsZombie.GameComponents.Behaviors.Bullet
 {
-    class B_IceBulletLogicBehavior : BaseLogicBehavior 
+    class B_IceBulletLogicBehavior : BaseLogicBehavior
     {
 
         public override void Update(IMessage<MessageType> message, GameTime gameTime)

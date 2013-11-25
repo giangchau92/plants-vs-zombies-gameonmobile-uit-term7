@@ -12,5 +12,6 @@ namespace SCSEngine.Utils.GameObject.Component
     {
         IEntity<T> Owner { get; set; }
         void OnMessage(IMessage<T> message, GameTime gameTime);
+        IComponent<T> Clone();
     }
 }

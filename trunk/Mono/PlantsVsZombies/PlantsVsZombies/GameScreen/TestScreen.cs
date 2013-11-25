@@ -18,6 +18,7 @@ using SCSEngine.Sprite;
 using System.Xml;
 using System.IO;
 using System.Xml.Linq;
+using PlantVsZombie.GameComponents.Components;
 
 namespace PlantVsZombie.GameScreen
 {
@@ -47,20 +48,25 @@ namespace PlantVsZombie.GameScreen
             };
             // Gen object
 
-            for (int i = 0; i < 5; i++)
-                for (int j = 0; j < 9; j++)
-                {
-                    int type = gameBoard.Board[i, j];
-                    if (type == 1)
-                    {
-                        objectManager.AddObject(PZObjectFactory.Instance.createPlant(gameBoard.GetPositonAt(i, j)));
-                    } else if (type == 2)
-                    {
-                        objectManager.AddObject(PZObjectFactory.Instance.createIcePlant(gameBoard.GetPositonAt(i, j)));
-                    }
-                }
+            //for (int i = 0; i < 5; i++)
+            //    for (int j = 0; j < 9; j++)
+            //    {
+            //        int type = gameBoard.Board[i, j];
+            //        if (type == 1)
+            //        {
+            //            objectManager.AddObject(PZObjectFactory.Instance.createPlant(gameBoard.GetPositonAt(i, j)));
+            //        }
+            //        else if (type == 2)
+            //        {
+            //            objectManager.AddObject(PZObjectFactory.Instance.createIcePlant(gameBoard.GetPositonAt(i, j)));
+            //        }
+            //    }
 
-
+            GameObjectCenter.Instance.InitEnity();
+            ObjectEntity obj = GameObjectCenter.Instance.CreateObject("xml_stand_zombie");
+            (obj.GetComponent(typeof(MoveComponent)) as MoveComponent).Position = new Vector2(200, 200);
+            int a;
+            a = 1;
            
         }
 

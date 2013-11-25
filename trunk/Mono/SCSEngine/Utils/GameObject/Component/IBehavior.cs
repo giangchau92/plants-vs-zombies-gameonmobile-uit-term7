@@ -12,5 +12,6 @@ namespace SCSEngine.Utils.GameObject.Component
         void UnLoad();
         void Update(IMessage<T> message, GameTime gameTime);
         IComponent<T> Owner { get; set; }
+        IBehavior<T> Clone();
     }
 }

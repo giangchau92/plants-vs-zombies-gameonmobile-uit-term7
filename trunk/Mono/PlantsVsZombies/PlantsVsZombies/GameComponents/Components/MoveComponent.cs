@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using PlantVsZombie.GameComponents.GameMessages;
 using SCSEngine.Serialization.XNASerializationHelper;
 using PlantVsZombie.GameComponents.Behaviors.Implements;
+using PlantsVsZombies.GameComponents;
 
 namespace PlantVsZombie.GameComponents.Components
 {
@@ -92,7 +93,7 @@ namespace PlantVsZombie.GameComponents.Components
             var behDesers = deserializer.DeserializeAll("Behavior");
             foreach (var behDeser in behDesers)
             {
-                string type = behDeser.DeserializeString("type");
+                string type = behDeser.DeserializeString("Type");
                 eMoveBehaviorType moveBehType = eMoveBehaviorType.STANDING;
                 if (type == "xml_move_stand")
                     moveBehType = eMoveBehaviorType.STANDING;
@@ -105,6 +106,22 @@ namespace PlantVsZombie.GameComponents.Components
 
                 this.AddBehavior(moveBehType, moveBeh);
             }
+        }
+
+
+        IComponent<MessageType> IComponent<MessageType>.Clone()
+        {
+            MoveComponent moveComponent = MoveComponentFactory.CreateComponent();
+            moveComponent.Velocity = this.Velocity;
+            moveComponent.Acceleration = this.Acceleration;
+            moveComponent.Position = this.Position;
+
+            foreach (var item in this.supportBehaviors)
+            {
+                moveComponent.AddBehavior(item.Key, item.Value.Clone());
+            }
+
+            return moveComponent;
         }
     }
 }
