@@ -15,14 +15,14 @@ namespace PlantsVsZombies
 {
     public partial class GamePage : PhoneApplicationPage
     {
-        private Game1 _game;
+        private PvZGame _game;
 
         // Constructor
         public GamePage()
         {
             InitializeComponent();
 
-            _game = XamlGame<Game1>.Create("", XnaSurface);
+            _game = XamlGame<PvZGame>.Create("", XnaSurface);
 
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();

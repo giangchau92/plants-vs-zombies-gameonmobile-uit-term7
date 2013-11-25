@@ -62,7 +62,6 @@ namespace PlantVsZombies.GameScreen
             //        }
             //    }
 
-            GameObjectCenter.Instance.InitEnity();
             ObjectEntity obj = GameObjectCenter.Instance.CreateObject("xml_stand_zombie");
             (obj.GetComponent(typeof(MoveComponent)) as MoveComponent).Position = new Vector2(200, 200);
             int a;

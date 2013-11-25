@@ -10,7 +10,6 @@ using PlantVsZombies.GameComponents.GameMessages;
 using PlantVsZombies.GameComponents.Behaviors.Implements;
 using SCSEngine.Serialization.XNASerializationHelper;
 using SCSEngine.Sprite;
-using PlantsVsZombies.GameComponents;
 
 namespace PlantVsZombies.GameComponents.Components
 {

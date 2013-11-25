@@ -9,7 +9,6 @@ using PlantVsZombies.GameCore;
 using PlantVsZombies.GameObjects;
 using PlantVsZombies.GameComponents.Components;
 using PlantVsZombies.GameObjects.Implements;
-using PlantsVsZombies.GameComponents;
 
 namespace PlantVsZombies.GameComponents.Behaviors.Zombie
 {
