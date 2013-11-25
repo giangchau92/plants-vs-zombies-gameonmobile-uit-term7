@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using PlantsVsZombies.GameComponents;
 using PlantVsZombie.GameComponents.Components;
 using PlantVsZombie.GameComponents.GameMessages;
 using PlantVsZombie.GameCore;
@@ -76,6 +77,11 @@ namespace PlantVsZombie.GameComponents.Behaviors.Plant
                 throw new Exception("PL_NormalLogicBehavior: message is not CollisionDetectedMsg");
 
             base.OnCollison(msg, gameTime);
+        }
+
+        public override IBehavior<MessageType> Clone()
+        {
+            return new P_IcePlantLogicBehavior();
         }
     }
 }

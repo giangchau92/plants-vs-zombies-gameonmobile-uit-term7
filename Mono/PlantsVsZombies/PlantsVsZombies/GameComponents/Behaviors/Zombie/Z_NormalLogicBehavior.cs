@@ -9,6 +9,7 @@ using PlantVsZombie.GameCore;
 using PlantVsZombie.GameObjects;
 using PlantVsZombie.GameComponents.Components;
 using PlantVsZombie.GameObjects.Implements;
+using PlantsVsZombies.GameComponents;
 
 namespace PlantVsZombie.GameComponents.Behaviors.Zombie
 {
@@ -103,6 +104,10 @@ namespace PlantVsZombie.GameComponents.Behaviors.Zombie
             PZObjectManager.Instance.SendMessage(renderMsg1, gameTime);
         }
 
-        
+
+        public override IBehavior<MessageType> Clone()
+        {
+            return new Z_NormalLogicBehavior();
+        }
     }
 }

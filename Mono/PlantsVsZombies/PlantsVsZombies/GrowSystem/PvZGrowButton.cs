@@ -260,7 +260,7 @@ namespace PlantVsZombie.GrowSystem
             string dcType = dcDeser.DeserializeString("Type");
             brushF = GrowButtonBrushFactoryFactory.Instance.CreateFactory(dcType);
             dcDeser.Deserialize("Data", brushF);
-            this.shadowF = this.shadowFB.GetPlantShadowFactory(deserializer.DeserializeString("Shadow"));
+            //this.shadowF = this.shadowFB.GetPlantShadowFactory(deserializer.DeserializeString("Shadow"));
         }
     }
 }

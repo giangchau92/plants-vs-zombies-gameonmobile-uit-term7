@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using PlantsVsZombies.GameComponents;
 using PlantVsZombie.GameComponents.Components;
 using SCSEngine.Services;
 using SCSEngine.Services.Sprite;
@@ -69,6 +70,14 @@ namespace PlantVsZombie.GameComponents.Behaviors.Implements
         {
             RenderBehavior result = new RenderBehavior();
             return result;
+        }
+
+        public override IBehavior<MessageType> Clone()
+        {
+            RenderBehavior renderBehavior = new RenderBehavior();
+            renderBehavior.Sprite = this.Sprite;
+            renderBehavior.SpriteBound = this.SpriteBound;
+            return renderBehavior;
         }
     }
 }

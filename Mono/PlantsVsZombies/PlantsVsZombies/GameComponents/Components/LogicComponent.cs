@@ -5,6 +5,7 @@ using System.Text;
 using SCSEngine.Utils.GameObject.Component;
 using Microsoft.Xna.Framework;
 using PlantVsZombie.GameComponents.Behaviors;
+using PlantsVsZombies.GameComponents;
 
 namespace PlantVsZombie.GameComponents.Components
 {
@@ -49,6 +50,25 @@ namespace PlantVsZombie.GameComponents.Components
                 default:
                     break;
             }
+        }
+
+        public void Serialize(SCSEngine.Serialization.ISerializer serializer)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Deserialize(SCSEngine.Serialization.IDeserializer deserializer)
+        {
+            string behaviorType = deserializer.DeserializeString("Behavior");
+            if (behaviorType == "xml_NormalZombie")
+                this.LogicBehavior = new BaseLogicBehavior();
+        }
+
+        IComponent<MessageType> IComponent<MessageType>.Clone()
+        {
+            LogicComponent logicCom = LogicComponentFactory.CreateComponent();
+            logicCom.LogicBehavior = this.LogicBehavior.Clone() as BaseLogicBehavior;
+            return logicCom;
         }
     }
 }
