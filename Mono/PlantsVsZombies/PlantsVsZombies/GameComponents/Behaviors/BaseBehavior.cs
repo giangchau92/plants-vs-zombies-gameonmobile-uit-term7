@@ -6,7 +6,7 @@ using SCSEngine.Utils.GameObject.Component;
 using Microsoft.Xna.Framework;
 using PlantsVsZombies.GameComponents;
 
-namespace PlantVsZombie.GameComponents.Behaviors
+namespace PlantVsZombies.GameComponents.Behaviors
 {
     public class BaseBehavior : IBehavior<MessageType>
     {

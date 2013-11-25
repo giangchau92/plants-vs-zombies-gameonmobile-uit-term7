@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PlantVsZombie.GameComponents.GameMessages
+namespace PlantVsZombies.GameComponents.GameMessages
 {
     public class CollisionDetectedMsg : GameMessage
     {

@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using SCSEngine.Utils.GameObject.Component;
 using Microsoft.Xna.Framework;
-using PlantVsZombie.GameComponents.Behaviors;
+using PlantVsZombies.GameComponents.Behaviors;
 using PlantsVsZombies.GameComponents;
 
-namespace PlantVsZombie.GameComponents.Components
+namespace PlantVsZombies.GameComponents.Components
 {
     public class LogicComponent : IComponent<MessageType>
     {

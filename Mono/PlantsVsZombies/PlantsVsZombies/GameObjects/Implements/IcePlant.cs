@@ -1,8 +1,8 @@
 using Microsoft.Xna.Framework;
-using PlantVsZombie.GameComponents;
-using PlantVsZombie.GameComponents.Behaviors.Implements;
-using PlantVsZombie.GameComponents.Behaviors.Plant;
-using PlantVsZombie.GameComponents.Components;
+using PlantVsZombies.GameComponents;
+using PlantVsZombies.GameComponents.Behaviors.Implements;
+using PlantVsZombies.GameComponents.Behaviors.Plant;
+using PlantVsZombies.GameComponents.Components;
 using SCSEngine.ResourceManagement;
 using SCSEngine.Services;
 using SCSEngine.Sprite;
@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PlantVsZombie.GameObjects.Implements
+namespace PlantVsZombies.GameObjects.Implements
 {
     public class IcePlant : BasePlant
     {

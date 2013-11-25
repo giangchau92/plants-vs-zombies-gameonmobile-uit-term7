@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
-using PlantVsZombie.GameComponents.Effect;
+using PlantVsZombies.GameComponents.Effect;
 
-namespace PlantVsZombie.GameComponents.Behaviors
+namespace PlantVsZombies.GameComponents.Behaviors
 {
     public class BaseLogicBehavior : BaseBehavior
     {

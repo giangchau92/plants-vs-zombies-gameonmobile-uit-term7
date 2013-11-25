@@ -3,11 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using PlantVsZombie.GameComponents.Behaviors;
-using PlantVsZombie.GameComponents.Components;
-using PlantVsZombie.GameComponents.Behaviors.Implements;
+using PlantVsZombies.GameComponents.Behaviors;
+using PlantVsZombies.GameComponents.Components;
+using PlantVsZombies.GameComponents.Behaviors.Implements;
 
-namespace PlantVsZombie.GameComponents.Effect.Implements
+namespace PlantVsZombies.GameComponents.Effect.Implements
 {
     public class SlowMoveEffect : IEffect
     {

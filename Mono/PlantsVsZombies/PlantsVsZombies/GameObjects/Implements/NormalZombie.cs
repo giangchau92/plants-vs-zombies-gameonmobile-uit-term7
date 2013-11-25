@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using SCSEngine.Utils.GameObject.Component;
-using PlantVsZombie.GameComponents.Components;
-using PlantVsZombie.GameComponents;
-using PlantVsZombie.GameComponents.Behaviors.Zombie;
-using PlantVsZombie.GameComponents.Behaviors.Plant;
+using PlantVsZombies.GameComponents.Components;
+using PlantVsZombies.GameComponents;
+using PlantVsZombies.GameComponents.Behaviors.Zombie;
+using PlantVsZombies.GameComponents.Behaviors.Plant;
 using Microsoft.Xna.Framework;
 using SCSEngine.Services;
 using SCSEngine.ResourceManagement;
 using SCSEngine.Sprite;
-using PlantVsZombie.GameComponents.Behaviors.Implements;
+using PlantVsZombies.GameComponents.Behaviors.Implements;
 
-namespace PlantVsZombie.GameObjects.Implements
+namespace PlantVsZombies.GameObjects.Implements
 {
     public class NormalZombie : BaseZombie
     {

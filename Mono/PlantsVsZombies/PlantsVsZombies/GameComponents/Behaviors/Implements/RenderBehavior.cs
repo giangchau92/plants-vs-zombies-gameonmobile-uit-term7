@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework;
 using PlantsVsZombies.GameComponents;
-using PlantVsZombie.GameComponents.Components;
+using PlantVsZombies.GameComponents.Components;
 using SCSEngine.Services;
 using SCSEngine.Services.Sprite;
 using SCSEngine.Sprite;
@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PlantVsZombie.GameComponents.Behaviors.Implements
+namespace PlantVsZombies.GameComponents.Behaviors.Implements
 {
     public class RenderBehavior : BaseBehavior
     {

@@ -1,4 +1,4 @@
-using PlantVsZombie.GameComponents;
+using PlantVsZombies.GameComponents;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Text;
 using SCSEngine.Utils.GameObject.Component;
 using Microsoft.Xna.Framework;
 
-namespace PlantVsZombie.GameCore
+namespace PlantVsZombies.GameCore
 {
     public class PZObjectManager
     {

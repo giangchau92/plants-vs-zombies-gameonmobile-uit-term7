@@ -6,13 +6,13 @@ using SCSEngine.Utils.GameObject.Component;
 using Microsoft.Xna.Framework.Graphics;
 using SCSEngine.Services;
 using Microsoft.Xna.Framework;
-using PlantVsZombie.GameComponents.GameMessages;
-using PlantVsZombie.GameComponents.Behaviors.Implements;
+using PlantVsZombies.GameComponents.GameMessages;
+using PlantVsZombies.GameComponents.Behaviors.Implements;
 using SCSEngine.Serialization.XNASerializationHelper;
 using SCSEngine.Sprite;
 using PlantsVsZombies.GameComponents;
 
-namespace PlantVsZombie.GameComponents.Components
+namespace PlantVsZombies.GameComponents.Components
 {
     public enum eMoveRenderBehaviorType
     {

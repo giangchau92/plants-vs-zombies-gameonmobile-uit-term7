@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework;
-using PlantVsZombie.GameComponents.Behaviors.Bullet;
-using PlantVsZombie.GameComponents.Behaviors.Implements;
-using PlantVsZombie.GameComponents.Components;
+using PlantVsZombies.GameComponents.Behaviors.Bullet;
+using PlantVsZombies.GameComponents.Behaviors.Implements;
+using PlantVsZombies.GameComponents.Components;
 using SCSEngine.ResourceManagement;
 using SCSEngine.Services;
 using SCSEngine.Sprite;
@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PlantVsZombie.GameObjects.Implements
+namespace PlantVsZombies.GameObjects.Implements
 {
     public class IceBullet : BaseBullet
     {

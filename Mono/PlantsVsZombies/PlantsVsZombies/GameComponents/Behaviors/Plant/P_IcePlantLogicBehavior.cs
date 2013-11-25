@@ -1,9 +1,9 @@
 using Microsoft.Xna.Framework;
 using PlantsVsZombies.GameComponents;
-using PlantVsZombie.GameComponents.Components;
-using PlantVsZombie.GameComponents.GameMessages;
-using PlantVsZombie.GameCore;
-using PlantVsZombie.GameObjects.Implements;
+using PlantVsZombies.GameComponents.Components;
+using PlantVsZombies.GameComponents.GameMessages;
+using PlantVsZombies.GameCore;
+using PlantVsZombies.GameObjects.Implements;
 using SCSEngine.Services;
 using SCSEngine.Utils.GameObject.Component;
 using System;
@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PlantVsZombie.GameComponents.Behaviors.Plant
+namespace PlantVsZombies.GameComponents.Behaviors.Plant
 {
     public class P_IcePlantLogicBehavior : BaseLogicBehavior
     {

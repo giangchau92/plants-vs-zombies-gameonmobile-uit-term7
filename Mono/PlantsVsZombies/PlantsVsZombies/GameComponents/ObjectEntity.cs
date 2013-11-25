@@ -5,10 +5,10 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using SCSEngine.Utils.GameObject.Component;
 using SCSEngine.Serialization;
-using PlantVsZombie.GameComponents.Components;
+using PlantVsZombies.GameComponents.Components;
 
 
-namespace PlantVsZombie.GameComponents
+namespace PlantVsZombies.GameComponents
 {
     public enum eObjectType { PLANT, ZOMBIE}
     public class ObjectEntity : IEntity<MessageType>, IComponent<MessageType>

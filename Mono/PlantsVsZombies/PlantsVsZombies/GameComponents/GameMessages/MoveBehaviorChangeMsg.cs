@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using PlantVsZombie.GameComponents;
-using PlantVsZombie.GameComponents.Components;
+using PlantVsZombies.GameComponents;
+using PlantVsZombies.GameComponents.Components;
 
-namespace PlantVsZombie.GameComponents.GameMessages
+namespace PlantVsZombies.GameComponents.GameMessages
 {
     public class MoveBehaviorChangeMsg : GameMessage
     {

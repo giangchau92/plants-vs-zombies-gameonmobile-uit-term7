@@ -22,8 +22,7 @@ namespace PlantsVsZombies.Resources
 
         public object Load(string resourceName)
         {
-            return Texture2D.FromStream(this.graphicDevice,
-                new FileStream(folderPath + resourceName, FileMode.Open, FileAccess.Read));
+            return null;
         }
 
         public Type ResourceType
