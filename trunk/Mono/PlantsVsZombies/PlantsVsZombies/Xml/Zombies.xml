@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Zombies>
+	<Zombie name="xml_stand_zombie">
+		<Components>
+			<Component type="xml_move">
+				<Behavior type="xml_move_stand" velocityX="0" velocityY="0"/>
+				<Behavior type="xml_move_run" velocityX="-100" velocityY="0"/>
+			</Component>
+			<Component type="xml_render">
+				<Behavior type="xml_render_eat" resourceName="Zombies/Nameless/Attack"/>
+				<Behavior type="xml_render_run" resourceName="Zombies/Nameless/Walk"/>
+			</Component>
+			<Component type="xml_physic">
+			</Component>
+			<Component type="xml_logic" behavior="xml_NormalZombie">
+			</Component>
+		</Components>
+	</Zombie>
+</Zombies>
