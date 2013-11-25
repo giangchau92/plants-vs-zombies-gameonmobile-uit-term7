@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using PlantVsZombie.GameComponents.Components;
 using SCSEngine.Services;
-using SSCEngine.Utils.GameObject.Component;
+using SCSEngine.Utils.GameObject.Component;
 using System;
 using System.Collections.Generic;
 using System.Linq;

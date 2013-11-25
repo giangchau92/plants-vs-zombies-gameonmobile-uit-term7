@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SSCEngine.GestureHandling.Implements
+namespace SCSEngine.GestureHandling.Implements
 {
     public class TapGestureHandler : IGestureHandler
     {

@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SCSEngine.Services;
 using PlantVsZombie.GameComponents.Components;
-using SSCEngine.Utils.GameObject.Component;
+using SCSEngine.Utils.GameObject.Component;
 using SCSEngine.Sprite;
 using SCSEngine.Services.Sprite;
 
