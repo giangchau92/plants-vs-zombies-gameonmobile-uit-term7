@@ -6,15 +6,16 @@ using SCSEngine.ResourceManagement.Implement;
 using SCSEngine.Sprite;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using PlantsVsZombies.Resources;
 
 namespace PlantVsZombie.GameCore
 {
     public class PZResourceManager : BaseResourceManager
     {
-        public PZResourceManager(ContentManager content)
+        public PZResourceManager(GraphicsDevice graphicDevice)
             : base()
         {
-            this.AddResourceLoader(new GameContentResourceLoader<Texture2D>(content));
+            this.AddResourceLoader(new AssetTexture2DLoader(graphicDevice, @"Assets\"));
             this.AddResourceLoader(new SpriteResourceLoader(this, SpriteFramesBank.Instance));
         }
     }
