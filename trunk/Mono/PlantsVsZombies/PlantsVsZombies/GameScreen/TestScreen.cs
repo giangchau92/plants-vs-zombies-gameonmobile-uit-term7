@@ -6,21 +6,21 @@ using SCSEngine.ScreenManagement.Implement;
 using SCSEngine.ScreenManagement;
 using Microsoft.Xna.Framework;
 using SCSEngine.Utils.GameObject.Component;
-using PlantVsZombie.GameComponents;
-using PlantVsZombie.GameObjects;
+using PlantVsZombies.GameComponents;
+using PlantVsZombies.GameObjects;
 using Microsoft.Xna.Framework.Graphics;
 using SCSEngine.Services;
 using Microsoft.Xna.Framework.Input.Touch;
-using PlantVsZombie.GameCore;
-using PlantVsZombie.GameComponents.GameMessages;
+using PlantVsZombies.GameCore;
+using PlantVsZombies.GameComponents.GameMessages;
 using System.Diagnostics;
 using SCSEngine.Sprite;
 using System.Xml;
 using System.IO;
 using System.Xml.Linq;
-using PlantVsZombie.GameComponents.Components;
+using PlantVsZombies.GameComponents.Components;
 
-namespace PlantVsZombie.GameScreen
+namespace PlantVsZombies.GameScreen
 {
     public class TestScreen : BaseGameScreen
     {

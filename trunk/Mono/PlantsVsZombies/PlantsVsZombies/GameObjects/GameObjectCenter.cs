@@ -1,5 +1,5 @@
-using PlantVsZombie.GameComponents;
-using PlantVsZombie.GameComponents.Behaviors.Implements;
+using PlantVsZombies.GameComponents;
+using PlantVsZombies.GameComponents.Behaviors.Implements;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,14 +8,14 @@ using System.Reflection;
 using System.Text;
 using System.Xml.Linq;
 using Microsoft.Xna.Framework;
-using PlantVsZombie.GameComponents.Components;
+using PlantVsZombies.GameComponents.Components;
 using SCSEngine.ResourceManagement;
 using SCSEngine.Services;
 using SCSEngine.Sprite;
-using PlantVsZombie.GameComponents.Behaviors.Zombie;
+using PlantVsZombies.GameComponents.Behaviors.Zombie;
 using SCSEngine.Serialization.XmlSerialization;
 
-namespace PlantVsZombie.GameObjects
+namespace PlantVsZombies.GameObjects
 {
     public class GameObjectCenter
     {
@@ -30,7 +30,7 @@ namespace PlantVsZombie.GameObjects
             }
         }
 
-        private const string zombie_config = "PlantVsZombie.Xml.Zombies.xml";
+        private const string zombie_config = "PlantVsZombies.Xml.Zombies.xml";
 
         private IDictionary<string, ObjectEntityFactory> objectTemplates = new Dictionary<string, ObjectEntityFactory>();
 
@@ -51,7 +51,7 @@ namespace PlantVsZombie.GameObjects
 
         private XDocument getXml(string config_url)
         {
-            Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("PlantVsZombie.Xml.Zombies.xml");
+            Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("PlantVsZombies.Xml.Zombies.xml");
             XDocument mXDocument = new XDocument();
             mXDocument = XDocument.Load(stream);
             return mXDocument;

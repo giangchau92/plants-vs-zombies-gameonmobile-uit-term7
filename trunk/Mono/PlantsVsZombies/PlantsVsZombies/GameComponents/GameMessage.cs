@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using SCSEngine.Utils.GameObject.Component;
 
-namespace PlantVsZombie.GameComponents
+namespace PlantVsZombies.GameComponents
 {
     public enum MessageType
     {

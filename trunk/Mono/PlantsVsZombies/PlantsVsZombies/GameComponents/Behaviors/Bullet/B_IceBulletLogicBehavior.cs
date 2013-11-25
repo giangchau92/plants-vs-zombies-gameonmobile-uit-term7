@@ -1,17 +1,17 @@
 using Microsoft.Xna.Framework;
-using PlantVsZombie.GameComponents.Behaviors.Implements;
-using PlantVsZombie.GameComponents.Components;
-using PlantVsZombie.GameComponents.Effect.Implements;
-using PlantVsZombie.GameComponents.GameMessages;
-using PlantVsZombie.GameCore;
-using PlantVsZombie.GameObjects;
+using PlantVsZombies.GameComponents.Behaviors.Implements;
+using PlantVsZombies.GameComponents.Components;
+using PlantVsZombies.GameComponents.Effect.Implements;
+using PlantVsZombies.GameComponents.GameMessages;
+using PlantVsZombies.GameCore;
+using PlantVsZombies.GameObjects;
 using SCSEngine.Utils.GameObject.Component;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PlantVsZombie.GameComponents.Behaviors.Bullet
+namespace PlantVsZombies.GameComponents.Behaviors.Bullet
 {
     class B_IceBulletLogicBehavior : BaseLogicBehavior
     {

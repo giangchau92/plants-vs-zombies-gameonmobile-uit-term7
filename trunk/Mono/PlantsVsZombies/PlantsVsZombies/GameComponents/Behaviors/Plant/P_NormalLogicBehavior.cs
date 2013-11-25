@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using SCSEngine.Utils.GameObject.Component;
-using PlantVsZombie.GameComponents.GameMessages;
-using PlantVsZombie.GameComponents.Components;
-using PlantVsZombie.GameCore;
+using PlantVsZombies.GameComponents.GameMessages;
+using PlantVsZombies.GameComponents.Components;
+using PlantVsZombies.GameCore;
 using SCSEngine.Services;
-using PlantVsZombie.GameObjects;
-using PlantVsZombie.GameObjects.Implements;
+using PlantVsZombies.GameObjects;
+using PlantVsZombies.GameObjects.Implements;
 using PlantsVsZombies.GameComponents;
 
-namespace PlantVsZombie.GameComponents.Behaviors.Plant
+namespace PlantVsZombies.GameComponents.Behaviors.Plant
 {
     enum eNormalPlantState
     {

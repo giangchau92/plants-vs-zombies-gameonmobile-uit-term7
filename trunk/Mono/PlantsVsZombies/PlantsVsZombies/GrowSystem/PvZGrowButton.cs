@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PlantVsZombie.GrowSystem
+namespace PlantVsZombies.GrowSystem
 {
     public delegate void PvZGrowButtonEventHandler(PvZGrowButton button, FreeTap leaveGesture);
     public delegate void CooldownButtonEventHandler(PvZGrowButton button);

@@ -1,10 +1,11 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using PlantVsZombie.GameCore;
-using PlantVsZombie.GameObjects;
+using PlantVsZombies.GameCore;
+using PlantVsZombies.GameObjects;
 using SCSEngine.ResourceManagement;
 using SCSEngine.Services;
 using System;
+using System.Diagnostics;
 
 namespace PlantsVsZombies
 {
@@ -57,9 +58,9 @@ namespace PlantsVsZombies
             // TODO: use this.Content to load your game content here
             // Add Resource Manager
             IResourceManager resourceManager = new PZResourceManager(this.Content);
-            //this.Services.AddService(typeof(IResourceManager), resourceManager);
-            // Load sprite data
-            // SCSService
+            this.Services.AddService(typeof(IResourceManager), resourceManager);
+             //Load sprite data
+             //SCSService
             SCSServices.Instance.Game = this;
             SCSServices.Instance.SpriteBatch = spriteBatch;
             SCSServices.Instance.SpritePlayer = new SCSEngine.Services.Sprite.SpritePlayer(spriteBatch);
@@ -67,13 +68,13 @@ namespace PlantsVsZombies
             SCSServices.Instance.ResourceManager = resourceManager;
             SCSServices.Instance.SpritePlayer = new SCSEngine.Services.Sprite.SpritePlayer(spriteBatch);
 
-            SpriteFont font = Content.Load<SpriteFont>("DebugFont");
+            SpriteFont font = Content.Load<SpriteFont>("Fonts/DebugFont");
             SCSServices.Instance.DebugFont = font;
-            // Screeen management
+            //Screeen management
             screenManager = new PZScreenManager(this);
             screenManager.AddExclusive(screenManager.Bank.GetNewScreen("Test"));
 
-            // Test
+            //Test
             GameObjectCenter.Instance.InitEnity();
         }
 

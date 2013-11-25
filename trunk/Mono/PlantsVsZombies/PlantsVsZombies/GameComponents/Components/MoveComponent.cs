@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using SCSEngine.Utils.GameObject.Component;
 using Microsoft.Xna.Framework;
-using PlantVsZombie.GameComponents.GameMessages;
+using PlantVsZombies.GameComponents.GameMessages;
 using SCSEngine.Serialization.XNASerializationHelper;
-using PlantVsZombie.GameComponents.Behaviors.Implements;
+using PlantVsZombies.GameComponents.Behaviors.Implements;
 using PlantsVsZombies.GameComponents;
 
-namespace PlantVsZombie.GameComponents.Components
+namespace PlantVsZombies.GameComponents.Components
 {
     public enum eMoveBehaviorType
     {

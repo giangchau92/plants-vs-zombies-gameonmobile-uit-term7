@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using PlantsVsZombies.Resources;
 
-namespace PlantVsZombie.GameCore
+namespace PlantVsZombies.GameCore
 {
     public class PZResourceManager : BaseResourceManager
     {

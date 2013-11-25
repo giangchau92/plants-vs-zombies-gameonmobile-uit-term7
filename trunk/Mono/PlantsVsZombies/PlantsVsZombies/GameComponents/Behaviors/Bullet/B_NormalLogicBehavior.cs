@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using SCSEngine.Utils.GameObject.Component;
-using PlantVsZombie.GameComponents.GameMessages;
-using PlantVsZombie.GameObjects;
-using PlantVsZombie.GameComponents.Components;
-using PlantVsZombie.GameCore;
-using PlantVsZombie.GameObjects.Implements;
+using PlantVsZombies.GameComponents.GameMessages;
+using PlantVsZombies.GameObjects;
+using PlantVsZombies.GameComponents.Components;
+using PlantVsZombies.GameCore;
+using PlantVsZombies.GameObjects.Implements;
 
-namespace PlantVsZombie.GameComponents.Behaviors.Bullet
+namespace PlantVsZombies.GameComponents.Behaviors.Bullet
 {
     public class B_NormalLogicBehavior : BaseLogicBehavior
     {
