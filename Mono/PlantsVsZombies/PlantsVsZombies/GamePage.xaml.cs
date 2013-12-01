@@ -10,6 +10,7 @@ using Microsoft.Phone.Shell;
 using Microsoft.Xna.Framework;
 using MonoGame.Framework.WindowsPhone;
 using PlantsVsZombies.Resources;
+using PlantsVsZombies.Orientations;
 
 namespace PlantsVsZombies
 {
@@ -26,6 +27,8 @@ namespace PlantsVsZombies
 
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
+
+            this.OrientationChanged += GameOrientation.Instance.OnOrientationChanged;
         }
 
         // Sample code for building a localized ApplicationBar
