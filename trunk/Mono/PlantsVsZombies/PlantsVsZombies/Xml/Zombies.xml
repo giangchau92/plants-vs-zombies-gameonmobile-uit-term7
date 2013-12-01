@@ -3,7 +3,7 @@
 	<Zombie>
     <Name>xml_stand_zombie</Name>
     <Type>Zombie</Type>
-  <Components>
+    <Components>
 			<Component>
         <Type>xml_move</Type>
 				<Behavior>
