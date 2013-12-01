@@ -78,8 +78,8 @@ namespace PlantsVsZombies
                 GameObjectCenter.Instance.InitEnity();
 
                 //Screeen management
-                //screenManager = new PZScreenManager(this);
-                //screenManager.AddExclusive(screenManager.Bank.GetNewScreen("Test"));
+                screenManager = new PZScreenManager(this);
+                screenManager.AddExclusive(screenManager.Bank.GetNewScreen("Test"));
 
                 GameOrientation.Instance.InitRenderTarget(this.GraphicsDevice);
             }
@@ -112,7 +112,7 @@ namespace PlantsVsZombies
 
                 // TODO: Add your update logic here
                 SCSServices.Instance.GameTime = gameTime;
-                //screenManager.Update(gameTime);
+                screenManager.Update(gameTime);
                 //Debug.WriteLine(string.Format("Eslaped: {0}", gameTime.ElapsedGameTime.TotalMilliseconds));
 
                 base.Update(gameTime);
@@ -130,13 +130,13 @@ namespace PlantsVsZombies
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
+            GameOrientation.Instance.BeginDraw(this.spriteBatch);
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             try
             {
                 // TODO: Add your drawing code here
-                //screenManager.Draw(gameTime);
-                GameOrientation.Instance.BeginDraw(this.spriteBatch);
+                screenManager.Draw(gameTime);
 
                 this.spriteBatch.Begin();
                 this.spriteBatch.DrawString(SCSServices.Instance.DebugFont, @"Foo---barr", new Vector2(700f, 320f), Color.White);

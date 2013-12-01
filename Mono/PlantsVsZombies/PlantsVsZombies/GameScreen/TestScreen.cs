@@ -63,10 +63,6 @@ namespace PlantVsZombies.GameScreen
             //    }
 
             ObjectEntity obj = GameObjectCenter.Instance.CreateObject("xml_stand_zombie");
-            (obj.GetComponent(typeof(MoveComponent)) as MoveComponent).Position = new Vector2(200, 200);
-            int a;
-            a = 1;
-           
         }
 
         public override void Update(GameTime gameTime)
@@ -94,8 +90,6 @@ namespace PlantVsZombies.GameScreen
             updateMessage.DestinationObjectId = 0; // For all object
 
             objectManager.SendMessage(updateMessage, gameTime);
-
-            
 
             base.Update(gameTime);
         }
