@@ -5,10 +5,9 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using SCSEngine.Utils.GameObject.Component;
 using SCSEngine.Serialization;
-using PlantVsZombies.GameComponents.Components;
 
 
-namespace PlantVsZombies.GameComponents
+namespace PlantsVsZombies.GameComponents
 {
     public enum eObjectType { PLANT, ZOMBIE}
     public class ObjectEntity : IEntity<MessageType>, IComponent<MessageType>
@@ -97,25 +96,9 @@ namespace PlantVsZombies.GameComponents
             get;
             set;
         }
-
-        public void Serialize(ISerializer serializer)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Deserialize(IDeserializer deserializer)
-        {
-            throw new NotImplementedException();
-        }
-
-
-        public IComponent<MessageType> Clone()
-        {
-            throw new NotImplementedException();
-        }
     }
 
-    public class ObjectEntityFactory : ISerializable
+    public class IObjectEntityFactory : ISerializable
     {
         private const string tagName = "Name";
         private const string tagComponents = "Components";
@@ -123,29 +106,23 @@ namespace PlantVsZombies.GameComponents
 
         ICollection<IComponent<MessageType>> components = new List<IComponent<MessageType>>();
         string name;
-        public eObjectType ObjectType;
 
-        IComponentFactory componentFactory = new ComponentFactory();
+        IComponentFactory componentFactory;
 
         public void Serialize(ISerializer serializer)
         {
-            
+            throw new NotImplementedException();
         }
 
         public void Deserialize(IDeserializer deserializer)
         {
-            // Save name
             this.name = deserializer.DeserializeString(tagName);
-            string objectType = deserializer.DeserializeString("Type");
-            if (objectType == "Zombie")
-                ObjectType = eObjectType.ZOMBIE;
-            // 
             IDeserializer componentsDeser = deserializer.SubDeserializer(tagComponents);
 
             var componentDesers = componentsDeser.DeserializeAll(tagComponent);
             foreach (var cDeser in componentDesers)
             {
-                string type = cDeser.DeserializeString("Type");
+                string type = cDeser.DeserializeString("type");
                 var component = componentFactory.CreateComponent(type);
 
                 component.Deserialize(cDeser);
@@ -157,39 +134,15 @@ namespace PlantVsZombies.GameComponents
         public ObjectEntity CreateEntity()
         {
             ObjectEntity entity = new ObjectEntity();
-            entity.ObjectType = ObjectType;
             foreach (var component in this.components)
             {
-                entity.AddComponent(component.Clone());
+                entity.AddComponent(component);
             }
-            return entity;
         }
     }
 
     public interface IComponentFactory
     {
         IComponent<MessageType> CreateComponent(string type);
-    }
-
-
-    public class ComponentFactory : IComponentFactory
-    {
-        public IComponent<MessageType> CreateComponent(string type)
-        {
-            switch (type)
-            {
-                case "xml_move":
-                    return MoveComponentFactory.CreateComponent();
-                case "xml_render":
-                    return RenderComponentFactory.CreateComponent();
-                case "xml_physic":
-                    return PhysicComponentFactory.CreateComponent();
-                case "xml_logic":
-                    return LogicComponentFactory.CreateComponent();
-                default:
-                    break;
-            }
-            return null;
-        }
     }
 }

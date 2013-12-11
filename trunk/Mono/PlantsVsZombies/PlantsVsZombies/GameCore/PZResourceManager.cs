@@ -6,9 +6,8 @@ using SCSEngine.ResourceManagement.Implement;
 using SCSEngine.Sprite;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using PlantsVsZombies.Resources;
 
-namespace PlantVsZombies.GameCore
+namespace PlantsVsZombies.GameCore
 {
     public class PZResourceManager : BaseResourceManager
     {

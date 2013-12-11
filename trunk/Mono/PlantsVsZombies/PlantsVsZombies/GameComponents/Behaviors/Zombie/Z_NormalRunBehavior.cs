@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using SCSEngine.Utils.GameObject.Component;
 using Microsoft.Xna.Framework;
-using PlantVsZombie.GameComponents.Components;
+using PlantsVsZombies.GameComponents.Components;
 
-namespace PlantVsZombie.GameComponents.Behaviors.Zombie
+namespace PlantsVsZombies.GameComponents.Behaviors.Zombie
 {
     public class Z_NormalRunBehavior : BaseBehavior
     {

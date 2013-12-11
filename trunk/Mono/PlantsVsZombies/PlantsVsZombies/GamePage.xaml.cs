@@ -9,26 +9,23 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Microsoft.Xna.Framework;
 using MonoGame.Framework.WindowsPhone;
-using PlantsVsZombies.Resources;
-using PlantsVsZombies.Orientations;
+using PlantsVsZombiess.Resources;
 
-namespace PlantsVsZombies
+namespace PlantsVsZombiess
 {
     public partial class GamePage : PhoneApplicationPage
     {
-        private PvZGame _game;
+        private PlantsVsZombiesGame _game;
 
         // Constructor
         public GamePage()
         {
             InitializeComponent();
 
-            _game = XamlGame<PvZGame>.Create("", XnaSurface);
+            _game = XamlGame<PlantsVsZombiesGame>.Create("", XnaSurface);
 
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
-
-            this.OrientationChanged += GameOrientation.Instance.OnOrientationChanged;
         }
 
         // Sample code for building a localized ApplicationBar

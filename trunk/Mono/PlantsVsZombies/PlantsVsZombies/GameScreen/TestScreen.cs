@@ -6,21 +6,20 @@ using SCSEngine.ScreenManagement.Implement;
 using SCSEngine.ScreenManagement;
 using Microsoft.Xna.Framework;
 using SCSEngine.Utils.GameObject.Component;
-using PlantVsZombies.GameComponents;
-using PlantVsZombies.GameObjects;
+using PlantsVsZombies.GameComponents;
+using PlantsVsZombies.GameObjects;
 using Microsoft.Xna.Framework.Graphics;
 using SCSEngine.Services;
 using Microsoft.Xna.Framework.Input.Touch;
-using PlantVsZombies.GameCore;
-using PlantVsZombies.GameComponents.GameMessages;
+using PlantsVsZombies.GameCore;
+using PlantsVsZombies.GameComponents.GameMessages;
 using System.Diagnostics;
 using SCSEngine.Sprite;
 using System.Xml;
 using System.IO;
 using System.Xml.Linq;
-using PlantVsZombies.GameComponents.Components;
 
-namespace PlantVsZombies.GameScreen
+namespace PlantsVsZombies.GameScreen
 {
     public class TestScreen : BaseGameScreen
     {
@@ -48,21 +47,21 @@ namespace PlantVsZombies.GameScreen
             };
             // Gen object
 
-            //for (int i = 0; i < 5; i++)
-            //    for (int j = 0; j < 9; j++)
-            //    {
-            //        int type = gameBoard.Board[i, j];
-            //        if (type == 1)
-            //        {
-            //            objectManager.AddObject(PZObjectFactory.Instance.createPlant(gameBoard.GetPositonAt(i, j)));
-            //        }
-            //        else if (type == 2)
-            //        {
-            //            objectManager.AddObject(PZObjectFactory.Instance.createIcePlant(gameBoard.GetPositonAt(i, j)));
-            //        }
-            //    }
+            for (int i = 0; i < 5; i++)
+                for (int j = 0; j < 9; j++)
+                {
+                    int type = gameBoard.Board[i, j];
+                    if (type == 1)
+                    {
+                        objectManager.AddObject(PZObjectFactory.Instance.createPlant(gameBoard.GetPositonAt(i, j)));
+                    } else if (type == 2)
+                    {
+                        objectManager.AddObject(PZObjectFactory.Instance.createIcePlant(gameBoard.GetPositonAt(i, j)));
+                    }
+                }
 
-            ObjectEntity obj = GameObjectCenter.Instance.CreateObject("xml_stand_zombie");
+
+           
         }
 
         public override void Update(GameTime gameTime)
@@ -90,6 +89,8 @@ namespace PlantVsZombies.GameScreen
             updateMessage.DestinationObjectId = 0; // For all object
 
             objectManager.SendMessage(updateMessage, gameTime);
+
+            
 
             base.Update(gameTime);
         }

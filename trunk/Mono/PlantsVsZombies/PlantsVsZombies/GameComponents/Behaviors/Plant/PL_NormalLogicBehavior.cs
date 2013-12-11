@@ -13,7 +13,11 @@ using PlantsVsZombies.GameObjects.Implements;
 
 namespace PlantsVsZombies.GameComponents.Behaviors.Plant
 {
-    public class P_NormalLogicBehavior : BaseLogicBehavior
+    enum eNormalPlantState
+    {
+        STANDING, SHOOTING
+    }
+    public class PL_NormalLogicBehavior : BaseLogicBehavior
     {
         eNormalPlantState PlantState { get; set; }
         TimeSpan currentTimeShoot = TimeSpan.Zero;

@@ -1,13 +1,13 @@
 using Microsoft.Xna.Framework;
-using PlantVsZombies.GameComponents.Components;
-using PlantVsZombies.GameObjects;
-using PlantVsZombies.GameObjects.Implements;
+using PlantsVsZombies.GameComponents.Components;
+using PlantsVsZombies.GameObjects;
+using PlantsVsZombies.GameObjects.Implements;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PlantVsZombies.GameCore
+namespace PlantsVsZombies.GameCore
 {
     public class PZObjectFactory
     {

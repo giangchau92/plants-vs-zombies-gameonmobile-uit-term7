@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PlantVsZombies.GameComponents.Components
+namespace PlantsVsZombies.GameComponents.Components
 {
     public class RenderComponentFactory
     {
