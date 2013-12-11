@@ -5,10 +5,10 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SCSEngine.Services;
-using PlantsVsZombies.GameComponents.Components;
+using PlantVsZombie.GameComponents.Components;
 using SCSEngine.Utils.GameObject.Component;
 
-namespace PlantsVsZombies.GameComponents.Behaviors.Zombie
+namespace PlantVsZombie.GameComponents.Behaviors.Zombie
 {
     public class Z_NormalStandRenderBehavior : BaseBehavior
     {

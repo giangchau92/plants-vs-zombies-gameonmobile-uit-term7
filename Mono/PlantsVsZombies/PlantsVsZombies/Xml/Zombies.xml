@@ -1,18 +1,51 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Zombies>
-	<Zombie name="xml_stand_zombie">
-		<Components>
-			<Component type="xml_move">
-				<Behavior type="xml_move_stand" velocityX="0" velocityY="0"/>
-				<Behavior type="xml_move_run" velocityX="-100" velocityY="0"/>
+	<Zombie>
+    <Name>xml_stand_zombie</Name>
+    <Type>Zombie</Type>
+    <Components>
+			<Component>
+        <Type>xml_move</Type>
+				<Behavior>
+          <Type>xml_move_stand</Type>
+          <Velocity>
+            <X>0</X>
+            <Y>0</Y>
+          </Velocity>
+        </Behavior>
+				<Behavior>
+          <Type>xml_move_run</Type>
+          <Velocity>
+            <X>-100</X>
+            <Y>0</Y>
+          </Velocity>
+        </Behavior>
 			</Component>
-			<Component type="xml_render">
-				<Behavior type="xml_render_eat" resourceName="Zombies/Nameless/Attack"/>
-				<Behavior type="xml_render_run" resourceName="Zombies/Nameless/Walk"/>
+			<Component>
+        <Type>xml_render</Type>
+				<Behavior>
+          <Type>xml_render_eat</Type>
+          <ResourceName>Zombies/Nameless/Attack</ResourceName>
+          <Bound>
+            <X>73</X>
+            <Y>100</Y>
+          </Bound>
+        </Behavior>
+				<Behavior>
+          <Type>xml_render_run</Type>
+          <ResourceName>Zombies/Nameless/Walk</ResourceName>
+          <Bound>
+            <X>89</X>
+            <Y>101</Y>
+          </Bound>
+        </Behavior>
 			</Component>
-			<Component type="xml_physic">
+			<Component>
+        <Type>xml_physic</Type>
 			</Component>
-			<Component type="xml_logic" behavior="xml_NormalZombie">
+			<Component>
+        <Type>xml_logic</Type>
+        <Behavior>xml_NormalZombie</Behavior>
 			</Component>
 		</Components>
 	</Zombie>

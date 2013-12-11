@@ -1,10 +1,10 @@
-using PlantsVsZombies.GameComponents;
+using PlantVsZombies.GameComponents;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PlantsVsZombies.GameObjects
+namespace PlantVsZombies.GameObjects
 {
     public class BaseZombie : ObjectEntity
     {

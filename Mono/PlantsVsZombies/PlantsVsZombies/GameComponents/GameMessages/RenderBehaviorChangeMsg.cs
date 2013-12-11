@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using PlantsVsZombies.GameComponents.Components;
+using PlantVsZombies.GameComponents.Components;
 
-namespace PlantsVsZombies.GameComponents.GameMessages
+namespace PlantVsZombies.GameComponents.GameMessages
 {
     class RenderBehaviorChangeMsg : GameMessage
     {

@@ -1,16 +1,15 @@
 ﻿using Microsoft.Xna.Framework;
-using PlantsVsZombies.GameComponents.GameMessages;
+using PlantVsZombies.GameComponents.GameMessages;
 using SCSEngine.Utils.GameObject.Component;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using PlantsVsZombies.GameCore;
-using PlantsVsZombies.GameObjects;
-using PlantsVsZombies.GameComponents.Components;
-using PlantsVsZombies.GameObjects.Implements;
+using PlantVsZombies.GameCore;
+using PlantVsZombies.GameObjects;
+using PlantVsZombies.GameComponents.Components;
 
-namespace PlantsVsZombies.GameComponents.Behaviors.Zombie
+namespace PlantVsZombies.GameComponents.Behaviors.Zombie
 {
     enum eNormalZombieState
     {
@@ -30,7 +29,7 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Zombie
                 throw new Exception("Z_NormalLogicBehavior: Expect Logic Component");
             if (logicCOm.Health < 0)
             {
-                PlantsVsZombies.GameCore.PZObjectManager.Instance.RemoveObject(this.Owner.Owner.ObjectId);
+                PlantVsZombies.GameCore.PZObjectManager.Instance.RemoveObject(this.Owner.Owner.ObjectId);
             }
             base.Update(message, gameTime);
         }
@@ -51,11 +50,11 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Zombie
                 return;
             }
 
-            BasePlant plant = message.TargetCollision as BasePlant;
+            ObjectEntity plant = message.TargetCollision as ObjectEntity;
 
             // Collision detected;
             // Send message change behavior
-            if (plant != null)
+            if (plant.ObjectType == eObjectType.PLANT)
             {
                 changeEatBehavivor(gameTime);
 
@@ -103,6 +102,10 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Zombie
             PZObjectManager.Instance.SendMessage(renderMsg1, gameTime);
         }
 
-        
+
+        public override IBehavior<MessageType> Clone()
+        {
+            return new Z_NormalLogicBehavior();
+        }
     }
 }

@@ -1,12 +1,12 @@
 using Microsoft.Xna.Framework;
-using PlantsVsZombies.GameComponents.Components;
+using PlantVsZombie.GameComponents.Components;
 using SCSEngine.Utils.GameObject.Component;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PlantsVsZombies.GameComponents.Behaviors.Bullet
+namespace PlantVsZombie.GameComponents.Behaviors.Bullet
 {
     public class B_NormalFlyBehavior : BaseBehavior
     {

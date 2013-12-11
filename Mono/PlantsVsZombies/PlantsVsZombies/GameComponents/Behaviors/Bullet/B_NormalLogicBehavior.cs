@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using SCSEngine.Utils.GameObject.Component;
-using PlantsVsZombies.GameComponents.GameMessages;
-using PlantsVsZombies.GameObjects;
-using PlantsVsZombies.GameComponents.Components;
-using PlantsVsZombies.GameCore;
-using PlantsVsZombies.GameObjects.Implements;
+using PlantVsZombies.GameComponents.GameMessages;
+using PlantVsZombies.GameObjects;
+using PlantVsZombies.GameComponents.Components;
+using PlantVsZombies.GameCore;
 
-namespace PlantsVsZombies.GameComponents.Behaviors.Bullet
+namespace PlantVsZombies.GameComponents.Behaviors.Bullet
 {
     public class B_NormalLogicBehavior : BaseLogicBehavior
     {
@@ -26,9 +25,9 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Bullet
             if (msg == null)
                 throw new Exception("B_NormalLogicBehavior: message is not CollisionDetectedMsg");
 
-            NormalZombie zom = message.TargetCollision as NormalZombie;
+            ObjectEntity zom = message.TargetCollision as ObjectEntity;
             // Send message change to 
-            if (zom != null)
+            if (zom != null && zom.ObjectType == eObjectType.ZOMBIE)
             {
                 LogicComponent logicCOm = zom.GetComponent(typeof(LogicComponent)) as LogicComponent;
                 if (logicCOm == null)
@@ -38,6 +37,11 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Bullet
             }
 
             base.OnCollison(msg, gameTime);
+        }
+
+        public override IBehavior<MessageType> Clone()
+        {
+            return new B_NormalLogicBehavior();
         }
     }
 }

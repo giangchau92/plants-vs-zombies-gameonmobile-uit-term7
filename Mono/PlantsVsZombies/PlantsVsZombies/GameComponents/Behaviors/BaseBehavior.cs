@@ -5,7 +5,7 @@ using System.Text;
 using SCSEngine.Utils.GameObject.Component;
 using Microsoft.Xna.Framework;
 
-namespace PlantsVsZombies.GameComponents.Behaviors
+namespace PlantVsZombies.GameComponents.Behaviors
 {
     public class BaseBehavior : IBehavior<MessageType>
     {
@@ -35,6 +35,12 @@ namespace PlantsVsZombies.GameComponents.Behaviors
         public virtual void UnLoad()
         {
 
+        }
+
+
+        public virtual IBehavior<MessageType> Clone()
+        {
+            return this;
         }
     }
 }

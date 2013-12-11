@@ -1,5 +1,5 @@
-using PlantsVsZombies.GameComponents;
-using PlantsVsZombies.GameComponents.Behaviors.Implements;
+using PlantVsZombies.GameComponents;
+using PlantVsZombies.GameComponents.Behaviors.Implements;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,13 +8,15 @@ using System.Reflection;
 using System.Text;
 using System.Xml.Linq;
 using Microsoft.Xna.Framework;
-using PlantsVsZombies.GameComponents.Components;
+using PlantVsZombies.GameComponents.Components;
 using SCSEngine.ResourceManagement;
 using SCSEngine.Services;
 using SCSEngine.Sprite;
-using PlantsVsZombies.GameComponents.Behaviors.Zombie;
+using PlantVsZombies.GameComponents.Behaviors.Zombie;
+using SCSEngine.Serialization.XmlSerialization;
+using SCSEngine.Serialization;
 
-namespace PlantsVsZombies.GameObjects
+namespace PlantVsZombies.GameObjects
 {
     public class GameObjectCenter
     {
@@ -29,107 +31,88 @@ namespace PlantsVsZombies.GameObjects
             }
         }
 
-        private const string zombie_config = "PlantsVsZombies.Xml.Zombies.xml";
+        private const string zombie_config = "Xml/Zombies.xml";
+        private const string plant_config = "Xml/Plants.xml";
+        private const string bullet_config = "Xml/Bullets.xml";
 
-        private IDictionary<string, ObjectEntity> objectTemplates = new Dictionary<string, ObjectEntity>();
+        private IDictionary<string, ObjectEntityFactory> objectTemplates = new Dictionary<string, ObjectEntityFactory>();
 
         public void InitEnity()
         {
             // Init zombie
             loadZombie();
+            // Init plant
+            loadPlant();
+            // Init Bullet
+            loadBullet();
         }
 
         public ObjectEntity CreateObject(string te)
         {
             if (objectTemplates.ContainsKey(te))
             {
-                if (objectTemplates[te].ObjectType == eObjectType.ZOMBIE)
-                {
-                    BaseZombie clone = new BaseZombie(objectTemplates[te]);
-                }
+                return objectTemplates[te].CreateEntity();
             }
+            return null;
         }
 
-        private XDocument getXml(string config_url)
+        private Stream getXml(string config_url)
         {
-            Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("PlantsVsZombies.Xml.Zombies.xml");
-            XDocument mXDocument = new XDocument();
-            mXDocument = XDocument.Load(stream);
-            return mXDocument;
+            Stream stream = new FileStream(config_url, FileMode.Open, FileAccess.Read);//Assembly.GetExecutingAssembly().GetManifestResourceStream("PlantVsZombies.Xml.Zombies.xml");
+            //XDocument mXDocument = new XDocument();
+            //mXDocument = XDocument.Load(stream);
+            return stream;
         }
 
         private void loadZombie()
         {
             IResourceManager resourceManager = SCSServices.Instance.ResourceManager;
 
-            XDocument docs = getXml(zombie_config);
-            foreach (XElement item in docs.Root.Nodes())
+            Stream docs = getXml(zombie_config);
+            IDeserializer deser = XmlSerialization.Instance.Deserialize(docs);
+            //IDeserializer deserZombiess = deser.SubDeserializer("Zombies");
+            var deserZombies = deser.DeserializeAll("Zombie");
+
+            foreach (var item in deserZombies)
             {
-                BaseZombie zombie = new BaseZombie();
+                string name = item.DeserializeString("Name");
+                ObjectEntityFactory objectFac = new ObjectEntityFactory();
+                objectFac.Deserialize(item);
+                this.objectTemplates.Add(name, objectFac);
+            }
+        }
 
-                string name = item.Attribute("name").Value;
-                XElement components = item.Element("Components");
-                foreach (var component in components.Elements("Component"))
-                {
-                    string type = component.Attribute("type").Value;
-                    var behaviors = component.Elements("Behavior");
+        private void loadPlant()
+        {
+            IResourceManager resourceManager = SCSServices.Instance.ResourceManager;
 
-                    switch (type)
-                    {
-                        case "xml_move":
-                            // MOVE COMPONNET
-                            MoveComponent moveComponent = MoveComponentFactory.CreateComponent();
-                            foreach (XElement behavior in behaviors)
-                            {
-                                string typeBe = behavior.Attribute("type").Value;
-                                MoveBehavior moveBeha = MoveBehavior.CreateBehavior();
-                                int velX = Int32.Parse(behavior.Attribute("velocityX").Value);
-                                int velY = Int32.Parse(behavior.Attribute("velocityY").Value);
-                                moveBeha.Velocity = new Vector2(velX, velY);
-                                if (typeBe == "xml_move_stand")
-                                    moveComponent.AddBehavior(eMoveBehaviorType.STANDING, moveBeha);
-                                else if (typeBe == "xml_move_run")
-                                    moveComponent.AddBehavior(eMoveBehaviorType.RUNNING, moveBeha);
-                            }
-                            zombie.AddComponent(moveComponent);
-                            break;
-                        case "xml_render":
-                            // RENDER COMPONENT
-                            RenderComponent renderComponent = RenderComponentFactory.CreateComponent();
-                            foreach (XElement behavior in behaviors)
-                            {
-                                string typeBe = behavior.Attribute("type").Value;
-                                RenderBehavior renderBeha = RenderBehavior.CreateBehavior();
-                                string resource = behavior.Attribute("resourceName").Value;
-                                renderBeha.Sprite = resourceManager.GetResource<ISprite>(resource);
-                                if (typeBe == "xml_render_eat")
-                                    renderComponent.AddBehavior(eMoveRenderBehaviorType.ZO_NORMAL_EATING, renderBeha);
-                                else if (typeBe == "xml_render_run")
-                                    renderComponent.AddBehavior(eMoveRenderBehaviorType.ZO_NORMAL_RUNNING, renderBeha);
-                            }
-                            zombie.AddComponent(renderComponent);
-                            break;
-                        case "xml_physic":
-                            // PHYSIC COMPONENT
-                            PhysicComponent physicComponent = PhysicComponentFactory.CreateComponent();
-                            zombie.AddComponent(physicComponent);
-                            break;
-                        case "xml_logic":
-                            // LOGIC COMPONENT
-                            LogicComponent logicComponent = LogicComponentFactory.CreateComponent();
-                            string typeCo = component.Attribute("behavior").Value;
-                            if (typeCo == "xml_NormalZombie")
-                                logicComponent.LogicBehavior = new Z_NormalLogicBehavior();
-                            zombie.AddComponent(logicComponent);
-                            break;
-                        default:
-                            break;
-                    }
-                    
-                }
+            Stream docs = getXml(plant_config);
+            IDeserializer deser = XmlSerialization.Instance.Deserialize(docs);
+            var deserZombies = deser.DeserializeAll("Plant");
 
-                zombie.ObjectType = eObjectType.ZOMBIE;
-                this.objectTemplates.Add(name, zombie);
+            foreach (var item in deserZombies)
+            {
+                string name = item.DeserializeString("Name");
+                ObjectEntityFactory objectFac = new ObjectEntityFactory();
+                objectFac.Deserialize(item);
+                this.objectTemplates.Add(name, objectFac);
+            }
+        }
+
+        private void loadBullet()
+        {
+            IResourceManager resourceManager = SCSServices.Instance.ResourceManager;
+
+            Stream docs = getXml(bullet_config);
+            IDeserializer deser = XmlSerialization.Instance.Deserialize(docs);
+            var deserZombies = deser.DeserializeAll("Bullet");
+
+            foreach (var item in deserZombies)
+            {
+                string name = item.DeserializeString("Name");
+                ObjectEntityFactory objectFac = new ObjectEntityFactory();
+                objectFac.Deserialize(item);
+                this.objectTemplates.Add(name, objectFac);
             }
         }
 

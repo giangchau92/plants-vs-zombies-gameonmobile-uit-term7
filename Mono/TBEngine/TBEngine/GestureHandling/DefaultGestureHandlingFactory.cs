@@ -25,9 +25,14 @@ namespace SCSEngine.GestureHandling
             return new BaseGestureHandling.BaseGestureDispatcher();
         }
 
-        public IGestureManager CreateManager(Game game)
+        public IGestureManager CreateManager(Game game, ITouchController tc)
         {
-            return new BaseGestureHandling.BaseGestureManager(game, new BaseGestureHandling.TouchController());
+            return new BaseGestureHandling.BaseGestureManager(game, tc);
+        }
+
+        public ITouchController CreateTouchController()
+        {
+            return new BaseGestureHandling.TouchController();
         }
 
         public void InitDetectors(IGestureManager gMan)

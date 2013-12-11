@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using SCSEngine.Utils.GameObject.Component;
 using Microsoft.Xna.Framework;
-using PlantsVsZombies.GameComponents.GameMessages;
+using PlantVsZombies.GameComponents.GameMessages;
 using SCSEngine.Serialization.XNASerializationHelper;
-using PlantsVsZombies.GameComponents.Behaviors.Implements;
+using PlantVsZombies.GameComponents.Behaviors.Implements;
 
-namespace PlantsVsZombies.GameComponents.Components
+namespace PlantVsZombies.GameComponents.Components
 {
     public enum eMoveBehaviorType
     {
@@ -92,7 +92,7 @@ namespace PlantsVsZombies.GameComponents.Components
             var behDesers = deserializer.DeserializeAll("Behavior");
             foreach (var behDeser in behDesers)
             {
-                string type = behDeser.DeserializeString("type");
+                string type = behDeser.DeserializeString("Type");
                 eMoveBehaviorType moveBehType = eMoveBehaviorType.STANDING;
                 if (type == "xml_move_stand")
                     moveBehType = eMoveBehaviorType.STANDING;
@@ -105,6 +105,27 @@ namespace PlantsVsZombies.GameComponents.Components
 
                 this.AddBehavior(moveBehType, moveBeh);
             }
+        }
+
+
+        IComponent<MessageType> IComponent<MessageType>.Clone()
+        {
+            MoveComponent moveComponent = MoveComponentFactory.CreateComponent();
+            moveComponent.Velocity = this.Velocity;
+            moveComponent.Acceleration = this.Acceleration;
+            moveComponent.Position = this.Position;
+
+            foreach (var item in this.supportBehaviors)
+            {
+                moveComponent.AddBehavior(item.Key, item.Value.Clone());
+            }
+
+            return moveComponent;
+        }
+
+
+        public void OnComplete()
+        {
         }
     }
 }

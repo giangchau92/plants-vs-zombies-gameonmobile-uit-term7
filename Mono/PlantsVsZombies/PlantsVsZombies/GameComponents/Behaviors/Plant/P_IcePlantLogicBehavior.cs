@@ -1,8 +1,7 @@
 using Microsoft.Xna.Framework;
-using PlantsVsZombies.GameComponents.Components;
-using PlantsVsZombies.GameComponents.GameMessages;
-using PlantsVsZombies.GameCore;
-using PlantsVsZombies.GameObjects.Implements;
+using PlantVsZombies.GameComponents.Components;
+using PlantVsZombies.GameComponents.GameMessages;
+using PlantVsZombies.GameCore;
 using SCSEngine.Services;
 using SCSEngine.Utils.GameObject.Component;
 using System;
@@ -10,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PlantsVsZombies.GameComponents.Behaviors.Plant
+namespace PlantVsZombies.GameComponents.Behaviors.Plant
 {
     public class P_IcePlantLogicBehavior : BaseLogicBehavior
     {
@@ -32,7 +31,7 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Plant
                 MoveComponent obj2 = item.Value.GetComponent(typeof(MoveComponent)) as MoveComponent;
 
                 if (obj2.Position.Y == obj1.Position.Y && (obj1.Position.X < obj2.Position.X) && obj2.Position.X < SCSServices.Instance.Game.GraphicsDevice.Viewport.Width
-                    && (obj2.Owner as NormalZombie) != null)
+                    && (obj2.Owner as ObjectEntity).ObjectType == eObjectType.ZOMBIE)
                 {
                     // Change to shoot
                     //RenderBehaviorChangeMsg renderMsg = new RenderBehaviorChangeMsg(MessageType.CHANGE_RENDER_BEHAVIOR, this);
@@ -48,9 +47,9 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Plant
                 if (currentTimeShoot > shootTime)
                 {
 
-                    IceBullet bullet = new IceBullet();
                     Vector2 pos = (this.Owner.Owner.GetComponent(typeof(MoveComponent)) as MoveComponent).Position;
-                    bullet.SetPosition(new Vector2(pos.X + shootPoint.X, pos.Y - shootPoint.Y));
+                    ObjectEntity bullet = PZObjectFactory.Instance.createIceBullet(new Vector2(pos.X + shootPoint.X, pos.Y - shootPoint.Y));
+                    //bullet.SetPosition();
                     PZObjectManager.Instance.AddObject(bullet);
                     currentTimeShoot = TimeSpan.Zero;
                 }
@@ -76,6 +75,11 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Plant
                 throw new Exception("PL_NormalLogicBehavior: message is not CollisionDetectedMsg");
 
             base.OnCollison(msg, gameTime);
+        }
+
+        public override IBehavior<MessageType> Clone()
+        {
+            return new P_IcePlantLogicBehavior();
         }
     }
 }

@@ -1,12 +1,12 @@
 using Microsoft.Xna.Framework;
-using PlantsVsZombies.GameComponents.Components;
+using PlantVsZombies.GameComponents.Components;
 using SCSEngine.Utils.GameObject.Component;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PlantsVsZombies.GameComponents.Behaviors.Implements
+namespace PlantVsZombies.GameComponents.Behaviors.Implements
 {
     public class MoveBehavior : BaseBehavior
     {
@@ -35,6 +35,15 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Implements
         {
             MoveBehavior result = new MoveBehavior();
             return result;
+        }
+
+
+        public override IBehavior<MessageType> Clone()
+        {
+            MoveBehavior moveBehavior = new MoveBehavior();
+            moveBehavior.Velocity = this.Velocity;
+            moveBehavior.VelocityAdd = this.VelocityAdd;
+            return moveBehavior;
         }
     }
 }

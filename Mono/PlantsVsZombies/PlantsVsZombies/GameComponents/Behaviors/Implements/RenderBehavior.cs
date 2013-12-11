@@ -1,5 +1,5 @@
 using Microsoft.Xna.Framework;
-using PlantsVsZombies.GameComponents.Components;
+using PlantVsZombies.GameComponents.Components;
 using SCSEngine.Services;
 using SCSEngine.Services.Sprite;
 using SCSEngine.Sprite;
@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PlantsVsZombies.GameComponents.Behaviors.Implements
+namespace PlantVsZombies.GameComponents.Behaviors.Implements
 {
     public class RenderBehavior : BaseBehavior
     {
@@ -69,6 +69,14 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Implements
         {
             RenderBehavior result = new RenderBehavior();
             return result;
+        }
+
+        public override IBehavior<MessageType> Clone()
+        {
+            RenderBehavior renderBehavior = new RenderBehavior();
+            renderBehavior.Sprite = this.Sprite;
+            renderBehavior.SpriteBound = this.SpriteBound;
+            return renderBehavior;
         }
     }
 }
