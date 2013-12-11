@@ -1,0 +1,52 @@
+<Levels>
+	<Level>
+		<Name>Level 1 - 1<Name>
+		<Wave>
+			<Name>Wave 1</Name>
+			<Zombie>xml_stand_zombie</Zombie>
+			<Zombie>xml_stand_zombie2</Zombie>
+			<Zombie>xml_stand_zombie3</Zombie>
+			<Number>
+				<From>5</From>
+				<To>10</To>
+			</Number>
+			<Time>500</Time>
+		</Wave>
+		<Wave>
+			<Name>Wave 2</Name>
+			<Zombie>xml_stand_zombie</Zombie>
+			<Zombie>xml_stand_zombie2</Zombie>
+			<Zombie>xml_stand_zombie3</Zombie>
+			<Number>
+				<From>3</From>
+				<To>8</To>
+			</Number>
+			<Time>500</Time>
+		</Wave>
+	</Level>
+	<Level>
+		<Name>Level 1 - 2<Name>
+		<Wave>
+			<Name>Wave 1</Name>
+			<Zombie>xml_stand_zombie</Zombie>
+			<Zombie>xml_stand_zombie2</Zombie>
+			<Zombie>xml_stand_zombie3</Zombie>
+			<Number>
+				<From>5</From>
+				<To>10</To>
+			</Number>
+			<Time>500</Time>
+		</Wave>
+		<Wave>
+			<Name>Wave 2</Name>
+			<Zombie>xml_stand_zombie</Zombie>
+			<Zombie>xml_stand_zombie2</Zombie>
+			<Zombie>xml_stand_zombie3</Zombie>
+			<Number>
+				<From>3</From>
+				<To>8</To>
+			</Number>
+			<Time>500</Time>
+		</Wave>
+	</Level>
+</Levels>

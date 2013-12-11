@@ -45,7 +45,8 @@ namespace SCSEngine.Serialization.XmlSerialization
 
             foreach (var subElem in elements)
             {
-                deserializers.Add(new XmlDeserializer(subElem));
+                if (subElem.Name == serName)
+                    deserializers.Add(new XmlDeserializer(subElem));
             }
 
             return deserializers;

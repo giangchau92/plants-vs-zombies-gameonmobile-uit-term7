@@ -114,7 +114,6 @@
     <Compile Include="GestureHandling\BaseGestureHandling\Touch.cs" />
     <Compile Include="GestureHandling\BaseGestureHandling\TouchController.cs" />
     <Compile Include="GestureHandling\DefaultGestureHandlingFactory.cs" />
-    <Compile Include="GestureHandling\IDefaultGestureHandlingFactory.cs" />
     <Compile Include="GestureHandling\IGestureDetector.cs" />
     <Compile Include="GestureHandling\IGestureDispatcher.cs" />
     <Compile Include="GestureHandling\IGestureEvent.cs" />
@@ -223,7 +222,7 @@
   </Target>
   -->
   <Target Name="MonoGame_RemoveXnaAssemblies" AfterTargets="ImplicitlyExpandTargetFramework">
-    <Message Text="MonoGame - Removing XNA Assembly references!" Importance="normal"/>
+    <Message Text="MonoGame - Removing XNA Assembly references!" Importance="normal" />
     <ItemGroup>
       <ReferencePath Remove="@(ReferencePath)" Condition="'%(Filename)%(Extension)'=='Microsoft.Xna.Framework.dll'" />
       <ReferencePath Remove="@(ReferencePath)" Condition="'%(Filename)%(Extension)'=='Microsoft.Xna.Framework.GamerServices.dll'" />

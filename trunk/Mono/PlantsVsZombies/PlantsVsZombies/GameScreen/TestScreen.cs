@@ -6,20 +6,21 @@ using SCSEngine.ScreenManagement.Implement;
 using SCSEngine.ScreenManagement;
 using Microsoft.Xna.Framework;
 using SCSEngine.Utils.GameObject.Component;
-using PlantsVsZombies.GameComponents;
-using PlantsVsZombies.GameObjects;
+using PlantVsZombies.GameComponents;
+using PlantVsZombies.GameObjects;
 using Microsoft.Xna.Framework.Graphics;
 using SCSEngine.Services;
 using Microsoft.Xna.Framework.Input.Touch;
-using PlantsVsZombies.GameCore;
-using PlantsVsZombies.GameComponents.GameMessages;
+using PlantVsZombies.GameCore;
+using PlantVsZombies.GameComponents.GameMessages;
 using System.Diagnostics;
 using SCSEngine.Sprite;
 using System.Xml;
 using System.IO;
 using System.Xml.Linq;
+using PlantVsZombies.GameComponents.Components;
 
-namespace PlantsVsZombies.GameScreen
+namespace PlantVsZombies.GameScreen
 {
     public class TestScreen : BaseGameScreen
     {
@@ -34,13 +35,12 @@ namespace PlantsVsZombies.GameScreen
             //objectManager.AddObject(new NormalPlant());
             TouchPanel.EnabledGestures = GestureType.Tap | GestureType.Hold;
 
-            // Init game data
-            initSpriteBank();
+            
 
             gameBoard = new PZBoard(9, 5);
-            gameBoard.Board = new int[,]{
+            gameBoard.Board = new int[,] {
                 {0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {2, 0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0, 0}
@@ -54,12 +54,12 @@ namespace PlantsVsZombies.GameScreen
                     if (type == 1)
                     {
                         objectManager.AddObject(PZObjectFactory.Instance.createPlant(gameBoard.GetPositonAt(i, j)));
-                    } else if (type == 2)
+                    }
+                    else if (type == 2)
                     {
                         objectManager.AddObject(PZObjectFactory.Instance.createIcePlant(gameBoard.GetPositonAt(i, j)));
                     }
                 }
-
 
            
         }
@@ -73,7 +73,8 @@ namespace PlantsVsZombies.GameScreen
                 if (gesture.GestureType == GestureType.Tap)
                 {
                     //objectManager.AddObject(new NormalZombie());
-                    objectManager.AddObject(PZObjectFactory.Instance.createZombie(gameBoard.GetPositionAtPoint(gesture.Position)));
+                    ObjectEntity obj = PZObjectFactory.Instance.createZombie(new Vector2(600, 101));
+                    objectManager.AddObject(obj);
                 }
                 else if (gesture.GestureType == GestureType.Hold)
                 {
@@ -89,8 +90,6 @@ namespace PlantsVsZombies.GameScreen
             updateMessage.DestinationObjectId = 0; // For all object
 
             objectManager.SendMessage(updateMessage, gameTime);
-
-            
 
             base.Update(gameTime);
         }
@@ -108,17 +107,6 @@ namespace PlantsVsZombies.GameScreen
             spriteBatch.End();
         }
 
-        private void initSpriteBank()
-        {
-            if (SpriteFramesBank.Instance.Contains("DoublePea"))
-                return;
-
-            SpriteFramesBank.Instance.Add("Plants/DoublePea/DoublePea", FramesGenerator.Generate(100, 55, 1024, 40));
-            SpriteFramesBank.Instance.Add("Plants/IcePea/IcePea", FramesGenerator.Generate(118, 63, 1024, 33));
-            SpriteFramesBank.Instance.Add("Zombies/Nameless/Walk", FramesGenerator.Generate(73, 100, 1024, 16));
-            SpriteFramesBank.Instance.Add("Zombies/Nameless/Attack", FramesGenerator.Generate(89, 101, 1024, 16));
-            SpriteFramesBank.Instance.Add("Bullets/B_Pea", FramesGenerator.Generate(29, 22, 29, 1));
-            //100, 55, 10, 40
-        }
+        
     }
 }

@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using PlantsVsZombies.GameComponents.Behaviors;
+using PlantVsZombie.GameComponents.Behaviors;
 using Microsoft.Xna.Framework;
-using PlantsVsZombies.GameComponents.Components;
+using PlantVsZombie.GameComponents.Components;
 using SCSEngine.Utils.GameObject.Component;
 
-namespace PlantsVsZombies.GameComponents.Behaviors.Zombie
+namespace PlantVsZombie.GameComponents.Behaviors.Zombie
 {
     public class Z_NormalStandBehavior : BaseBehavior
     {

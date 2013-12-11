@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 
-namespace PlantsVsZombies.GameComponents.Components
+namespace PlantVsZombies.GameComponents.Components
 {
     public class MoveComponentFactory
     {

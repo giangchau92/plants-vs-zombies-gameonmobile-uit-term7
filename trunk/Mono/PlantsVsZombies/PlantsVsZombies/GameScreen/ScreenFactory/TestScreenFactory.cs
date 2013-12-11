@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using SCSEngine.ScreenManagement;
 
-namespace PlantsVsZombies.GameScreen.ScreenFactory
+namespace PlantVsZombies.GameScreen.ScreenFactory
 {
     public class TestScreenFactory : IGameScreenFactory
     {

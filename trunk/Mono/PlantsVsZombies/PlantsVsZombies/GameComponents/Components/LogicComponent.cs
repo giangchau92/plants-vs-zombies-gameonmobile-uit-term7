@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using SCSEngine.Utils.GameObject.Component;
 using Microsoft.Xna.Framework;
-using PlantsVsZombies.GameComponents.Behaviors;
+using PlantVsZombies.GameComponents.Behaviors;
+using PlantVsZombies.GameComponents.Behaviors.Zombie;
+using PlantVsZombies.GameComponents.Behaviors.Plant;
+using PlantVsZombies.GameComponents.Behaviors.Bullet;
 
-namespace PlantsVsZombies.GameComponents.Components
+namespace PlantVsZombies.GameComponents.Components
 {
     public class LogicComponent : IComponent<MessageType>
     {
@@ -49,6 +52,39 @@ namespace PlantsVsZombies.GameComponents.Components
                 default:
                     break;
             }
+        }
+
+        public void Serialize(SCSEngine.Serialization.ISerializer serializer)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Deserialize(SCSEngine.Serialization.IDeserializer deserializer)
+        {
+            string behaviorType = deserializer.DeserializeString("Behavior");
+            if (behaviorType == "xml_NormalZombie")
+                this.LogicBehavior = new Z_NormalLogicBehavior();
+            else if (behaviorType == "xml_NormalPlant")
+                this.LogicBehavior = new P_NormalLogicBehavior();
+            else if (behaviorType == "xml_IcePlant")
+                this.LogicBehavior = new P_IcePlantLogicBehavior();
+            else if (behaviorType == "xml_NormalBullet")
+                this.LogicBehavior = new B_NormalLogicBehavior();
+            else if (behaviorType == "xml_IceBullet")
+                this.LogicBehavior = new B_IceBulletLogicBehavior();
+        }
+
+        IComponent<MessageType> IComponent<MessageType>.Clone()
+        {
+            LogicComponent logicCom = LogicComponentFactory.CreateComponent();
+            logicCom.LogicBehavior = this.LogicBehavior.Clone() as BaseLogicBehavior;
+            return logicCom;
+        }
+
+
+        public void OnComplete()
+        {
+            
         }
     }
 }

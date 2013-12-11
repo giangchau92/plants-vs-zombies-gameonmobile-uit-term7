@@ -1,7 +1,8 @@
 using Microsoft.Xna.Framework;
-using PlantsVsZombies.GameComponents.Behaviors.Bullet;
-using PlantsVsZombies.GameComponents.Behaviors.Implements;
-using PlantsVsZombies.GameComponents.Components;
+using PlantVsZombies.GameComponents;
+using PlantVsZombies.GameComponents.Behaviors.Bullet;
+using PlantVsZombies.GameComponents.Behaviors.Implements;
+using PlantVsZombies.GameComponents.Components;
 using SCSEngine.ResourceManagement;
 using SCSEngine.Services;
 using SCSEngine.Sprite;
@@ -10,13 +11,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PlantsVsZombies.GameObjects.Implements
+namespace PlantVsZombies.GameObjects.Implements
 {
     public class IceBullet : BaseBullet
     {
         public IceBullet()
             : base()
         {
+            this.ObjectType = eObjectType.BULLET;
             IResourceManager resourceManager = SCSServices.Instance.ResourceManager;
             // Move component
             MoveComponent moveCOm = MoveComponentFactory.CreateComponent();

@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PlantsVsZombies.GrowSystem
+namespace PlantVsZombies.GrowSystem
 {
     public delegate void PvZGrowButtonEventHandler(PvZGrowButton button, FreeTap leaveGesture);
     public delegate void CooldownButtonEventHandler(PvZGrowButton button);
@@ -260,7 +260,7 @@ namespace PlantsVsZombies.GrowSystem
             string dcType = dcDeser.DeserializeString("Type");
             brushF = GrowButtonBrushFactoryFactory.Instance.CreateFactory(dcType);
             dcDeser.Deserialize("Data", brushF);
-            this.shadowF = this.shadowFB.GetPlantShadowFactory(deserializer.DeserializeString("Shadow"));
+            //this.shadowF = this.shadowFB.GetPlantShadowFactory(deserializer.DeserializeString("Shadow"));
         }
     }
 }

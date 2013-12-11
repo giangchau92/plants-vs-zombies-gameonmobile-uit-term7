@@ -1,19 +1,19 @@
 using Microsoft.Xna.Framework;
-using PlantsVsZombies.GameComponents.Behaviors.Implements;
-using PlantsVsZombies.GameComponents.Components;
-using PlantsVsZombies.GameComponents.Effect.Implements;
-using PlantsVsZombies.GameComponents.GameMessages;
-using PlantsVsZombies.GameCore;
-using PlantsVsZombies.GameObjects;
+using PlantVsZombies.GameComponents.Behaviors.Implements;
+using PlantVsZombies.GameComponents.Components;
+using PlantVsZombies.GameComponents.Effect.Implements;
+using PlantVsZombies.GameComponents.GameMessages;
+using PlantVsZombies.GameCore;
+using PlantVsZombies.GameObjects;
 using SCSEngine.Utils.GameObject.Component;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PlantsVsZombies.GameComponents.Behaviors.Bullet
+namespace PlantVsZombies.GameComponents.Behaviors.Bullet
 {
-    class B_IceBulletLogicBehavior : BaseLogicBehavior 
+    class B_IceBulletLogicBehavior : BaseLogicBehavior
     {
 
         public override void Update(IMessage<MessageType> message, GameTime gameTime)
@@ -28,9 +28,9 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Bullet
             if (msg == null)
                 throw new Exception("B_IceBulletLogicBehavior: message is not CollisionDetectedMsg");
 
-            BaseZombie zom = message.TargetCollision as BaseZombie;
+            ObjectEntity zom = message.TargetCollision as ObjectEntity;
             // Send message change to 
-            if (zom != null)
+            if (zom != null && zom.ObjectType == eObjectType.ZOMBIE)
             {
                 LogicComponent logicCOm = zom.GetComponent(typeof(LogicComponent)) as LogicComponent;
                 if (logicCOm == null)
@@ -46,6 +46,11 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Bullet
             }
 
             base.OnCollison(msg, gameTime);
+        }
+
+        public override IBehavior<MessageType> Clone()
+        {
+            return new B_IceBulletLogicBehavior();
         }
     }
 }

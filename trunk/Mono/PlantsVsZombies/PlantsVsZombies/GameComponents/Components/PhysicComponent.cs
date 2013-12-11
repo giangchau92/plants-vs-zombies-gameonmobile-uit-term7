@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using SCSEngine.Utils.GameObject.Component;
 using Microsoft.Xna.Framework;
-using PlantsVsZombies.GameCore;
-using PlantsVsZombies.GameComponents.GameMessages;
+using PlantVsZombies.GameCore;
+using PlantVsZombies.GameComponents.GameMessages;
+using PlantVsZombies.GameComponents.Behaviors.Implements;
 
-namespace PlantsVsZombies.GameComponents.Components
+namespace PlantVsZombies.GameComponents.Components
 {
     public class PhysicComponent : IComponent<MessageType>
     {
@@ -105,6 +106,31 @@ namespace PlantsVsZombies.GameComponents.Components
 
                 PZObjectManager.Instance.SendMessage(colMsg, gameTime);
             }
+        }
+
+        public void Serialize(SCSEngine.Serialization.ISerializer serializer)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Deserialize(SCSEngine.Serialization.IDeserializer deserializer)
+        {
+            
+        }
+
+
+        IComponent<MessageType> IComponent<MessageType>.Clone()
+        {
+            PhysicComponent physCom = PhysicComponentFactory.CreateComponent();
+            physCom.Bound = Bound;
+            return physCom;
+        }
+
+
+        public void OnComplete()
+        {
+            RenderComponent render = Owner.GetComponent(typeof(RenderComponent)) as RenderComponent;
+            Bound = (render.currentBehavior as RenderBehavior).SpriteBound;
         }
     }
 }

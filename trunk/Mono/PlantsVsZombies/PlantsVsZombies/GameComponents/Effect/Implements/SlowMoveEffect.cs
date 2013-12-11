@@ -3,18 +3,18 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using PlantsVsZombies.GameComponents.Behaviors;
-using PlantsVsZombies.GameComponents.Components;
-using PlantsVsZombies.GameComponents.Behaviors.Implements;
+using PlantVsZombies.GameComponents.Behaviors;
+using PlantVsZombies.GameComponents.Components;
+using PlantVsZombies.GameComponents.Behaviors.Implements;
 
-namespace PlantsVsZombies.GameComponents.Effect.Implements
+namespace PlantVsZombies.GameComponents.Effect.Implements
 {
     public class SlowMoveEffect : IEffect
     {
         TimeSpan curentTime = TimeSpan.Zero;
         public TimeSpan TimeDurring { get; set; }
 
-        Vector2 slowVelocity = new Vector2(50, 0);
+        Vector2 slowVelocity = new Vector2(90, 0);
 
         public SlowMoveEffect()
         {

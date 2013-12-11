@@ -5,11 +5,12 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using SCSEngine.Utils.GameObject.Component;
 using SCSEngine.Serialization;
+using PlantVsZombies.GameComponents.Components;
 
 
-namespace PlantsVsZombies.GameComponents
+namespace PlantVsZombies.GameComponents
 {
-    public enum eObjectType { PLANT, ZOMBIE}
+    public enum eObjectType { PLANT, ZOMBIE, BULLET}
     public class ObjectEntity : IEntity<MessageType>, IComponent<MessageType>
     {
         public eObjectType ObjectType { get; set; }
@@ -96,18 +97,6 @@ namespace PlantsVsZombies.GameComponents
             get;
             set;
         }
-    }
-
-    public class IObjectEntityFactory : ISerializable
-    {
-        private const string tagName = "Name";
-        private const string tagComponents = "Components";
-        private const string tagComponent = "Component";
-
-        ICollection<IComponent<MessageType>> components = new List<IComponent<MessageType>>();
-        string name;
-
-        IComponentFactory componentFactory;
 
         public void Serialize(ISerializer serializer)
         {
@@ -116,33 +105,109 @@ namespace PlantsVsZombies.GameComponents
 
         public void Deserialize(IDeserializer deserializer)
         {
+            throw new NotImplementedException();
+        }
+
+
+        public IComponent<MessageType> Clone()
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public void OnComplete()
+        {
+            foreach (var item in Components)
+            {
+                item.Value.OnComplete();
+            }
+        }
+    }
+
+    public class ObjectEntityFactory : ISerializable
+    {
+        private const string tagName = "Name";
+        private const string tagComponents = "Components";
+        private const string tagComponent = "Component";
+
+        ICollection<IComponent<MessageType>> components = new List<IComponent<MessageType>>();
+        string name;
+        public eObjectType ObjectType;
+
+        IComponentFactory componentFactory = new ComponentFactory();
+
+        public void Serialize(ISerializer serializer)
+        {
+            
+        }
+
+        public void Deserialize(IDeserializer deserializer)
+        {
+            // Save name
             this.name = deserializer.DeserializeString(tagName);
+            string objectType = deserializer.DeserializeString("Type");
+            if (objectType == "Zombie")
+                ObjectType = eObjectType.ZOMBIE;
+            else if (objectType == "Plant")
+                ObjectType = eObjectType.PLANT;
+            else
+                ObjectType = eObjectType.BULLET;
+
+            // Deserializer Components
             IDeserializer componentsDeser = deserializer.SubDeserializer(tagComponents);
 
+            // Deserializer Component
             var componentDesers = componentsDeser.DeserializeAll(tagComponent);
             foreach (var cDeser in componentDesers)
             {
-                string type = cDeser.DeserializeString("type");
+                string type = cDeser.DeserializeString("Type");
                 var component = componentFactory.CreateComponent(type);
 
                 component.Deserialize(cDeser);
 
                 this.components.Add(component);
             }
+
         }
 
         public ObjectEntity CreateEntity()
         {
             ObjectEntity entity = new ObjectEntity();
+            entity.ObjectType = ObjectType;
             foreach (var component in this.components)
             {
-                entity.AddComponent(component);
+                entity.AddComponent(component.Clone());
             }
+            entity.OnComplete();
+
+            return entity;
         }
     }
 
     public interface IComponentFactory
     {
         IComponent<MessageType> CreateComponent(string type);
+    }
+
+
+    public class ComponentFactory : IComponentFactory
+    {
+        public IComponent<MessageType> CreateComponent(string type)
+        {
+            switch (type)
+            {
+                case "xml_move":
+                    return MoveComponentFactory.CreateComponent();
+                case "xml_render":
+                    return RenderComponentFactory.CreateComponent();
+                case "xml_physic":
+                    return PhysicComponentFactory.CreateComponent();
+                case "xml_logic":
+                    return LogicComponentFactory.CreateComponent();
+                default:
+                    break;
+            }
+            return null;
+        }
     }
 }

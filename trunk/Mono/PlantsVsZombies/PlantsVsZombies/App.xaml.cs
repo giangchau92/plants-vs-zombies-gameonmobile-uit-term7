@@ -6,9 +6,9 @@ using System.Windows.Markup;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using PlantsVsZombiess.Resources;
+using PlantsVsZombies.Resources;
 
-namespace PlantsVsZombiess
+namespace PlantsVsZombies
 {
     public partial class App : Application
     {

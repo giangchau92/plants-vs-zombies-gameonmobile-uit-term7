@@ -7,7 +7,7 @@ using System.Text;
 
 namespace SCSEngine.GestureHandling
 {
-    internal interface ITouchController
+    public interface ITouchController
     {
         ICollection<ITouch> Touches { get; }
 

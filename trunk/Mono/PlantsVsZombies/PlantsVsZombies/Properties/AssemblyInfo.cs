@@ -6,8 +6,8 @@ using System.Resources;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("PlantsVsZombiess")]
-[assembly: AssemblyProduct("PlantsVsZombiess")]
+[assembly: AssemblyTitle("PlantsVsZombies")]
+[assembly: AssemblyProduct("PlantsVsZombies")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyCompany("")]
@@ -21,7 +21,7 @@ using System.Resources;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("08624ca1-8f8f-4d86-bf59-3cd304cb4687")]
+[assembly: Guid("21fc670a-2df1-4699-8da8-6e353751b5ce")]
 
 // Version information for an assembly consists of the following four values:
 //

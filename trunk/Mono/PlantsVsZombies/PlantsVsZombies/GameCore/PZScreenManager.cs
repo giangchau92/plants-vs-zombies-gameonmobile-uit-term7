@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using SCSEngine.ScreenManagement.Implement;
 using Microsoft.Xna.Framework;
-using PlantsVsZombies.GameScreen.ScreenFactory;
-using PlantsVsZombies.GameScreen;
+using PlantVsZombies.GameScreen.ScreenFactory;
+using PlantVsZombies.GameScreen;
 
-namespace PlantsVsZombies.GameCore
+namespace PlantVsZombies.GameCore
 {
     public class PZScreenManager : BaseGameScreenManager
     {
