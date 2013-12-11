@@ -5,12 +5,12 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SCSEngine.Services;
-using PlantVsZombie.GameComponents.Components;
+using PlantsVsZombies.GameComponents.Components;
 using SCSEngine.Utils.GameObject.Component;
 using SCSEngine.Sprite;
 using SCSEngine.Services.Sprite;
 
-namespace PlantVsZombie.GameComponents.Behaviors.Zombie
+namespace PlantsVsZombies.GameComponents.Behaviors.Zombie
 {
     public class Z_NormalEatingRenderBehavior : BaseBehavior
     {

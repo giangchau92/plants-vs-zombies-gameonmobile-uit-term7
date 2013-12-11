@@ -1,6 +1,6 @@
-﻿using PlantsVsZombies.Resources;
+﻿using PlantsVsZombiess.Resources;
 
-namespace PlantsVsZombies
+namespace PlantsVsZombiess
 {
     /// <summary>
     /// Provides access to string resources.

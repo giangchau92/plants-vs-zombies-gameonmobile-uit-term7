@@ -8,24 +8,24 @@ using SCSEngine.Services;
 using PlantsVsZombies.GameComponents.Components;
 using SCSEngine.Utils.GameObject.Component;
 
-namespace PlantsVsZombies.GameComponents.Behaviors.Zombie
+namespace PlantsVsZombies.GameComponents.Behaviors.Plant
 {
-    public class Z_NormalStandRenderBehavior : BaseBehavior
+    public class PL_NormalShootRenderBehavior : BaseBehavior
     {
-        Texture2D texture = null;
+        public Texture2D texture = null;
 
-        public Z_NormalStandRenderBehavior()
+        public PL_NormalShootRenderBehavior()
         {
-            texture = SCSServices.Instance.ResourceManager.GetResource<Texture2D>("zombie_stand");
+            texture = SCSServices.Instance.ResourceManager.GetResource<Texture2D>("plant_shoot");
         }
 
-        public override void Update(IMessage<MessageType> message, Microsoft.Xna.Framework.GameTime gameTime)
+        public override void Update(IMessage<MessageType> message, GameTime gameTime)
         {
             SpriteBatch spriteBatch = SCSServices.Instance.SpriteBatch;
             MoveComponent moveCom = Owner.Owner.GetComponent(typeof(MoveComponent)) as MoveComponent;
 
             if (moveCom == null)
-                throw new Exception("NormalRunRenderBahavior: Move Components not exist!");
+                throw new Exception("NormalShootRenderBehavior: Move Components not exist!");
             spriteBatch.Draw(texture, moveCom.Position, Color.White);
 
             base.Update(message, gameTime);

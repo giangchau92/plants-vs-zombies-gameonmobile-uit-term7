@@ -1,11 +1,11 @@
 using Microsoft.Xna.Framework;
-using PlantVsZombies.GameComponents.Behaviors;
+using PlantsVsZombies.GameComponents.Behaviors;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PlantVsZombies.GameComponents.Effect
+namespace PlantsVsZombies.GameComponents.Effect
 {
     public interface IEffect
     {

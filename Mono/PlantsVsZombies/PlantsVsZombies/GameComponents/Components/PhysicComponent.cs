@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using SCSEngine.Utils.GameObject.Component;
 using Microsoft.Xna.Framework;
-using PlantVsZombies.GameCore;
-using PlantVsZombies.GameComponents.GameMessages;
+using PlantsVsZombies.GameCore;
+using PlantsVsZombies.GameComponents.GameMessages;
 
-namespace PlantVsZombies.GameComponents.Components
+namespace PlantsVsZombies.GameComponents.Components
 {
     public class PhysicComponent : IComponent<MessageType>
     {
@@ -105,23 +105,6 @@ namespace PlantVsZombies.GameComponents.Components
 
                 PZObjectManager.Instance.SendMessage(colMsg, gameTime);
             }
-        }
-
-        public void Serialize(SCSEngine.Serialization.ISerializer serializer)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Deserialize(SCSEngine.Serialization.IDeserializer deserializer)
-        {
-            
-        }
-
-
-        IComponent<MessageType> IComponent<MessageType>.Clone()
-        {
-            PhysicComponent physCom = PhysicComponentFactory.CreateComponent();
-            return physCom;
         }
     }
 }

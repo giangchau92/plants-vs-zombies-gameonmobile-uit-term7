@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PlantVsZombies.GrowSystem
+namespace PlantsVsZombies.GrowSystem
 {
     public class PvZPlantShadow : BaseUIControl, IGestureTarget<FreeTap>
     {

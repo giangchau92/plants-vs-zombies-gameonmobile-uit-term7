@@ -1,19 +1,19 @@
 using Microsoft.Xna.Framework;
-using PlantVsZombies.GameComponents.Behaviors.Implements;
-using PlantVsZombies.GameComponents.Components;
-using PlantVsZombies.GameComponents.Effect.Implements;
-using PlantVsZombies.GameComponents.GameMessages;
-using PlantVsZombies.GameCore;
-using PlantVsZombies.GameObjects;
+using PlantsVsZombies.GameComponents.Behaviors.Implements;
+using PlantsVsZombies.GameComponents.Components;
+using PlantsVsZombies.GameComponents.Effect.Implements;
+using PlantsVsZombies.GameComponents.GameMessages;
+using PlantsVsZombies.GameCore;
+using PlantsVsZombies.GameObjects;
 using SCSEngine.Utils.GameObject.Component;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PlantVsZombies.GameComponents.Behaviors.Bullet
+namespace PlantsVsZombies.GameComponents.Behaviors.Bullet
 {
-    class B_IceBulletLogicBehavior : BaseLogicBehavior
+    class B_IceBulletLogicBehavior : BaseLogicBehavior 
     {
 
         public override void Update(IMessage<MessageType> message, GameTime gameTime)

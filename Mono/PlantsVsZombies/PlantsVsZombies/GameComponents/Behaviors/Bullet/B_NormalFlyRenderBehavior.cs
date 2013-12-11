@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using PlantVsZombie.GameComponents.Components;
+using PlantsVsZombies.GameComponents.Components;
 using SCSEngine.Services;
 using SCSEngine.Utils.GameObject.Component;
 using System;
@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PlantVsZombie.GameComponents.Behaviors.Bullet
+namespace PlantsVsZombies.GameComponents.Behaviors.Bullet
 {
     public class B_NormalFlyRenderBehavior : BaseBehavior
     {
