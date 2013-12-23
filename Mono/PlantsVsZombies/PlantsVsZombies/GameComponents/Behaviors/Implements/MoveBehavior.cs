@@ -1,12 +1,12 @@
 using Microsoft.Xna.Framework;
-using PlantVsZombies.GameComponents.Components;
+using PlantsVsZombies.GameComponents.Components;
 using SCSEngine.Utils.GameObject.Component;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PlantVsZombies.GameComponents.Behaviors.Implements
+namespace PlantsVsZombies.GameComponents.Behaviors.Implements
 {
     public class MoveBehavior : BaseBehavior
     {

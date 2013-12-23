@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using SCSEngine.Utils.GameObject.Component;
 using Microsoft.Xna.Framework;
-using PlantVsZombies.GameCore;
-using PlantVsZombies.GameComponents.GameMessages;
-using PlantVsZombies.GameComponents.Behaviors.Implements;
+using PlantsVsZombies.GameCore;
+using PlantsVsZombies.GameComponents.GameMessages;
+using PlantsVsZombies.GameComponents.Behaviors.Implements;
 
-namespace PlantVsZombies.GameComponents.Components
+namespace PlantsVsZombies.GameComponents.Components
 {
     public class PhysicComponent : IComponent<MessageType>
     {

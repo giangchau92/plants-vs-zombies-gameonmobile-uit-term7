@@ -28,6 +28,7 @@ namespace SCSEngine.Control
         {
             this.Canvas = new BaseCanvas();
             this.IsGestureCompleted = false;
+            this.IsUICompleted = false;
         }
 
         public abstract void RegisterGestures(GestureHandling.IGestureDispatcher dispatcher);
@@ -35,5 +36,7 @@ namespace SCSEngine.Control
         public abstract void LeaveGestures(GestureHandling.IGestureDispatcher dispatcher);
 
         public bool IsGestureCompleted { get; protected set; }
+
+        public bool IsUICompleted { get; protected set; }
     }
 }
