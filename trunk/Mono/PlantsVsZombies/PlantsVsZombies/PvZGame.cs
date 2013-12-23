@@ -2,8 +2,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input.Touch;
 using PlantsVsZombies.Orientations;
-using PlantVsZombies.GameCore;
-using PlantVsZombies.GameObjects;
+using PlantsVsZombies.GameCore;
+using PlantsVsZombies.GameObjects;
 using SCSEngine.GestureHandling;
 using SCSEngine.GestureHandling.Implements.Detectors;
 using SCSEngine.GestureHandling.Implements.Events;
@@ -12,6 +12,10 @@ using SCSEngine.Services;
 using SCSEngine.Sprite;
 using System;
 using System.Diagnostics;
+using SCSEngine.Control;
+using PlantsVsZombies.GrowSystem;
+using SCSEngine.Serialization.XmlSerialization;
+using System.IO;
 
 namespace PlantsVsZombies
 {
@@ -23,9 +27,13 @@ namespace PlantsVsZombies
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        PZScreenManager screenManager;
+        //PZScreenManager screenManager;
 
         private Vector2 pos;
+
+        //private UIControlManager uiControlManager;
+        //private PvZGrowList growList;
+        //private PvZGrowSystem growSystem;
 
         public PvZGame()
         {
@@ -49,13 +57,17 @@ namespace PlantsVsZombies
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            IGestureManager gm = DefaultGestureHandlingFactory.Instance.CreateManager(this,
-                new OrientedTouchController(DefaultGestureHandlingFactory.Instance.CreateTouchController(), GameOrientation.Instance));
+            IGestureManager gm = DefaultGestureHandlingFactory.Instance.CreateManager(this, DefaultGestureHandlingFactory.Instance.CreateTouchController());
+                //new OrientedTouchController(DefaultGestureHandlingFactory.Instance.CreateTouchController(), GameOrientation.Instance));
             gm.AddDetector<FreeTap>(new FreeTapDetector());
             this.Components.Add(gm);
             IGestureDispatcher dp = DefaultGestureHandlingFactory.Instance.CreateDispatcher();
             dp.AddTarget<FreeTap>(this);
             gm.AddDispatcher(dp);
+
+            //this.uiControlManager = new UIControlManager(this, DefaultGestureHandlingFactory.Instance);
+            //gm.AddDispatcher(this.uiControlManager);
+            //this.Components.Add(this.uiControlManager);
 
             base.Initialize();
         }
@@ -88,12 +100,23 @@ namespace PlantsVsZombies
                 SpriteFont font = Content.Load<SpriteFont>("DebugFont");
                 SCSServices.Instance.DebugFont = font;
 
+                this.Services.AddService(typeof(SCSServices), SCSServices.Instance);
+
                 //Test
                 GameObjectCenter.Instance.InitEnity();
 
                 //Screeen management
-                screenManager = new PZScreenManager(this);
-                screenManager.AddExclusive(screenManager.Bank.GetNewScreen("Test"));
+                //screenManager = new PZScreenManager(this);
+                //screenManager.AddExclusive(screenManager.Bank.GetNewScreen("Test"));
+
+                //this.growList = new PvZGrowList(this, 60, 10, this.uiControlManager);
+                //this.growList.Canvas.Bound.Size = new Vector2(280, 100);
+                //this.growList.Canvas.Content.Size = new Vector2(280, 100);
+                //this.uiControlManager.Add(this.growList);
+
+                //this.growSystem = new PvZGrowSystem(this);
+                //this.growSystem.Deserialize(XmlSerialization.Instance.Deserialize(new FileStream(@"Xml\PlantGrowButtons.xml", FileMode.Open, FileAccess.Read)));
+                //this.growList.AddGrowButton(growSystem.Buttons["Single Pea"].CreateButton(this));
 
                 GameOrientation.Instance.InitRenderTarget(this.GraphicsDevice);
             }
@@ -126,7 +149,7 @@ namespace PlantsVsZombies
 
                 // TODO: Add your update logic here
                 SCSServices.Instance.GameTime = gameTime;
-                screenManager.Update(gameTime);
+                //screenManager.Update(gameTime);
                 //Debug.WriteLine(string.Format("Eslaped: {0}", gameTime.ElapsedGameTime.TotalMilliseconds));
 
                 base.Update(gameTime);
@@ -152,14 +175,15 @@ namespace PlantsVsZombies
             try
             {
                 // TODO: Add your drawing code here
-                screenManager.Draw(gameTime);
+                //screenManager.Draw(gameTime);
 
                 this.spriteBatch.Begin();
-                this.spriteBatch.DrawString(SCSServices.Instance.DebugFont, string.Format("Touch pos: {0} - {1}", pos.X, pos.Y), new Vector2(400f, 320f), Color.White);
+                this.spriteBatch.DrawString(SCSServices.Instance.DebugFont, string.Format("Touch pos: {0} - {1}", pos.X, pos.Y), new Vector2(100, 100), Color.White);
                 this.spriteBatch.End();
-                this.GraphicsDevice.SetRenderTarget(null);
-                
+
+                this.spriteBatch.Begin();
                 base.Draw(gameTime);
+                this.spriteBatch.End();
 
                 GameOrientation.Instance.EndDraw(this.spriteBatch);
             }

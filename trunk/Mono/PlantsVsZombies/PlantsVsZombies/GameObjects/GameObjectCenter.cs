@@ -1,5 +1,5 @@
-using PlantVsZombies.GameComponents;
-using PlantVsZombies.GameComponents.Behaviors.Implements;
+using PlantsVsZombies.GameComponents;
+using PlantsVsZombies.GameComponents.Behaviors.Implements;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,15 +8,15 @@ using System.Reflection;
 using System.Text;
 using System.Xml.Linq;
 using Microsoft.Xna.Framework;
-using PlantVsZombies.GameComponents.Components;
+using PlantsVsZombies.GameComponents.Components;
 using SCSEngine.ResourceManagement;
 using SCSEngine.Services;
 using SCSEngine.Sprite;
-using PlantVsZombies.GameComponents.Behaviors.Zombie;
+using PlantsVsZombies.GameComponents.Behaviors.Zombie;
 using SCSEngine.Serialization.XmlSerialization;
 using SCSEngine.Serialization;
 
-namespace PlantVsZombies.GameObjects
+namespace PlantsVsZombies.GameObjects
 {
     public class GameObjectCenter
     {

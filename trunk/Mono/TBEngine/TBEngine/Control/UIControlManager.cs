@@ -64,6 +64,19 @@ namespace SCSEngine.Control
             }
 
             base.Update(gameTime);
+
+            for (int i = 0; i < this.controls.Count; )
+            {
+                if (controls[i].IsUICompleted)
+                {
+                    this.controls[i].LeaveGestures(this);
+                    this.controls.RemoveAt(i);
+                }
+                else
+                {
+                    ++i;
+                }
+            }
         }
 
         public override void Draw(GameTime gameTime)

@@ -7,11 +7,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SCSEngine.GestureHandling;
+using SCSEngine.GestureHandling.Implements.Events;
 
-namespace PlantVsZombies.GrowSystem
+namespace PlantsVsZombies.GrowSystem
 {
     public class PvZGrowList : BaseUIControl
     {
+        private UIControlManager uiManager;
+
         private SpritePlayer spritePlayer;
         public ISprite Background { get; set; }
 
@@ -49,11 +53,12 @@ namespace PlantVsZombies.GrowSystem
             }
         }
 
-        public PvZGrowList(Game game, float elemWidth, float elemPadding)
+        public PvZGrowList(Game game, float elemWidth, float elemPadding, UIControlManager uiManager)
             : base(game)
         {
             this.ElementWidth = elemWidth;
             this.spritePlayer = ((SCSServices)game.Services.GetService(typeof(SCSServices))).SpritePlayer;
+            this.uiManager = uiManager;
         }
 
         public void AddGrowButton(PvZGrowButton grButton)
@@ -62,6 +67,7 @@ namespace PlantVsZombies.GrowSystem
             grButton.OnTouchLeave += this.OnGrowButtonTouchLeaved;
 
             this.growButtons.Add(grButton);
+            this.uiManager.AddTarget<FreeTap>(grButton);
         }
 
         private void ReArrange()
@@ -80,11 +86,11 @@ namespace PlantVsZombies.GrowSystem
             grButton.Canvas.Bound.Size.Y = this.Canvas.Content.Size.Y;
         }
 
-        public override void RegisterGestures(SCSEngine.GestureHandling.IGestureDispatcher dispatcher)
+        public override void RegisterGestures(IGestureDispatcher dispatcher)
         {
         }
 
-        public override void LeaveGestures(SCSEngine.GestureHandling.IGestureDispatcher dispatcher)
+        public override void LeaveGestures(IGestureDispatcher dispatcher)
         {
         }
 
@@ -130,7 +136,13 @@ namespace PlantVsZombies.GrowSystem
             if (!this.Canvas.Bound.Contains(leaveGesture.Current))
             {
                 //create plant-shadow
+                var shadow = button.ShadowFactory.CreatePlantShadow();
+                shadow.CreatorButton = button;
+                shadow.Canvas.Bound.Position = leaveGesture.Current;
+                shadow.Canvas.Bound.Size = new Vector2(elemWidth, this.Canvas.Content.Size.Y);
+
                 // add p-s to ui manager (g-dispatcher)
+                this.uiManager.Add(shadow);
             }
         }
     }

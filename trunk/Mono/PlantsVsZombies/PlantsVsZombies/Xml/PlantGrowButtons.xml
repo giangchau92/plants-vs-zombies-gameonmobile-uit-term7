@@ -3,7 +3,7 @@
   <PlantShadows>
     <Shadow>
       <Name>Single Pea</Name>
-      <Picture>SinglePeaShadow.png</Picture>
+      <Picture>SinglePeaShadow</Picture>
       <Plant>Single Pea</Plant>
     </Shadow>
   </PlantShadows>
@@ -11,10 +11,11 @@
   <Buttons>
     <Button>
       <Name>Single Pea</Name>
+      <Delay>5000</Delay>
       <DrawComponent>
         <Type>Standard</Type>
         <Data>
-          <Picture>SinglePea_btn.png</Picture>
+          <Picture>SinglePea_btn</Picture>
         </Data>
       </DrawComponent>
       <Shadow>Single Pea</Shadow>

@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using PlantsVsZombies.Resources;
 
-namespace PlantVsZombies.GameCore
+namespace PlantsVsZombies.GameCore
 {
     public class PZResourceManager : BaseResourceManager
     {
@@ -16,6 +16,7 @@ namespace PlantVsZombies.GameCore
             : base()
         {
             this.AddResourceLoader(new GameContentResourceLoader<Texture2D>(content));
+            this.AddResourceLoader(new GameContentResourceLoader<SpriteFont>(content));
             this.AddResourceLoader(new SpriteResourceLoader(this, SpriteFramesBank.Instance));
         }
     }

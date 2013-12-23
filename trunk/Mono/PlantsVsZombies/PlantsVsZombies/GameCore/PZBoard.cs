@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PlantVsZombies.GameCore
+namespace PlantsVsZombies.GameCore
 {
     public class PZBoard
     {

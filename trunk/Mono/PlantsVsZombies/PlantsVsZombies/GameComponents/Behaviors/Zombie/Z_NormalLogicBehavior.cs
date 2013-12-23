@@ -1,15 +1,15 @@
 ﻿using Microsoft.Xna.Framework;
-using PlantVsZombies.GameComponents.GameMessages;
+using PlantsVsZombies.GameComponents.GameMessages;
 using SCSEngine.Utils.GameObject.Component;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using PlantVsZombies.GameCore;
-using PlantVsZombies.GameObjects;
-using PlantVsZombies.GameComponents.Components;
+using PlantsVsZombies.GameCore;
+using PlantsVsZombies.GameObjects;
+using PlantsVsZombies.GameComponents.Components;
 
-namespace PlantVsZombies.GameComponents.Behaviors.Zombie
+namespace PlantsVsZombies.GameComponents.Behaviors.Zombie
 {
     enum eNormalZombieState
     {
@@ -29,7 +29,7 @@ namespace PlantVsZombies.GameComponents.Behaviors.Zombie
                 throw new Exception("Z_NormalLogicBehavior: Expect Logic Component");
             if (logicCOm.Health < 0)
             {
-                PlantVsZombies.GameCore.PZObjectManager.Instance.RemoveObject(this.Owner.Owner.ObjectId);
+                PlantsVsZombies.GameCore.PZObjectManager.Instance.RemoveObject(this.Owner.Owner.ObjectId);
             }
             base.Update(message, gameTime);
         }

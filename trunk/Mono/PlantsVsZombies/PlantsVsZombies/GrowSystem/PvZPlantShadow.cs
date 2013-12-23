@@ -13,20 +13,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PlantVsZombies.GrowSystem
+namespace PlantsVsZombies.GrowSystem
 {
     public class PvZPlantShadow : BaseUIControl, IGestureTarget<FreeTap>
     {
+        public PvZGrowButton CreatorButton { get; set; }
+
         public ISprite PlanShadowImage { get; set; }
         public string PlantName { get; set; }
         
         private SpritePlayer spritePlayer;
 
-        public PvZPlantShadow(Game game, string plantName)
+        private IPvZGameGrow gameGrow;
+
+        public PvZPlantShadow(Game game, string plantName, IPvZGameGrow gg)
             : base(game)
         {
             this.spritePlayer = ((SCSServices)game.Services.GetService(typeof(SCSServices))).SpritePlayer;
             this.PlantName = plantName;
+            this.gameGrow = gg;
         }
 
         public override void RegisterGestures(SCSEngine.GestureHandling.IGestureDispatcher dispatcher)
@@ -42,7 +47,7 @@ namespace PlantVsZombies.GrowSystem
         public override void Draw(GameTime gameTime)
         {
             // draw adjusted plant
-            this.spritePlayer.Draw(this.PlanShadowImage, this.Canvas.Bound.Rectangle, 0f, this.Canvas.Bound.Size / 2f, Color.White, SpriteEffects.None, 0f);
+            this.spritePlayer.Draw(this.PlanShadowImage, this.Canvas.Bound.Rectangle, Color.White);
 
             base.Draw(gameTime);
         }
@@ -63,6 +68,10 @@ namespace PlantVsZombies.GrowSystem
             {
                 // if (game cell avaiable)
                 // add plant to game
+                // cooldown button
+                this.CreatorButton.Cooldown();
+                // remove shadow
+                this.IsUICompleted = true;
                 return false;
             }
 
@@ -87,9 +96,12 @@ namespace PlantVsZombies.GrowSystem
         private string plantName;
 
         private Game game;
-        public PvZPlantShadowFactory(Game game)
+        private IPvZGameGrow gameGrow;
+
+        public PvZPlantShadowFactory(Game game, IPvZGameGrow gg)
         {
             this.game = game;
+            this.gameGrow = gg;
         }
 
         public void Serialize(ISerializer serializer)
@@ -104,16 +116,18 @@ namespace PlantVsZombies.GrowSystem
             this.plantName = deserializer.DeserializeString("Plant");
         }
 
-        public void CreatePlantShadow()
+        public PvZPlantShadow CreatePlantShadow()
         {
-            PvZPlantShadow shadow = new PvZPlantShadow(this.game, this.plantName);
+            PvZPlantShadow shadow = new PvZPlantShadow(this.game, this.plantName, this.gameGrow);
             shadow.PlanShadowImage = SCSServices.Instance.ResourceManager.GetResource<ISprite>(this.picture);
+
+            return shadow;
         }
     }
 
     public class PvZPlantShadowFactoryBank : ISerializable
     {
-        private IDictionary<string, PvZPlantShadowFactory> factories;
+        private IDictionary<string, PvZPlantShadowFactory> factories = new Dictionary<string, PvZPlantShadowFactory>();
         private Game game;
 
         public PvZPlantShadowFactoryBank(Game game)
@@ -136,7 +150,7 @@ namespace PlantVsZombies.GrowSystem
             var psDesers = deserializer.DeserializeAll("Shadow");
             foreach (var psDeser in psDesers)
             {
-                PvZPlantShadowFactory factory = new PvZPlantShadowFactory(this.game);
+                PvZPlantShadowFactory factory = new PvZPlantShadowFactory(this.game, new DoNothingGameGrow());
                 factory.Deserialize(psDeser);
 
                 this.factories.Add(factory.Name, factory);
