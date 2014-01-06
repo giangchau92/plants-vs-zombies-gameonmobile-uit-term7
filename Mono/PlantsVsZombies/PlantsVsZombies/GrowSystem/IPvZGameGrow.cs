@@ -24,16 +24,16 @@ namespace PlantsVsZombies.GrowSystem
 
         public void GrowPlant(string plantName, CRectangleF growRect)
         {
+            // call on release touch
+            PZObjectManager.Instance.AddObject(PZObjectFactory.Instance.createPlant(new Vector2(growRect.Left, growRect.Bottom)));
         }
     }
 
     public class GameGrowUtil : IPvZGameGrow
     {
-
         public CRectangleF CellContains(CRectangleF growRect, PZBoard board)
         {
             return board.GetRectAtPoint(growRect.Center);
-
         }
 
         public void GrowPlant(string plantName, CRectangleF growRect)

@@ -88,5 +88,16 @@ namespace SCSEngine.Control
 
             base.Draw(gameTime);
         }
+
+
+        public IGestureTarget<GestureEvent> HandleTarget<GestureEvent>(GestureEvent e) where GestureEvent : IGestureEvent
+        {
+            return this.gestureDispatcher.HandleTarget<GestureEvent>(e);
+        }
+
+        public void SetHandleTarget<GestureEvent>(GestureEvent e, IGestureTarget<GestureEvent> gTarget) where GestureEvent : IGestureEvent
+        {
+            this.gestureDispatcher.SetHandleTarget<GestureEvent>(e, gTarget);
+        }
     }
 }

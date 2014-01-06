@@ -91,13 +91,15 @@ namespace PlantsVsZombies.GameScreen
             gm.AddDispatcher(this.uiControlManager);
             this.Components.Add(this.uiControlManager);
             //
-            this.growList = new PvZGrowList(this.Game, 60, 10, this.uiControlManager);
+            this.growList = new PvZGrowList(this.Game, 60, 10, this.uiControlManager, new PvZHardCurrency(100000));
             this.growList.Canvas.Bound.Position = new Vector2(0, 380);
             this.growList.Canvas.Bound.Size = new Vector2(280, 100);
-            this.growList.Canvas.Content.Size = new Vector2(280, 100);
+            this.growList.Canvas.Content.Height = 80;
+            this.growList.Canvas.Content.Position = new Vector2(100, 10);
+            this.growList.Background = SCSServices.Instance.ResourceManager.GetResource<ISprite>("BuyPlant");
             this.uiControlManager.Add(this.growList);
 
-            this.growSystem = new PvZGrowSystem(this.Game);
+            this.growSystem = new PvZGrowSystem(this.Game, new DoNothingGameGrow());
             this.growSystem.Deserialize(XmlSerialization.Instance.Deserialize(new FileStream(@"Xml\PlantGrowButtons.xml", FileMode.Open, FileAccess.Read)));
             this.growList.AddGrowButton(growSystem.Buttons["Single Pea"].CreateButton(this.Game));
         }

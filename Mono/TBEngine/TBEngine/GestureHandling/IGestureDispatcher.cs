@@ -13,5 +13,8 @@ namespace SCSEngine.GestureHandling
         void Dispatch<GestureEvent>(GestureEvent gEvent) where GestureEvent : IGestureEvent;
 
         bool Enabled { get; set; }
+
+        IGestureTarget<GestureEvent> HandleTarget<GestureEvent>(GestureEvent e) where GestureEvent : IGestureEvent;
+        void SetHandleTarget<GestureEvent>(GestureEvent e, IGestureTarget<GestureEvent> gTarget) where GestureEvent : IGestureEvent;
     }
 }

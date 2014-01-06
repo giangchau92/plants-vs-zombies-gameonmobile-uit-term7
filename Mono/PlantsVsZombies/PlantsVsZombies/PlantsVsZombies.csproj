@@ -114,6 +114,7 @@
     <Compile Include="GameObjects\Implements\NormalZombie.cs" />
     <Compile Include="GameScreen\ScreenFactory\TestScreenFactory.cs" />
     <Compile Include="GameScreen\TestScreen.cs" />
+    <Compile Include="GrowSystem\IPvZGameCurrency.cs" />
     <Compile Include="GrowSystem\IPvZGameGrow.cs" />
     <Compile Include="GrowSystem\PvZGrowButton.cs" />
     <Compile Include="GrowSystem\PvZGrowList.cs" />
@@ -192,10 +193,13 @@
     <Content Include="Content\GrowCooldownFont.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\SinglePeaShadow.xnb">
+    <Content Include="Content\SinglePea_btn.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\SinglePea_btn.xnb">
+    <Content Include="Content\BuyPlant.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\SinglePea_Shadow.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Xml\Bullets.xml">

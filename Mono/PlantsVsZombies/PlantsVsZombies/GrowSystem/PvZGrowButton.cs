@@ -43,6 +43,7 @@ namespace PlantsVsZombies.GrowSystem
 
         public bool IsCooldown { get; private set; }
         public float Delay { get; set; }
+        public int Price { get; set; }
         private float currentTime;
         /// <summary>
         /// Cooldown button in time (miliseconds)
@@ -330,6 +331,7 @@ namespace PlantsVsZombies.GrowSystem
         PvZPlantShadowFactory shadowF;
         PvZPlantShadowFactoryBank shadowFBank;
         float delay;
+        int price;
 
         public PvZGrowButtonFactory(PvZPlantShadowFactoryBank shadowFB)
         {
@@ -345,6 +347,7 @@ namespace PlantsVsZombies.GrowSystem
         {
             this.Name = deserializer.DeserializeString("Name");
             delay = (float) deserializer.DeserializeDouble("Delay");
+            price = deserializer.DeserializeInteger("Price");
             IDeserializer dcDeser = deserializer.SubDeserializer("DrawComponent");
             string dcType = dcDeser.DeserializeString("Type");
             brushF = GrowButtonBrushFactoryFactory.Instance.CreateFactory(dcType);
@@ -356,6 +359,7 @@ namespace PlantsVsZombies.GrowSystem
         {
             PvZGrowButton button = new PvZGrowButton(game, brushF.CreateBrush());
             button.Delay = delay;
+            button.Price = price;
             button.ShadowFactory = this.shadowF;
 
             return button;

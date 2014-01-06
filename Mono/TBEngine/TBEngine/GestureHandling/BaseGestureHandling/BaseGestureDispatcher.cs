@@ -90,5 +90,38 @@ namespace SCSEngine.GestureHandling.BaseGestureHandling
 
 
         public bool Enabled { get; set; }
+
+
+        public IGestureTarget<GestureEvent> HandleTarget<GestureEvent>(GestureEvent e) where GestureEvent : IGestureEvent
+        {
+            int geHash = typeof(GestureEvent).GetHashCode();
+            if (this.adapters.ContainsKey(geHash))
+            {
+                StrongTargetStorage<GestureEvent> targetStorage = this.adapters[geHash] as StrongTargetStorage<GestureEvent>;
+                if (targetStorage.HandledTargets.ContainsKey(e.Touch.TouchID))
+                {
+                    return targetStorage.HandledTargets[e.Touch.TouchID];
+                }
+            }
+
+            return null;
+        }
+
+        public void SetHandleTarget<GestureEvent>(GestureEvent e, IGestureTarget<GestureEvent> gTarget) where GestureEvent : IGestureEvent
+        {
+            int geHash = typeof(GestureEvent).GetHashCode();
+            if (this.adapters.ContainsKey(geHash))
+            {
+                StrongTargetStorage<GestureEvent> targetStorage = this.adapters[geHash] as StrongTargetStorage<GestureEvent>;
+                if (targetStorage.HandledTargets.ContainsKey(e.Touch.TouchID))
+                {
+                    targetStorage.HandledTargets[e.Touch.TouchID] = gTarget;
+                }
+                else
+                {
+                    targetStorage.HandledTargets.Add(e.Touch.TouchID, gTarget);
+                }
+            }
+        }
     }
 }
