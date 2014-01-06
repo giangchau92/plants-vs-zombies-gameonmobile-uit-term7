@@ -20,10 +20,10 @@ namespace PlantsVsZombies.GrowSystem
             set { buttonFB = value; }
         }
 
-        public PvZGrowSystem(Game game)
+        public PvZGrowSystem(Game game, IPvZGameGrow gameGrow)
         {
             this.game = game;
-            this.shadowFB = new PvZPlantShadowFactoryBank(this.game);
+            this.shadowFB = new PvZPlantShadowFactoryBank(this.game, gameGrow);
             this.buttonFB = new PvZGrowButtonFactoryBank(this.shadowFB);
         }
 

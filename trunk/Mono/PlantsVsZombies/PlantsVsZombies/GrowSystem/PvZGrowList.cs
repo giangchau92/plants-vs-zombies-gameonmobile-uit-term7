@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using SCSEngine.GestureHandling;
 using SCSEngine.GestureHandling.Implements.Events;
+using SCSEngine.Utils.Mathematics;
 
 namespace PlantsVsZombies.GrowSystem
 {
@@ -20,6 +21,8 @@ namespace PlantsVsZombies.GrowSystem
         public ISprite Background { get; set; }
 
         private List<PvZGrowButton> growButtons = new List<PvZGrowButton>();
+        private IPvZGameCurrency currencySystem;
+
         public List<PvZGrowButton> GrowButtons
         {
             get { return growButtons; }
@@ -53,12 +56,13 @@ namespace PlantsVsZombies.GrowSystem
             }
         }
 
-        public PvZGrowList(Game game, float elemWidth, float elemPadding, UIControlManager uiManager)
+        public PvZGrowList(Game game, float elemWidth, float elemPadding, UIControlManager uiManager, IPvZGameCurrency currSys)
             : base(game)
         {
             this.ElementWidth = elemWidth;
             this.spritePlayer = ((SCSServices)game.Services.GetService(typeof(SCSServices))).SpritePlayer;
             this.uiManager = uiManager;
+            this.currencySystem = currSys;
         }
 
         public void AddGrowButton(PvZGrowButton grButton)
@@ -76,6 +80,8 @@ namespace PlantsVsZombies.GrowSystem
             {
                 this.ArrageButton(this.growButtons[i], i);
             }
+
+            this.Canvas.Content.Size.X = (elemWidth + elemPad) * this.growButtons.Count;
         }
 
         private void ArrageButton(PvZGrowButton grButton, int i)
@@ -98,11 +104,11 @@ namespace PlantsVsZombies.GrowSystem
         {
             foreach (var grButton in this.growButtons)
             {
-                if (!grButton.Enabled && true /*button is avaiable*/)
+                if (!grButton.Enabled && grButton.Price <= this.currencySystem.CurrentMoney)
                 {
                     grButton.Enabled = true;
                 }
-                else if (grButton.Enabled && false /*button unavaiable*/)
+                else if (grButton.Enabled && grButton.Price > this.currencySystem.CurrentMoney)
                 {
                     grButton.Enabled = false;
                 }
@@ -133,7 +139,9 @@ namespace PlantsVsZombies.GrowSystem
 
         private void OnGrowButtonTouchLeaved(PvZGrowButton button, SCSEngine.GestureHandling.Implements.Events.FreeTap leaveGesture)
         {
-            if (!this.Canvas.Bound.Contains(leaveGesture.Current))
+            CRectangleF contentInBound = new CRectangleF(this.Canvas.Content);
+            contentInBound.Position += this.Canvas.Bound.Position;
+            if (!contentInBound.Contains(leaveGesture.Current))
             {
                 //create plant-shadow
                 var shadow = button.ShadowFactory.CreatePlantShadow();
@@ -143,6 +151,7 @@ namespace PlantsVsZombies.GrowSystem
 
                 // add p-s to ui manager (g-dispatcher)
                 this.uiManager.Add(shadow);
+                this.uiManager.SetHandleTarget<FreeTap>(leaveGesture, shadow);
             }
         }
     }
