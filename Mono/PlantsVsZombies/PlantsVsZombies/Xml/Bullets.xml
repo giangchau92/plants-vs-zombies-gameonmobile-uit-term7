@@ -19,6 +19,7 @@
 				<Behavior>
           <Type>xml_render_run</Type>
           <ResourceName>Bullets/B_Pea</ResourceName>
+          <TimeFrame>0.03333</TimeFrame>
           <Bound>
             <X>29</X>
             <Y>22</Y>
@@ -30,7 +31,9 @@
 			</Component>
 			<Component>
         <Type>xml_logic</Type>
-        <Behavior>xml_NormalBullet</Behavior>
+        <Behavior>
+          <Type>xml_NormalBullet</Type>
+        </Behavior>
 			</Component>
 		</Components>
 	</Bullet>
@@ -54,6 +57,7 @@
         <Behavior>
           <Type>xml_render_run</Type>
           <ResourceName>Bullets/B_IcePea</ResourceName>
+          <TimeFrame>0.03333</TimeFrame>
           <Bound>
             <X>29</X>
             <Y>22</Y>
@@ -65,7 +69,9 @@
       </Component>
       <Component>
         <Type>xml_logic</Type>
-        <Behavior>xml_IceBullet</Behavior>
+        <Behavior>
+          <Type>xml_IceBullet</Type>
+        </Behavior>
       </Component>
     </Components>
   </Bullet>

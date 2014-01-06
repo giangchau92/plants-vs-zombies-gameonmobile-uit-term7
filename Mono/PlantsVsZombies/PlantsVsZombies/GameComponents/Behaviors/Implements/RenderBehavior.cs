@@ -3,6 +3,7 @@ using PlantsVsZombies.GameComponents.Components;
 using SCSEngine.Services;
 using SCSEngine.Services.Sprite;
 using SCSEngine.Sprite;
+using SCSEngine.Sprite.Implements;
 using SCSEngine.Utils.GameObject.Component;
 using System;
 using System.Collections.Generic;
@@ -40,10 +41,11 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Implements
             PhysicComponent moveCom = Owner.Owner.GetComponent(typeof(PhysicComponent)) as PhysicComponent;
 
             if (moveCom == null)
-                throw new Exception("Z_ZombieRenderBehavior: Move Components not exist!");
+                throw new Exception("RenderBehavior: Move Components not exist!");
 
             Sprite.TimeStep(gameTime);
-            spritePlayer.Draw(Sprite, new Vector2(moveCom.Frame.X, moveCom.Frame.Y), Color.White);
+            //spritePlayer.Draw(Sprite, new Vector2(moveCom.Frame.X, moveCom.Frame.Y), Color.White);
+            spritePlayer.Draw(Sprite, moveCom.Frame, Color.White);
 
             base.Update(message, gameTime);
         }
@@ -52,10 +54,10 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Implements
         {
             PhysicComponent phyCom = this.Owner.Owner.GetComponent(typeof(PhysicComponent)) as PhysicComponent;
             if (phyCom == null)
-                throw new Exception("Z_ZombieRenderBehavior: Physic Component not exist!");
+                throw new Exception("RenderBehavior: Physic Component not exist!");
             phyCom.Bound = SpriteBound;
             if (Sprite == null)
-                throw new Exception("Z_ZombieRenderBehavior: Sprite null exception!");
+                throw new Exception("RenderBehavior: Sprite null exception!");
             Sprite.Play();
             base.OnLoad();
         }
@@ -74,7 +76,7 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Implements
         public override IBehavior<MessageType> Clone()
         {
             RenderBehavior renderBehavior = new RenderBehavior();
-            renderBehavior.Sprite = this.Sprite;
+            renderBehavior.Sprite = new Sprite(Sprite.SpriteData);
             renderBehavior.SpriteBound = this.SpriteBound;
             return renderBehavior;
         }

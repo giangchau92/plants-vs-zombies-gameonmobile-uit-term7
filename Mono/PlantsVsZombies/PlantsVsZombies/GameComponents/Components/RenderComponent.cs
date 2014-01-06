@@ -17,6 +17,7 @@ namespace PlantsVsZombies.GameComponents.Components
     {
         ZO_NORMAL_RUNNING,
         ZO_NORMAL_EATING,
+        ZO_NORMAL_DEATH,
 
         STANDING,
         PL_SHOOTING,
@@ -110,12 +111,16 @@ namespace PlantsVsZombies.GameComponents.Components
                     renderTypr = eMoveRenderBehaviorType.ZO_NORMAL_RUNNING;
                 else if (type == "xml_render_stand")
                     renderTypr = eMoveRenderBehaviorType.STANDING;
+                else if (type == "xml_render_death")
+                    renderTypr = eMoveRenderBehaviorType.ZO_NORMAL_DEATH;
 
                 string resourceName = behaviorDeser.DeserializeString("ResourceName");
+                double timeFrame = behaviorDeser.DeserializeDouble("TimeFrame");
                 Vector2 bound = XNASerialization.Instance.DeserializeVector2(behaviorDeser, "Bound");
 
                 RenderBehavior renderBehavior = new RenderBehavior();
                 renderBehavior.Sprite = SCSServices.Instance.ResourceManager.GetResource<ISprite>(resourceName);
+                renderBehavior.Sprite.TimeDelay = TimeSpan.FromSeconds(timeFrame);
                 renderBehavior.SpriteBound = new Rectangle(0, 0, (int)bound.X, (int)bound.Y);
                 this.AddBehavior(renderTypr, renderBehavior);
             }

@@ -1,52 +1,59 @@
 <Levels>
 	<Level>
-		<Name>Level 1 - 1<Name>
+		<Name>Level 1 - 1</Name>
 		<Wave>
 			<Name>Wave 1</Name>
-			<Zombie>xml_stand_zombie</Zombie>
-			<Zombie>xml_stand_zombie2</Zombie>
-			<Zombie>xml_stand_zombie3</Zombie>
+			<Zombie><Value>xml_stand_zombie</Value></Zombie>
 			<Number>
 				<From>5</From>
 				<To>10</To>
 			</Number>
-			<Time>500</Time>
+      <TimeNextZombie>3</TimeNextZombie>
+			<TimeWave>2</TimeWave>
+      <TimeBeginWave>2</TimeBeginWave>
+      <TimeNextWave>2</TimeNextWave>
 		</Wave>
 		<Wave>
 			<Name>Wave 2</Name>
-			<Zombie>xml_stand_zombie</Zombie>
-			<Zombie>xml_stand_zombie2</Zombie>
-			<Zombie>xml_stand_zombie3</Zombie>
+			<Zombie><Value>xml_stand_zombie</Value></Zombie>
 			<Number>
 				<From>3</From>
 				<To>8</To>
 			</Number>
-			<Time>500</Time>
+      <TimeNextZombie>3</TimeNextZombie>
+			<TimeWave>2</TimeWave>
+      <TimeBeginWave>2</TimeBeginWave>
+      <TimeNextWave>2</TimeNextWave>
 		</Wave>
 	</Level>
+  
+    
+    
 	<Level>
-		<Name>Level 1 - 2<Name>
+		<Name>Level 1 - 2</Name>
 		<Wave>
 			<Name>Wave 1</Name>
-			<Zombie>xml_stand_zombie</Zombie>
-			<Zombie>xml_stand_zombie2</Zombie>
-			<Zombie>xml_stand_zombie3</Zombie>
+			<Zombie><Value>xml_stand_zombie</Value></Zombie>
 			<Number>
 				<From>5</From>
 				<To>10</To>
 			</Number>
-			<Time>500</Time>
+      <TimeNextZombie>3</TimeNextZombie>
+			<TimeWave>500</TimeWave>
+      <TimeBeginWave>2</TimeBeginWave>
+      <TimeNextWave>500</TimeNextWave>
 		</Wave>
 		<Wave>
 			<Name>Wave 2</Name>
-			<Zombie>xml_stand_zombie</Zombie>
-			<Zombie>xml_stand_zombie2</Zombie>
-			<Zombie>xml_stand_zombie3</Zombie>
+			<Zombie><Value>xml_stand_zombie</Value></Zombie>
 			<Number>
 				<From>3</From>
 				<To>8</To>
 			</Number>
-			<Time>500</Time>
+      <TimeNextZombie>3</TimeNextZombie>
+			<TimeWave>500</TimeWave>
+      <TimeBeginWave>500</TimeBeginWave>
+      <TimeNextWave>500</TimeNextWave>
 		</Wave>
 	</Level>
 </Levels>

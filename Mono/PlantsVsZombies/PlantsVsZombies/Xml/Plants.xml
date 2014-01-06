@@ -20,6 +20,7 @@
 		  <Behavior>
 			  <Type>xml_render_stand</Type>
 			  <ResourceName>Plants/DoublePea/DoublePea</ResourceName>
+        <TimeFrame>0.03333</TimeFrame>
 			  <Bound>
 				  <X>100</X>
 				  <Y>55</Y>
@@ -31,11 +32,14 @@
 	  </Component>
 	  <Component>
       <Type>xml_logic</Type>
-      <Behavior>xml_NormalPlant</Behavior>
+      <Behavior>
+        <Type>xml_NormalPlant</Type>
+        <TimeShoot>1</TimeShoot>
+      </Behavior>
 	  </Component>
 	</Components>
 	</Plant>
-  <!--  -->
+  <!-- ICE PLANT -->
   <Plant>
     <Name>xml_Plant_IcePea</Name>
     <Type>Plant</Type>
@@ -55,6 +59,7 @@
 		  <Behavior>
 			  <Type>xml_render_stand</Type>
 			  <ResourceName>Plants/IcePea/IcePea</ResourceName>
+        <TimeFrame>0.03333</TimeFrame>
 			  <Bound>
 				  <X>118</X>
 				  <Y>63</Y>
@@ -66,7 +71,10 @@
 	  </Component>
 	  <Component>
       <Type>xml_logic</Type>
-      <Behavior>xml_IcePlant</Behavior>
+      <Behavior>
+        <Type>xml_IcePlant</Type>
+        <TimeShoot>1</TimeShoot>
+      </Behavior>
 	  </Component>
 	</Components>
 	</Plant>

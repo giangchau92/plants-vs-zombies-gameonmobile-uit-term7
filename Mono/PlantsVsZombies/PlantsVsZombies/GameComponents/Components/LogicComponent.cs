@@ -61,7 +61,9 @@ namespace PlantsVsZombies.GameComponents.Components
 
         public void Deserialize(SCSEngine.Serialization.IDeserializer deserializer)
         {
-            string behaviorType = deserializer.DeserializeString("Behavior");
+            var behDeser = deserializer.SubDeserializer("Behavior");
+            string behaviorType = behDeser.DeserializeString("Type");
+
             if (behaviorType == "xml_NormalZombie")
                 this.LogicBehavior = new Z_NormalLogicBehavior();
             else if (behaviorType == "xml_NormalPlant")
@@ -72,6 +74,8 @@ namespace PlantsVsZombies.GameComponents.Components
                 this.LogicBehavior = new B_NormalLogicBehavior();
             else if (behaviorType == "xml_IceBullet")
                 this.LogicBehavior = new B_IceBulletLogicBehavior();
+
+            //this.LogicBehavior.Deserialize(behDeser);
         }
 
         IComponent<MessageType> IComponent<MessageType>.Clone()

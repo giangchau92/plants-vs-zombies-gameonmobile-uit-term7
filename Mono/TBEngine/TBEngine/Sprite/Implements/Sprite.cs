@@ -49,6 +49,11 @@ namespace SCSEngine.Sprite.Implements
             lastTime = new TimeSpan(-100000000);
         }
 
+        public bool IsEOF()
+        {
+            return nextFrame == (this.SpriteData.Metadata.NumberOfFrames - 1);
+        }
+
         public void TimeStep(GameTime gameTime)
         {
             if (state == SpriteState.PLAYED)

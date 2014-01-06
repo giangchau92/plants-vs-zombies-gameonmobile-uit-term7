@@ -9,6 +9,7 @@ using PlantsVsZombies.GameComponents.Components;
 using PlantsVsZombies.GameCore;
 using SCSEngine.Services;
 using PlantsVsZombies.GameObjects;
+using SCSEngine.Serialization;
 
 namespace PlantsVsZombies.GameComponents.Behaviors.Plant
 {
@@ -22,6 +23,12 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Plant
         TimeSpan currentTimeShoot = TimeSpan.Zero;
         TimeSpan shootTime = new TimeSpan(0, 0, 0, 0, 500);
         Vector2 shootPoint = new Vector2(90, 45);
+
+        public TimeSpan ShootTime
+        {
+            get;
+            set;
+        }
 
         public override void Update(IMessage<MessageType> msg, GameTime gameTime)
         {
@@ -84,6 +91,17 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Plant
         public override IBehavior<MessageType> Clone()
         {
             return new P_NormalLogicBehavior();
+        }
+
+        public void Serialize(ISerializer serializer)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Deserialize(IDeserializer deserializer)
+        {
+            // CODE HERE
+            ShootTime = TimeSpan.FromSeconds(deserializer.DeserializeDouble("TimeShoot"));
         }
     }
 }

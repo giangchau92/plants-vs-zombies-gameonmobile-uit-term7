@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using PlantsVsZombies.GameComponents.Effect;
+using SCSEngine.Serialization;
 
 namespace PlantsVsZombies.GameComponents.Behaviors
 {
-    public class BaseLogicBehavior : BaseBehavior
+    public class BaseLogicBehavior : BaseBehavior, ISerializable
     {
         IDictionary<Type, IEffect> listEffect = new Dictionary<Type, IEffect>();
 
@@ -44,6 +45,16 @@ namespace PlantsVsZombies.GameComponents.Behaviors
         {
             if (effect != null)
                 listEffect.Remove(effect.GetType());
+        }
+
+        public void Serialize(ISerializer serializer)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Deserialize(IDeserializer deserializer)
+        {
+            throw new NotImplementedException();
         }
     }
 }

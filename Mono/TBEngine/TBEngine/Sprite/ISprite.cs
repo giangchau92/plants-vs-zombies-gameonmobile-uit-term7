@@ -15,5 +15,6 @@ namespace SCSEngine.Sprite
         TimeSpan TimeDelay { get; set; }
 
         void TimeStep(GameTime gameTime);
+        bool IsEOF();
     }
 }
