@@ -8,11 +8,13 @@
 				<From>5</From>
 				<To>10</To>
 			</Number>
-      <TimeNextZombie>3</TimeNextZombie>
+      <TimeNextZombieFrom>3</TimeNextZombieFrom>
+      <TimeNextZombieTo>5</TimeNextZombieTo>
 			<TimeWave>2</TimeWave>
-      <TimeBeginWave>2</TimeBeginWave>
-      <TimeNextWave>2</TimeNextWave>
-		</Wave>
+      <TimeBeginWave>5</TimeBeginWave>
+      <TimeNextWave>5</TimeNextWave>
+		
+  </Wave>
 		<Wave>
 			<Name>Wave 2</Name>
 			<Zombie><Value>xml_stand_zombie</Value></Zombie>
@@ -20,10 +22,11 @@
 				<From>3</From>
 				<To>8</To>
 			</Number>
-      <TimeNextZombie>3</TimeNextZombie>
+      <TimeNextZombieFrom>3</TimeNextZombieFrom>
+      <TimeNextZombieTo>5</TimeNextZombieTo>
 			<TimeWave>2</TimeWave>
-      <TimeBeginWave>2</TimeBeginWave>
-      <TimeNextWave>2</TimeNextWave>
+      <TimeBeginWave>5</TimeBeginWave>
+      <TimeNextWave>5</TimeNextWave>
 		</Wave>
 	</Level>
   
@@ -38,7 +41,8 @@
 				<From>5</From>
 				<To>10</To>
 			</Number>
-      <TimeNextZombie>3</TimeNextZombie>
+      <TimeNextZombieFrom>3</TimeNextZombieFrom>
+      <TimeNextZombieTo>5</TimeNextZombieTo>
 			<TimeWave>500</TimeWave>
       <TimeBeginWave>2</TimeBeginWave>
       <TimeNextWave>500</TimeNextWave>
@@ -50,7 +54,8 @@
 				<From>3</From>
 				<To>8</To>
 			</Number>
-      <TimeNextZombie>3</TimeNextZombie>
+      <TimeNextZombieFrom>3</TimeNextZombieFrom>
+      <TimeNextZombieTo>5</TimeNextZombieTo>
 			<TimeWave>500</TimeWave>
       <TimeBeginWave>500</TimeBeginWave>
       <TimeNextWave>500</TimeNextWave>

@@ -3,6 +3,7 @@ using PlantsVsZombies.GameComponents.Components;
 using SCSEngine.Utils.GameObject.Component;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
@@ -24,7 +25,7 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Implements
             MoveComponent moveCom = this.Owner as MoveComponent;
             if (moveCom == null)
                 throw new Exception("MormalRunBehavior: Owner must be MoveComponent!");
-
+            
             moveCom.Velocity = Velocity + VelocityAdd;
             VelocityAdd = Vector2.Zero;
             moveCom.UpdatePosition(gameTime);

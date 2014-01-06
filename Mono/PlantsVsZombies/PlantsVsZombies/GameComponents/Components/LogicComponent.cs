@@ -75,7 +75,7 @@ namespace PlantsVsZombies.GameComponents.Components
             else if (behaviorType == "xml_IceBullet")
                 this.LogicBehavior = new B_IceBulletLogicBehavior();
 
-            //this.LogicBehavior.Deserialize(behDeser);
+            this.LogicBehavior.Deserialize(behDeser);
         }
 
         IComponent<MessageType> IComponent<MessageType>.Clone()
