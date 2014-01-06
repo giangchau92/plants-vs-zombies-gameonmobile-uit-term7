@@ -3,6 +3,7 @@ using PlantsVsZombies.GameCore;
 using SCSEngine.Utils.Mathematics;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,34 +18,29 @@ namespace PlantsVsZombies.GrowSystem
 
     public class DoNothingGameGrow : IPvZGameGrow
     {
+        private PZBoard _gameBoard;
+
+        public DoNothingGameGrow(PZBoard gameBoard)
+        {
+            _gameBoard = gameBoard;
+        }
         public CRectangleF CellContains(CRectangleF growRect)
         {
-            return null;
+            CRectangleF rect = _gameBoard.GetRectAtPoint(growRect.Position);
+            //Debug.WriteLine("CellContains at " + rect.X + " " + rect.Y);
+            return rect;
+            
         }
 
         public void GrowPlant(string plantName, CRectangleF growRect)
         {
             // call on release touch
-            PZObjectManager.Instance.AddObject(PZObjectFactory.Instance.createPlant(new Vector2(growRect.Left, growRect.Bottom)));
+            CRectangleF rect = _gameBoard.GetRectAtPoint(growRect.Position);
+
+            //Debug.WriteLine("GrowPlant at " + rect.X + " " + rect.Y);
+            PZObjectManager.Instance.AddObject(PZObjectFactory.Instance.createPlant(new Vector2(rect.Left, rect.Bottom)));
         }
     }
 
-    public class GameGrowUtil : IPvZGameGrow
-    {
-        public CRectangleF CellContains(CRectangleF growRect, PZBoard board)
-        {
-            return board.GetRectAtPoint(growRect.Center);
-        }
-
-        public void GrowPlant(string plantName, CRectangleF growRect)
-        {
-            // call on release touch
-            PZObjectManager.Instance.AddObject(PZObjectFactory.Instance.createPlant(new Vector2(growRect.Left, growRect.Bottom)));
-        }
-
-        public CRectangleF CellContains(CRectangleF growRect)
-        {
-            throw new NotImplementedException();
-        }
-    }
+    
 }

@@ -55,10 +55,10 @@ namespace PlantsVsZombies.GameScreen
 
             gameBoard = new PZBoard(9, 5, objectManager);
             gameBoard.Board = new int[,] {
-                {1, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {1, 0, 0, 0, 0, 0, 0, 0, 0}
+                {1, 2, 0, 0, 0, 0, 0, 0, 0},
+                {1, 2, 0, 0, 0, 0, 0, 0, 0},
+                {1, 2, 0, 0, 0, 0, 0, 0, 0},
+                {1, 2, 0, 0, 0, 0, 0, 0, 0}
             };
             // Gen object
 
@@ -99,7 +99,7 @@ namespace PlantsVsZombies.GameScreen
             this.growList.Background = SCSServices.Instance.ResourceManager.GetResource<ISprite>("BuyPlant");
             this.uiControlManager.Add(this.growList);
 
-            this.growSystem = new PvZGrowSystem(this.Game, new DoNothingGameGrow());
+            this.growSystem = new PvZGrowSystem(this.Game, new DoNothingGameGrow(gameBoard));
             this.growSystem.Deserialize(XmlSerialization.Instance.Deserialize(new FileStream(@"Xml\PlantGrowButtons.xml", FileMode.Open, FileAccess.Read)));
             this.growList.AddGrowButton(growSystem.Buttons["Single Pea"].CreateButton(this.Game));
         }

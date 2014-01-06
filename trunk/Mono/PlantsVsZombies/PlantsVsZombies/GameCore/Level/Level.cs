@@ -142,12 +142,20 @@ namespace PlantsVsZombies.GameCore.Level
                 return TimeSpan.FromSeconds(_timeBeginWave);
             }
         }
-        private double _timeNextZombie;
-        public double TimeNextZombie
+        private double _timeNextZombieFrom;
+        public double TimeNextZombieFrom
         {
             get
             {
-                return _timeNextZombie;
+                return _timeNextZombieFrom;
+            }
+        }
+        private double _timeNextZombieTo;
+        public double TimeNextZombieTo
+        {
+            get
+            {
+                return _timeNextZombieTo;
             }
         }
 
@@ -184,8 +192,8 @@ namespace PlantsVsZombies.GameCore.Level
             {
                 if (_nextZombieTime == TimeSpan.Zero)
                 {
-                    _nextZombieTime = TimeSpan.FromSeconds(rand.NextDouble() * TimeNextZombie); // Calc time to drop zombie
-                    Debug.WriteLine("WAVE: Tha ZOMBIE trong {0} giay random trong {} giay", _nextZombieTime, TimeNextZombie);
+                    _nextZombieTime = TimeSpan.FromSeconds(TimeNextZombieFrom + rand.NextDouble() * (TimeNextZombieTo - TimeNextZombieFrom)); // Calc time to drop zombie
+                    Debug.WriteLine("WAVE: Tha ZOMBIE trong {0} giay", _nextZombieTime);
                 }
 
                 if (_currentTime >= _nextZombieTime) // Tha zombie
@@ -193,9 +201,9 @@ namespace PlantsVsZombies.GameCore.Level
                     
                     string zombieString = Zombies[rand.Next(0, Zombies.Count)];
                     ObjectEntity obj = GameObjectCenter.Instance.CreateObject(zombieString);
-                    int row = rand.Next(0, 5);
+                    int row = rand.Next(0, 4);
                     Debug.WriteLine("LEVEL: Tha ZOMBIE at row {0}", row);
-                    board.AddObjectAt(obj, row, 9);
+                    board.AddObjectAt(obj, row, 12);
                     _currentTime = TimeSpan.Zero;
                     _nextZombieTime = TimeSpan.Zero;
                     _currentZombie++;
@@ -230,7 +238,8 @@ namespace PlantsVsZombies.GameCore.Level
             _timeWave = deserializer.DeserializeDouble("TimeWave");
             _timeNextWave = deserializer.DeserializeDouble("TimeNextWave");
             _timeBeginWave = deserializer.DeserializeDouble("TimeBeginWave");
-            _timeNextZombie = deserializer.DeserializeDouble("TimeNextZombie");
+            _timeNextZombieFrom = deserializer.DeserializeDouble("TimeNextZombieFrom");
+            _timeNextZombieTo = deserializer.DeserializeDouble("TimeNextZombieTo");
         }
     }
 }

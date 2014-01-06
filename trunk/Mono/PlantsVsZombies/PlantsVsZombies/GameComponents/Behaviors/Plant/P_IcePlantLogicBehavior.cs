@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using PlantsVsZombies.GameComponents.Components;
 using PlantsVsZombies.GameComponents.GameMessages;
 using PlantsVsZombies.GameCore;
+using SCSEngine.Serialization;
 using SCSEngine.Services;
 using SCSEngine.Utils.GameObject.Component;
 using System;
@@ -18,6 +19,12 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Plant
         TimeSpan shootTime = new TimeSpan(0, 0, 0, 0, 500);
         Vector2 shootPoint = new Vector2(90, 45);
 
+        public Double DShootTime
+        {
+            get { return shootTime.TotalSeconds; }
+            set { shootTime = TimeSpan.FromSeconds(value); }
+        }
+
         public override void Update(IMessage<MessageType> msg, GameTime gameTime)
         {
             PlantState = eNormalPlantState.STANDING;
@@ -30,7 +37,7 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Plant
                 MoveComponent obj1 = this.Owner.Owner.GetComponent(typeof(MoveComponent)) as MoveComponent;
                 MoveComponent obj2 = item.Value.GetComponent(typeof(MoveComponent)) as MoveComponent;
 
-                if (obj2.Position.Y == obj1.Position.Y && (obj1.Position.X < obj2.Position.X) && obj2.Position.X < SCSServices.Instance.Game.GraphicsDevice.Viewport.Width
+                if (obj2.Position.Y == obj1.Position.Y && (obj1.Position.X < obj2.Position.X) && obj2.Position.X < SCSServices.Instance.Game.GraphicsDevice.Viewport.Height
                     && (obj2.Owner as ObjectEntity).ObjectType == eObjectType.ZOMBIE)
                 {
                     // Change to shoot
@@ -79,7 +86,15 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Plant
 
         public override IBehavior<MessageType> Clone()
         {
-            return new P_IcePlantLogicBehavior();
+            var clone = new P_IcePlantLogicBehavior();
+            clone.DShootTime = this.DShootTime;
+            return clone;
+        }
+
+        public override void Deserialize(IDeserializer deserializer)
+        {
+            // CODE HERE
+            shootTime = TimeSpan.FromSeconds(deserializer.DeserializeDouble("TimeShoot"));
         }
     }
 }

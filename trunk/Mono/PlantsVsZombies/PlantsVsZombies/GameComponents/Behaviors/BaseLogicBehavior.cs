@@ -52,9 +52,8 @@ namespace PlantsVsZombies.GameComponents.Behaviors
             throw new NotImplementedException();
         }
 
-        public void Deserialize(IDeserializer deserializer)
+        public virtual void Deserialize(IDeserializer deserializer)
         {
-            throw new NotImplementedException();
         }
     }
 }

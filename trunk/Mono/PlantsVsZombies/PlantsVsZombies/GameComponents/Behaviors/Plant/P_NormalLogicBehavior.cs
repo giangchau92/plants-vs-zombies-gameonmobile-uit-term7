@@ -24,10 +24,10 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Plant
         TimeSpan shootTime = new TimeSpan(0, 0, 0, 0, 500);
         Vector2 shootPoint = new Vector2(90, 45);
 
-        public TimeSpan ShootTime
+        public Double DShootTime
         {
-            get;
-            set;
+            get { return shootTime.TotalSeconds; }
+            set { shootTime = TimeSpan.FromSeconds(value); }
         }
 
         public override void Update(IMessage<MessageType> msg, GameTime gameTime)
@@ -42,7 +42,7 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Plant
                 MoveComponent obj1 = this.Owner.Owner.GetComponent(typeof(MoveComponent)) as MoveComponent;
                 MoveComponent obj2 = item.Value.GetComponent(typeof(MoveComponent)) as MoveComponent;
 
-                if (obj2.Position.Y == obj1.Position.Y && (obj1.Position.X < obj2.Position.X) && obj2.Position.X < SCSServices.Instance.Game.GraphicsDevice.Viewport.Width
+                if (obj2.Position.Y == obj1.Position.Y && (obj1.Position.X < obj2.Position.X) && obj2.Position.X < SCSServices.Instance.Game.GraphicsDevice.Viewport.Height
                     && (obj2.Owner as ObjectEntity).ObjectType == eObjectType.ZOMBIE)
                 {
                     // Change to shoot
@@ -90,18 +90,18 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Plant
 
         public override IBehavior<MessageType> Clone()
         {
-            return new P_NormalLogicBehavior();
+
+            var clone = new P_NormalLogicBehavior();
+
+            clone.DShootTime = this.DShootTime;
+            return clone;
         }
 
-        public void Serialize(ISerializer serializer)
-        {
-            throw new NotImplementedException();
-        }
 
-        public void Deserialize(IDeserializer deserializer)
+        public override void Deserialize(IDeserializer deserializer)
         {
             // CODE HERE
-            ShootTime = TimeSpan.FromSeconds(deserializer.DeserializeDouble("TimeShoot"));
+            shootTime = TimeSpan.FromSeconds(deserializer.DeserializeDouble("TimeShoot"));
         }
     }
 }

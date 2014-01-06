@@ -8,6 +8,7 @@ using System.Text;
 using PlantsVsZombies.GameComponents.Behaviors.Implements;
 using PlantsVsZombies.GameComponents.Components;
 using PlantsVsZombies.GameCore;
+using SCSEngine.Serialization;
 
 namespace PlantsVsZombies.GameComponents.Behaviors.Zombie
 {
@@ -130,6 +131,11 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Zombie
         public override IBehavior<MessageType> Clone()
         {
             return new Z_NormalLogicBehavior();
+        }
+
+        public override void Deserialize(IDeserializer deserializer)
+        {
+
         }
     }
 }

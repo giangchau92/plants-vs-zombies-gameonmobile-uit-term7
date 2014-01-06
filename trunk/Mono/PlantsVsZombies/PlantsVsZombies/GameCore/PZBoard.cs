@@ -15,7 +15,8 @@ namespace PlantsVsZombies.GameCore
         public static int CELL_WIDTH = 60;
         public static int CELL_HEIGHT = 90;
 
-        public Vector2 Position { get; set; }
+        public Vector2 Position { get; private set; }
+        public Rectangle Bound { get; private set; }
 
         PZObjectManager objectManager;
 
@@ -23,6 +24,7 @@ namespace PlantsVsZombies.GameCore
         {
             Board = new int[row, column];
             Position = Vector2.Zero;
+
             objectManager = objMan;
         }
 
@@ -43,7 +45,7 @@ namespace PlantsVsZombies.GameCore
         public CRectangleF GetRectAtPoint(Vector2 point)
         {
             Vector2 pos = GetPositionAtPoint(point);
-            return new CRectangleF(pos.X, pos.Y, CELL_WIDTH, CELL_HEIGHT);
+            return new CRectangleF(pos.X, pos.Y - CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT);
         }
 
         public void AddObjectAt(ObjectEntity obj, int row, int col)
