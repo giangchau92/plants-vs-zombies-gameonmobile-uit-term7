@@ -71,7 +71,17 @@ namespace PlantsVsZombies.GameComponents.Components
                 _frame = Bound;
                 return;
             }
-            _frame = new Rectangle((int)moveCom.Position.X, (int)moveCom.Position.Y - Bound.Height, Bound.Width, Bound.Height);
+
+            int height = Bound.Height;
+            int width = Bound.Width;
+
+            if (height > PZBoard.CELL_HEIGHT)
+            {
+                width = width * PZBoard.CELL_HEIGHT / height;
+                height = PZBoard.CELL_HEIGHT;
+            }
+            _frame = new Rectangle((int)moveCom.Position.X, (int)moveCom.Position.Y - height, width, height);
+
         }
 
         private void CheckCollision(GameTime gameTime)

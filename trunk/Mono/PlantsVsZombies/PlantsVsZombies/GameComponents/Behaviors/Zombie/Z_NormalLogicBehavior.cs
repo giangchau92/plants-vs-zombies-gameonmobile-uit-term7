@@ -5,15 +5,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using PlantsVsZombies.GameCore;
-using PlantsVsZombies.GameObjects;
+using PlantsVsZombies.GameComponents.Behaviors.Implements;
 using PlantsVsZombies.GameComponents.Components;
+using PlantsVsZombies.GameCore;
 
 namespace PlantsVsZombies.GameComponents.Behaviors.Zombie
 {
     enum eNormalZombieState
     {
-        RUNNING, EATING
+        RUNNING, EATING, DIEING, DEATH
     }
     public class Z_NormalLogicBehavior : BaseLogicBehavior
     {
@@ -27,10 +27,21 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Zombie
             LogicComponent logicCOm = this.Owner as LogicComponent;
             if (logicCOm == null)
                 throw new Exception("Z_NormalLogicBehavior: Expect Logic Component");
-            if (logicCOm.Health < 0)
+            if (logicCOm.Health < 0 && ZombieState != eNormalZombieState.DIEING)
             {
-                PlantsVsZombies.GameCore.PZObjectManager.Instance.RemoveObject(this.Owner.Owner.ObjectId);
+                changeDeathBehavior(gameTime);
+                ZombieState = eNormalZombieState.DIEING;
+                
             }
+            if (ZombieState == eNormalZombieState.DIEING)
+            {
+                RenderComponent renderCom = this.Owner.Owner.GetComponent(typeof(RenderComponent)) as RenderComponent;
+                if ((renderCom.currentBehavior as RenderBehavior).Sprite.IsEOF())
+                {
+                    PlantsVsZombies.GameCore.PZObjectManager.Instance.RemoveObject(this.Owner.Owner.ObjectId);
+                }
+            }
+
             base.Update(message, gameTime);
         }
 
@@ -102,6 +113,19 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Zombie
             PZObjectManager.Instance.SendMessage(renderMsg1, gameTime);
         }
 
+        private void changeDeathBehavior(GameTime gameTime)
+        {
+            MoveBehaviorChangeMsg moveMsg1 = new MoveBehaviorChangeMsg(MessageType.CHANGE_MOVE_BEHAVIOR, this);
+            moveMsg1.MoveBehaviorType = Components.eMoveBehaviorType.STANDING;
+            moveMsg1.DestinationObjectId = this.Owner.Owner.ObjectId;
+
+            RenderBehaviorChangeMsg renderMsg1 = new RenderBehaviorChangeMsg(MessageType.CHANGE_RENDER_BEHAVIOR, this);
+            renderMsg1.RenderBehaviorType = GameComponents.Components.eMoveRenderBehaviorType.ZO_NORMAL_DEATH;
+            renderMsg1.DestinationObjectId = this.Owner.Owner.ObjectId;
+
+            PZObjectManager.Instance.SendMessage(moveMsg1, gameTime);
+            PZObjectManager.Instance.SendMessage(renderMsg1, gameTime);
+        }
 
         public override IBehavior<MessageType> Clone()
         {

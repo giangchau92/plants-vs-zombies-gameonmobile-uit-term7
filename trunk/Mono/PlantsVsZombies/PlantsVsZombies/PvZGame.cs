@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input.Touch;
+using PlantsVsZombies.GameCore;
 using PlantsVsZombies.Orientations;
 using PlantsVsZombies.GameCore;
 using PlantsVsZombies.GameObjects;
@@ -22,18 +23,16 @@ namespace PlantsVsZombies
     /// <summary>
     /// This is the main type for your game
     /// </summary>
-    public class PvZGame : Game, IGestureTarget<FreeTap>
+    public class PvZGame : Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        //PZScreenManager screenManager;
+        PZScreenManager screenManager;
 
-        private Vector2 pos;
+        
 
-        //private UIControlManager uiControlManager;
-        //private PvZGrowList growList;
-        //private PvZGrowSystem growSystem;
+        
 
         public PvZGame()
         {
@@ -41,7 +40,7 @@ namespace PlantsVsZombies
             Content.RootDirectory = "Content";
 
             // Frame rate is 30 fps by default for Windows Phone.
-            TargetElapsedTime = TimeSpan.FromTicks(333333 / 2);//166666 333333
+            TargetElapsedTime = TimeSpan.FromTicks(333333);//166666 333333
 
             // Extend battery life under lock.
             InactiveSleepTime = TimeSpan.FromSeconds(1);
@@ -57,17 +56,7 @@ namespace PlantsVsZombies
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            IGestureManager gm = DefaultGestureHandlingFactory.Instance.CreateManager(this, DefaultGestureHandlingFactory.Instance.CreateTouchController());
-                //new OrientedTouchController(DefaultGestureHandlingFactory.Instance.CreateTouchController(), GameOrientation.Instance));
-            gm.AddDetector<FreeTap>(new FreeTapDetector());
-            this.Components.Add(gm);
-            IGestureDispatcher dp = DefaultGestureHandlingFactory.Instance.CreateDispatcher();
-            dp.AddTarget<FreeTap>(this);
-            gm.AddDispatcher(dp);
-
-            //this.uiControlManager = new UIControlManager(this, DefaultGestureHandlingFactory.Instance);
-            //gm.AddDispatcher(this.uiControlManager);
-            //this.Components.Add(this.uiControlManager);
+            
 
             base.Initialize();
         }
@@ -89,6 +78,9 @@ namespace PlantsVsZombies
                 IResourceManager resourceManager = new PZResourceManager(this.Content);
                 this.Services.AddService(typeof(IResourceManager), resourceManager);
                 //Load sprite data
+
+                // Level manager
+                PZLevelManager.Instance.initLevel();
                 //SCSService
                 SCSServices.Instance.Game = this;
                 SCSServices.Instance.SpriteBatch = spriteBatch;
@@ -105,18 +97,11 @@ namespace PlantsVsZombies
                 //Test
                 GameObjectCenter.Instance.InitEnity();
 
-                //Screeen management
-                //screenManager = new PZScreenManager(this);
-                //screenManager.AddExclusive(screenManager.Bank.GetNewScreen("Test"));
 
-                //this.growList = new PvZGrowList(this, 60, 10, this.uiControlManager);
-                //this.growList.Canvas.Bound.Size = new Vector2(280, 100);
-                //this.growList.Canvas.Content.Size = new Vector2(280, 100);
-                //this.uiControlManager.Add(this.growList);
+                screenManager = new PZScreenManager(this);
+                screenManager.AddExclusive(screenManager.Bank.GetNewScreen("Test"));
 
-                //this.growSystem = new PvZGrowSystem(this);
-                //this.growSystem.Deserialize(XmlSerialization.Instance.Deserialize(new FileStream(@"Xml\PlantGrowButtons.xml", FileMode.Open, FileAccess.Read)));
-                //this.growList.AddGrowButton(growSystem.Buttons["Single Pea"].CreateButton(this));
+                
 
                 GameOrientation.Instance.InitRenderTarget(this.GraphicsDevice);
             }
@@ -149,7 +134,7 @@ namespace PlantsVsZombies
 
                 // TODO: Add your update logic here
                 SCSServices.Instance.GameTime = gameTime;
-                //screenManager.Update(gameTime);
+                screenManager.Update(gameTime);
                 //Debug.WriteLine(string.Format("Eslaped: {0}", gameTime.ElapsedGameTime.TotalMilliseconds));
 
                 base.Update(gameTime);
@@ -175,11 +160,7 @@ namespace PlantsVsZombies
             try
             {
                 // TODO: Add your drawing code here
-                //screenManager.Draw(gameTime);
-
-                this.spriteBatch.Begin();
-                this.spriteBatch.DrawString(SCSServices.Instance.DebugFont, string.Format("Touch pos: {0} - {1}", pos.X, pos.Y), new Vector2(100, 100), Color.White);
-                this.spriteBatch.End();
+                screenManager.Draw(gameTime);
 
                 this.spriteBatch.Begin();
                 base.Draw(gameTime);
@@ -193,26 +174,7 @@ namespace PlantsVsZombies
             }
         }
 
-        public bool ReceivedGesture(FreeTap gEvent)
-        {
-            pos = gEvent.Current;
-            return true;
-        }
-
-        public bool IsHandleGesture(FreeTap gEvent)
-        {
-            return true;
-        }
-
-        public uint Priority
-        {
-            get { return 0; }
-        }
-
-        public bool IsGestureCompleted
-        {
-            get { return false; }
-        }
+      
 
         bool _firstUpdate = true;
         private void CheatTouch()
@@ -237,6 +199,7 @@ namespace PlantsVsZombies
             SpriteFramesBank.Instance.Add("Plants/IcePea/IcePea", FramesGenerator.Generate(118, 63, 1024, 33));
             SpriteFramesBank.Instance.Add("Zombies/Nameless/Walk", FramesGenerator.Generate(73, 100, 1024, 16));
             SpriteFramesBank.Instance.Add("Zombies/Nameless/Attack", FramesGenerator.Generate(89, 101, 1024, 16));
+            SpriteFramesBank.Instance.Add("Zombies/Nameless/Death", FramesGenerator.Generate(155, 130, 1024, 16));
             SpriteFramesBank.Instance.Add("Bullets/B_Pea", FramesGenerator.Generate(29, 22, 29, 1));
             //100, 55, 10, 40
         }

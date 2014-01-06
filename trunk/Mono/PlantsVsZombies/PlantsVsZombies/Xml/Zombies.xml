@@ -26,6 +26,7 @@
 				<Behavior>
           <Type>xml_render_eat</Type>
           <ResourceName>Zombies/Nameless/Attack</ResourceName>
+          <TimeFrame>0.03333</TimeFrame>
           <Bound>
             <X>73</X>
             <Y>100</Y>
@@ -34,9 +35,19 @@
 				<Behavior>
           <Type>xml_render_run</Type>
           <ResourceName>Zombies/Nameless/Walk</ResourceName>
+          <TimeFrame>0.03333</TimeFrame>
           <Bound>
             <X>89</X>
             <Y>101</Y>
+          </Bound>
+        </Behavior>
+        <Behavior>
+          <Type>xml_render_death</Type>
+          <ResourceName>Zombies/Nameless/Death</ResourceName>
+          <TimeFrame>0.03333</TimeFrame>
+          <Bound>
+            <X>155</X>
+            <Y>130</Y>
           </Bound>
         </Behavior>
 			</Component>
@@ -45,7 +56,9 @@
 			</Component>
 			<Component>
         <Type>xml_logic</Type>
-        <Behavior>xml_NormalZombie</Behavior>
+        <Behavior>
+          <Type>xml_NormalZombie</Type>
+        </Behavior>
 			</Component>
 		</Components>
 	</Zombie>

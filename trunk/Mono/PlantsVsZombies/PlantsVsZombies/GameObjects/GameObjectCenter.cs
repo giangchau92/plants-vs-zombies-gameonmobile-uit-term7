@@ -58,7 +58,7 @@ namespace PlantsVsZombies.GameObjects
 
         private Stream getXml(string config_url)
         {
-            Stream stream = new FileStream(config_url, FileMode.Open, FileAccess.Read);//Assembly.GetExecutingAssembly().GetManifestResourceStream("PlantVsZombies.Xml.Zombies.xml");
+            Stream stream = new FileStream(config_url, FileMode.Open, FileAccess.Read);//Assembly.GetExecutingAssembly().GetManifestResourceStream("PlantsVsZombies.Xml.Zombies.xml");
             //XDocument mXDocument = new XDocument();
             //mXDocument = XDocument.Load(stream);
             return stream;

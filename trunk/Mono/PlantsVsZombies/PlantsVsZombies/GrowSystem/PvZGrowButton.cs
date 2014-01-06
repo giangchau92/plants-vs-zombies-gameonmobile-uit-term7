@@ -265,6 +265,7 @@ namespace PlantsVsZombies.GrowSystem
             Vector2 cooldownTextSize = cooldownFont.MeasureString(cooldownText);
             Vector2 cooldownTextPosition = new Vector2((button.Canvas.Bound.Width - cooldownTextSize.X) / 2,
                                                     (button.Canvas.Bound.Height - cooldownTextSize.Y) / 2);
+            cooldownTextPosition += button.Canvas.Bound.Position;
             sprBatch.DrawString(cooldownFont, cooldownText, cooldownTextPosition, Color.White);
         }
     }
