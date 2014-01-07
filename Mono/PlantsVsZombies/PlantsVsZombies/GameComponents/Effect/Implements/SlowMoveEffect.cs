@@ -14,7 +14,7 @@ namespace PlantsVsZombies.GameComponents.Effect.Implements
         TimeSpan curentTime = TimeSpan.Zero;
         public TimeSpan TimeDurring { get; set; }
 
-        Vector2 slowVelocity = new Vector2(30, 0);
+        Vector2 slowVelocity = new Vector2(10, 0);
 
         public SlowMoveEffect()
         {

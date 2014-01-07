@@ -20,7 +20,7 @@ using System.IO;
 
 namespace PlantsVsZombies.GameScreen
 {
-    public class TestScreen : BaseGameScreen, IGestureTarget<FreeTap>, IGestureTarget<Tap>
+    public class GamePlayScreen : BaseGameScreen, IGestureTarget<FreeTap>, IGestureTarget<Tap>
     {
         PZObjectManager objectManager = PZObjectManager.Instance;
         PZBoard gameBoard;
@@ -32,7 +32,7 @@ namespace PlantsVsZombies.GameScreen
         private UIControlManager uiControlManager;
         private PvZGrowSystem growSystem;
 
-        public TestScreen(IGameScreenManager screenManager)
+        public GamePlayScreen(IGameScreenManager screenManager)
             : base(screenManager)
         {
             //objectManager.AddObject(new NormalPlant());
@@ -42,10 +42,10 @@ namespace PlantsVsZombies.GameScreen
 
             gameBoard = new PZBoard(9, 5, objectManager);
             gameBoard.Board = new int[,] {
-                {1, 0, 0, 0, 0, 0, 3, 0, 0},
-                {1, 4, 0, 0, 0, 0, 3, 0, 0},
-                {1, 3, 0, 0, 0, 0, 3, 0, 0},
-                {1, 0, 0, 0, 0, 0, 3, 0, 0}
+                {0, 0, 0, 0, 0, 0, 3, 0, 0},
+                {0, 0, 0, 0, 0, 0, 3, 0, 0},
+                {0, 0, 0, 0, 0, 0, 3, 0, 0},
+                {0, 0, 0, 0, 0, 0, 3, 0, 0}
             };
             // Gen object
 
