@@ -94,12 +94,15 @@
     <Compile Include="GameComponents\Components\RenderComponentFactory.cs" />
     <Compile Include="GameComponents\Effect\IEffect.cs" />
     <Compile Include="GameComponents\Effect\Implements\SlowMoveEffect.cs" />
+    <Compile Include="GameComponents\Effect\Implements\SunCollectEffect.cs" />
+    <Compile Include="GameComponents\Effect\Implements\SunFlyDownEffect.cs" />
     <Compile Include="GameComponents\Effect\Implements\SunRiseEffect.cs" />
     <Compile Include="GameComponents\GameMessage.cs" />
     <Compile Include="GameComponents\GameMessages\CollisionDetectedMsg.cs" />
     <Compile Include="GameComponents\GameMessages\MoveBehaviorChangeMsg.cs" />
     <Compile Include="GameComponents\GameMessages\RenderBehaviorChangeMsg.cs" />
     <Compile Include="GameComponents\ObjectEntity.cs" />
+    <Compile Include="GameComponents\ObjectEntityGesture.cs" />
     <Compile Include="GameCore\Level\Level.cs" />
     <Compile Include="GameCore\MessageCenter\IMessage.cs" />
     <Compile Include="GameCore\MessageCenter\IMessageEffect.cs" />
@@ -224,6 +227,21 @@
     <Content Include="Content\Bullets\Sun.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Xml\Sun.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Content\ChoosePlant.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Ready.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\ReadyOver.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\StoneButton.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\StoneButton.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -237,6 +255,18 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\ReadyOver.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\StoneShadow.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Zombies\Histachii\Attack.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Zombies\Histachii\Death.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Zombies\Histachii\Walk.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Xml\Bullets.xml">

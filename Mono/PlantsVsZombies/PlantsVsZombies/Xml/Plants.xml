@@ -156,7 +156,7 @@
         <Behavior>
           <Type>xml_SunflowerPlant</Type>
           <Health>100</Health>
-          <TimeGiveSun>3</TimeGiveSun>
+          <TimeGiveSun>2</TimeGiveSun>
         </Behavior>
       </Component>
     </Components>

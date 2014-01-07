@@ -14,16 +14,18 @@ using SCSEngine.ScreenManagement;
 using SCSEngine.ScreenManagement.Implement;
 using SCSEngine.Serialization.XmlSerialization;
 using SCSEngine.Services;
+using SCSEngine.Sprite;
 using SCSEngine.Utils.GameObject.Component;
 using System.IO;
 
 namespace PlantsVsZombies.GameScreen
 {
-    public class TestScreen : BaseGameScreen, IGestureTarget<FreeTap>
+    public class TestScreen : BaseGameScreen, IGestureTarget<FreeTap>, IGestureTarget<Tap>
     {
         PZObjectManager objectManager = PZObjectManager.Instance;
         PZBoard gameBoard;
         Level level;
+        IPvZGameCurrency _sunSystem;
 
         // UI
         private Vector2 pos;
@@ -79,19 +81,28 @@ namespace PlantsVsZombies.GameScreen
             this.Components.Add(gm);
             IGestureDispatcher dp = DefaultGestureHandlingFactory.Instance.CreateDispatcher();
             dp.AddTarget<FreeTap>(this);
+            dp.AddTarget<Tap>(this);
             gm.AddDispatcher(dp);
 
             this.uiControlManager = new UIControlManager(this.Game, DefaultGestureHandlingFactory.Instance);
             gm.AddDispatcher(this.uiControlManager);
             this.Components.Add(this.uiControlManager);
+            //
+            // Sun system
+            _sunSystem = new PvZHardCurrency(0, dp);
+            SCSServices.Instance.Game.Services.RemoveService(typeof(PvZHardCurrency));
+            SCSServices.Instance.Game.Services.AddService(typeof(PvZHardCurrency), _sunSystem);
 
             this.growSystem = new PvZGrowSystem(this.Game, new PvZGameGrow(gameBoard));
             this.growSystem.Deserialize(XmlSerialization.Instance.Deserialize(new FileStream(@"Xml\PlantGrowButtons.xml", FileMode.Open, FileAccess.Read)));
-            var chooseSys = new PvZChooseSystem(this.Game, this.growSystem.ButtonFactoryBank, this.uiControlManager);
+            var chooseSys = new PvZChooseSystem(this.Game, this.growSystem.ButtonFactoryBank, this.uiControlManager, _sunSystem);
             chooseSys.Initialize();
             chooseSys.OnCameOut += this.OnChooseSystemCompleted;
             chooseSys.ComeIn();
             this.Components.Add(chooseSys);
+
+            
+
         }
 
         private void OnChooseSystemCompleted(PvZChooseSystem chooseSys)
@@ -108,6 +119,7 @@ namespace PlantsVsZombies.GameScreen
 
             //
             level.Update(gameBoard, gameTime);
+            _sunSystem.Update(gameTime);
 
             // Update game
             IMessage<MessageType> updateMessage = new GameMessage(MessageType.FRAME_UPDATE, this);
@@ -128,7 +140,8 @@ namespace PlantsVsZombies.GameScreen
             IMessage<MessageType> updateMessage = new GameMessage(MessageType.FRAME_DRAW, this);
             updateMessage.DestinationObjectId = 0; // For every object
             objectManager.SendMessage(updateMessage, gameTime);
-            
+
+            _sunSystem.Draw(gameTime);
             base.Draw(gameTime);
             spriteBatch.End();
         }
@@ -154,6 +167,16 @@ namespace PlantsVsZombies.GameScreen
         public bool IsGestureCompleted
         {
             get { return false; }
+        }
+
+        public bool ReceivedGesture(Tap gEvent)
+        {
+            return false;
+        }
+
+        public bool IsHandleGesture(Tap gEvent)
+        {
+            return true;
         }
     }
 }

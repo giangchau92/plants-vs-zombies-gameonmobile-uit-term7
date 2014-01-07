@@ -9,6 +9,7 @@ using SCSEngine.Services.Audio;
 using SCSEngine.Services.Input;
 using SCSEngine.Services.Sprite;
 using SCSEngine.ResourceManagement;
+using SCSEngine.GestureHandling;
 
 namespace SCSEngine.Services
 {
@@ -36,6 +37,8 @@ namespace SCSEngine.Services
         }
 
         public Game Game { get; set; }
+
+        public IGestureManager GestureManager { get; set; }
 
         public SpriteBatch SpriteBatch { get; set; }
 

@@ -34,8 +34,9 @@ namespace PlantsVsZombies.GameObjects
         private const string zombie_config = "Xml/Zombies.xml";
         private const string plant_config = "Xml/Plants.xml";
         private const string bullet_config = "Xml/Bullets.xml";
+        private const string sun_config = "Xml/Sun.xml";
 
-        private IDictionary<string, ObjectEntityFactory> objectTemplates = new Dictionary<string, ObjectEntityFactory>();
+        private IDictionary<string, IObjectEntityFactory> objectTemplates = new Dictionary<string, IObjectEntityFactory>();
 
         public void InitEnity()
         {
@@ -45,6 +46,8 @@ namespace PlantsVsZombies.GameObjects
             loadPlant();
             // Init Bullet
             loadBullet();
+            // Init Sun
+            loadSun();
         }
 
         public ObjectEntity CreateObject(string te)
@@ -111,6 +114,23 @@ namespace PlantsVsZombies.GameObjects
             {
                 string name = item.DeserializeString("Name");
                 ObjectEntityFactory objectFac = new ObjectEntityFactory();
+                objectFac.Deserialize(item);
+                this.objectTemplates.Add(name, objectFac);
+            }
+        }
+
+        private void loadSun()
+        {
+            IResourceManager resourceManager = SCSServices.Instance.ResourceManager;
+
+            Stream docs = getXml(sun_config);
+            IDeserializer deser = XmlSerialization.Instance.Deserialize(docs);
+            var deserZombies = deser.DeserializeAll("Sun");
+
+            foreach (var item in deserZombies)
+            {
+                string name = item.DeserializeString("Name");
+                IObjectEntityFactory objectFac = new ObjectEntityGestureFactory();
                 objectFac.Deserialize(item);
                 this.objectTemplates.Add(name, objectFac);
             }

@@ -77,10 +77,10 @@
     </Components>
   </Bullet>
 
-  <!-- SUN -->
+  <!-- SUN --><!--
   <Bullet>
     <Name>xml_sun</Name>
-    <Type>Bullet</Type>
+    <Type>Sun</Type>
     <Components>
       <Component>
         <Type>xml_move</Type>
@@ -114,5 +114,5 @@
         </Behavior>
       </Component>
     </Components>
-  </Bullet>
+  </Bullet>-->
 </Bullets>

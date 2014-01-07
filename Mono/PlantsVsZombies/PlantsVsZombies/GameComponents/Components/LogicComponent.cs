@@ -13,7 +13,7 @@ namespace PlantsVsZombies.GameComponents.Components
 {
     public class LogicComponent : IComponent<MessageType>
     {
-        public int Health { get; set; }
+        public float Health { get; set; }
 
         private BaseLogicBehavior _logicBehavior = null;
         public BaseLogicBehavior LogicBehavior

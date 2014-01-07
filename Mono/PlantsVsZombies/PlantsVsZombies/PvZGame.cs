@@ -203,6 +203,10 @@ namespace PlantsVsZombies
             SpriteFramesBank.Instance.Add("Zombies/Nameless/Walk", FramesGenerator.Generate(73, 100, 1024, 16));
             SpriteFramesBank.Instance.Add("Zombies/Nameless/Attack", FramesGenerator.Generate(89, 101, 1024, 16));
             SpriteFramesBank.Instance.Add("Zombies/Nameless/Death", FramesGenerator.Generate(155, 130, 1024, 16));
+            // Histachii
+            SpriteFramesBank.Instance.Add("Zombies/Histachii/Walk", FramesGenerator.Generate(53, 92, 1024, 12));
+            SpriteFramesBank.Instance.Add("Zombies/Histachii/Attack", FramesGenerator.Generate(106, 91, 1024, 15));
+            SpriteFramesBank.Instance.Add("Zombies/Histachii/Death", FramesGenerator.Generate(87, 113, 1024, 16));
             SpriteFramesBank.Instance.Add("Bullets/B_Pea", FramesGenerator.Generate(29, 22, 29, 1));
             //100, 55, 10, 40
         }

@@ -4,6 +4,7 @@
 		<Wave>
 			<Name>Wave 1</Name>
 			<Zombie><Value>xml_stand_zombie</Value></Zombie>
+      <Zombie><Value>xml_histachii_zombie</Value></Zombie>
 			<Number>
 				<From>5</From>
 				<To>10</To>

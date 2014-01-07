@@ -58,8 +58,76 @@
         <Type>xml_logic</Type>
         <Behavior>
           <Type>xml_NormalZombie</Type>
+          <Health>90</Health>
+          <Damage>10</Damage>
         </Behavior>
 			</Component>
 		</Components>
 	</Zombie>
+
+  <!-- Histachii -->
+  <Zombie>
+    <Name>xml_histachii_zombie</Name>
+    <Type>Zombie</Type>
+    <Components>
+      <Component>
+        <Type>xml_move</Type>
+        <Behavior>
+          <Type>xml_move_stand</Type>
+          <Velocity>
+            <X>0</X>
+            <Y>0</Y>
+          </Velocity>
+        </Behavior>
+        <Behavior>
+          <Type>xml_move_run</Type>
+          <Velocity>
+            <X>-50</X>
+            <Y>0</Y>
+          </Velocity>
+        </Behavior>
+      </Component>
+      <Component>
+        <Type>xml_render</Type>
+        <Behavior>
+          <Type>xml_render_eat</Type>
+          <ResourceName>Zombies/Histachii/Attack</ResourceName>
+          <TimeFrame>0.03333</TimeFrame>
+          <Bound>
+            <X>106</X>
+            <Y>91</Y>
+          </Bound>
+        </Behavior>
+        <Behavior>
+          <Type>xml_render_run</Type>
+          <ResourceName>Zombies/Histachii/Walk</ResourceName>
+          <TimeFrame>0.03333</TimeFrame>
+          <Bound>
+            <X>53</X>
+            <Y>92</Y>
+          </Bound>
+        </Behavior>
+        <Behavior>
+          <Type>xml_render_death</Type>
+          <ResourceName>Zombies/Histachii/Death</ResourceName>
+          <TimeFrame>0.03333</TimeFrame>
+          <Bound>
+            <X>87</X>
+            <Y>113</Y>
+          </Bound>
+        </Behavior>
+      </Component>
+      <Component>
+        <Type>xml_physic</Type>
+      </Component>
+      <Component>
+        <Type>xml_logic</Type>
+        <Behavior>
+          <Type>xml_NormalZombie</Type>
+          <Health>110</Health>
+          <Damage>10</Damage>
+        </Behavior>
+      </Component>
+    </Components>
+  </Zombie>
 </Zombies>
