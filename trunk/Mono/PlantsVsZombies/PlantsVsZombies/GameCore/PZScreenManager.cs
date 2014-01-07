@@ -6,17 +6,20 @@ using SCSEngine.ScreenManagement.Implement;
 using Microsoft.Xna.Framework;
 using PlantsVsZombies.GameScreen.ScreenFactory;
 using PlantsVsZombies.GameScreen;
+using SCSEngine.GestureHandling;
 
 namespace PlantsVsZombies.GameCore
 {
     public class PZScreenManager : BaseGameScreenManager
     {
-        public PZScreenManager(Game game)
+        public PZScreenManager(Game game, IGestureManager gMan)
             : base(game, BaseGameScreenManagerFactory.Instance)
         {
             // add test factory to bank
-            TestScreenFactory testFactory = new TestScreenFactory(this);
-            this.Bank.AddScreenFactory("Test", testFactory);
+            GamePlayScreenFactory playScreen = new GamePlayScreenFactory(this, gMan);
+            this.Bank.AddScreenFactory("PlayScreen", playScreen);
+            var mainMenu = new MainMenuScreenFactory(this, gMan);
+            this.Bank.AddScreenFactory("MainMenu", mainMenu);
         }
     }
 }

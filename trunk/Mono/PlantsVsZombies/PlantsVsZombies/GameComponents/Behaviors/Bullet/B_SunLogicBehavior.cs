@@ -69,7 +69,7 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Bullet
             if (listEffect.Count == 0 && SunState == eSunState.COLLECT)
             {
                 // Self remove sun
-                (SCSServices.Instance.Game.Services.GetService(typeof(PvZHardCurrency)) as PvZHardCurrency).RemoveSun(this.Owner.Owner as ObjectEntityGesture);
+                (SCSServices.Instance.Game.Services.GetService(typeof(PvZSunSystem)) as PvZSunSystem).RemoveSun(this.Owner.Owner as ObjectEntityGesture);
                 //PZObjectManager.Instance.RemoveObject(this.Owner.Owner.ObjectId);
                 //PvZHardCurrency._gestureDispatcher.RemoveTarget<Tap>(Owner.Owner as IGestureTarget<Tap>);
             }
