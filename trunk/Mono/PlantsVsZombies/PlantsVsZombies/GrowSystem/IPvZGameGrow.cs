@@ -13,14 +13,14 @@ namespace PlantsVsZombies.GrowSystem
     public interface IPvZGameGrow
     {
         CRectangleF CellContains(CRectangleF growRect);
-        void GrowPlant(string plantName, CRectangleF growRect);
+        bool GrowPlant(string plantName, CRectangleF growRect);
     }
 
-    public class DoNothingGameGrow : IPvZGameGrow
+    public class PvZGameGrow : IPvZGameGrow
     {
         private PZBoard _gameBoard;
 
-        public DoNothingGameGrow(PZBoard gameBoard)
+        public PvZGameGrow(PZBoard gameBoard)
         {
             _gameBoard = gameBoard;
         }
@@ -29,22 +29,31 @@ namespace PlantsVsZombies.GrowSystem
         {
             Vector2 lefBot = growRect.Position;
             lefBot.Y += growRect.Size.Y;
-            CRectangleF rect = _gameBoard.GetRectAtPoint(growRect.Position);
+            CRectangleF rect = _gameBoard.GetRectAtPoint(growRect.Center);
             //Debug.WriteLine("CellContains at " + rect.X + " " + rect.Y);
             //rect.Position.Y += rect.Size.Y;
             return rect;
             
         }
 
-        public void GrowPlant(string plantName, CRectangleF growRect)
+        public bool GrowPlant(string plantName, CRectangleF growRect)
         {
             // call on release touch
             Vector2 lefBot = growRect.Position;
             lefBot.Y += growRect.Size.Y;
-            CRectangleF rect = _gameBoard.GetRectAtPoint(growRect.Position);
+            CRectangleF rect = _gameBoard.GetRectAtPoint(growRect.Center);
 
             //Debug.WriteLine("GrowPlant at " + rect.X + " " + rect.Y);
-            PZObjectManager.Instance.AddObject(PZObjectFactory.Instance.createPlant(new Vector2(rect.Left, rect.Bottom)));
+
+            var plant = PZObjectFactory.Instance.createPlant(plantName, new Vector2(rect.Left, rect.Bottom));
+            if (plant != null)
+            {
+                PZObjectManager.Instance.AddObject(plant);
+
+                return true;
+            }
+
+            return false;
         }
     }
 

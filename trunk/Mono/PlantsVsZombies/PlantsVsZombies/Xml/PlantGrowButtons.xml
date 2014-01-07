@@ -4,7 +4,13 @@
     <Shadow>
       <Name>Single Pea</Name>
       <Picture>SinglePea_Shadow</Picture>
-      <Plant>Single Pea</Plant>
+      <Plant>xml_Plant_DoublePea</Plant>
+    </Shadow>
+
+    <Shadow>
+      <Name>Stone</Name>
+      <Picture>StoneShadow</Picture>
+      <Plant>xml_Plant_Stone</Plant>
     </Shadow>
   </PlantShadows>
 
@@ -20,6 +26,19 @@
         </Data>
       </DrawComponent>
       <Shadow>Single Pea</Shadow>
+    </Button>
+
+    <Button>
+      <Name>Stone</Name>
+      <Delay>5000</Delay>
+      <Price>100</Price>
+      <DrawComponent>
+        <Type>Standard</Type>
+        <Data>
+          <Picture>StoneButton</Picture>
+        </Data>
+      </DrawComponent>
+      <Shadow>Stone</Shadow>
     </Button>
   </Buttons>
 </GrowSystems>

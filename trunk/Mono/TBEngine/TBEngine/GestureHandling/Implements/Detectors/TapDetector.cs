@@ -10,7 +10,7 @@ namespace SCSEngine.GestureHandling.Implements.Detectors
 {
     public class TapDetector : BaseGestureDetector<Tap>
     {
-        float minTap = 100*100;
+        float minTap = 8 * 8;
 
         public override void DetectGesture(ICollection<ITouch> touches, GameTime gameTime)
         {
@@ -19,7 +19,10 @@ namespace SCSEngine.GestureHandling.Implements.Detectors
             {
                 if (touch.SystemTouch.State == TouchLocationState.Released)
                 {
-                    this.gestures.Add(touch, new Tap(touch));
+                    if (touch.Positions.TotalDelta.LengthSquared() < minTap)
+                    {
+                        this.gestures.Add(touch, new Tap(touch));
+                    }
                 }
             }
             this.gestures.EndTrace();

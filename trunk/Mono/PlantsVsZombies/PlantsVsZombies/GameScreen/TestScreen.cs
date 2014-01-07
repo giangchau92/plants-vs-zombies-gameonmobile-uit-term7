@@ -1,33 +1,21 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using SCSEngine.ScreenManagement.Implement;
-using SCSEngine.ScreenManagement;
 using Microsoft.Xna.Framework;
-using SCSEngine.Utils.GameObject.Component;
-using PlantsVsZombies.GameComponents;
-using PlantsVsZombies.GameObjects;
 using Microsoft.Xna.Framework.Graphics;
-using SCSEngine.Services;
 using Microsoft.Xna.Framework.Input.Touch;
+using PlantsVsZombies.GameComponents;
 using PlantsVsZombies.GameCore;
-using PlantsVsZombies.GameComponents.GameMessages;
-using System.Diagnostics;
-using SCSEngine.Sprite;
-using System.Xml;
-using System.IO;
-using System.Xml.Linq;
-using PlantsVsZombies.GameComponents.Components;
 using PlantsVsZombies.GameCore.Level;
-using PlantsVsZombies.GameCore;
-using SCSEngine.Control;
 using PlantsVsZombies.GrowSystem;
-using SCSEngine.GestureHandling;
-using SCSEngine.GestureHandling.Implements.Events;
-using SCSEngine.GestureHandling.Implements.Detectors;
 using PlantsVsZombies.Orientations;
+using SCSEngine.Control;
+using SCSEngine.GestureHandling;
+using SCSEngine.GestureHandling.Implements.Detectors;
+using SCSEngine.GestureHandling.Implements.Events;
+using SCSEngine.ScreenManagement;
+using SCSEngine.ScreenManagement.Implement;
 using SCSEngine.Serialization.XmlSerialization;
+using SCSEngine.Services;
+using SCSEngine.Utils.GameObject.Component;
+using System.IO;
 
 namespace PlantsVsZombies.GameScreen
 {
@@ -37,12 +25,9 @@ namespace PlantsVsZombies.GameScreen
         PZBoard gameBoard;
         Level level;
 
-        bool isPlant = true;
-
         // UI
         private Vector2 pos;
         private UIControlManager uiControlManager;
-        private PvZGrowList growList;
         private PvZGrowSystem growSystem;
 
         public TestScreen(IGameScreenManager screenManager)
@@ -69,7 +54,7 @@ namespace PlantsVsZombies.GameScreen
                     if (type == 1)
                     {
                         Vector2 pos = gameBoard.GetPositonAt(i, j);
-                        objectManager.AddObject(PZObjectFactory.Instance.createPlant(gameBoard.GetPositonAt(i, j)));
+                        objectManager.AddObject(PZObjectFactory.Instance.createPlant("xml_Plant_DoublePea", gameBoard.GetPositonAt(i, j)));
                     }
                     else if (type == 2)
                     {
@@ -90,6 +75,7 @@ namespace PlantsVsZombies.GameScreen
             IGestureManager gm = DefaultGestureHandlingFactory.Instance.CreateManager(this.Game, //DefaultGestureHandlingFactory.Instance.CreateTouchController());
                 new OrientedTouchController(DefaultGestureHandlingFactory.Instance.CreateTouchController(), GameOrientation.Instance));
             gm.AddDetector<FreeTap>(new FreeTapDetector());
+            gm.AddDetector<Tap>(new TapDetector());
             this.Components.Add(gm);
             IGestureDispatcher dp = DefaultGestureHandlingFactory.Instance.CreateDispatcher();
             dp.AddTarget<FreeTap>(this);
@@ -98,18 +84,22 @@ namespace PlantsVsZombies.GameScreen
             this.uiControlManager = new UIControlManager(this.Game, DefaultGestureHandlingFactory.Instance);
             gm.AddDispatcher(this.uiControlManager);
             this.Components.Add(this.uiControlManager);
-            //
-            this.growList = new PvZGrowList(this.Game, 60, 10, this.uiControlManager, new PvZHardCurrency(100000));
-            this.growList.Canvas.Bound.Position = new Vector2(0, 380);
-            this.growList.Canvas.Bound.Size = new Vector2(280, 100);
-            this.growList.Canvas.Content.Height = 80;
-            this.growList.Canvas.Content.Position = new Vector2(100, 10);
-            this.growList.Background = SCSServices.Instance.ResourceManager.GetResource<ISprite>("BuyPlant");
-            this.uiControlManager.Add(this.growList);
 
-            this.growSystem = new PvZGrowSystem(this.Game, new DoNothingGameGrow(gameBoard));
+            this.growSystem = new PvZGrowSystem(this.Game, new PvZGameGrow(gameBoard));
             this.growSystem.Deserialize(XmlSerialization.Instance.Deserialize(new FileStream(@"Xml\PlantGrowButtons.xml", FileMode.Open, FileAccess.Read)));
-            this.growList.AddGrowButton(growSystem.Buttons["Single Pea"].CreateButton(this.Game));
+            var chooseSys = new PvZChooseSystem(this.Game, this.growSystem.ButtonFactoryBank, this.uiControlManager);
+            chooseSys.Initialize();
+            chooseSys.OnCameOut += this.OnChooseSystemCompleted;
+            chooseSys.ComeIn();
+            this.Components.Add(chooseSys);
+        }
+
+        private void OnChooseSystemCompleted(PvZChooseSystem chooseSys)
+        {
+            var growList = chooseSys.MakeGrowList();
+            this.uiControlManager.Add(growList);
+
+            chooseSys.RemoveAll();
         }
 
         public override void Update(GameTime gameTime)

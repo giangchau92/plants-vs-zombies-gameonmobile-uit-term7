@@ -29,9 +29,9 @@ namespace SCSEngine.Control
         #endregion
 
         #region Events
-        event ButtonEventHandler OnPressed;
-        event ButtonEventHandler OnTouched; //Released
-        event ButtonEventHandler OnHold;
+        public event ButtonEventHandler OnPressed;
+        public event ButtonEventHandler OnTouched; //Released
+        public event ButtonEventHandler OnHold;
 
         protected void uiOnPressed()
         {
@@ -119,7 +119,6 @@ namespace SCSEngine.Control
             if (null == sprBatch)
                 return;
 
-            sprBatch.Begin();
             if ((this.NormalImage != null) && (this.IsOverlay || this.State == ButtonState.Normal))
             {
                 sprBatch.Draw(this.NormalImage, this.Canvas.Bound.Rectangle, this.Canvas.Content.Rectangle, Color.White);
@@ -129,7 +128,6 @@ namespace SCSEngine.Control
             {
                 sprBatch.Draw(this.HoldImage, this.Canvas.Bound.Rectangle, this.Canvas.Content.Rectangle, Color.White);
             }
-            sprBatch.End();
 
             base.Draw(gameTime);
         }

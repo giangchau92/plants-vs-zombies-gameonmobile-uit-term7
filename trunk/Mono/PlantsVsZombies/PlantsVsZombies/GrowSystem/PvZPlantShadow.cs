@@ -39,7 +39,7 @@ namespace PlantsVsZombies.GrowSystem
 
         public override void LeaveGestures(SCSEngine.GestureHandling.IGestureDispatcher dispatcher)
         {
-            this.IsGestureCompleted = true;
+            dispatcher.RemoveTarget<FreeTap>(this);
         }
 
         public override void Draw(GameTime gameTime)
@@ -72,7 +72,7 @@ namespace PlantsVsZombies.GrowSystem
 
             if (gEvent.Touch.SystemTouch.State == TouchLocationState.Released)
             {
-                this.gameGrow.GrowPlant(this.PlantName, this.Canvas.Bound); // if grow ok then
+                if (this.gameGrow.GrowPlant(this.PlantName, this.Canvas.Bound))
                 {
                     this.CreatorButton.Cooldown();
                 }
