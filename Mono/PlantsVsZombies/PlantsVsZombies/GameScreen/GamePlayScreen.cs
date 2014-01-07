@@ -20,89 +20,77 @@ using System.IO;
 
 namespace PlantsVsZombies.GameScreen
 {
-    public class GamePlayScreen : BaseGameScreen, IGestureTarget<FreeTap>, IGestureTarget<Tap>
+    public class GamePlayScreen : BaseGameScreen
     {
+        private enum PlayState
+        {
+            START,
+            RUNNING
+        }
+
         PZObjectManager objectManager = PZObjectManager.Instance;
         PZBoard gameBoard;
         Level level;
-        IPvZGameCurrency _sunSystem;
+        PvZSunSystem _sunSystem;
+        IGestureManager gm;
+        PlayBackground playBacground;
 
         // UI
-        private Vector2 pos;
         private UIControlManager uiControlManager;
         private PvZGrowSystem growSystem;
 
-        public GamePlayScreen(IGameScreenManager screenManager)
+        private PlayState state = PlayState.START;
+
+        public GamePlayScreen(IGameScreenManager screenManager, IGestureManager gm)
             : base(screenManager)
         {
-            //objectManager.AddObject(new NormalPlant());
-            TouchPanel.EnabledGestures = GestureType.Tap | GestureType.Hold;
-
-            
-
-            gameBoard = new PZBoard(9, 5, objectManager);
+            gameBoard = new PZBoard(9, 4, objectManager);
             gameBoard.Board = new int[,] {
-                {0, 0, 0, 0, 0, 0, 3, 0, 0},
-                {0, 0, 0, 0, 0, 0, 3, 0, 0},
-                {0, 0, 0, 0, 0, 0, 3, 0, 0},
-                {0, 0, 0, 0, 0, 0, 3, 0, 0}
+                {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0}
             };
-            // Gen object
 
-            for (int i = 0; i < 4; i++)
-                for (int j = 0; j < 9; j++)
-                {
-                    int type = gameBoard.Board[i, j];
-                    if (type == 1)
-                    {
-                        Vector2 pos = gameBoard.GetPositonAt(i, j);
-                        objectManager.AddObject(PZObjectFactory.Instance.createPlant("xml_Plant_DoublePea", gameBoard.GetPositonAt(i, j)));
-                    }
-                    else if (type == 2)
-                    {
-                        objectManager.AddObject(PZObjectFactory.Instance.createIcePlant(gameBoard.GetPositonAt(i, j)));
-                    }
-                    else if (type == 3)
-                    {
-                        objectManager.AddObject(PZObjectFactory.Instance.createStonePlant(gameBoard.GetPositonAt(i, j)));
-                    }
-                    else if (type == 4)
-                    {
-                        objectManager.AddObject(PZObjectFactory.Instance.createSunflowerPlant(gameBoard.GetPositonAt(i, j)));
-                    }
-                }
+            this.gm = gm;
 
+            this.playBacground = new PlayBackground(this.Game, SCSServices.Instance.ResourceManager.GetResource<Texture2D>(@"Images\Controls\Background_Forest"));
+            this.playBacground.Initialize();
+            this.playBacground.OnAnimatingCompleted += this.OnBackgroundAnimatingCompleted;
+            this.playBacground.StartAnimate();
+        }
+
+        private void OnBackgroundAnimatingCompleted(PlayBackground background)
+        {
+            this.state = PlayState.RUNNING;
+            this.InitGamePlay();
+        }
+
+        private void InitGamePlay()
+        {
             level = PZLevelManager.Instance.GetLevel(0);
-            //
-            IGestureManager gm = DefaultGestureHandlingFactory.Instance.CreateManager(this.Game, //DefaultGestureHandlingFactory.Instance.CreateTouchController());
-                new OrientedTouchController(DefaultGestureHandlingFactory.Instance.CreateTouchController(), GameOrientation.Instance));
-            gm.AddDetector<FreeTap>(new FreeTapDetector());
-            gm.AddDetector<Tap>(new TapDetector());
-            this.Components.Add(gm);
+            
             IGestureDispatcher dp = DefaultGestureHandlingFactory.Instance.CreateDispatcher();
-            dp.AddTarget<FreeTap>(this);
-            dp.AddTarget<Tap>(this);
             gm.AddDispatcher(dp);
 
             this.uiControlManager = new UIControlManager(this.Game, DefaultGestureHandlingFactory.Instance);
             gm.AddDispatcher(this.uiControlManager);
             this.Components.Add(this.uiControlManager);
+
             //
             // Sun system
-            _sunSystem = new PvZHardCurrency(0, dp);
-            SCSServices.Instance.Game.Services.RemoveService(typeof(PvZHardCurrency));
-            SCSServices.Instance.Game.Services.AddService(typeof(PvZHardCurrency), _sunSystem);
+            _sunSystem = new PvZSunSystem(this.Game, 0, dp);
+            SCSServices.Instance.Game.Services.RemoveService(typeof(PvZSunSystem));
+            SCSServices.Instance.Game.Services.AddService(typeof(PvZSunSystem), _sunSystem);
+            this.Components.Add(_sunSystem);
 
             this.growSystem = new PvZGrowSystem(this.Game, new PvZGameGrow(gameBoard));
             this.growSystem.Deserialize(XmlSerialization.Instance.Deserialize(new FileStream(@"Xml\PlantGrowButtons.xml", FileMode.Open, FileAccess.Read)));
             var chooseSys = new PvZChooseSystem(this.Game, this.growSystem.ButtonFactoryBank, this.uiControlManager, _sunSystem);
             chooseSys.Initialize();
             chooseSys.OnCameOut += this.OnChooseSystemCompleted;
-            chooseSys.ComeIn();
             this.Components.Add(chooseSys);
-
-            
-
+            chooseSys.ComeIn();
         }
 
         private void OnChooseSystemCompleted(PvZChooseSystem chooseSys)
@@ -115,17 +103,18 @@ namespace PlantsVsZombies.GameScreen
 
         public override void Update(GameTime gameTime)
         {
-            
+            this.playBacground.Update(gameTime);
 
-            //
-            level.Update(gameBoard, gameTime);
-            _sunSystem.Update(gameTime);
+            if (this.state == PlayState.RUNNING)
+            {
+                level.Update(gameBoard, gameTime);
 
-            // Update game
-            IMessage<MessageType> updateMessage = new GameMessage(MessageType.FRAME_UPDATE, this);
-            updateMessage.DestinationObjectId = 0; // For all object
+                // Update game
+                IMessage<MessageType> updateMessage = new GameMessage(MessageType.FRAME_UPDATE, this);
+                updateMessage.DestinationObjectId = 0; // For all object
 
-            objectManager.SendMessage(updateMessage, gameTime);
+                objectManager.SendMessage(updateMessage, gameTime);
+            }
 
             base.Update(gameTime);
         }
@@ -134,49 +123,17 @@ namespace PlantsVsZombies.GameScreen
         {
             SpriteBatch spriteBatch = SCSServices.Instance.SpriteBatch;
             spriteBatch.Begin();
+            this.playBacground.Draw(gameTime);
+            if (this.state == PlayState.RUNNING)
+            {
+                IMessage<MessageType> updateMessage = new GameMessage(MessageType.FRAME_DRAW, this);
+                updateMessage.DestinationObjectId = 0; // For every object
+                objectManager.SendMessage(updateMessage, gameTime);
+            }
 
-            spriteBatch.DrawString(SCSServices.Instance.DebugFont, string.Format("Touch pos: {0} - {1}", pos.X, pos.Y), new Vector2(100, 100), Color.White);
-
-            IMessage<MessageType> updateMessage = new GameMessage(MessageType.FRAME_DRAW, this);
-            updateMessage.DestinationObjectId = 0; // For every object
-            objectManager.SendMessage(updateMessage, gameTime);
-
-            _sunSystem.Draw(gameTime);
             base.Draw(gameTime);
+
             spriteBatch.End();
-        }
-
-
-
-        public bool ReceivedGesture(FreeTap gEvent)
-        {
-            pos = gEvent.Current;
-            return true;
-        }
-
-        public bool IsHandleGesture(FreeTap gEvent)
-        {
-            return true;
-        }
-
-        public uint Priority
-        {
-            get { return 0; }
-        }
-
-        public bool IsGestureCompleted
-        {
-            get { return false; }
-        }
-
-        public bool ReceivedGesture(Tap gEvent)
-        {
-            return false;
-        }
-
-        public bool IsHandleGesture(Tap gEvent)
-        {
-            return true;
         }
     }
 }

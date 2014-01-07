@@ -97,9 +97,14 @@ namespace PlantsVsZombies
                 //Test
                 GameObjectCenter.Instance.InitEnity();
 
+                IGestureManager gestureManager = DefaultGestureHandlingFactory.Instance.CreateManager(this, //DefaultGestureHandlingFactory.Instance.CreateTouchController());
+                    new OrientedTouchController(DefaultGestureHandlingFactory.Instance.CreateTouchController(), GameOrientation.Instance));
+                gestureManager.AddDetector<FreeTap>(new FreeTapDetector());
+                gestureManager.AddDetector<Tap>(new TapDetector());
+                this.Components.Add(gestureManager);
 
-                screenManager = new PZScreenManager(this);
-                screenManager.AddExclusive(screenManager.Bank.GetNewScreen("Test"));
+                screenManager = new PZScreenManager(this, gestureManager);
+                screenManager.AddExclusive(screenManager.Bank.GetNewScreen("MainMenu"));
 
                 
 

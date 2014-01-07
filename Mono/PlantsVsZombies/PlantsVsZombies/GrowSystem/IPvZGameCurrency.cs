@@ -19,14 +19,15 @@ namespace PlantsVsZombies.GrowSystem
         void Draw(GameTime gameTime);
     }
 
-    public class PvZHardCurrency : IPvZGameCurrency
+    public class PvZSunSystem : DrawableGameComponent, IPvZGameCurrency
     {
         public static IGestureDispatcher _gestureDispatcher = null;
         private int MoneyPerSun = 25;
         private TimeSpan _currentTime = TimeSpan.Zero;
         private TimeSpan _timeGiveSun = TimeSpan.FromSeconds(3);
 
-        public PvZHardCurrency(int money, IGestureDispatcher gestureDispatcher)
+        public PvZSunSystem(Game game, int money, IGestureDispatcher gestureDispatcher)
+            : base(game)
         {
             this.CurrentMoney = money;
             _collectionPoint = new Vector2(0, 0);
@@ -39,7 +40,7 @@ namespace PlantsVsZombies.GrowSystem
             private set;
         }
 
-        public void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
             if (_currentTime > _timeGiveSun)
             {
@@ -64,11 +65,11 @@ namespace PlantsVsZombies.GrowSystem
         public void RemoveSun(ObjectEntityGesture obj)
         {
             PZObjectManager.Instance.RemoveObject(obj.ObjectId);
-            PvZHardCurrency._gestureDispatcher.RemoveTarget<Tap>(obj as IGestureTarget<Tap>);
+            PvZSunSystem._gestureDispatcher.RemoveTarget<Tap>(obj as IGestureTarget<Tap>);
             CurrentMoney += MoneyPerSun;
         }
 
-        public void Draw(GameTime gameTime)
+        public override void Draw(GameTime gameTime)
         {
             SCSServices.Instance.SpriteBatch.DrawString(SCSServices.Instance.DebugFont, CurrentMoney.ToString(), new Vector2(100, 50), Color.Yellow, 0, new Vector2(0.5f, 0.5f), 3, Microsoft.Xna.Framework.Graphics.SpriteEffects.None, 1);
         }

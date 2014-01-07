@@ -47,7 +47,7 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Plant
             {
                 PhysicComponent phyCom = this.Owner.Owner.GetComponent(typeof(PhysicComponent)) as PhysicComponent;
                 Point pos = phyCom.Frame.Center;
-                (SCSServices.Instance.Game.Services.GetService(typeof(PvZHardCurrency)) as PvZHardCurrency).AddSun(new Vector2(pos.X, pos.Y), Bullet.eSunState.JUMP);
+                (SCSServices.Instance.Game.Services.GetService(typeof(PvZSunSystem)) as PvZSunSystem).AddSun(new Vector2(pos.X, pos.Y), Bullet.eSunState.JUMP);
                 _currentTime = TimeSpan.Zero;
             }
             else

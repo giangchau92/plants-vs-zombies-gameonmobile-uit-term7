@@ -23,7 +23,7 @@ namespace PlantsVsZombies.GameComponents.Effect.Implements
 
         public SunCollectEffect(Vector2 pos)
         {
-            Vector2 distance = PvZHardCurrency.CollectionPoint - pos;
+            Vector2 distance = PvZSunSystem.CollectionPoint - pos;
             
             TimeDurring = TimeSpan.FromSeconds(timeDurring);
             v0 = new Vector2(distance.X/(float)timeDurring, distance.Y/(float)timeDurring);

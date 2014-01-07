@@ -8,37 +8,75 @@
     </Shadow>
 
     <Shadow>
+      <Name>Ice Pea</Name>
+      <Picture>IcePeaShadow</Picture>
+      <Plant>xml_Plant_IcePea</Plant>
+    </Shadow>
+
+    <Shadow>
       <Name>Stone</Name>
       <Picture>StoneShadow</Picture>
       <Plant>xml_Plant_Stone</Plant>
+    </Shadow>
+
+    <Shadow>
+      <Name>Sun Flower</Name>
+      <Picture>SunFlowerShadow</Picture>
+      <Plant>xml_Plant_Sunflower</Plant>
     </Shadow>
   </PlantShadows>
 
   <Buttons>
     <Button>
       <Name>Single Pea</Name>
-      <Delay>5000</Delay>
+      <Delay>10000</Delay>
       <Price>100</Price>
       <DrawComponent>
         <Type>Standard</Type>
         <Data>
-          <Picture>SinglePea_btn</Picture>
+          <Picture>Images\Controls\DoublePeashooterButton</Picture>
         </Data>
       </DrawComponent>
       <Shadow>Single Pea</Shadow>
     </Button>
-
+    
     <Button>
-      <Name>Stone</Name>
-      <Delay>5000</Delay>
-      <Price>100</Price>
+      <Name>Ice Pea</Name>
+      <Delay>120000</Delay>
+      <Price>175</Price>
       <DrawComponent>
         <Type>Standard</Type>
         <Data>
-          <Picture>StoneButton</Picture>
+          <Picture>Images\Controls\IcePeashooterButton</Picture>
+        </Data>
+      </DrawComponent>
+      <Shadow>Ice Pea</Shadow>
+    </Button>
+
+    <Button>
+      <Name>Stone</Name>
+      <Delay>30000</Delay>
+      <Price>75</Price>
+      <DrawComponent>
+        <Type>Standard</Type>
+        <Data>
+          <Picture>Images\Controls\StoneButton</Picture>
         </Data>
       </DrawComponent>
       <Shadow>Stone</Shadow>
+    </Button>
+
+    <Button>
+      <Name>Sun Flower</Name>
+      <Delay>7500</Delay>
+      <Price>50</Price>
+      <DrawComponent>
+        <Type>Standard</Type>
+        <Data>
+          <Picture>Images\Controls\SunflowerButton</Picture>
+        </Data>
+      </DrawComponent>
+      <Shadow>Sun Flower</Shadow>
     </Button>
   </Buttons>
 </GrowSystems>
