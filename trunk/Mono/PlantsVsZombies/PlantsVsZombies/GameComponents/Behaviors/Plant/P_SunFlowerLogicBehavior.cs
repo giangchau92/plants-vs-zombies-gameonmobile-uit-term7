@@ -2,7 +2,9 @@
 using PlantsVsZombies.GameComponents.Components;
 using PlantsVsZombies.GameComponents.GameMessages;
 using PlantsVsZombies.GameCore;
+using PlantsVsZombies.GrowSystem;
 using SCSEngine.Serialization;
+using SCSEngine.Services;
 using SCSEngine.Utils.GameObject.Component;
 using System;
 using System.Collections.Generic;
@@ -45,7 +47,7 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Plant
             {
                 PhysicComponent phyCom = this.Owner.Owner.GetComponent(typeof(PhysicComponent)) as PhysicComponent;
                 Point pos = phyCom.Frame.Center;
-                PZObjectManager.Instance.AddObject(PZObjectFactory.Instance.createSun(new Vector2(pos.X, pos.Y)));
+                (SCSServices.Instance.Game.Services.GetService(typeof(PvZHardCurrency)) as PvZHardCurrency).AddSun(new Vector2(pos.X, pos.Y), Bullet.eSunState.JUMP);
                 _currentTime = TimeSpan.Zero;
             }
             else

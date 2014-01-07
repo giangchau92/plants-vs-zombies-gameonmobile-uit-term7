@@ -4,23 +4,27 @@ using PlantsVsZombies.GameComponents.Behaviors.Implements;
 using PlantsVsZombies.GameComponents.Components;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace PlantsVsZombies.GameComponents.Effect.Implements
 {
-    public class SunRiseEffect : IEffect
+    class SunFlyDownEffect : IEffect
     {
         TimeSpan curentTime = TimeSpan.Zero;
         public TimeSpan TimeDurring { get; set; }
 
-        Vector2 v0 = new Vector2(0, -100);
-        Vector2 a = new Vector2(0, 500);
+        Vector2 v0 = new Vector2(0, 50);
+        Vector2 a = new Vector2(0, 0);
 
-        public SunRiseEffect()
+        public SunFlyDownEffect()
         {
-            TimeDurring = TimeSpan.FromSeconds(0.7f);
+            Random rand = new Random();
+            double time = rand.NextDouble() * 3 + 3;
+            Debug.WriteLine(time);
+            TimeDurring = TimeSpan.FromSeconds(time);
         }
 
         public void Update(GameTime gameTime)
@@ -34,7 +38,7 @@ namespace PlantsVsZombies.GameComponents.Effect.Implements
 
                 MoveBehavior moveBehavior = (moveCOm.GetCurrentBehavior() as MoveBehavior);
                 moveBehavior.Velocity = Vector2.Zero;
-                
+
                 this.Owner.RemoveEffect(this);
             }
             else

@@ -30,6 +30,7 @@ namespace PlantsVsZombies.GrowSystem
         private PvZChooseList waitList, chosenList;
         private Button readyButton;
         private UIControlManager uiManager;
+        private IPvZGameCurrency _currency;
 
 
         private ChooseSystemState state;
@@ -42,11 +43,12 @@ namespace PlantsVsZombies.GrowSystem
 
         public event ChooseSystemEventHandler OnCameOut;
 
-        public PvZChooseSystem(Game game, PvZGrowButtonFactoryBank btnFB, UIControlManager uiMan)
+        public PvZChooseSystem(Game game, PvZGrowButtonFactoryBank btnFB, UIControlManager uiMan, IPvZGameCurrency currency)
             : base(game)
         {
             this.buttonFB = btnFB;
             this.uiManager = uiMan;
+            _currency = currency;
         }
 
         public override void Initialize()
@@ -208,7 +210,7 @@ namespace PlantsVsZombies.GrowSystem
 
         public PvZGrowList MakeGrowList()
         {
-            var growList = new PvZGrowList(this.Game, this.chosenList.ElementWidth, this.chosenList.ElemPad, this.uiManager, new PvZHardCurrency(100000));
+            var growList = new PvZGrowList(this.Game, this.chosenList.ElementWidth, this.chosenList.ElemPad, this.uiManager, _currency);
             growList.Canvas.Bound.Alter(this.chosenList.Canvas.Bound);
             growList.Canvas.Content.Alter(this.chosenList.Canvas.Content);
             growList.Background = this.chosenList.Background;

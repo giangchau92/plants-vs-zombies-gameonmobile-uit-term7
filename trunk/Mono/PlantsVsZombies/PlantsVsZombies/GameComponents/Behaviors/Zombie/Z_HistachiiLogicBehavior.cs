@@ -1,25 +1,21 @@
 ﻿using Microsoft.Xna.Framework;
+using PlantsVsZombies.GameComponents.Behaviors.Implements;
+using PlantsVsZombies.GameComponents.Components;
 using PlantsVsZombies.GameComponents.GameMessages;
+using PlantsVsZombies.GameCore;
+using SCSEngine.Serialization;
 using SCSEngine.Utils.GameObject.Component;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using PlantsVsZombies.GameComponents.Behaviors.Implements;
-using PlantsVsZombies.GameComponents.Components;
-using PlantsVsZombies.GameCore;
-using SCSEngine.Serialization;
+using System.Threading.Tasks;
 
 namespace PlantsVsZombies.GameComponents.Behaviors.Zombie
 {
-    enum eNormalZombieState
-    {
-        RUNNING, EATING, DIEING, DEATH
-    }
-    public class Z_NormalLogicBehavior : BaseLogicBehavior
+    class Z_HistachiiLogicBehavior : BaseLogicBehavior
     {
         private eNormalZombieState ZombieState { get; set; } // Chỉ dùng cục bộ 
-        public int damagePerSecond;
 
         public override void Update(IMessage<MessageType> message, Microsoft.Xna.Framework.GameTime gameTime)
         {
@@ -33,7 +29,7 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Zombie
             {
                 changeDeathBehavior(gameTime);
                 ZombieState = eNormalZombieState.DIEING;
-                
+
             }
             if (ZombieState == eNormalZombieState.DIEING)
             {
@@ -53,7 +49,7 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Zombie
             if (msg == null)
                 throw new Exception("Z_NormalLogicBehavior: message is not CollisionDetectedMsg");
 
-            
+
             // If no collision
             if (message.TargetCollision == null)
             {
@@ -76,7 +72,7 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Zombie
                 LogicComponent logicCOm = plant.GetComponent(typeof(LogicComponent)) as LogicComponent;
                 if (logicCOm == null)
                     throw new Exception("Z_NormalLogicBehavior: Expect Target Logic Component");
-                logicCOm.Health-= (float)damagePerSecond / 30; 
+                logicCOm.Health--;
             }
             else
             {
@@ -131,19 +127,12 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Zombie
 
         public override IBehavior<MessageType> Clone()
         {
-            Z_NormalLogicBehavior clone = new Z_NormalLogicBehavior();
-            clone.damagePerSecond = damagePerSecond;
-            return clone;
+            return new Z_NormalLogicBehavior();
         }
 
         public override void Deserialize(IDeserializer deserializer)
         {
-            // CODE HERE
-            LogicComponent logicCOm = this.Owner as LogicComponent;
-            if (logicCOm == null)
-                throw new Exception("PL_NormalLogicBehavior: Expect Logic Component");
-            logicCOm.Health = deserializer.DeserializeInteger("Health");
-            damagePerSecond = deserializer.DeserializeInteger("Damage");
+
         }
     }
 }

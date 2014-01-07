@@ -2,25 +2,31 @@
 using PlantsVsZombies.GameComponents.Behaviors;
 using PlantsVsZombies.GameComponents.Behaviors.Implements;
 using PlantsVsZombies.GameComponents.Components;
+using PlantsVsZombies.GrowSystem;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace PlantsVsZombies.GameComponents.Effect.Implements
 {
-    public class SunRiseEffect : IEffect
+    class SunCollectEffect : IEffect
     {
+        double timeDurring = 0.75; // TIME DURRING (s)
         TimeSpan curentTime = TimeSpan.Zero;
         public TimeSpan TimeDurring { get; set; }
 
-        Vector2 v0 = new Vector2(0, -100);
-        Vector2 a = new Vector2(0, 500);
+        Vector2 v0 = new Vector2(0, 50);
+        Vector2 a = new Vector2(0, 0);
 
-        public SunRiseEffect()
+        public SunCollectEffect(Vector2 pos)
         {
-            TimeDurring = TimeSpan.FromSeconds(0.7f);
+            Vector2 distance = PvZHardCurrency.CollectionPoint - pos;
+            
+            TimeDurring = TimeSpan.FromSeconds(timeDurring);
+            v0 = new Vector2(distance.X/(float)timeDurring, distance.Y/(float)timeDurring);
         }
 
         public void Update(GameTime gameTime)
@@ -34,7 +40,7 @@ namespace PlantsVsZombies.GameComponents.Effect.Implements
 
                 MoveBehavior moveBehavior = (moveCOm.GetCurrentBehavior() as MoveBehavior);
                 moveBehavior.Velocity = Vector2.Zero;
-                
+                Debug.WriteLine("Remove SunCollectEffect");
                 this.Owner.RemoveEffect(this);
             }
             else

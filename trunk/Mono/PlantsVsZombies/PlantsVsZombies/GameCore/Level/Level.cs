@@ -64,8 +64,6 @@ namespace PlantsVsZombies.GameCore.Level
             }
             else if (_currentState == LevelState.ENDWAVE) // Delay giua cac Wave
             {
-               
-
                     if (_currentTime >= Waves[_currentWave].TimeNextWave)
                     {
                         _currentWave++; // Tang wave

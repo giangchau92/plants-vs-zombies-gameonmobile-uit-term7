@@ -70,7 +70,7 @@ namespace PlantsVsZombies.GameComponents.Components
             if (moveCOm == null)
                 throw new Exception("RenderComponent: Expect Move component");
 
-            SCSServices.Instance.SpriteBatch.DrawString(SCSServices.Instance.DebugFont, logicCOm.Health.ToString(), moveCOm.Position, Color.Red);
+            SCSServices.Instance.SpriteBatch.DrawString(SCSServices.Instance.DebugFont, ((int)logicCOm.Health).ToString(), moveCOm.Position, Color.Red);
         }
 
         public void AddBehavior(eMoveRenderBehaviorType type, IBehavior<MessageType> behavior)

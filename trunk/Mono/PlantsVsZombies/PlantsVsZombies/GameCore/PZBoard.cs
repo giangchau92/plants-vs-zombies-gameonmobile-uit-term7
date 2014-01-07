@@ -12,7 +12,7 @@ namespace PlantsVsZombies.GameCore
     public class PZBoard
     {
         public int[,] Board { get; set; }
-        public const int CELL_WIDTH = 60;
+        public const int CELL_WIDTH = 90;
         public const int CELL_HEIGHT = 90;
 
         public Vector2 Position { get; private set; }

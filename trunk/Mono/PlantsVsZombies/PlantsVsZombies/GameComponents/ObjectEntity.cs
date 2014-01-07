@@ -10,7 +10,7 @@ using PlantsVsZombies.GameComponents.Components;
 
 namespace PlantsVsZombies.GameComponents
 {
-    public enum eObjectType { PLANT, ZOMBIE, BULLET}
+    public enum eObjectType { PLANT, ZOMBIE, BULLET, SUN}
     public class ObjectEntity : IEntity<MessageType>, IComponent<MessageType>
     {
         public eObjectType ObjectType { get; set; }
@@ -124,7 +124,15 @@ namespace PlantsVsZombies.GameComponents
         }
     }
 
-    public class ObjectEntityFactory : ISerializable
+
+
+    public interface IObjectEntityFactory
+    {
+        void Serialize(ISerializer serializer);
+        void Deserialize(IDeserializer deserializer);
+        ObjectEntity CreateEntity();
+    }
+    public class ObjectEntityFactory : IObjectEntityFactory, ISerializable
     {
         private const string tagName = "Name";
         private const string tagComponents = "Components";
@@ -188,8 +196,6 @@ namespace PlantsVsZombies.GameComponents
     {
         IComponent<MessageType> CreateComponent(string type);
     }
-
-
     public class ComponentFactory : IComponentFactory
     {
         public IComponent<MessageType> CreateComponent(string type)
