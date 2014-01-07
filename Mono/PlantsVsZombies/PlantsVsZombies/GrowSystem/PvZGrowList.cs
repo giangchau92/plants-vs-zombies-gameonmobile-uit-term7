@@ -117,6 +117,19 @@ namespace PlantsVsZombies.GrowSystem
                 grButton.Update(gameTime);
             }
 
+            for (int i = 0; i < this.growButtons.Count; )
+            {
+                if (this.growButtons[i].IsUICompleted)
+                {
+                    this.uiManager.RemoveTarget<FreeTap>(growButtons[i]);
+                    this.growButtons.RemoveAt(i);
+                }
+                else
+                {
+                    ++i;
+                }
+            }
+
             base.Update(gameTime);
         }
 
@@ -148,7 +161,7 @@ namespace PlantsVsZombies.GrowSystem
                 var shadow = button.ShadowFactory.CreatePlantShadow();
                 shadow.CreatorButton = button;
                 shadow.Canvas.Bound.Position = leaveGesture.Current;
-                shadow.Canvas.Bound.Size = new Vector2(PZBoard.CELL_WIDTH * PZBoard.CELL_HEIGHT / shadow.PlanShadowImage.CurrentFrame.Height,
+                shadow.Canvas.Bound.Size = new Vector2(shadow.PlanShadowImage.CurrentFrame.Width,
                     shadow.PlanShadowImage.CurrentFrame.Height);
 
                 // add p-s to ui manager (g-dispatcher)

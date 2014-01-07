@@ -114,7 +114,7 @@ namespace PlantsVsZombies.GrowSystem
 
         public override void LeaveGestures(IGestureDispatcher dispatcher)
         {
-            this.IsGestureCompleted = true;
+            dispatcher.RemoveTarget<FreeTap>(this);
         }
 
         public virtual bool ReceivedGesture(FreeTap gEvent)
@@ -228,6 +228,8 @@ namespace PlantsVsZombies.GrowSystem
     public interface IPvZGrowButtonBrushFactory : ISerializable
     {
         IPvZGrowButtonBrush CreateBrush();
+        string PictureName { get; }
+        SpriteFont CooldownFont { get; }
     }
 
     class StandardGrowButtonBrush : IPvZGrowButtonBrush
@@ -274,7 +276,19 @@ namespace PlantsVsZombies.GrowSystem
     class StandardGrowButtonBrushFactory : IPvZGrowButtonBrushFactory
     {
         string pictureName;
+
+        public string PictureName
+        {
+            get { return pictureName; }
+            set { pictureName = value; }
+        }
         SpriteFont defaultFont;
+
+        public SpriteFont CooldownFont
+        {
+            get { return defaultFont; }
+            set { defaultFont = value; }
+        }
 
         public StandardGrowButtonBrushFactory()
         {
@@ -363,6 +377,15 @@ namespace PlantsVsZombies.GrowSystem
             button.ShadowFactory = this.shadowF;
 
             return button;
+        }
+
+        public PvZChooseButton CreateChooseButton(Game game)
+        {
+            PvZChooseButton chooseButton = new PvZChooseButton(game);
+            chooseButton.Name = this.Name;
+            chooseButton.Background = SCSServices.Instance.ResourceManager.GetResource<ISprite>(brushF.PictureName);
+
+            return chooseButton;
         }
     }
 

@@ -24,12 +24,15 @@ namespace PlantsVsZombies.GameCore
 
         private PZObjectFactory() { }
 
-        public ObjectEntity createPlant(Vector2 pos)
+        public ObjectEntity createPlant(String plantName, Vector2 pos)
         {
-            ObjectEntity plant = GameObjectCenter.Instance.CreateObject("xml_Plant_DoublePea");
+            ObjectEntity plant = GameObjectCenter.Instance.CreateObject(plantName);
 
-            MoveComponent moveCom = plant.GetComponent(typeof(MoveComponent)) as MoveComponent;
-            moveCom.Position = pos;
+            if (plant != null)
+            {
+                MoveComponent moveCom = plant.GetComponent(typeof(MoveComponent)) as MoveComponent;
+                moveCom.Position = pos;
+            }
 
             return plant;
         }

@@ -12,7 +12,19 @@ namespace PlantsVsZombies.GrowSystem
     {
         private Game game;
         private PvZPlantShadowFactoryBank shadowFB;
+
+        public PvZPlantShadowFactoryBank ShadowFactoryBank
+        {
+            get { return shadowFB; }
+            set { shadowFB = value; }
+        }
         private PvZGrowButtonFactoryBank buttonFB;
+
+        public PvZGrowButtonFactoryBank ButtonFactoryBank
+        {
+            get { return buttonFB; }
+            set { buttonFB = value; }
+        }
 
         public PvZGrowButtonFactoryBank Buttons
         {
