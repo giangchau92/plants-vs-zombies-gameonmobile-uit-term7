@@ -70,10 +70,17 @@ namespace PlantsVsZombies.GameComponents.Components
                 this.LogicBehavior = new P_NormalLogicBehavior();
             else if (behaviorType == "xml_IcePlant")
                 this.LogicBehavior = new P_IcePlantLogicBehavior();
+            else if (behaviorType == "xml_StonePlant")
+                this.LogicBehavior = new P_StoneLogicBehavior();
+            else if (behaviorType == "xml_SunflowerPlant")
+                this.LogicBehavior = new P_SunFlowerLogicBehavior();
             else if (behaviorType == "xml_NormalBullet")
                 this.LogicBehavior = new B_NormalLogicBehavior();
             else if (behaviorType == "xml_IceBullet")
                 this.LogicBehavior = new B_IceBulletLogicBehavior();
+            else if (behaviorType == "xml_Sun")
+                this.LogicBehavior = new B_SunLogicBehavior();
+            
 
             this.LogicBehavior.Deserialize(behDeser);
         }
@@ -81,6 +88,7 @@ namespace PlantsVsZombies.GameComponents.Components
         IComponent<MessageType> IComponent<MessageType>.Clone()
         {
             LogicComponent logicCom = LogicComponentFactory.CreateComponent();
+            logicCom.Health = this.Health;
             logicCom.LogicBehavior = this.LogicBehavior.Clone() as BaseLogicBehavior;
             return logicCom;
         }

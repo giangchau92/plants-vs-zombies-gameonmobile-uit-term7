@@ -197,6 +197,9 @@ namespace PlantsVsZombies
 
             SpriteFramesBank.Instance.Add("Plants/DoublePea/DoublePea", FramesGenerator.Generate(100, 55, 1024, 40));
             SpriteFramesBank.Instance.Add("Plants/IcePea/IcePea", FramesGenerator.Generate(118, 63, 1024, 33));
+            SpriteFramesBank.Instance.Add("Plants/Stone/Stone", FramesGenerator.Generate(101, 101, 1024, 38));
+            SpriteFramesBank.Instance.Add("Plants/Sunflower/Sunflower", FramesGenerator.Generate(84, 60, 1024, 40));
+            SpriteFramesBank.Instance.Add("Bullets/Sun", FramesGenerator.Generate(50, 50, 750, 15));
             SpriteFramesBank.Instance.Add("Zombies/Nameless/Walk", FramesGenerator.Generate(73, 100, 1024, 16));
             SpriteFramesBank.Instance.Add("Zombies/Nameless/Attack", FramesGenerator.Generate(89, 101, 1024, 16));
             SpriteFramesBank.Instance.Add("Zombies/Nameless/Death", FramesGenerator.Generate(155, 130, 1024, 16));

@@ -203,7 +203,7 @@ namespace PlantsVsZombies.GameCore.Level
                     ObjectEntity obj = GameObjectCenter.Instance.CreateObject(zombieString);
                     int row = rand.Next(0, 4);
                     Debug.WriteLine("LEVEL: Tha ZOMBIE at row {0}", row);
-                    board.AddObjectAt(obj, row, 12);
+                    board.AddObjectAt(obj, row, 10);
                     _currentTime = TimeSpan.Zero;
                     _nextZombieTime = TimeSpan.Zero;
                     _currentZombie++;

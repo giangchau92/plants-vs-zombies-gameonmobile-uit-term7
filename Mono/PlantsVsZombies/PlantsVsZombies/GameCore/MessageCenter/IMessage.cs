@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PlantsVsZombies.GameCore.MessageCenter
 {
-    interface IStringEffect
+    interface IMessage
     {
         void Update(GameTime gameTime);
         void Draw(GameTime gameTime);

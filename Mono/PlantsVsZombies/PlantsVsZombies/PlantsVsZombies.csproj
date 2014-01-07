@@ -76,10 +76,13 @@
     <Compile Include="GameComponents\Behaviors\BaseLogicBehavior.cs" />
     <Compile Include="GameComponents\Behaviors\Bullet\B_IceBulletLogicBehavior.cs" />
     <Compile Include="GameComponents\Behaviors\Bullet\B_NormalLogicBehavior.cs" />
+    <Compile Include="GameComponents\Behaviors\Bullet\B_SunLogicBehavior.cs" />
     <Compile Include="GameComponents\Behaviors\Implements\MoveBehavior.cs" />
     <Compile Include="GameComponents\Behaviors\Implements\RenderBehavior.cs" />
     <Compile Include="GameComponents\Behaviors\Plant\P_IcePlantLogicBehavior.cs" />
     <Compile Include="GameComponents\Behaviors\Plant\P_NormalLogicBehavior.cs" />
+    <Compile Include="GameComponents\Behaviors\Plant\P_StoneLogicBehavior.cs" />
+    <Compile Include="GameComponents\Behaviors\Plant\P_SunFlowerLogicBehavior.cs" />
     <Compile Include="GameComponents\Behaviors\Zombie\Z_NormalLogicBehavior.cs" />
     <Compile Include="GameComponents\Components\LogicComponent.cs" />
     <Compile Include="GameComponents\Components\LogicComponentFactory.cs" />
@@ -91,12 +94,18 @@
     <Compile Include="GameComponents\Components\RenderComponentFactory.cs" />
     <Compile Include="GameComponents\Effect\IEffect.cs" />
     <Compile Include="GameComponents\Effect\Implements\SlowMoveEffect.cs" />
+    <Compile Include="GameComponents\Effect\Implements\SunRiseEffect.cs" />
     <Compile Include="GameComponents\GameMessage.cs" />
     <Compile Include="GameComponents\GameMessages\CollisionDetectedMsg.cs" />
     <Compile Include="GameComponents\GameMessages\MoveBehaviorChangeMsg.cs" />
     <Compile Include="GameComponents\GameMessages\RenderBehaviorChangeMsg.cs" />
     <Compile Include="GameComponents\ObjectEntity.cs" />
     <Compile Include="GameCore\Level\Level.cs" />
+    <Compile Include="GameCore\MessageCenter\IMessage.cs" />
+    <Compile Include="GameCore\MessageCenter\IMessageEffect.cs" />
+    <Compile Include="GameCore\MessageCenter\Inplements\HidingEffect.cs" />
+    <Compile Include="GameCore\MessageCenter\Inplements\ShowingEffect.cs" />
+    <Compile Include="GameCore\MessageCenter\MessageCenter.cs" />
     <Compile Include="GameCore\PZBoard.cs" />
     <Compile Include="GameCore\PZLevelManager.cs" />
     <Compile Include="GameCore\PZObjectFactory.cs" />
@@ -200,6 +209,15 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\SinglePea_Shadow.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Plants\Stone\Stone.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Plants\Sunflower\Sunflower.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Bullets\Sun.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Xml\Bullets.xml">
