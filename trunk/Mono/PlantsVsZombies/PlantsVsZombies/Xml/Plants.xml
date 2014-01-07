@@ -78,4 +78,87 @@
 	  </Component>
 	</Components>
 	</Plant>
+
+
+  <!-- STONE PLANT -->
+  <Plant>
+    <Name>xml_Plant_Stone</Name>
+    <Type>Plant</Type>
+    <Components>
+      <Component>
+        <Type>xml_move</Type>
+        <Behavior>
+          <Type>xml_move_stand</Type>
+          <Velocity>
+            <X>0</X>
+            <Y>0</Y>
+          </Velocity>
+        </Behavior>
+      </Component>
+      <Component>
+        <Type>xml_render</Type>
+        <Behavior>
+          <Type>xml_render_stand</Type>
+          <ResourceName>Plants/Stone/Stone</ResourceName>
+          <TimeFrame>0.03333</TimeFrame>
+          <Bound>
+            <X>101</X>
+            <Y>101</Y>
+          </Bound>
+        </Behavior>
+      </Component>
+      <Component>
+        <Type>xml_physic</Type>
+      </Component>
+      <Component>
+        <Type>xml_logic</Type>
+        <Behavior>
+          <Type>xml_StonePlant</Type>
+          <Health>1000</Health>
+        </Behavior>
+      </Component>
+    </Components>
+  </Plant>
+
+
+  <!-- SUNFLOWER PLANT -->
+  <Plant>
+    <Name>xml_Plant_Sunflower</Name>
+    <Type>Plant</Type>
+    <Components>
+      <Component>
+        <Type>xml_move</Type>
+        <Behavior>
+          <Type>xml_move_stand</Type>
+          <Velocity>
+            <X>0</X>
+            <Y>0</Y>
+          </Velocity>
+        </Behavior>
+      </Component>
+      <Component>
+        <Type>xml_render</Type>
+        <Behavior>
+          <Type>xml_render_stand</Type>
+          <ResourceName>Plants/Sunflower/Sunflower</ResourceName>
+          <TimeFrame>0.03333</TimeFrame>
+          <Bound>
+            <X>84</X>
+            <Y>60</Y>
+          </Bound>
+        </Behavior>
+      </Component>
+      <Component>
+        <Type>xml_physic</Type>
+      </Component>
+      <Component>
+        <Type>xml_logic</Type>
+        <Behavior>
+          <Type>xml_SunflowerPlant</Type>
+          <Health>100</Health>
+          <TimeGiveSun>3</TimeGiveSun>
+        </Behavior>
+      </Component>
+    </Components>
+  </Plant>
 </Plants>

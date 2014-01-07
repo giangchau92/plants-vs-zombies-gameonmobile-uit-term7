@@ -55,10 +55,10 @@ namespace PlantsVsZombies.GameScreen
 
             gameBoard = new PZBoard(9, 5, objectManager);
             gameBoard.Board = new int[,] {
-                {1, 2, 0, 0, 0, 0, 0, 0, 0},
-                {1, 2, 0, 0, 0, 0, 0, 0, 0},
-                {1, 2, 0, 0, 0, 0, 0, 0, 0},
-                {1, 2, 0, 0, 0, 0, 0, 0, 0}
+                {1, 0, 0, 0, 0, 0, 3, 0, 0},
+                {1, 4, 0, 0, 0, 0, 3, 0, 0},
+                {1, 3, 0, 0, 0, 0, 3, 0, 0},
+                {1, 0, 0, 0, 0, 0, 3, 0, 0}
             };
             // Gen object
 
@@ -74,6 +74,14 @@ namespace PlantsVsZombies.GameScreen
                     else if (type == 2)
                     {
                         objectManager.AddObject(PZObjectFactory.Instance.createIcePlant(gameBoard.GetPositonAt(i, j)));
+                    }
+                    else if (type == 3)
+                    {
+                        objectManager.AddObject(PZObjectFactory.Instance.createStonePlant(gameBoard.GetPositonAt(i, j)));
+                    }
+                    else if (type == 4)
+                    {
+                        objectManager.AddObject(PZObjectFactory.Instance.createSunflowerPlant(gameBoard.GetPositonAt(i, j)));
                     }
                 }
 

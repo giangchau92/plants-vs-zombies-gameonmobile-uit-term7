@@ -11,7 +11,7 @@ namespace PlantsVsZombies.GameComponents.Behaviors
 {
     public class BaseLogicBehavior : BaseBehavior, ISerializable
     {
-        IDictionary<Type, IEffect> listEffect = new Dictionary<Type, IEffect>();
+        protected IDictionary<Type, IEffect> listEffect = new Dictionary<Type, IEffect>();
 
         public override void Update(IMessage<MessageType> message, GameTime gameTime)
         {

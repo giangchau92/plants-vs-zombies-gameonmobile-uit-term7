@@ -74,5 +74,35 @@ namespace PlantsVsZombies.GameCore
 
             return zom;
         }
+
+        public ObjectEntity createStonePlant(Vector2 vector2)
+        {
+            ObjectEntity plant = GameObjectCenter.Instance.CreateObject("xml_Plant_Stone");
+
+            MoveComponent moveCom = plant.GetComponent(typeof(MoveComponent)) as MoveComponent;
+            moveCom.Position = vector2;
+
+            return plant;
+        }
+
+        public ObjectEntity createSunflowerPlant(Vector2 vector2)
+        {
+            ObjectEntity plant = GameObjectCenter.Instance.CreateObject("xml_Plant_Sunflower");
+
+            MoveComponent moveCom = plant.GetComponent(typeof(MoveComponent)) as MoveComponent;
+            moveCom.Position = vector2;
+
+            return plant;
+        }
+
+        public ObjectEntity createSun(Vector2 vector2)
+        {
+            ObjectEntity plant = GameObjectCenter.Instance.CreateObject("xml_sun");
+
+            MoveComponent moveCom = plant.GetComponent(typeof(MoveComponent)) as MoveComponent;
+            moveCom.Position = vector2;
+
+            return plant;
+        }
     }
 }
