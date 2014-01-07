@@ -10,6 +10,7 @@ using System.Text;
 using SCSEngine.GestureHandling;
 using SCSEngine.GestureHandling.Implements.Events;
 using SCSEngine.Utils.Mathematics;
+using PlantsVsZombies.GameCore;
 
 namespace PlantsVsZombies.GrowSystem
 {
@@ -147,7 +148,8 @@ namespace PlantsVsZombies.GrowSystem
                 var shadow = button.ShadowFactory.CreatePlantShadow();
                 shadow.CreatorButton = button;
                 shadow.Canvas.Bound.Position = leaveGesture.Current;
-                shadow.Canvas.Bound.Size = new Vector2(elemWidth, this.Canvas.Content.Size.Y);
+                shadow.Canvas.Bound.Size = new Vector2(PZBoard.CELL_WIDTH * PZBoard.CELL_HEIGHT / shadow.PlanShadowImage.CurrentFrame.Height,
+                    shadow.PlanShadowImage.CurrentFrame.Height);
 
                 // add p-s to ui manager (g-dispatcher)
                 this.uiManager.Add(shadow);
