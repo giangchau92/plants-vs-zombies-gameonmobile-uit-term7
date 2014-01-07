@@ -48,7 +48,10 @@ namespace PlantsVsZombies.GrowSystem
             CRectangleF cellRect = this.gameGrow.CellContains(this.Canvas.Bound);
             if (cellRect != null)
             {
-                this.spritePlayer.Draw(this.PlanShadowImage, cellRect.Rectangle, Color.Azure);
+                cellRect.Position.Y += cellRect.Height - this.PlanShadowImage.CurrentFrame.Height;
+                cellRect.Width *= cellRect.Height / this.PlanShadowImage.CurrentFrame.Height;
+                cellRect.Height = this.PlanShadowImage.CurrentFrame.Height;
+                this.spritePlayer.Draw(this.PlanShadowImage, cellRect.Position, Color.Gray);
             }
             this.spritePlayer.Draw(this.PlanShadowImage, this.Canvas.Bound.Rectangle, Color.White);
 

@@ -24,10 +24,14 @@ namespace PlantsVsZombies.GrowSystem
         {
             _gameBoard = gameBoard;
         }
+
         public CRectangleF CellContains(CRectangleF growRect)
         {
+            Vector2 lefBot = growRect.Position;
+            lefBot.Y += growRect.Size.Y;
             CRectangleF rect = _gameBoard.GetRectAtPoint(growRect.Position);
             //Debug.WriteLine("CellContains at " + rect.X + " " + rect.Y);
+            //rect.Position.Y += rect.Size.Y;
             return rect;
             
         }
@@ -35,6 +39,8 @@ namespace PlantsVsZombies.GrowSystem
         public void GrowPlant(string plantName, CRectangleF growRect)
         {
             // call on release touch
+            Vector2 lefBot = growRect.Position;
+            lefBot.Y += growRect.Size.Y;
             CRectangleF rect = _gameBoard.GetRectAtPoint(growRect.Position);
 
             //Debug.WriteLine("GrowPlant at " + rect.X + " " + rect.Y);
