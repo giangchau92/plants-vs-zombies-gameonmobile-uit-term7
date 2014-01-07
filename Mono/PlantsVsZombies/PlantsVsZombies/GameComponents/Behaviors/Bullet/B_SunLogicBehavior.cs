@@ -55,10 +55,8 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Bullet
             MoveComponent moveCom = this.Owner.Owner.GetComponent(typeof(MoveComponent)) as MoveComponent;
             Debug.WriteLine("Add SunCollectEffect");
             AddEffect(new SunCollectEffect(moveCom.Position));
-            count++;
         }
 
-        int count = 0;
         public override void Update(IMessage<MessageType> msg, GameTime gameTime)
         {
             if (listEffect.Count == 0 && SunState == eSunState.PLYING)

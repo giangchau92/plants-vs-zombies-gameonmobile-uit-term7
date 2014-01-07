@@ -8,11 +8,13 @@ using PlantsVsZombies.GameComponents.GameMessages;
 using PlantsVsZombies.GameObjects;
 using PlantsVsZombies.GameComponents.Components;
 using PlantsVsZombies.GameCore;
+using SCSEngine.Serialization;
 
 namespace PlantsVsZombies.GameComponents.Behaviors.Bullet
 {
     public class B_NormalLogicBehavior : BaseLogicBehavior
     {
+        private float _damage = 0;
         public override void Update(IMessage<MessageType> message, GameTime gameTime)
         {
 
@@ -32,7 +34,7 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Bullet
                 LogicComponent logicCOm = zom.GetComponent(typeof(LogicComponent)) as LogicComponent;
                 if (logicCOm == null)
                     throw new Exception("B_NormalLogicBehavior: Expect Target Logic Component");
-                logicCOm.Health-=10;
+                logicCOm.Health -= _damage;
                 PZObjectManager.Instance.RemoveObject(Owner.Owner.ObjectId);
             }
 
@@ -41,7 +43,18 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Bullet
 
         public override IBehavior<MessageType> Clone()
         {
-            return new B_NormalLogicBehavior();
+            B_NormalLogicBehavior clone = new B_NormalLogicBehavior();
+            clone._damage = _damage;
+            return clone;
+        }
+
+        public override void Deserialize(IDeserializer deserializer)
+        {
+            // CODE HERE
+            LogicComponent logicCOm = this.Owner as LogicComponent;
+            if (logicCOm == null)
+                throw new Exception("PL_NormalLogicBehavior: Expect Logic Component");
+            _damage = deserializer.DeserializeInteger("Damage");
         }
     }
 }

@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input.Touch;
 using PlantsVsZombies.GameComponents;
+using PlantsVsZombies.GameComponents.Components;
 using PlantsVsZombies.GameCore;
 using PlantsVsZombies.GameCore.Level;
 using PlantsVsZombies.GrowSystem;
@@ -16,6 +17,8 @@ using SCSEngine.Serialization.XmlSerialization;
 using SCSEngine.Services;
 using SCSEngine.Sprite;
 using SCSEngine.Utils.GameObject.Component;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 
 namespace PlantsVsZombies.GameScreen
@@ -79,7 +82,7 @@ namespace PlantsVsZombies.GameScreen
 
             //
             // Sun system
-            _sunSystem = new PvZSunSystem(this.Game, 0, dp);
+            _sunSystem = new PvZSunSystem(this.Game, 50, dp);
             SCSServices.Instance.Game.Services.RemoveService(typeof(PvZSunSystem));
             SCSServices.Instance.Game.Services.AddService(typeof(PvZSunSystem), _sunSystem);
             this.Components.Add(_sunSystem);
@@ -108,6 +111,17 @@ namespace PlantsVsZombies.GameScreen
             if (this.state == PlayState.RUNNING)
             {
                 level.Update(gameBoard, gameTime);
+//
+            level.Update(gameBoard, gameTime);
+            if (isWin())
+            {
+                Debug.WriteLine("WIN CMNR!");
+            }
+
+            if (isLose())
+            {
+                Debug.WriteLine("LOSE CMNR!");
+            }
 
                 // Update game
                 IMessage<MessageType> updateMessage = new GameMessage(MessageType.FRAME_UPDATE, this);
@@ -134,6 +148,37 @@ namespace PlantsVsZombies.GameScreen
             base.Draw(gameTime);
 
             spriteBatch.End();
+        }
+
+
+        private bool isWin()
+        {
+            if (level.LevelState == LevelState.END)
+            {
+                IDictionary<ulong, ObjectEntity> list = objectManager.GetObjects();
+                foreach (var item in list)
+                {
+                    if (item.Value.ObjectType == eObjectType.ZOMBIE)
+                        return false;
+                }
+                return true;
+            }
+            return false;
+        }
+
+        private bool isLose()
+        {
+            IDictionary<ulong, ObjectEntity> list = objectManager.GetObjects();
+            foreach (var item in list)
+            {
+                if (item.Value.ObjectType == eObjectType.ZOMBIE)
+                {
+                    PhysicComponent moveCOm = item.Value.GetComponent(typeof(PhysicComponent)) as PhysicComponent;
+                    if (moveCOm.Frame.Right < 0)
+                        return true;
+                }
+            }
+            return false;
         }
     }
 }

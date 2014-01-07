@@ -5,6 +5,7 @@ using PlantsVsZombies.GameComponents.Effect.Implements;
 using PlantsVsZombies.GameComponents.GameMessages;
 using PlantsVsZombies.GameCore;
 using PlantsVsZombies.GameObjects;
+using SCSEngine.Serialization;
 using SCSEngine.Utils.GameObject.Component;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Bullet
 {
     class B_IceBulletLogicBehavior : BaseLogicBehavior
     {
-
+        private float _damage = 9;
         public override void Update(IMessage<MessageType> message, GameTime gameTime)
         {
 
@@ -35,7 +36,7 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Bullet
                 LogicComponent logicCOm = zom.GetComponent(typeof(LogicComponent)) as LogicComponent;
                 if (logicCOm == null)
                     throw new Exception("B_IceBulletLogicBehavior: Expect Target Logic Component");
-                logicCOm.Health -= 10;
+                logicCOm.Health -= _damage;
 
                 SlowMoveEffect slowEff = new SlowMoveEffect();
                 slowEff.TimeDurring = TimeSpan.FromSeconds(2);
@@ -50,7 +51,18 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Bullet
 
         public override IBehavior<MessageType> Clone()
         {
-            return new B_IceBulletLogicBehavior();
+            B_IceBulletLogicBehavior clone = new B_IceBulletLogicBehavior();
+            clone._damage = _damage;
+            return clone;
+        }
+
+        public override void Deserialize(IDeserializer deserializer)
+        {
+            // CODE HERE
+            LogicComponent logicCOm = this.Owner as LogicComponent;
+            if (logicCOm == null)
+                throw new Exception("PL_NormalLogicBehavior: Expect Logic Component");
+            _damage = deserializer.DeserializeInteger("Damage");
         }
     }
 }

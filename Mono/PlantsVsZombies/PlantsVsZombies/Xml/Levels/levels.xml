@@ -11,7 +11,7 @@
       <TimeNextZombieFrom>5</TimeNextZombieFrom>
       <TimeNextZombieTo>5</TimeNextZombieTo>
 			<TimeWave>2</TimeWave>
-      <TimeBeginWave>10</TimeBeginWave>
+      <TimeBeginWave>5</TimeBeginWave>
       <TimeNextWave>20</TimeNextWave>
 		
   </Wave>
@@ -23,8 +23,8 @@
 				<From>2</From>
 				<To>2</To>
 			</Number>
-      <TimeNextZombieFrom>3</TimeNextZombieFrom>
-      <TimeNextZombieTo>5</TimeNextZombieTo>
+      <TimeNextZombieFrom>6</TimeNextZombieFrom>
+      <TimeNextZombieTo>10</TimeNextZombieTo>
 			<TimeWave>2</TimeWave>
       <TimeBeginWave>5</TimeBeginWave>
       <TimeNextWave>5</TimeNextWave>

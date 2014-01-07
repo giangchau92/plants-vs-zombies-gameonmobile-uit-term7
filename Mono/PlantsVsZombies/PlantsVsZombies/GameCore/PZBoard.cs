@@ -16,7 +16,11 @@ namespace PlantsVsZombies.GameCore
         public const int CELL_HEIGHT = 90;
 
         public Vector2 Position { get; private set; }
-        public Rectangle Bound { get; private set; }
+        public Rectangle Bound
+        {
+            get;
+            private set;
+        }
 
         PZObjectManager objectManager;
 
@@ -24,7 +28,7 @@ namespace PlantsVsZombies.GameCore
         {
             Board = new int[row, column];
             Position = Vector2.Zero;
-
+            Bound = new Rectangle((int)Position.X, (int)Position.Y, column * 90, row * 90);
             objectManager = objMan;
         }
 

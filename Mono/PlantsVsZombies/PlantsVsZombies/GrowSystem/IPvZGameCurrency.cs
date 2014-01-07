@@ -15,8 +15,6 @@ namespace PlantsVsZombies.GrowSystem
     public interface IPvZGameCurrency
     {
         int CurrentMoney { get; }
-        void Update(GameTime gameTime);
-        void Draw(GameTime gameTime);
     }
 
     public class PvZSunSystem : DrawableGameComponent, IPvZGameCurrency
@@ -24,7 +22,7 @@ namespace PlantsVsZombies.GrowSystem
         public static IGestureDispatcher _gestureDispatcher = null;
         private int MoneyPerSun = 25;
         private TimeSpan _currentTime = TimeSpan.Zero;
-        private TimeSpan _timeGiveSun = TimeSpan.FromSeconds(3);
+        private TimeSpan _timeGiveSun = TimeSpan.FromSeconds(5);
 
         public PvZSunSystem(Game game, int money, IGestureDispatcher gestureDispatcher)
             : base(game)
@@ -40,12 +38,14 @@ namespace PlantsVsZombies.GrowSystem
             private set;
         }
 
+
+        Random rand = new Random();
+
         public override void Update(GameTime gameTime)
         {
             if (_currentTime > _timeGiveSun)
             {
                 // Give sun
-                Random rand = new Random();
                 float posX = (float)(rand.NextDouble() * 800);
 
                 AddSun(new Vector2(posX, 0), eSunState.PLYING);
