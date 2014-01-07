@@ -33,6 +33,7 @@
         <Type>xml_logic</Type>
         <Behavior>
           <Type>xml_NormalBullet</Type>
+          <Damage>10</Damage>
         </Behavior>
 			</Component>
 		</Components>
@@ -72,6 +73,7 @@
         <Type>xml_logic</Type>
         <Behavior>
           <Type>xml_IceBullet</Type>
+          <Damage>10</Damage>
         </Behavior>
       </Component>
     </Components>

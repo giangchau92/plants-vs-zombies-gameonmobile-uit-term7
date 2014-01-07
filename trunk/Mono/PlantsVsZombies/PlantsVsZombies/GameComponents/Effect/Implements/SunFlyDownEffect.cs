@@ -19,9 +19,10 @@ namespace PlantsVsZombies.GameComponents.Effect.Implements
         Vector2 v0 = new Vector2(0, 50);
         Vector2 a = new Vector2(0, 0);
 
+
+        static Random rand = new Random();
         public SunFlyDownEffect()
         {
-            Random rand = new Random();
             double time = rand.NextDouble() * 3 + 3;
             Debug.WriteLine(time);
             TimeDurring = TimeSpan.FromSeconds(time);
@@ -48,7 +49,7 @@ namespace PlantsVsZombies.GameComponents.Effect.Implements
                 if (moveCOm == null)
                     throw new Exception("SlowMoveEffect: Expect Target Move Component");
 
-                Vector2 v = v0 + new Vector2(a.X * (float)curentTime.TotalSeconds, a.Y * (float)curentTime.TotalSeconds);
+                Vector2 v = v0;
 
                 MoveBehavior moveBehavior = (moveCOm.GetCurrentBehavior() as MoveBehavior);
                 moveBehavior.Velocity = v;

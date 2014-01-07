@@ -26,6 +26,10 @@ namespace PlantsVsZombies.GameCore.Level
         private TimeSpan _currentTime;
         private int _currentWave;
 
+        public LevelState LevelState
+        {
+            get { return _currentState; }
+        }
 
         public Level()
         {
