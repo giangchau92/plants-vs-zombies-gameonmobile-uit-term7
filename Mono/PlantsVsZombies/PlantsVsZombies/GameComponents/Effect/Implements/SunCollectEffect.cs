@@ -40,7 +40,7 @@ namespace PlantsVsZombies.GameComponents.Effect.Implements
 
                 MoveBehavior moveBehavior = (moveCOm.GetCurrentBehavior() as MoveBehavior);
                 moveBehavior.Velocity = Vector2.Zero;
-                Debug.WriteLine("Remove SunCollectEffect");
+                ////Debug.WriteLine("Remove SunCollectEffect");
                 this.Owner.RemoveEffect(this);
             }
             else

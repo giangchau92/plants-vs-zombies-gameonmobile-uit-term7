@@ -37,7 +37,7 @@ namespace PlantsVsZombies.GameCore.Level
             _currentState = LevelState.BEGIN;
             _currentTime = TimeSpan.Zero;
             _currentWave = 0;
-            Debug.WriteLine("LEVEL: Begin Wave");
+            ////Debug.WriteLine("LEVEL: Begin Wave");
         }
 
 
@@ -47,7 +47,7 @@ namespace PlantsVsZombies.GameCore.Level
             {
                 if (_currentTime >= Waves[_currentWave].TimeBeginWave)
                 {
-                    Debug.WriteLine("LEVEL: Start Wave " + _currentWave);
+                    ////Debug.WriteLine("LEVEL: Start Wave " + _currentWave);
                     _currentState = LevelState.WAVING;
                     _currentTime = TimeSpan.Zero;
                 }
@@ -82,12 +82,12 @@ namespace PlantsVsZombies.GameCore.Level
                     else
                     {
                         _currentTime += gameTime.ElapsedGameTime;
-                        Debug.WriteLine("LEVEL: Delay Wave ");
+                        //Debug.WriteLine("LEVEL: Delay Wave ");
                     }
             }
             else if (_currentState == LevelState.END)
             {
-                Debug.WriteLine("LEVEL: End LEvel");
+                //Debug.WriteLine("LEVEL: End LEvel");
             }
         }
 
@@ -195,7 +195,7 @@ namespace PlantsVsZombies.GameCore.Level
                 if (_nextZombieTime == TimeSpan.Zero)
                 {
                     _nextZombieTime = TimeSpan.FromSeconds(TimeNextZombieFrom + rand.NextDouble() * (TimeNextZombieTo - TimeNextZombieFrom)); // Calc time to drop zombie
-                    Debug.WriteLine("WAVE: Tha ZOMBIE trong {0} giay", _nextZombieTime);
+                    //Debug.WriteLine("WAVE: Tha ZOMBIE trong {0} giay", _nextZombieTime);
                 }
 
                 if (_currentTime >= _nextZombieTime) // Tha zombie
@@ -204,7 +204,7 @@ namespace PlantsVsZombies.GameCore.Level
                     string zombieString = Zombies[rand.Next(0, Zombies.Count)];
                     ObjectEntity obj = GameObjectCenter.Instance.CreateObject(zombieString);
                     int row = rand.Next(0, 4);
-                    Debug.WriteLine("LEVEL: Tha ZOMBIE at row {0}", row);
+                    //Debug.WriteLine("LEVEL: Tha ZOMBIE at row {0}", row);
                     board.AddObjectAt(obj, row, 10);
                     _currentTime = TimeSpan.Zero;
                     _nextZombieTime = TimeSpan.Zero;

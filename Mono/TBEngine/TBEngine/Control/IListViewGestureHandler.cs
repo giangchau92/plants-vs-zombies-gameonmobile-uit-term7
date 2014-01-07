@@ -49,7 +49,7 @@ namespace SCSEngine.Control
         {
             if (this.velocity != 0)
             {
-                //Debug.WriteLine("Offset:{0} - Velocity:{1} - Decel:{2}", offset.Position, velocity, deccelerator);
+                ////Debug.WriteLine("Offset:{0} - Velocity:{1} - Decel:{2}", offset.Position, velocity, deccelerator);
                 offset.Position.Y += this.velocity;
                 this.lastVel = this.velocity;
                 if (this.deccelerator != 0)

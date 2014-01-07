@@ -38,7 +38,7 @@ namespace PlantsVsZombies.GrowSystem
                 return null;
 
             CRectangleF rect = _gameBoard.GetRectAtPoint(growRect.Position);
-            //Debug.WriteLine("CellContains at " + rect.X + " " + rect.Y);
+            ////Debug.WriteLine("CellContains at " + rect.X + " " + rect.Y);
             //rect.Position.Y += rect.Size.Y;
             return rect;
             
@@ -55,7 +55,7 @@ namespace PlantsVsZombies.GrowSystem
                     continue;
                 PhysicComponent phyCom = item.Value.GetComponent(typeof(PhysicComponent)) as PhysicComponent;
                 Rectangle frame = phyCom.Frame;
-                //Debug.WriteLine(rect.Position.X + " - " + rect.Position.Y + " || " + frame.X + " - " + frame.Y);
+                ////Debug.WriteLine(rect.Position.X + " - " + rect.Position.Y + " || " + frame.X + " - " + frame.Y);
                 if (frame.Contains((int)rect.Position.X, (int)rect.Position.Y))
                     return true;
             }
@@ -75,7 +75,7 @@ namespace PlantsVsZombies.GrowSystem
 
             CRectangleF rect = _gameBoard.GetRectAtPoint(growRect.Position);
 
-            //Debug.WriteLine("GrowPlant at " + rect.X + " " + rect.Y);
+            ////Debug.WriteLine("GrowPlant at " + rect.X + " " + rect.Y);
 
             var plant = PZObjectFactory.Instance.createPlant(plantName, new Vector2(rect.Left, rect.Bottom));
             if (plant != null)

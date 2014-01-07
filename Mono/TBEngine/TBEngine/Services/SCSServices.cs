@@ -51,7 +51,5 @@ namespace SCSEngine.Services
         public IResourceManager ResourceManager { get; set; }
 
         public SpriteFont DebugFont { get; set; }
-
-        public GameTime GameTime { get; set; }
     }
 }

@@ -112,16 +112,15 @@ namespace PlantsVsZombies.GameScreen
             {
                 level.Update(gameBoard, gameTime);
 //
-            level.Update(gameBoard, gameTime);
-            if (isWin())
-            {
-                Debug.WriteLine("WIN CMNR!");
-            }
+                if (isWin())
+                {
+                    //Debug.WriteLine("WIN CMNR!");
+                }
 
-            if (isLose())
-            {
-                Debug.WriteLine("LOSE CMNR!");
-            }
+                if (isLose())
+                {
+                    //Debug.WriteLine("LOSE CMNR!");
+                }
 
                 // Update game
                 IMessage<MessageType> updateMessage = new GameMessage(MessageType.FRAME_UPDATE, this);
