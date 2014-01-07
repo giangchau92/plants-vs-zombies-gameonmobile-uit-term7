@@ -4,24 +4,24 @@
 		<Wave>
 			<Name>Wave 1</Name>
 			<Zombie><Value>xml_stand_zombie</Value></Zombie>
-      <Zombie><Value>xml_histachii_zombie</Value></Zombie>
 			<Number>
-				<From>5</From>
-				<To>10</To>
+				<From>1</From>
+				<To>1</To>
 			</Number>
-      <TimeNextZombieFrom>3</TimeNextZombieFrom>
+      <TimeNextZombieFrom>5</TimeNextZombieFrom>
       <TimeNextZombieTo>5</TimeNextZombieTo>
 			<TimeWave>2</TimeWave>
-      <TimeBeginWave>5</TimeBeginWave>
-      <TimeNextWave>5</TimeNextWave>
+      <TimeBeginWave>10</TimeBeginWave>
+      <TimeNextWave>20</TimeNextWave>
 		
   </Wave>
 		<Wave>
 			<Name>Wave 2</Name>
 			<Zombie><Value>xml_stand_zombie</Value></Zombie>
+      <Zombie><Value>xml_histachii_zombie</Value></Zombie>
 			<Number>
-				<From>3</From>
-				<To>8</To>
+				<From>2</From>
+				<To>2</To>
 			</Number>
       <TimeNextZombieFrom>3</TimeNextZombieFrom>
       <TimeNextZombieTo>5</TimeNextZombieTo>

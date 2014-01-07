@@ -22,7 +22,7 @@ namespace PlantsVsZombies.GrowSystem
     public class PvZHardCurrency : IPvZGameCurrency
     {
         public static IGestureDispatcher _gestureDispatcher = null;
-        private int MoneyPerSun = 10;
+        private int MoneyPerSun = 25;
         private TimeSpan _currentTime = TimeSpan.Zero;
         private TimeSpan _timeGiveSun = TimeSpan.FromSeconds(3);
 
