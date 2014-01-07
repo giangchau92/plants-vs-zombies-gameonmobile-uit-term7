@@ -30,7 +30,7 @@ namespace SCSEngine.GestureHandling.BaseGestureHandling
         public void Update(TouchCollection touchesCollection, GameTime gameTime)
         {
             //long ticks = DateTime.Now.Ticks;
-            //Debug.WriteLine("TouchController update begin {0}", ticks);
+            ////Debug.WriteLine("TouchController update begin {0}", ticks);
             this.touchesTracer.BeginTrace();
             foreach (TouchLocation touchLocation in touchesCollection)
             {
@@ -46,7 +46,7 @@ namespace SCSEngine.GestureHandling.BaseGestureHandling
             }
 
             this.touchesTracer.EndTrace();
-            //Debug.WriteLine("TouchController update end {0}, esp: {1}", DateTime.Now.Ticks, DateTime.Now.Ticks - ticks);
+            ////Debug.WriteLine("TouchController update end {0}, esp: {1}", DateTime.Now.Ticks, DateTime.Now.Ticks - ticks);
         }
     }
 }

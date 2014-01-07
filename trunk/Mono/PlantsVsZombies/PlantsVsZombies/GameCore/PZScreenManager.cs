@@ -20,6 +20,10 @@ namespace PlantsVsZombies.GameCore
             this.Bank.AddScreenFactory("PlayScreen", playScreen);
             var mainMenu = new MainMenuScreenFactory(this, gMan);
             this.Bank.AddScreenFactory("MainMenu", mainMenu);
+            var win = new MessageGameScreenFactory(this, @"Images\Controls\WinGame");
+            var lose = new MessageGameScreenFactory(this, @"Images\Controls\LoseGame");
+            this.Bank.AddScreenFactory("WinGame", win);
+            this.Bank.AddScreenFactory("LoseGame", lose);
         }
     }
 }

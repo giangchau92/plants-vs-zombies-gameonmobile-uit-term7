@@ -110,9 +110,9 @@ namespace PlantsVsZombies
 
                 GameOrientation.Instance.InitRenderTarget(this.GraphicsDevice);
             }
-            catch (Exception e)
+            catch (Exception )
             {
-                Debug.WriteLine("Load content error {0}", e);
+                //Debug.WriteLine("Load content error {0}", e);
             }
         }
 
@@ -138,9 +138,8 @@ namespace PlantsVsZombies
             {
 
                 // TODO: Add your update logic here
-                SCSServices.Instance.GameTime = gameTime;
                 screenManager.Update(gameTime);
-                //Debug.WriteLine(string.Format("Eslaped: {0}", gameTime.ElapsedGameTime.TotalMilliseconds));
+                ////Debug.WriteLine(string.Format("Eslaped: {0}", gameTime.ElapsedGameTime.TotalMilliseconds));
 
                 base.Update(gameTime);
 
@@ -148,7 +147,7 @@ namespace PlantsVsZombies
             }
             catch (Exception e)
             {
-                Debug.WriteLine("Update error {0}", e);
+                //Debug.WriteLine("Update error {0}", e);
             }
 
         }
@@ -175,7 +174,7 @@ namespace PlantsVsZombies
             }
             catch (Exception e)
             {
-                Debug.WriteLine("Draw error {0}", e);
+                //Debug.WriteLine("Draw error {0}", e);
             }
         }
 

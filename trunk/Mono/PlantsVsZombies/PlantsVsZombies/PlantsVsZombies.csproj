@@ -126,6 +126,7 @@
     <Compile Include="GameObjects\Implements\NormalZombie.cs" />
     <Compile Include="GameScreen\GamePlayScreen.cs" />
     <Compile Include="GameScreen\MainMenuScreen.cs" />
+    <Compile Include="GameScreen\MessageScenes.cs" />
     <Compile Include="GameScreen\ScreenFactory\GamePlayScreenFactory.cs" />
     <Compile Include="GrowSystem\Playbackground.cs" />
     <Compile Include="GrowSystem\PvZChooseButton.cs" />

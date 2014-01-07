@@ -53,7 +53,7 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Bullet
         {
             SunState = eSunState.COLLECT;
             MoveComponent moveCom = this.Owner.Owner.GetComponent(typeof(MoveComponent)) as MoveComponent;
-            Debug.WriteLine("Add SunCollectEffect");
+            ////Debug.WriteLine("Add SunCollectEffect");
             AddEffect(new SunCollectEffect(moveCom.Position));
         }
 
