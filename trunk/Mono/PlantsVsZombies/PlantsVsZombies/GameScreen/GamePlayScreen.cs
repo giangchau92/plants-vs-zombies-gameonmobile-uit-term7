@@ -11,6 +11,7 @@ using SCSEngine.Control;
 using SCSEngine.GestureHandling;
 using SCSEngine.GestureHandling.Implements.Detectors;
 using SCSEngine.GestureHandling.Implements.Events;
+using SCSEngine.Mathematics;
 using SCSEngine.ScreenManagement;
 using SCSEngine.ScreenManagement.Implement;
 using SCSEngine.Serialization.XmlSerialization;
@@ -25,6 +26,11 @@ namespace PlantsVsZombies.GameScreen
 {
     public class GamePlayScreen : BaseGameScreen
     {
+        private readonly string[] backgroundNames = {@"Images\Controls\Background_Forest",
+                                                    @"Images\Controls\Background_Hospital",
+                                                    @"Images\Controls\Background_House",
+                                                    @"Images\Controls\Background_Ocean"};
+
         private enum PlayState
         {
             START,
@@ -57,7 +63,7 @@ namespace PlantsVsZombies.GameScreen
 
             this.gm = gm;
 
-            this.playBacground = new PlayBackground(this.Game, SCSServices.Instance.ResourceManager.GetResource<Texture2D>(@"Images\Controls\Background_Forest"));
+            this.playBacground = new PlayBackground(this.Game, SCSServices.Instance.ResourceManager.GetResource<Texture2D>(backgroundNames[GRandom.RandomInt(backgroundNames.Length)]));
             this.playBacground.Initialize();
             this.playBacground.OnAnimatingCompleted += this.OnBackgroundAnimatingCompleted;
             this.playBacground.StartAnimate();

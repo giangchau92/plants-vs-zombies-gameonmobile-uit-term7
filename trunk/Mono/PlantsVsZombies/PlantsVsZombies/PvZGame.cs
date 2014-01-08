@@ -44,7 +44,7 @@ namespace PlantsVsZombies
 
             // Extend battery life under lock.
             InactiveSleepTime = TimeSpan.FromSeconds(1);
-            this.IsFixedTimeStep = true;
+            this.IsFixedTimeStep = false;
         }
 
         /// <summary>
@@ -110,9 +110,9 @@ namespace PlantsVsZombies
 
                 GameOrientation.Instance.InitRenderTarget(this.GraphicsDevice);
             }
-            catch (Exception )
+            catch (Exception e)
             {
-                //Debug.WriteLine("Load content error {0}", e);
+                Debug.WriteLine("Load content error {0}", e);
             }
         }
 
@@ -147,7 +147,7 @@ namespace PlantsVsZombies
             }
             catch (Exception e)
             {
-                //Debug.WriteLine("Update error {0}", e);
+                Debug.WriteLine("Update error {0}", e);
             }
 
         }
@@ -174,7 +174,7 @@ namespace PlantsVsZombies
             }
             catch (Exception e)
             {
-                //Debug.WriteLine("Draw error {0}", e);
+                Debug.WriteLine("Draw error {0}", e);
             }
         }
 

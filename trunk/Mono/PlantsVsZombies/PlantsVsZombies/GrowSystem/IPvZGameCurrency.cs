@@ -14,7 +14,7 @@ namespace PlantsVsZombies.GrowSystem
 {
     public interface IPvZGameCurrency
     {
-        int CurrentMoney { get; }
+        int CurrentMoney { get; set; }
     }
 
     public class PvZSunSystem : DrawableGameComponent, IPvZGameCurrency
@@ -28,14 +28,14 @@ namespace PlantsVsZombies.GrowSystem
             : base(game)
         {
             this.CurrentMoney = money;
-            _collectionPoint = new Vector2(0, 0);
+            _collectionPoint = new Vector2(20, 430);
             _gestureDispatcher = gestureDispatcher;
         }
 
         public int CurrentMoney
         {
             get;
-            private set;
+            set;
         }
 
 
@@ -71,9 +71,8 @@ namespace PlantsVsZombies.GrowSystem
 
         public override void Draw(GameTime gameTime)
         {
-            SCSServices.Instance.SpriteBatch.DrawString(SCSServices.Instance.DebugFont, CurrentMoney.ToString(), new Vector2(100, 50), Color.Yellow, 0, new Vector2(0.5f, 0.5f), 3, Microsoft.Xna.Framework.Graphics.SpriteEffects.None, 1);
+            SCSServices.Instance.SpriteBatch.DrawString(SCSServices.Instance.DebugFont, CurrentMoney.ToString(), new Vector2(40, 430), Color.Red, 0, Vector2.Zero, 1f, Microsoft.Xna.Framework.Graphics.SpriteEffects.None, 1);
         }
-
 
         private static Vector2 _collectionPoint;
         public static Vector2 CollectionPoint
