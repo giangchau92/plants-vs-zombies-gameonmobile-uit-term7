@@ -13,6 +13,8 @@ using System.Collections.Generic;
 
 namespace PlantsVsZombies.GrowSystem
 {
+    public delegate void PvZPlantShadowEventHandler(PvZPlantShadow shadow);
+
     public class PvZPlantShadow : BaseUIControl, IGestureTarget<FreeTap>
     {
         public PvZGrowButton CreatorButton { get; set; }
@@ -23,6 +25,7 @@ namespace PlantsVsZombies.GrowSystem
         private SpritePlayer spritePlayer;
 
         private IPvZGameGrow gameGrow;
+        public event PvZPlantShadowEventHandler OnGrowNewPlant;
 
         public PvZPlantShadow(Game game, string plantName, IPvZGameGrow gg)
             : base(game)
@@ -75,6 +78,11 @@ namespace PlantsVsZombies.GrowSystem
                 if (this.gameGrow.GrowPlant(this.PlantName, this.Canvas.Bound))
                 {
                     this.CreatorButton.Cooldown();
+
+                    if (this.OnGrowNewPlant != null)
+                    {
+                        this.OnGrowNewPlant(this);
+                    }
                 }
                 // remove shadow
                 this.IsUICompleted = true;

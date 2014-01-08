@@ -163,10 +163,20 @@ namespace PlantsVsZombies.GrowSystem
                 shadow.Canvas.Bound.Position = leaveGesture.Current;
                 shadow.Canvas.Bound.Size = new Vector2(shadow.PlanShadowImage.CurrentFrame.Width,
                     shadow.PlanShadowImage.CurrentFrame.Height);
+                shadow.OnGrowNewPlant += this.OnGrowPlant;
 
                 // add p-s to ui manager (g-dispatcher)
                 this.uiManager.Add(shadow);
                 this.uiManager.SetHandleTarget<FreeTap>(leaveGesture, shadow);
+            }
+        }
+
+        private void OnGrowPlant(PvZPlantShadow shadow)
+        {
+            this.currencySystem.CurrentMoney -= shadow.CreatorButton.Price;
+            if (this.currencySystem.CurrentMoney < 0)
+            {
+                this.currencySystem.CurrentMoney = 0;
             }
         }
     }

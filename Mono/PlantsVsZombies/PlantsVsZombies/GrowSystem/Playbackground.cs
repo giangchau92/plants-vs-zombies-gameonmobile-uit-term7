@@ -29,7 +29,7 @@ namespace PlantsVsZombies.GrowSystem
         private RectangleF Frame;
         private SpriteBatch sprBatch;
 
-        private float leftPosition = 0f, centerPosition = 275f, rightPosition = 760f;
+        private float leftPosition = 0f, centerPosition = 275f, rightPosition = 520f;
         private float moveDuration = 1.2f, delayDuration = 0.8f;
         private float moveTime, delayTime, moveVelocity;
 
