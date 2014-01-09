@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using SCSEngine.ScreenManagement;
 using SCSEngine.GestureHandling;
+using PlantsVsZombies.GrowSystem;
+using SCSEngine.Serialization.XmlSerialization;
+using System.IO;
 
 namespace PlantsVsZombies.GameScreen.ScreenFactory
 {
@@ -11,6 +14,7 @@ namespace PlantsVsZombies.GameScreen.ScreenFactory
     {
         private IGameScreenManager manager;
         private IGestureManager gesMan;
+        private PvZGrowSystem growSystem;
 
         public GamePlayScreenFactory(IGameScreenManager screenManager, IGestureManager gMan)
         {
@@ -20,7 +24,13 @@ namespace PlantsVsZombies.GameScreen.ScreenFactory
 
         public IGameScreen CreateGameScreen()
         {
-            return new GamePlayScreen(this.manager, this.gesMan);
+            if (this.growSystem != null)
+            {
+                this.growSystem = new PvZGrowSystem(this.manager.Game);
+                this.growSystem.Deserialize(XmlSerialization.Instance.Deserialize(File.Open(@"Xml\PlantGrowButtons.xml", FileMode.Open, FileAccess.Read, FileShare.None)));
+            }
+
+            return new GamePlayScreen(this.manager, this.gesMan, this.growSystem);
         }
     }
 }

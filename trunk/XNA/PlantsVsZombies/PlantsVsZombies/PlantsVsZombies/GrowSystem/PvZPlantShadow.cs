@@ -116,12 +116,10 @@ namespace PlantsVsZombies.GrowSystem
         private string plantName;
 
         private Game game;
-        private IPvZGameGrow gameGrow;
 
-        public PvZPlantShadowFactory(Game game, IPvZGameGrow gg)
+        public PvZPlantShadowFactory(Game game)
         {
             this.game = game;
-            this.gameGrow = gg;
         }
 
         public void Serialize(ISerializer serializer)
@@ -136,9 +134,9 @@ namespace PlantsVsZombies.GrowSystem
             this.plantName = deserializer.DeserializeString("Plant");
         }
 
-        public PvZPlantShadow CreatePlantShadow()
+        public PvZPlantShadow CreatePlantShadow(IPvZGameGrow gg)
         {
-            PvZPlantShadow shadow = new PvZPlantShadow(this.game, this.plantName, this.gameGrow);
+            PvZPlantShadow shadow = new PvZPlantShadow(this.game, this.plantName, gg);
             shadow.PlanShadowImage = SCSServices.Instance.ResourceManager.GetResource<ISprite>(this.picture);
 
             return shadow;
@@ -148,13 +146,11 @@ namespace PlantsVsZombies.GrowSystem
     public class PvZPlantShadowFactoryBank : ISerializable
     {
         private IDictionary<string, PvZPlantShadowFactory> factories = new Dictionary<string, PvZPlantShadowFactory>();
-        private IPvZGameGrow gameGrow;
         private Game game;
 
-        public PvZPlantShadowFactoryBank(Game game, IPvZGameGrow gameGrow)
+        public PvZPlantShadowFactoryBank(Game game)
         {
             this.game = game;
-            this.gameGrow = gameGrow;
         }
 
         public PvZPlantShadowFactory GetPlantShadowFactory(string name)
@@ -172,7 +168,7 @@ namespace PlantsVsZombies.GrowSystem
             var psDesers = deserializer.DeserializeAll("Shadow");
             foreach (var psDeser in psDesers)
             {
-                PvZPlantShadowFactory factory = new PvZPlantShadowFactory(this.game, this.gameGrow);
+                PvZPlantShadowFactory factory = new PvZPlantShadowFactory(this.game);
                 factory.Deserialize(psDeser);
 
                 this.factories.Add(factory.Name, factory);

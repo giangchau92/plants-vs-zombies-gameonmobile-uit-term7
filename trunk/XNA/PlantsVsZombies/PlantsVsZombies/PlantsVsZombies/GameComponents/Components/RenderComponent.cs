@@ -127,7 +127,7 @@ namespace PlantsVsZombies.GameComponents.Components
                 {
                     footPos = XNASerialization.Instance.DeserializeVector2(behaviorDeser, "FootPosition");
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     footPos = new Vector2(PZBoard.CELL_WIDTH, PZBoard.CELL_HEIGHT);
                 }

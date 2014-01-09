@@ -17,7 +17,7 @@ namespace PlantsVsZombies.GrowSystem
 {
     public class PvZGrowList : BaseUIControl
     {
-
+        private IPvZGameGrow gameGrow;
         private UIControlManager uiManager;
 
         private SpritePlayer spritePlayer;
@@ -59,13 +59,14 @@ namespace PlantsVsZombies.GrowSystem
             }
         }
 
-        public PvZGrowList(Game game, float elemWidth, float elemPadding, UIControlManager uiManager, IPvZGameCurrency currSys)
+        public PvZGrowList(Game game, float elemWidth, float elemPadding, UIControlManager uiManager, IPvZGameCurrency currSys, IPvZGameGrow gg)
             : base(game)
         {
             this.ElementWidth = elemWidth;
             this.spritePlayer = ((SCSServices)game.Services.GetService(typeof(SCSServices))).SpritePlayer;
             this.uiManager = uiManager;
             this.currencySystem = currSys;
+            this.gameGrow = gg;
         }
 
         public void AddGrowButton(PvZGrowButton grButton)
@@ -160,7 +161,7 @@ namespace PlantsVsZombies.GrowSystem
             if (!contentInBound.Contains(leaveGesture.Current))
             {
                 //create plant-shadow
-                var shadow = button.ShadowFactory.CreatePlantShadow();
+                var shadow = button.ShadowFactory.CreatePlantShadow(this.gameGrow);
                 shadow.CreatorButton = button;
                 shadow.Canvas.Bound.Position = leaveGesture.Current;
                 shadow.Canvas.Bound.Size = new Vector2(shadow.PlanShadowImage.CurrentFrame.Width,
