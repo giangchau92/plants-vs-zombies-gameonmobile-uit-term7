@@ -68,6 +68,7 @@ namespace PlantsVsZombies.GameScreen
 
             this.gm = gm;
             level = PZLevelManager.Instance.GetLevel();
+            level.OnBeginWave += level_OnBeginWave;
             this.playBacground = new PlayBackground(this.Game, SCSServices.Instance.ResourceManager.GetResource<Texture2D>(level.Background));
             this.playBacground.Initialize();
             this.playBacground.OnAnimatingCompleted += this.OnBackgroundAnimatingCompleted;
@@ -76,6 +77,12 @@ namespace PlantsVsZombies.GameScreen
             _messageCenter = new MessageCenter(this.Game);
 
             this.growSystem = growSys;
+        }
+
+        private void level_OnBeginWave(int currentWave, bool isFinalWave)
+        {
+            if (isFinalWave)
+                _messageCenter.PushMessage("FINAL WAVE!");
         }
 
         private void OnBackgroundAnimatingCompleted(PlayBackground background)
@@ -119,8 +126,7 @@ namespace PlantsVsZombies.GameScreen
             chooseSys.RemoveAll();
 
             state = PlayState.RUNNING;
-            _messageCenter.PushMessage("Ablooo");
-            _messageCenter.PushMessage("Ablooo2");
+            _messageCenter.PushMessage(level.Name);
         }
 
         public override void Update(GameTime gameTime)

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Plants>
-  <!-- DOUBLE PEA -->
+  <!--  PEA -->
 	<Plant>
     <Name>xml_Plant_DoublePea</Name>
     <Type>Plant</Type>
@@ -19,7 +19,7 @@
       <Type>xml_render</Type>
 		  <Behavior>
 			  <Type>xml_render_stand</Type>
-			  <ResourceName>Images/Plants/DoublePea</ResourceName>
+			  <ResourceName>Images/Plants/Pea</ResourceName>
           <FootPosition>
             <X>0</X>
             <Y>0</Y>
@@ -43,6 +43,50 @@
 	  </Component>
 	</Components>
 	</Plant>
+
+  <!-- DOUBLE PEA -->
+  <Plant>
+    <Name>xml_Plant_DoublePea</Name>
+    <Type>Plant</Type>
+    <Components>
+      <Component>
+        <Type>xml_move</Type>
+        <Behavior>
+          <Type>xml_move_stand</Type>
+          <Velocity>
+            <X>0</X>
+            <Y>0</Y>
+          </Velocity>
+        </Behavior>
+      </Component>
+      <Component>
+        <Type>xml_render</Type>
+        <Behavior>
+          <Type>xml_render_stand</Type>
+          <ResourceName>Images/Plants/DoublePea</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
+          <TimeFrame>0.03333</TimeFrame>
+          <Bound>
+            <X>100</X>
+            <Y>55</Y>
+          </Bound>
+        </Behavior>
+      </Component>
+      <Component>
+        <Type>xml_physic</Type>
+      </Component>
+      <Component>
+        <Type>xml_logic</Type>
+        <Behavior>
+          <Type>xml_DoublePlant</Type>
+          <TimeShoot>1</TimeShoot>
+        </Behavior>
+      </Component>
+    </Components>
+  </Plant>
   
   <!-- ICE PLANT -->
   <Plant>
@@ -178,4 +222,62 @@
       </Component>
     </Components>
   </Plant>
+
+  <!-- CHERRY PLANT --><!--
+  <Plant>
+    <Name>xml_Plant_Cherry</Name>
+    <Type>Plant</Type>
+    <Components>
+      <Component>
+        <Type>xml_move</Type>
+        <Behavior>
+          <Type>xml_move_stand</Type>
+          <Velocity>
+            <X>0</X>
+            <Y>0</Y>
+          </Velocity>
+        </Behavior>
+      </Component>
+      <Component>
+        <Type>xml_render</Type>
+        <Behavior>
+          <Type>xml_render_stand</Type>
+          <ResourceName>Images/Plants/Cherry</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
+          <TimeFrame>0.03333</TimeFrame>
+          <Bound>
+            <X>84</X>
+            <Y>60</Y>
+          </Bound>
+        </Behavior>
+        <Behavior>
+          <Type>xml_render_explosion</Type>
+          <ResourceName>Images/Plants/B_Cherry</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
+          <TimeFrame>0.03333</TimeFrame>
+          <Bound>
+            <X>84</X>
+            <Y>60</Y>
+          </Bound>
+        </Behavior>
+      </Component>
+      <Component>
+        <Type>xml_physic</Type>
+      </Component>
+      <Component>
+        <Type>xml_logic</Type>
+        <Behavior>
+          <Type>xml_CherryPlant</Type>
+          <Health>100</Health>
+          <TimeGiveSun>10</TimeGiveSun>
+        </Behavior>
+      </Component>
+    </Components>
+  </Plant>-->
 </Plants>

@@ -68,6 +68,8 @@ namespace PlantsVsZombies.GameComponents.Components
                 this.LogicBehavior = new Z_NormalLogicBehavior();
             else if (behaviorType == "xml_NormalPlant")
                 this.LogicBehavior = new P_NormalLogicBehavior();
+            else if (behaviorType == "xml_DoublePlant")
+                this.LogicBehavior = new P_DoublePeaLogicBehavior();
             else if (behaviorType == "xml_IcePlant")
                 this.LogicBehavior = new P_IcePlantLogicBehavior();
             else if (behaviorType == "xml_StonePlant")
