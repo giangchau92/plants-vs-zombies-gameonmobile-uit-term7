@@ -1,33 +1,12 @@
 <Levels>
-  <!--Zombies are coming…-->
+  <!--Zombies are coming-->
   <Level>
-    <Name>Zombies are coming…</Name>
-    <Background>Images/Controls/Background_Hospital</Background>
+    <Name>Zombies are coming</Name>
+    <Background>Images/Controls/Hospital</Background>
     <Wave>
       <Name>Wave 1</Name>
       <Zombie>
-        <Value>xml_BarrowWight_zombie</Value>
-      </Zombie>
-      <Number>
-        <From>1</From>
-        <To>1</To>
-      </Number>
-      <TimeNextZombieFrom>0</TimeNextZombieFrom>
-      <TimeNextZombieTo>1</TimeNextZombieTo>
-      <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>20.3</TimeNextWave>
-    </Wave>
-
-  </Level>
-    
-  <!--Zombies are coming…-->
-  <Level>
-    <Name>Zombies are coming…</Name>
-    <Background>Images/Controls/Background_Hospital</Background>
-    <Wave>
-      <Name>Wave 1</Name>
-      <Zombie>
-        <Value>xml_BarrowWight_zombie</Value>
+        <Value>xml_Spider_zombie</Value>
       </Zombie>
       <Number>
         <From>1</From>
@@ -42,10 +21,10 @@
     <Wave>
       <Name>Wave 2</Name>
       <Zombie>
-        <Value>xml_BarrowWight_zombie</Value>
+        <Value>xml_Spider_zombie</Value>
       </Zombie>
       <Zombie>
-        <Value>xml_Nupperibo_zombie</Value>
+        <Value>xml_BarrowWight_zombie</Value>
       </Zombie>
       <Number>
         <From>2</From>
@@ -60,13 +39,13 @@
     <Wave>
       <Name>Wave 3</Name>
       <Zombie>
+        <Value>xml_Spider_zombie</Value>
+      </Zombie>
+      <Zombie>
         <Value>xml_BarrowWight_zombie</Value>
       </Zombie>
       <Zombie>
         <Value>xml_Nupperibo_zombie</Value>
-      </Zombie>
-      <Zombie>
-        <Value>xml_Skeleton_zombie</Value>
       </Zombie>
       <Number>
         <From>3</From>
@@ -81,6 +60,9 @@
     <Wave>
       <Name>Wave 4 - final wave</Name>
       <Zombie>
+        <Value>xml_Spider_zombie</Value>
+      </Zombie>
+      <Zombie>
         <Value>xml_BarrowWight_zombie</Value>
       </Zombie>
       <Zombie>
@@ -88,9 +70,6 @@
       </Zombie>
       <Zombie>
         <Value>xml_Skeleton_zombie</Value>
-      </Zombie>
-      <Zombie>
-        <Value>xml_Mummy_zombie</Value>
       </Zombie>
       <Number>
         <From>4</From>
@@ -104,14 +83,14 @@
 
   </Level>
 
-  <!--Brain… brain…-->
+  <!--Brain. . . brain. . .-->
   <Level>
-    <Name>Brain… brain…</Name>
-    <Background>Images/Controls/Background_Hospital</Background>
+    <Name>Brain. . . brain. . .</Name>
+    <Background>Images/Controls/Hospital</Background>
     <Wave>
       <Name>Wave 1</Name>
       <Zombie>
-        <Value>xml_Nupperibo_zombie</Value>
+        <Value>xml_BarrowWight_zombie</Value>
       </Zombie>
       <Number>
         <From>1</From>
@@ -126,10 +105,10 @@
     <Wave>
       <Name>Wave 2</Name>
       <Zombie>
-        <Value>xml_Nupperibo_zombie</Value>
+        <Value>xml_BarrowWight_zombie</Value>
       </Zombie>
       <Zombie>
-        <Value>xml_Mummy_zombie</Value>
+        <Value>xml_Skeleton_zombie</Value>
       </Zombie>
       <Number>
         <From>2</From>
@@ -144,13 +123,13 @@
     <Wave>
       <Name>Wave 3</Name>
       <Zombie>
-        <Value>xml_Nupperibo_zombie</Value>
+        <Value>xml_BarrowWight_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Skeleton_zombie</Value>
       </Zombie>
       <Zombie>
         <Value>xml_Mummy_zombie</Value>
-      </Zombie>
-      <Zombie>
-        <Value>xml_Tattered_zombie</Value>
       </Zombie>
       <Number>
         <From>3</From>
@@ -165,13 +144,13 @@
     <Wave>
       <Name>Wave 4</Name>
       <Zombie>
+        <Value>xml_Mummy_zombie</Value>
+      </Zombie>
+      <Zombie>
         <Value>xml_Tattered_zombie</Value>
       </Zombie>
       <Zombie>
         <Value>xml_Drowded_zombie</Value>
-      </Zombie>
-      <Zombie>
-        <Value>xml_Nameless_zombie</Value>
       </Zombie>
       <Number>
         <From>4</From>
@@ -186,6 +165,9 @@
     <Wave>
       <Name>Wave 5</Name>
       <Zombie>
+        <Value>xml_Nupperibo_zombie</Value>
+      </Zombie>
+      <Zombie>
         <Value>xml_Skeleton_zombie</Value>
       </Zombie>
       <Zombie>
@@ -196,9 +178,6 @@
       </Zombie>
       <Zombie>
         <Value>xml_Drowded_zombie</Value>
-      </Zombie>
-      <Zombie>
-        <Value>xml_Nameless_zombie</Value>
       </Zombie>
       <Number>
         <From>7</From>
@@ -213,16 +192,16 @@
     <Wave>
       <Name>Wave 6 - final wave</Name>
       <Zombie>
+        <Value>xml_Skeleton_zombie</Value>
+      </Zombie>
+      <Zombie>
         <Value>xml_Mummy_zombie</Value>
       </Zombie>
       <Zombie>
-        <Value>xml_Tattered_zombie</Value>
+        <Value>xml_Drowded_zombie</Value>
       </Zombie>
       <Zombie>
         <Value>xml_Nameless_zombie</Value>
-      </Zombie>
-      <Zombie>
-        <Value>xml_GiantSkeletonSword_zombie</Value>
       </Zombie>
       <Number>
         <From>12</From>
@@ -236,14 +215,14 @@
 
   </Level>
 
-  <!--Who takes my cheese…-->
+  <!--Who takes my cheese. . .-->
   <Level>
-    <Name>Who takes my cheese…</Name>
-    <Background>Images/Controls/Background_Forest</Background>
+    <Name>Who takes my cheese. . .</Name>
+    <Background>Images/Controls/Forest</Background>
     <Wave>
       <Name>Wave 1</Name>
       <Zombie>
-        <Value>xml_Nupperibo_zombie</Value>
+        <Value>xml_BarrowWight_zombie</Value>
       </Zombie>
       <Number>
         <From>1</From>
@@ -258,10 +237,10 @@
     <Wave>
       <Name>Wave 2</Name>
       <Zombie>
-        <Value>xml_Nupperibo_zombie</Value>
+        <Value>xml_BarrowWight_zombie</Value>
       </Zombie>
       <Zombie>
-        <Value>xml_Mummy_zombie</Value>
+        <Value>xml_Skeleton_zombie</Value>
       </Zombie>
       <Number>
         <From>2</From>
@@ -276,6 +255,9 @@
     <Wave>
       <Name>Wave 3</Name>
       <Zombie>
+        <Value>xml_Drowded_zombie</Value>
+      </Zombie>
+      <Zombie>
         <Value>xml_Nameless_zombie</Value>
       </Zombie>
       <Zombie>
@@ -283,9 +265,6 @@
       </Zombie>
       <Zombie>
         <Value>xml_Ghoul_zombie</Value>
-      </Zombie>
-      <Zombie>
-        <Value>xml_Lemure_zombie</Value>
       </Zombie>
       <Number>
         <From>2</From>
@@ -300,6 +279,9 @@
     <Wave>
       <Name>Wave 4</Name>
       <Zombie>
+        <Value>xml_Drowded_zombie</Value>
+      </Zombie>
+      <Zombie>
         <Value>xml_Nameless_zombie</Value>
       </Zombie>
       <Zombie>
@@ -310,9 +292,6 @@
       </Zombie>
       <Zombie>
         <Value>xml_Lemure_zombie</Value>
-      </Zombie>
-      <Zombie>
-        <Value>xml_Vampire_zombie</Value>
       </Zombie>
       <Number>
         <From>3</From>
@@ -327,6 +306,9 @@
     <Wave>
       <Name>Wave 5</Name>
       <Zombie>
+        <Value>xml_Drowded_zombie</Value>
+      </Zombie>
+      <Zombie>
         <Value>xml_Nameless_zombie</Value>
       </Zombie>
       <Zombie>
@@ -341,9 +323,6 @@
       <Zombie>
         <Value>xml_Vampire_zombie</Value>
       </Zombie>
-      <Zombie>
-        <Value>xml_Giant_zombie</Value>
-      </Zombie>
       <Number>
         <From>7</From>
         <To>10</To>
@@ -357,13 +336,13 @@
     <Wave>
       <Name>Wave 6</Name>
       <Zombie>
+        <Value>xml_Vampire_zombie</Value>
+      </Zombie>
+      <Zombie>
         <Value>xml_Giant_zombie</Value>
       </Zombie>
       <Zombie>
         <Value>xml_Remorhaz_zombie</Value>
-      </Zombie>
-      <Zombie>
-        <Value>xml_Histachii_zombie</Value>
       </Zombie>
       <Number>
         <From>3</From>
@@ -378,13 +357,13 @@
     <Wave>
       <Name>Wave 7</Name>
       <Zombie>
+        <Value>xml_Giant_zombie</Value>
+      </Zombie>
+      <Zombie>
         <Value>xml_Remorhaz_zombie</Value>
       </Zombie>
       <Zombie>
         <Value>xml_Histachii_zombie</Value>
-      </Zombie>
-      <Zombie>
-        <Value>xml_Ravel_zombie</Value>
       </Zombie>
       <Number>
         <From>8</From>
@@ -398,6 +377,9 @@
 
     <Wave>
       <Name>Wave 8</Name>
+      <Zombie>
+        <Value>xml_Drowded_zombie</Value>
+      </Zombie>
       <Zombie>
         <Value>xml_Nameless_zombie</Value>
       </Zombie>
@@ -421,9 +403,6 @@
       </Zombie>
       <Zombie>
         <Value>xml_Histachii_zombie</Value>
-      </Zombie>
-      <Zombie>
-        <Value>xml_Ravel_zombie</Value>
       </Zombie>
       <Number>
         <From>12</From>
@@ -438,6 +417,9 @@
     <Wave>
       <Name>Wave 9 - final wave</Name>
       <Zombie>
+        <Value>xml_Drowded_zombie</Value>
+      </Zombie>
+      <Zombie>
         <Value>xml_Nameless_zombie</Value>
       </Zombie>
       <Zombie>
@@ -461,9 +443,6 @@
       <Zombie>
         <Value>xml_Histachii_zombie</Value>
       </Zombie>
-      <Zombie>
-        <Value>xml_Ravel_zombie</Value>
-      </Zombie>
       <Number>
         <From>15</From>
         <To>20</To>
@@ -476,14 +455,14 @@
 
   </Level>
 
-  <!--Zombilize…-->
+  <!--Zombilize-->
   <Level>
-    <Name>Zombilize…</Name>
-    <Background>Images/Controls/Background_Forest</Background>
+    <Name>Zombilize</Name>
+    <Background>Images/Controls/Forest</Background>
     <Wave>
       <Name>Wave 1</Name>
       <Zombie>
-        <Value>xml_Nupperibo_zombie</Value>
+        <Value>xml_BarrowWight_zombie</Value>
       </Zombie>
       <Number>
         <From>1</From>
@@ -498,10 +477,10 @@
     <Wave>
       <Name>Wave 2</Name>
       <Zombie>
-        <Value>xml_Nupperibo_zombie</Value>
+        <Value>xml_BarrowWight_zombie</Value>
       </Zombie>
       <Zombie>
-        <Value>xml_Mummy_zombie</Value>
+        <Value>xml_Skeleton_zombie</Value>
       </Zombie>
       <Number>
         <From>2</From>
@@ -516,6 +495,9 @@
     <Wave>
       <Name>Wave 3</Name>
       <Zombie>
+        <Value>xml_Drowded_zombie</Value>
+      </Zombie>
+      <Zombie>
         <Value>xml_Nameless_zombie</Value>
       </Zombie>
       <Zombie>
@@ -523,9 +505,6 @@
       </Zombie>
       <Zombie>
         <Value>xml_Ghoul_zombie</Value>
-      </Zombie>
-      <Zombie>
-        <Value>xml_Lemure_zombie</Value>
       </Zombie>
       <Number>
         <From>2</From>
@@ -540,13 +519,13 @@
     <Wave>
       <Name>Wave 4</Name>
       <Zombie>
+        <Value>xml_GiantSkeletonSword_zombie</Value>
+      </Zombie>
+      <Zombie>
         <Value>xml_Ghoul_zombie</Value>
       </Zombie>
       <Zombie>
-        <Value>xml_Lemure_zombie</Value>
-      </Zombie>
-      <Zombie>
-        <Value>xml_Remorhaz_zombie</Value>
+        <Value>xml_Giant_zombie</Value>
       </Zombie>
       <Number>
         <From>7</From>
@@ -561,13 +540,13 @@
     <Wave>
       <Name>Wave 5</Name>
       <Zombie>
+        <Value>xml_Giant_zombie</Value>
+      </Zombie>
+      <Zombie>
         <Value>xml_Remorhaz_zombie</Value>
       </Zombie>
       <Zombie>
-        <Value>xml_Histachii_zombie</Value>
-      </Zombie>
-      <Zombie>
-        <Value>xml_BoneGolem_zombie</Value>
+        <Value>xml_Ravel_zombie</Value>
       </Zombie>
       <Number>
         <From>7</From>
@@ -582,10 +561,10 @@
     <Wave>
       <Name>Wave 6</Name>
       <Zombie>
-        <Value>xml_BoneGolem_zombie</Value>
+        <Value>xml_Ravel_zombie</Value>
       </Zombie>
       <Zombie>
-        <Value>xml_GiantSkeletonBlade_zombie</Value>
+        <Value>xml_BoneGolem_zombie</Value>
       </Zombie>
       <Number>
         <From>3</From>
@@ -600,13 +579,13 @@
     <Wave>
       <Name>Wave 7</Name>
       <Zombie>
+        <Value>xml_Giant_zombie</Value>
+      </Zombie>
+      <Zombie>
         <Value>xml_Remorhaz_zombie</Value>
       </Zombie>
       <Zombie>
-        <Value>xml_Histachii_zombie</Value>
-      </Zombie>
-      <Zombie>
-        <Value>xml_GiantSkeletonBlade_zombie</Value>
+        <Value>xml_BoneGolem_zombie</Value>
       </Zombie>
       <Number>
         <From>8</From>
@@ -621,10 +600,10 @@
     <Wave>
       <Name>Wave 8</Name>
       <Zombie>
-        <Value>xml_GiantSkeletonBlade_zombie</Value>
+        <Value>xml_BoneGolem_zombie</Value>
       </Zombie>
       <Zombie>
-        <Value>xml_Drider_zombie</Value>
+        <Value>xml_GiantSkeletonBlade_zombie</Value>
       </Zombie>
       <Number>
         <From>3</From>
@@ -639,7 +618,7 @@
     <Wave>
       <Name>Wave 9</Name>
       <Zombie>
-        <Value>xml_Drider_zombie</Value>
+        <Value>xml_GiantSkeletonBlade_zombie</Value>
       </Zombie>
       <Number>
         <From>1</From>
@@ -654,7 +633,7 @@
     <Wave>
       <Name>Wave 10</Name>
       <Zombie>
-        <Value>xml_Drider_zombie</Value>
+        <Value>xml_GiantSkeletonBlade_zombie</Value>
       </Zombie>
       <Number>
         <From>3</From>
@@ -681,7 +660,7 @@
     <Wave>
       <Name>Wave 12 - final wave</Name>
       <Zombie>
-        <Value>xml_Drider_zombie</Value>
+        <Value>xml_GiantSkeletonBlade_zombie</Value>
       </Zombie>
       <Number>
         <From>5</From>
@@ -695,14 +674,14 @@
 
   </Level>
 
-  <!--The death roar…-->
+  <!--The death roar. . .-->
   <Level>
-    <Name>The death roar…</Name>
-    <Background>Images/Controls/Background_House</Background>
+    <Name>The death roar. . .</Name>
+    <Background>Images/Controls/House</Background>
     <Wave>
       <Name>Wave 1</Name>
       <Zombie>
-        <Value>xml_Nupperibo_zombie</Value>
+        <Value>xml_BarrowWight_zombie</Value>
       </Zombie>
       <Number>
         <From>1</From>
@@ -717,10 +696,10 @@
     <Wave>
       <Name>Wave 2</Name>
       <Zombie>
-        <Value>xml_Nupperibo_zombie</Value>
+        <Value>xml_BarrowWight_zombie</Value>
       </Zombie>
       <Zombie>
-        <Value>xml_Mummy_zombie</Value>
+        <Value>xml_Skeleton_zombie</Value>
       </Zombie>
       <Number>
         <From>2</From>
@@ -735,6 +714,9 @@
     <Wave>
       <Name>Wave 3</Name>
       <Zombie>
+        <Value>xml_Drowded_zombie</Value>
+      </Zombie>
+      <Zombie>
         <Value>xml_Nameless_zombie</Value>
       </Zombie>
       <Zombie>
@@ -742,9 +724,6 @@
       </Zombie>
       <Zombie>
         <Value>xml_Ghoul_zombie</Value>
-      </Zombie>
-      <Zombie>
-        <Value>xml_Lemure_zombie</Value>
       </Zombie>
       <Number>
         <From>2</From>
@@ -759,13 +738,13 @@
     <Wave>
       <Name>Wave 4</Name>
       <Zombie>
+        <Value>xml_GiantSkeletonSword_zombie</Value>
+      </Zombie>
+      <Zombie>
         <Value>xml_Ghoul_zombie</Value>
       </Zombie>
       <Zombie>
-        <Value>xml_Lemure_zombie</Value>
-      </Zombie>
-      <Zombie>
-        <Value>xml_Remorhaz_zombie</Value>
+        <Value>xml_Giant_zombie</Value>
       </Zombie>
       <Number>
         <From>7</From>
@@ -780,13 +759,13 @@
     <Wave>
       <Name>Wave 5</Name>
       <Zombie>
+        <Value>xml_Giant_zombie</Value>
+      </Zombie>
+      <Zombie>
         <Value>xml_Remorhaz_zombie</Value>
       </Zombie>
       <Zombie>
-        <Value>xml_Histachii_zombie</Value>
-      </Zombie>
-      <Zombie>
-        <Value>xml_BoneGolem_zombie</Value>
+        <Value>xml_Ravel_zombie</Value>
       </Zombie>
       <Number>
         <From>7</From>
@@ -801,10 +780,10 @@
     <Wave>
       <Name>Wave 6</Name>
       <Zombie>
-        <Value>xml_BoneGolem_zombie</Value>
+        <Value>xml_Ravel_zombie</Value>
       </Zombie>
       <Zombie>
-        <Value>xml_GiantSkeletonBlade_zombie</Value>
+        <Value>xml_BoneGolem_zombie</Value>
       </Zombie>
       <Number>
         <From>3</From>
@@ -819,13 +798,13 @@
     <Wave>
       <Name>Wave 7</Name>
       <Zombie>
+        <Value>xml_Giant_zombie</Value>
+      </Zombie>
+      <Zombie>
         <Value>xml_Remorhaz_zombie</Value>
       </Zombie>
       <Zombie>
-        <Value>xml_Histachii_zombie</Value>
-      </Zombie>
-      <Zombie>
-        <Value>xml_GiantSkeletonBlade_zombie</Value>
+        <Value>xml_BoneGolem_zombie</Value>
       </Zombie>
       <Number>
         <From>8</From>
@@ -840,10 +819,10 @@
     <Wave>
       <Name>Wave 8</Name>
       <Zombie>
-        <Value>xml_GiantSkeletonBlade_zombie</Value>
+        <Value>xml_BoneGolem_zombie</Value>
       </Zombie>
       <Zombie>
-        <Value>xml_Drider_zombie</Value>
+        <Value>xml_GiantSkeletonBlade_zombie</Value>
       </Zombie>
       <Number>
         <From>3</From>
@@ -858,7 +837,7 @@
     <Wave>
       <Name>Wave 9</Name>
       <Zombie>
-        <Value>xml_Drider_zombie</Value>
+        <Value>xml_GiantSkeletonBlade_zombie</Value>
       </Zombie>
       <Number>
         <From>1</From>
@@ -873,7 +852,7 @@
     <Wave>
       <Name>Wave 10</Name>
       <Zombie>
-        <Value>xml_Drider_zombie</Value>
+        <Value>xml_GiantSkeletonBlade_zombie</Value>
       </Zombie>
       <Number>
         <From>3</From>
@@ -900,7 +879,7 @@
     <Wave>
       <Name>Wave 12 - final wave</Name>
       <Zombie>
-        <Value>xml_Drider_zombie</Value>
+        <Value>xml_GiantSkeletonBlade_zombie</Value>
       </Zombie>
       <Number>
         <From>5</From>
@@ -917,11 +896,11 @@
   <!--KING-->
   <Level>
     <Name>KING</Name>
-    <Background>Images/Controls/Background_Ocean</Background>
+    <Background>Images/Controls/Ocean</Background>
     <Wave>
       <Name>Wave 1</Name>
       <Zombie>
-        <Value>xml_Nupperibo_zombie</Value>
+        <Value>xml_BarrowWight_zombie</Value>
       </Zombie>
       <Number>
         <From>1</From>
@@ -936,10 +915,10 @@
     <Wave>
       <Name>Wave 2</Name>
       <Zombie>
-        <Value>xml_Nupperibo_zombie</Value>
+        <Value>xml_BarrowWight_zombie</Value>
       </Zombie>
       <Zombie>
-        <Value>xml_Mummy_zombie</Value>
+        <Value>xml_Skeleton_zombie</Value>
       </Zombie>
       <Number>
         <From>2</From>
@@ -954,6 +933,9 @@
     <Wave>
       <Name>Wave 3</Name>
       <Zombie>
+        <Value>xml_Drowded_zombie</Value>
+      </Zombie>
+      <Zombie>
         <Value>xml_Nameless_zombie</Value>
       </Zombie>
       <Zombie>
@@ -961,9 +943,6 @@
       </Zombie>
       <Zombie>
         <Value>xml_Ghoul_zombie</Value>
-      </Zombie>
-      <Zombie>
-        <Value>xml_Lemure_zombie</Value>
       </Zombie>
       <Number>
         <From>2</From>
@@ -978,13 +957,13 @@
     <Wave>
       <Name>Wave 4</Name>
       <Zombie>
+        <Value>xml_GiantSkeletonSword_zombie</Value>
+      </Zombie>
+      <Zombie>
         <Value>xml_Ghoul_zombie</Value>
       </Zombie>
       <Zombie>
-        <Value>xml_Lemure_zombie</Value>
-      </Zombie>
-      <Zombie>
-        <Value>xml_Remorhaz_zombie</Value>
+        <Value>xml_Giant_zombie</Value>
       </Zombie>
       <Number>
         <From>7</From>
@@ -999,13 +978,13 @@
     <Wave>
       <Name>Wave 5</Name>
       <Zombie>
+        <Value>xml_Giant_zombie</Value>
+      </Zombie>
+      <Zombie>
         <Value>xml_Remorhaz_zombie</Value>
       </Zombie>
       <Zombie>
-        <Value>xml_Histachii_zombie</Value>
-      </Zombie>
-      <Zombie>
-        <Value>xml_BoneGolem_zombie</Value>
+        <Value>xml_Ravel_zombie</Value>
       </Zombie>
       <Number>
         <From>7</From>
@@ -1020,10 +999,10 @@
     <Wave>
       <Name>Wave 6</Name>
       <Zombie>
-        <Value>xml_BoneGolem_zombie</Value>
+        <Value>xml_Ravel_zombie</Value>
       </Zombie>
       <Zombie>
-        <Value>xml_GiantSkeletonBlade_zombie</Value>
+        <Value>xml_BoneGolem_zombie</Value>
       </Zombie>
       <Number>
         <From>3</From>
@@ -1038,13 +1017,13 @@
     <Wave>
       <Name>Wave 7</Name>
       <Zombie>
+        <Value>xml_Giant_zombie</Value>
+      </Zombie>
+      <Zombie>
         <Value>xml_Remorhaz_zombie</Value>
       </Zombie>
       <Zombie>
-        <Value>xml_Histachii_zombie</Value>
-      </Zombie>
-      <Zombie>
-        <Value>xml_GiantSkeletonBlade_zombie</Value>
+        <Value>xml_BoneGolem_zombie</Value>
       </Zombie>
       <Number>
         <From>8</From>
@@ -1059,10 +1038,10 @@
     <Wave>
       <Name>Wave 8</Name>
       <Zombie>
-        <Value>xml_GiantSkeletonBlade_zombie</Value>
+        <Value>xml_BoneGolem_zombie</Value>
       </Zombie>
       <Zombie>
-        <Value>xml_Drider_zombie</Value>
+        <Value>xml_GiantSkeletonBlade_zombie</Value>
       </Zombie>
       <Number>
         <From>3</From>
@@ -1077,7 +1056,7 @@
     <Wave>
       <Name>Wave 9</Name>
       <Zombie>
-        <Value>xml_Drider_zombie</Value>
+        <Value>xml_GiantSkeletonBlade_zombie</Value>
       </Zombie>
       <Number>
         <From>1</From>
@@ -1092,7 +1071,7 @@
     <Wave>
       <Name>Wave 10</Name>
       <Zombie>
-        <Value>xml_Drider_zombie</Value>
+        <Value>xml_GiantSkeletonBlade_zombie</Value>
       </Zombie>
       <Number>
         <From>3</From>
@@ -1119,6 +1098,9 @@
     <Wave>
       <Name>Wave 12 - final wave</Name>
       <Zombie>
+        <Value>xml_Giant_zombie</Value>
+      </Zombie>
+      <Zombie>
         <Value>xml_Remorhaz_zombie</Value>
       </Zombie>
       <Zombie>
@@ -1132,9 +1114,6 @@
       </Zombie>
       <Zombie>
         <Value>xml_GiantSkeletonBlade_zombie</Value>
-      </Zombie>
-      <Zombie>
-        <Value>xml_Drider_zombie</Value>
       </Zombie>
       <Number>
         <From>30</From>
