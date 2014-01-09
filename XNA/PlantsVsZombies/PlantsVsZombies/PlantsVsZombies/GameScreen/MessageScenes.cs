@@ -15,17 +15,18 @@ namespace PlantsVsZombies.GameScreen
     class MessageGameScreenFactory : IGameScreenFactory
     {
         private IGameScreenManager screenMan;
-        private String backgroundName;
+        private String backgroundName, screenName;
 
-        public MessageGameScreenFactory(IGameScreenManager sMan, string backgroundName)
+        public MessageGameScreenFactory(IGameScreenManager sMan, string backgroundName, string screenName)
         {
             this.screenMan = sMan;
             this.backgroundName = backgroundName;
+            this.screenName = screenName;
         }
 
         public IGameScreen CreateGameScreen()
         {
-            var msg = new MessageGameScreen(screenMan);
+            var msg = new MessageGameScreen(screenMan, screenName);
             msg.Background = SCSServices.Instance.ResourceManager.GetResource<Texture2D>(this.backgroundName);
             msg.Initialize();
 
@@ -50,8 +51,8 @@ namespace PlantsVsZombies.GameScreen
 
         public event MessageGameScreenEventHandler OnScreenCompleted;
 
-        public MessageGameScreen(IGameScreenManager screenManager)
-            : base(screenManager)
+        public MessageGameScreen(IGameScreenManager screenManager, string name)
+            : base(screenManager, name)
         {
             spriteBatch = SCSServices.Instance.SpriteBatch;
         }
@@ -66,6 +67,15 @@ namespace PlantsVsZombies.GameScreen
         public override void Update(GameTime gameTime)
         {
             this.delayTime -= (float) gameTime.ElapsedGameTime.TotalSeconds;
+
+            if (this.delayTime < 0)
+            {
+                this.delayTime = delayDuration;
+                if (this.OnScreenCompleted != null)
+                {
+                    this.OnScreenCompleted(this);
+                }
+            }
 
             base.Update(gameTime);
         }

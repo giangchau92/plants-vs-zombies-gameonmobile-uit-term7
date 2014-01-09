@@ -31,7 +31,7 @@ namespace SCSEngine.ScreenManagement.Implement
 
         public override void Draw(GameTime gameTime)
         {
-            for (int i = this.Screens.Count - 1; i >= 0; --i)
+            for (int i = 0; i < this.Screens.Count ; ++i)
             {
                 if (this.Screens[i].Visible)
                 {
@@ -119,7 +119,7 @@ namespace SCSEngine.ScreenManagement.Implement
 
         private void AddScreen(IGameScreen screen)
         {
-            if (this.SaveScreen)
+            if (!this.SaveScreen)
             {
                 this.RemoveScreen(screen);
             }

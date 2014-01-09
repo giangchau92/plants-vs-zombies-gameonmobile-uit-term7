@@ -14,8 +14,29 @@
       </Number>
       <TimeNextZombieFrom>0</TimeNextZombieFrom>
       <TimeNextZombieTo>1</TimeNextZombieTo>
-      <TimeBeginWave>10</TimeBeginWave>
-      <TimeNextWave>6</TimeNextWave>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>20.3</TimeNextWave>
+    </Wave>
+
+  </Level>
+    
+  <!--Zombies are coming…-->
+  <Level>
+    <Name>Zombies are coming…</Name>
+    <Background>Hospital</Background>
+    <Wave>
+      <Name>Wave 1</Name>
+      <Zombie>
+        <Value>xml_BarrowWight_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>1</From>
+        <To>1</To>
+      </Number>
+      <TimeNextZombieFrom>0</TimeNextZombieFrom>
+      <TimeNextZombieTo>1</TimeNextZombieTo>
+      <TimeBeginWave>15</TimeBeginWave>
+      <TimeNextWave>20.3</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -30,10 +51,10 @@
         <From>2</From>
         <To>2</To>
       </Number>
-      <TimeNextZombieFrom>0.3</TimeNextZombieFrom>
+      <TimeNextZombieFrom>1.2</TimeNextZombieFrom>
       <TimeNextZombieTo>2</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>2</TimeNextWave>
+      <TimeNextWave>10.2</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -51,10 +72,10 @@
         <From>3</From>
         <To>5</To>
       </Number>
-      <TimeNextZombieFrom>0.5</TimeNextZombieFrom>
-      <TimeNextZombieTo>1</TimeNextZombieTo>
+      <TimeNextZombieFrom>2</TimeNextZombieFrom>
+      <TimeNextZombieTo>4</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>3</TimeNextWave>
+      <TimeNextWave>15.3</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -75,8 +96,8 @@
         <From>4</From>
         <To>5</To>
       </Number>
-      <TimeNextZombieFrom>0.1</TimeNextZombieFrom>
-      <TimeNextZombieTo>0.3</TimeNextZombieTo>
+      <TimeNextZombieFrom>0.8</TimeNextZombieFrom>
+      <TimeNextZombieTo>1.6</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
       <TimeNextWave>0</TimeNextWave>
     </Wave>
@@ -98,8 +119,8 @@
       </Number>
       <TimeNextZombieFrom>0</TimeNextZombieFrom>
       <TimeNextZombieTo>1</TimeNextZombieTo>
-      <TimeBeginWave>10</TimeBeginWave>
-      <TimeNextWave>6</TimeNextWave>
+      <TimeBeginWave>15</TimeBeginWave>
+      <TimeNextWave>20.3</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -114,10 +135,10 @@
         <From>2</From>
         <To>2</To>
       </Number>
-      <TimeNextZombieFrom>0.3</TimeNextZombieFrom>
+      <TimeNextZombieFrom>1.2</TimeNextZombieFrom>
       <TimeNextZombieTo>2</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>2</TimeNextWave>
+      <TimeNextWave>10.2</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -135,10 +156,10 @@
         <From>3</From>
         <To>5</To>
       </Number>
-      <TimeNextZombieFrom>0.5</TimeNextZombieFrom>
-      <TimeNextZombieTo>1</TimeNextZombieTo>
+      <TimeNextZombieFrom>1.2</TimeNextZombieFrom>
+      <TimeNextZombieTo>3</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>3</TimeNextWave>
+      <TimeNextWave>15.3</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -156,10 +177,10 @@
         <From>4</From>
         <To>7</To>
       </Number>
-      <TimeNextZombieFrom>0.3</TimeNextZombieFrom>
+      <TimeNextZombieFrom>1.8</TimeNextZombieFrom>
       <TimeNextZombieTo>4</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>4</TimeNextWave>
+      <TimeNextWave>20.3</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -183,10 +204,10 @@
         <From>7</From>
         <To>10</To>
       </Number>
-      <TimeNextZombieFrom>0.3</TimeNextZombieFrom>
-      <TimeNextZombieTo>1</TimeNextZombieTo>
+      <TimeNextZombieFrom>1.2</TimeNextZombieFrom>
+      <TimeNextZombieTo>4</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>4</TimeNextWave>
+      <TimeNextWave>20.3</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -207,8 +228,8 @@
         <From>12</From>
         <To>15</To>
       </Number>
-      <TimeNextZombieFrom>0.1</TimeNextZombieFrom>
-      <TimeNextZombieTo>0.3</TimeNextZombieTo>
+      <TimeNextZombieFrom>0.8</TimeNextZombieFrom>
+      <TimeNextZombieTo>1.6</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
       <TimeNextWave>0</TimeNextWave>
     </Wave>
@@ -230,8 +251,8 @@
       </Number>
       <TimeNextZombieFrom>0</TimeNextZombieFrom>
       <TimeNextZombieTo>1</TimeNextZombieTo>
-      <TimeBeginWave>10</TimeBeginWave>
-      <TimeNextWave>6</TimeNextWave>
+      <TimeBeginWave>15</TimeBeginWave>
+      <TimeNextWave>30.5</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -246,10 +267,10 @@
         <From>2</From>
         <To>2</To>
       </Number>
-      <TimeNextZombieFrom>0.3</TimeNextZombieFrom>
+      <TimeNextZombieFrom>1.2</TimeNextZombieFrom>
       <TimeNextZombieTo>2</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>4</TimeNextWave>
+      <TimeNextWave>20.3</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -270,10 +291,10 @@
         <From>2</From>
         <To>3</To>
       </Number>
-      <TimeNextZombieFrom>1</TimeNextZombieFrom>
+      <TimeNextZombieFrom>4</TimeNextZombieFrom>
       <TimeNextZombieTo>2</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>5</TimeNextWave>
+      <TimeNextWave>25.5</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -297,10 +318,10 @@
         <From>3</From>
         <To>7</To>
       </Number>
-      <TimeNextZombieFrom>0.2</TimeNextZombieFrom>
-      <TimeNextZombieTo>0.8</TimeNextZombieTo>
+      <TimeNextZombieFrom>0.8</TimeNextZombieFrom>
+      <TimeNextZombieTo>3.2</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>3</TimeNextWave>
+      <TimeNextWave>15.3</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -327,10 +348,10 @@
         <From>7</From>
         <To>10</To>
       </Number>
-      <TimeNextZombieFrom>0.5</TimeNextZombieFrom>
-      <TimeNextZombieTo>1</TimeNextZombieTo>
+      <TimeNextZombieFrom>2</TimeNextZombieFrom>
+      <TimeNextZombieTo>4</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>4</TimeNextWave>
+      <TimeNextWave>20.3</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -348,10 +369,10 @@
         <From>3</From>
         <To>4</To>
       </Number>
-      <TimeNextZombieFrom>0.5</TimeNextZombieFrom>
+      <TimeNextZombieFrom>2</TimeNextZombieFrom>
       <TimeNextZombieTo>3</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>2</TimeNextWave>
+      <TimeNextWave>10.2</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -369,10 +390,10 @@
         <From>8</From>
         <To>12</To>
       </Number>
-      <TimeNextZombieFrom>0.5</TimeNextZombieFrom>
-      <TimeNextZombieTo>1</TimeNextZombieTo>
+      <TimeNextZombieFrom>2</TimeNextZombieFrom>
+      <TimeNextZombieTo>4</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>4</TimeNextWave>
+      <TimeNextWave>20.3</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -408,10 +429,10 @@
         <From>12</From>
         <To>15</To>
       </Number>
-      <TimeNextZombieFrom>0.3</TimeNextZombieFrom>
-      <TimeNextZombieTo>0.5</TimeNextZombieTo>
+      <TimeNextZombieFrom>1.2</TimeNextZombieFrom>
+      <TimeNextZombieTo>2</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>5</TimeNextWave>
+      <TimeNextWave>25.5</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -447,8 +468,8 @@
         <From>15</From>
         <To>20</To>
       </Number>
-      <TimeNextZombieFrom>0.1</TimeNextZombieFrom>
-      <TimeNextZombieTo>0.3</TimeNextZombieTo>
+      <TimeNextZombieFrom>0.8</TimeNextZombieFrom>
+      <TimeNextZombieTo>1.6</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
       <TimeNextWave>0</TimeNextWave>
     </Wave>
@@ -470,8 +491,8 @@
       </Number>
       <TimeNextZombieFrom>0</TimeNextZombieFrom>
       <TimeNextZombieTo>1</TimeNextZombieTo>
-      <TimeBeginWave>10</TimeBeginWave>
-      <TimeNextWave>6</TimeNextWave>
+      <TimeBeginWave>15</TimeBeginWave>
+      <TimeNextWave>30.5</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -486,10 +507,10 @@
         <From>2</From>
         <To>2</To>
       </Number>
-      <TimeNextZombieFrom>0.3</TimeNextZombieFrom>
+      <TimeNextZombieFrom>1.2</TimeNextZombieFrom>
       <TimeNextZombieTo>2</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>4</TimeNextWave>
+      <TimeNextWave>20.3</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -510,10 +531,10 @@
         <From>2</From>
         <To>3</To>
       </Number>
-      <TimeNextZombieFrom>1</TimeNextZombieFrom>
+      <TimeNextZombieFrom>4</TimeNextZombieFrom>
       <TimeNextZombieTo>2</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>4</TimeNextWave>
+      <TimeNextWave>20.3</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -531,10 +552,10 @@
         <From>7</From>
         <To>10</To>
       </Number>
-      <TimeNextZombieFrom>0.2</TimeNextZombieFrom>
-      <TimeNextZombieTo>0.8</TimeNextZombieTo>
+      <TimeNextZombieFrom>0.8</TimeNextZombieFrom>
+      <TimeNextZombieTo>3.2</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>5</TimeNextWave>
+      <TimeNextWave>25.5</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -552,10 +573,10 @@
         <From>7</From>
         <To>10</To>
       </Number>
-      <TimeNextZombieFrom>0.5</TimeNextZombieFrom>
-      <TimeNextZombieTo>1</TimeNextZombieTo>
+      <TimeNextZombieFrom>2</TimeNextZombieFrom>
+      <TimeNextZombieTo>4</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>6</TimeNextWave>
+      <TimeNextWave>30.5</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -570,10 +591,10 @@
         <From>3</From>
         <To>4</To>
       </Number>
-      <TimeNextZombieFrom>0.5</TimeNextZombieFrom>
+      <TimeNextZombieFrom>2</TimeNextZombieFrom>
       <TimeNextZombieTo>3</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>4</TimeNextWave>
+      <TimeNextWave>20.3</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -591,10 +612,10 @@
         <From>8</From>
         <To>12</To>
       </Number>
-      <TimeNextZombieFrom>0.5</TimeNextZombieFrom>
-      <TimeNextZombieTo>1</TimeNextZombieTo>
+      <TimeNextZombieFrom>2</TimeNextZombieFrom>
+      <TimeNextZombieTo>4</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>7</TimeNextWave>
+      <TimeNextWave>35.6</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -609,10 +630,10 @@
         <From>3</From>
         <To>5</To>
       </Number>
-      <TimeNextZombieFrom>0.5</TimeNextZombieFrom>
-      <TimeNextZombieTo>1</TimeNextZombieTo>
+      <TimeNextZombieFrom>2</TimeNextZombieFrom>
+      <TimeNextZombieTo>4</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>5</TimeNextWave>
+      <TimeNextWave>25.5</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -624,10 +645,10 @@
         <From>1</From>
         <To>2</To>
       </Number>
-      <TimeNextZombieFrom>0.5</TimeNextZombieFrom>
-      <TimeNextZombieTo>1</TimeNextZombieTo>
+      <TimeNextZombieFrom>2</TimeNextZombieFrom>
+      <TimeNextZombieTo>4</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>5</TimeNextWave>
+      <TimeNextWave>25.5</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -639,10 +660,10 @@
         <From>3</From>
         <To>5</To>
       </Number>
-      <TimeNextZombieFrom>0.3</TimeNextZombieFrom>
-      <TimeNextZombieTo>0.8</TimeNextZombieTo>
+      <TimeNextZombieFrom>1.2</TimeNextZombieFrom>
+      <TimeNextZombieTo>3.2</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>5</TimeNextWave>
+      <TimeNextWave>25.5</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -651,10 +672,10 @@
         <From>3</From>
         <To>3</To>
       </Number>
-      <TimeNextZombieFrom>1</TimeNextZombieFrom>
-      <TimeNextZombieTo>1.2</TimeNextZombieTo>
+      <TimeNextZombieFrom>4</TimeNextZombieFrom>
+      <TimeNextZombieTo>3</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>6</TimeNextWave>
+      <TimeNextWave>30.5</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -666,8 +687,8 @@
         <From>5</From>
         <To>6</To>
       </Number>
-      <TimeNextZombieFrom>0.1</TimeNextZombieFrom>
-      <TimeNextZombieTo>1.5</TimeNextZombieTo>
+      <TimeNextZombieFrom>0.8</TimeNextZombieFrom>
+      <TimeNextZombieTo>5</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
       <TimeNextWave>0</TimeNextWave>
     </Wave>
@@ -689,8 +710,8 @@
       </Number>
       <TimeNextZombieFrom>0</TimeNextZombieFrom>
       <TimeNextZombieTo>1</TimeNextZombieTo>
-      <TimeBeginWave>10</TimeBeginWave>
-      <TimeNextWave>6</TimeNextWave>
+      <TimeBeginWave>15</TimeBeginWave>
+      <TimeNextWave>30.5</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -705,10 +726,10 @@
         <From>2</From>
         <To>2</To>
       </Number>
-      <TimeNextZombieFrom>0.3</TimeNextZombieFrom>
+      <TimeNextZombieFrom>1</TimeNextZombieFrom>
       <TimeNextZombieTo>2</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>4</TimeNextWave>
+      <TimeNextWave>20.3</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -729,10 +750,10 @@
         <From>2</From>
         <To>3</To>
       </Number>
-      <TimeNextZombieFrom>1</TimeNextZombieFrom>
+      <TimeNextZombieFrom>4</TimeNextZombieFrom>
       <TimeNextZombieTo>2</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>4</TimeNextWave>
+      <TimeNextWave>20.3</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -750,10 +771,10 @@
         <From>7</From>
         <To>10</To>
       </Number>
-      <TimeNextZombieFrom>0.2</TimeNextZombieFrom>
-      <TimeNextZombieTo>0.5</TimeNextZombieTo>
+      <TimeNextZombieFrom>0.8</TimeNextZombieFrom>
+      <TimeNextZombieTo>2</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>4</TimeNextWave>
+      <TimeNextWave>20.3</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -771,10 +792,10 @@
         <From>7</From>
         <To>10</To>
       </Number>
-      <TimeNextZombieFrom>0.2</TimeNextZombieFrom>
-      <TimeNextZombieTo>0.8</TimeNextZombieTo>
+      <TimeNextZombieFrom>0.8</TimeNextZombieFrom>
+      <TimeNextZombieTo>3.2</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>4</TimeNextWave>
+      <TimeNextWave>20.3</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -789,10 +810,10 @@
         <From>3</From>
         <To>4</To>
       </Number>
-      <TimeNextZombieFrom>0.4</TimeNextZombieFrom>
+      <TimeNextZombieFrom>1.6</TimeNextZombieFrom>
       <TimeNextZombieTo>3</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>4</TimeNextWave>
+      <TimeNextWave>20.3</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -810,10 +831,10 @@
         <From>8</From>
         <To>12</To>
       </Number>
-      <TimeNextZombieFrom>0.3</TimeNextZombieFrom>
-      <TimeNextZombieTo>0.7</TimeNextZombieTo>
+      <TimeNextZombieFrom>1.2</TimeNextZombieFrom>
+      <TimeNextZombieTo>2.8</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>4</TimeNextWave>
+      <TimeNextWave>20.3</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -828,10 +849,10 @@
         <From>3</From>
         <To>5</To>
       </Number>
-      <TimeNextZombieFrom>0.5</TimeNextZombieFrom>
+      <TimeNextZombieFrom>2</TimeNextZombieFrom>
       <TimeNextZombieTo>3</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>5</TimeNextWave>
+      <TimeNextWave>25.5</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -843,10 +864,10 @@
         <From>1</From>
         <To>2</To>
       </Number>
-      <TimeNextZombieFrom>0.5</TimeNextZombieFrom>
-      <TimeNextZombieTo>0.7</TimeNextZombieTo>
+      <TimeNextZombieFrom>2</TimeNextZombieFrom>
+      <TimeNextZombieTo>2.8</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>5</TimeNextWave>
+      <TimeNextWave>25.5</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -858,10 +879,10 @@
         <From>3</From>
         <To>5</To>
       </Number>
-      <TimeNextZombieFrom>0.3</TimeNextZombieFrom>
+      <TimeNextZombieFrom>1.2</TimeNextZombieFrom>
       <TimeNextZombieTo>3</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>5</TimeNextWave>
+      <TimeNextWave>25.5</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -870,10 +891,10 @@
         <From>5</From>
         <To>5</To>
       </Number>
-      <TimeNextZombieFrom>0.8</TimeNextZombieFrom>
+      <TimeNextZombieFrom>3.2</TimeNextZombieFrom>
       <TimeNextZombieTo>5</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>6</TimeNextWave>
+      <TimeNextWave>30.5</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -885,8 +906,8 @@
         <From>5</From>
         <To>6</To>
       </Number>
-      <TimeNextZombieFrom>0.1</TimeNextZombieFrom>
-      <TimeNextZombieTo>0.8</TimeNextZombieTo>
+      <TimeNextZombieFrom>0.8</TimeNextZombieFrom>
+      <TimeNextZombieTo>3.2</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
       <TimeNextWave>0</TimeNextWave>
     </Wave>
@@ -908,8 +929,8 @@
       </Number>
       <TimeNextZombieFrom>0</TimeNextZombieFrom>
       <TimeNextZombieTo>1</TimeNextZombieTo>
-      <TimeBeginWave>10</TimeBeginWave>
-      <TimeNextWave>6</TimeNextWave>
+      <TimeBeginWave>15</TimeBeginWave>
+      <TimeNextWave>30.5</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -924,10 +945,10 @@
         <From>2</From>
         <To>2</To>
       </Number>
-      <TimeNextZombieFrom>0.3</TimeNextZombieFrom>
+      <TimeNextZombieFrom>1.2</TimeNextZombieFrom>
       <TimeNextZombieTo>2</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>4</TimeNextWave>
+      <TimeNextWave>20.3</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -948,10 +969,10 @@
         <From>2</From>
         <To>3</To>
       </Number>
-      <TimeNextZombieFrom>1</TimeNextZombieFrom>
+      <TimeNextZombieFrom>4</TimeNextZombieFrom>
       <TimeNextZombieTo>2</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>4</TimeNextWave>
+      <TimeNextWave>20.3</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -969,10 +990,10 @@
         <From>7</From>
         <To>10</To>
       </Number>
-      <TimeNextZombieFrom>0.2</TimeNextZombieFrom>
-      <TimeNextZombieTo>0.5</TimeNextZombieTo>
+      <TimeNextZombieFrom>0.8</TimeNextZombieFrom>
+      <TimeNextZombieTo>2</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>4</TimeNextWave>
+      <TimeNextWave>20.3</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -990,10 +1011,10 @@
         <From>7</From>
         <To>10</To>
       </Number>
-      <TimeNextZombieFrom>0.2</TimeNextZombieFrom>
-      <TimeNextZombieTo>0.4</TimeNextZombieTo>
+      <TimeNextZombieFrom>0.8</TimeNextZombieFrom>
+      <TimeNextZombieTo>2</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>2</TimeNextWave>
+      <TimeNextWave>10.2</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -1008,10 +1029,10 @@
         <From>3</From>
         <To>4</To>
       </Number>
-      <TimeNextZombieFrom>0.2</TimeNextZombieFrom>
+      <TimeNextZombieFrom>1</TimeNextZombieFrom>
       <TimeNextZombieTo>3</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>2</TimeNextWave>
+      <TimeNextWave>10.2</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -1029,10 +1050,10 @@
         <From>8</From>
         <To>12</To>
       </Number>
-      <TimeNextZombieFrom>0.1</TimeNextZombieFrom>
-      <TimeNextZombieTo>0.3</TimeNextZombieTo>
+      <TimeNextZombieFrom>0.8</TimeNextZombieFrom>
+      <TimeNextZombieTo>1.6</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>2</TimeNextWave>
+      <TimeNextWave>10.2</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -1047,10 +1068,10 @@
         <From>3</From>
         <To>5</To>
       </Number>
-      <TimeNextZombieFrom>0.2</TimeNextZombieFrom>
+      <TimeNextZombieFrom>1</TimeNextZombieFrom>
       <TimeNextZombieTo>3</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>2</TimeNextWave>
+      <TimeNextWave>10.2</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -1062,10 +1083,10 @@
         <From>1</From>
         <To>2</To>
       </Number>
-      <TimeNextZombieFrom>0.2</TimeNextZombieFrom>
-      <TimeNextZombieTo>0.3</TimeNextZombieTo>
+      <TimeNextZombieFrom>1</TimeNextZombieFrom>
+      <TimeNextZombieTo>1.6</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>3</TimeNextWave>
+      <TimeNextWave>15.3</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -1077,10 +1098,10 @@
         <From>3</From>
         <To>5</To>
       </Number>
-      <TimeNextZombieFrom>0.1</TimeNextZombieFrom>
+      <TimeNextZombieFrom>0.8</TimeNextZombieFrom>
       <TimeNextZombieTo>3</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>3</TimeNextWave>
+      <TimeNextWave>15.3</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -1089,10 +1110,10 @@
         <From>5</From>
         <To>5</To>
       </Number>
-      <TimeNextZombieFrom>0.4</TimeNextZombieFrom>
+      <TimeNextZombieFrom>1.6</TimeNextZombieFrom>
       <TimeNextZombieTo>5</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>4</TimeNextWave>
+      <TimeNextWave>20.3</TimeNextWave>
     </Wave>
 
     <Wave>
@@ -1119,8 +1140,8 @@
         <From>30</From>
         <To>40</To>
       </Number>
-      <TimeNextZombieFrom>0.1</TimeNextZombieFrom>
-      <TimeNextZombieTo>0.4</TimeNextZombieTo>
+      <TimeNextZombieFrom>0.8</TimeNextZombieFrom>
+      <TimeNextZombieTo>2</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
       <TimeNextWave>0</TimeNextWave>
     </Wave>

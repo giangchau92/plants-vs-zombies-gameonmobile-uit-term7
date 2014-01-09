@@ -68,6 +68,17 @@ namespace PlantsVsZombies.GameCore
             _currentLevel++;
         }
 
+        public void ResetGame()
+        {
+            _currentLevel = 0;
+        }
 
+        public bool IsLevelAvailable
+        {
+            get
+            {
+                return this.CurrentLevel < this._listLevel.Count;
+            }
+        }
     }
 }
