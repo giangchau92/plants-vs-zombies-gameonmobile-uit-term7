@@ -115,14 +115,14 @@ namespace PlantsVsZombies.GameScreen
         void No_Clicked(Button button)
         {
             SCSServices.Instance.AudioManager.PlaySound(this.buttonTouchedSound, false, true);
-            this.Manager.RemoveCurrent();
+            this.Manager.RemoveScreen(this.Manager.Bank.GetScreen("PlayScreen"));
+            this.Manager.AddExclusive(this.Manager.Bank.GetScreen("MainMenu"));
         }
 
         void Yes_Clicked(Button button)
         {
             SCSServices.Instance.AudioManager.PlaySound(this.buttonTouchedSound, false, true);
-            this.Manager.RemoveScreen(this.Manager.Bank.GetScreen("PlayScreen"));
-            this.Manager.AddExclusive(this.Manager.Bank.GetScreen("MainMenu"));
+            this.Manager.RemoveCurrent();
         }
 
         protected override void OnStateChanged()

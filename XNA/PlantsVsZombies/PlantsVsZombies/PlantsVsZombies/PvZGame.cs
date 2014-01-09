@@ -184,24 +184,24 @@ namespace PlantsVsZombies
 
             //Plants & Bullets
             SpriteFramesBank.Instance.Add("Images/Plants/Cherry", FramesGenerator.Generate(126, 86, 1024, 24));
-            SpriteFramesBank.Instance.Add("Images/Bullets/B_Cherry", FramesGenerator.Generate(74, 80, 1024, 17));
+            SpriteFramesBank.Instance.Add("Bullets/B_Cherry", FramesGenerator.Generate(74, 80, 1024, 17));
 
             SpriteFramesBank.Instance.Add("Images/Plants/Chilly", FramesGenerator.Generate(78, 75, 1024, 24));
-            SpriteFramesBank.Instance.Add("Images/Bullets/B_Chili", FramesGenerator.Generate(31, 44, 1024, 22));
+            SpriteFramesBank.Instance.Add("Bullets/B_Chili", FramesGenerator.Generate(31, 44, 1024, 22));
 
             SpriteFramesBank.Instance.Add("Images/Plants/DoublePea", FramesGenerator.Generate(100, 55, 1024, 40));
 
             SpriteFramesBank.Instance.Add("Images/Plants/IcePea", FramesGenerator.Generate(118, 63, 1024, 33));
-            SpriteFramesBank.Instance.Add("Images/Bullets/B_IcePea", FramesGenerator.Generate(29, 1024, 1, 1));
+            SpriteFramesBank.Instance.Add("Bullets/B_IcePea", FramesGenerator.Generate(29, 1024, 1, 1));
 
             SpriteFramesBank.Instance.Add("Images/Plants/Pea", FramesGenerator.Generate(92, 62, 1024, 33));
-            SpriteFramesBank.Instance.Add("Images/Bullets/B_Pea", FramesGenerator.Generate(29, 1024, 1, 1));
+            SpriteFramesBank.Instance.Add("Bullets/B_Pea", FramesGenerator.Generate(29, 1024, 1, 1));
 
             SpriteFramesBank.Instance.Add("Images/Plants/FreeMushroom", FramesGenerator.Generate(44, 34, 1024, 35));
-            SpriteFramesBank.Instance.Add("Images/Bullets/B_FreeMush", FramesGenerator.Generate(26, 11, 1024, 1));
+            SpriteFramesBank.Instance.Add("Bullets/B_FreeMush", FramesGenerator.Generate(26, 11, 1024, 1));
 
             SpriteFramesBank.Instance.Add("Images/Plants/SeaMushroom", FramesGenerator.Generate(58, 51, 1024, 48));
-            SpriteFramesBank.Instance.Add("Images/Bullets/B_WaterMush", FramesGenerator.Generate(31, 24, 1024, 1));
+            SpriteFramesBank.Instance.Add("Bullets/B_WaterMush", FramesGenerator.Generate(31, 24, 1024, 1));
 
             SpriteFramesBank.Instance.Add("Images/Plants/Mine", FramesGenerator.Generate(83, 47, 1024, 17));
             SpriteFramesBank.Instance.Add("Images/Plants/MineGrow", FramesGenerator.Generate(113, 1024, 9, 30));
@@ -219,7 +219,6 @@ namespace PlantsVsZombies
             SpriteFramesBank.Instance.Add("Images/Plants/Sunflower", FramesGenerator.Generate(74, 80, 1024, 17));
 
             SpriteFramesBank.Instance.Add("Bullets/Sun", FramesGenerator.Generate(50, 50, 750, 15));
-            SpriteFramesBank.Instance.Add("Bullets/B_Pea", FramesGenerator.Generate(29, 22, 29, 1));
 
             SpriteFramesBank.Instance.Add(@"Images/Zombies/Skeletons/BarrowWight/Attack", FramesGenerator.Generate(73, 101, 1024, 15));
             SpriteFramesBank.Instance.Add(@"Images/Zombies/Skeletons/BarrowWight/Death", FramesGenerator.Generate(103, 105, 1024, 16));

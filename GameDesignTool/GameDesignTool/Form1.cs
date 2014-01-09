@@ -79,7 +79,9 @@ namespace GameDesignTool
             result += Environment.NewLine;
             result += string.Format("\t\t<Name>{0}</Name>", this.txtLName.Text);
             result += Environment.NewLine;
-            result += string.Format("\t\t<Background>{0}</Background>", this.txtLBackground.Text);
+            result += string.Format("\t\t<Background>Images/Controls/Background_{0}</Background>", this.txtLBackground.Text);
+            result += Environment.NewLine;
+            result += string.Format("\t\t<NumberOfPlants>{0}</NumberOfPlants>", this.txtLNOP.Text);
 
             this.rTxtLResult.Text += result;
         }
@@ -168,17 +170,18 @@ namespace GameDesignTool
                     {
                         this.txtLName.Text = tabs[0];
                         this.txtLBackground.Text = tabs[1];
+                        this.txtLNOP.Text = tabs[2];
 
                         this.btnLMake_Click(this, null);
                     }
                     else
                     {
-                        this.txtWName.Text = "Wave " + tabs[2];
-                        this.txtWNZombies.Text = tabs[3];
-                        this.txtWZombies.Text = tabs[4];
-                        this.txtWGDelay.Text = tabs[5];
-                        this.txtWBegin.Text = tabs[6];
-                        this.txtWEnd.Text = tabs[7];
+                        this.txtWName.Text = "Wave " + tabs[3];
+                        this.txtWNZombies.Text = tabs[4];
+                        this.txtWZombies.Text = tabs[5];
+                        this.txtWGDelay.Text = tabs[6];
+                        this.txtWBegin.Text = tabs[7];
+                        this.txtWEnd.Text = tabs[8];
 
                         this.btnWAdd_Click(this, null);
                     }
