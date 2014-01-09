@@ -2,7 +2,7 @@
   <!--Zombies are coming-->
   <Level>
     <Name>Zombies are coming</Name>
-    <Background>Images/Controls/Hospital</Background>
+    <Background>Images/Controls/Background_Hospital</Background>
     <Wave>
       <Name>Wave 1</Name>
       <Zombie>
@@ -86,7 +86,7 @@
   <!--Brain. . . brain. . .-->
   <Level>
     <Name>Brain. . . brain. . .</Name>
-    <Background>Images/Controls/Hospital</Background>
+    <Background>Images/Controls/Background_Hospital</Background>
     <Wave>
       <Name>Wave 1</Name>
       <Zombie>
@@ -218,7 +218,7 @@
   <!--Who takes my cheese. . .-->
   <Level>
     <Name>Who takes my cheese. . .</Name>
-    <Background>Images/Controls/Forest</Background>
+    <Background>Images/Controls/Background_Forest</Background>
     <Wave>
       <Name>Wave 1</Name>
       <Zombie>
@@ -458,7 +458,7 @@
   <!--Zombilize-->
   <Level>
     <Name>Zombilize</Name>
-    <Background>Images/Controls/Forest</Background>
+    <Background>Images/Controls/Background_Forest</Background>
     <Wave>
       <Name>Wave 1</Name>
       <Zombie>
@@ -677,7 +677,7 @@
   <!--The death roar. . .-->
   <Level>
     <Name>The death roar. . .</Name>
-    <Background>Images/Controls/House</Background>
+    <Background>Images/Controls/Background_House</Background>
     <Wave>
       <Name>Wave 1</Name>
       <Zombie>
@@ -896,7 +896,7 @@
   <!--KING-->
   <Level>
     <Name>KING</Name>
-    <Background>Images/Controls/Ocean</Background>
+    <Background>Images/Controls/Background_Ocean</Background>
     <Wave>
       <Name>Wave 1</Name>
       <Zombie>
