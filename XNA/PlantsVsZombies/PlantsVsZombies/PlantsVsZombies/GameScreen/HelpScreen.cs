@@ -66,12 +66,22 @@ namespace PlantsVsZombies.GameScreen
             base.Initialize();
         }
 
+        public override void Update(GameTime gameTime)
+        {
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+            {
+                this.Manager.RemoveCurrent();
+            }
+
+            base.Update(gameTime);
+        }
+
         public override void Draw(GameTime gameTime)
         {
             spriteBatch.Begin();
             spriteBatch.Draw(this.currentTexture, Vector2.Zero, Color.White);
-            spriteBatch.End();
             base.Draw(gameTime);
+            spriteBatch.End();
         }
 
         // Button event do
@@ -105,11 +115,6 @@ namespace PlantsVsZombies.GameScreen
             this.back.Canvas.Bound.Position = new Vector2(0f, 450f);
             this.back.OnTouched += this.back_Clicked;
             this.uiManager.Add(back);
-            
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-            {
-                this.Manager.RemoveCurrent();
-            }
         }
 
         protected void back_Clicked(Button button)

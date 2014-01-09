@@ -143,13 +143,14 @@ namespace PlantsVsZombies.GameScreen
 
         private void help_Clicked(Button button)
         {
-            SCSServices.Instance.AudioManager.PlaySound(this.buttonFailSound, false, true);
+            SCSServices.Instance.AudioManager.PlaySound(this.buttonOKSound, false, true);
+            this.Manager.AddPopup(this.Manager.Bank.GetScreen("Help"));
         }
 
         private void quit_Clicked(Button button)
         {
             SCSServices.Instance.AudioManager.PlaySound(this.exitGameSound, false, true);
-                this.Manager.AddPopup(this.Manager.Bank.GetScreen("Exit"));
+            this.Manager.AddPopup(this.Manager.Bank.GetScreen("Exit"));
         }
 
         public override void Draw(GameTime gameTime)

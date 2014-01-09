@@ -24,7 +24,7 @@ namespace PlantsVsZombies.GameScreen.ScreenFactory
 
         public IGameScreen CreateGameScreen()
         {
-            if (this.growSystem != null)
+            if (this.growSystem == null)
             {
                 this.growSystem = new PvZGrowSystem(this.manager.Game);
                 this.growSystem.Deserialize(XmlSerialization.Instance.Deserialize(File.Open(@"Xml\PlantGrowButtons.xml", FileMode.Open, FileAccess.Read, FileShare.None)));

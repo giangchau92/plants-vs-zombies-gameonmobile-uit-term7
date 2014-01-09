@@ -86,7 +86,6 @@ namespace PlantsVsZombies.GameScreen
 
         private void InitGamePlay()
         {
-            
             PZObjectManager.Instance.RemoveAllObject();
             
             this.dispatcher = DefaultGestureHandlingFactory.Instance.CreateDispatcher();
