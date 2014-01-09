@@ -110,9 +110,13 @@
     <Compile Include="GameCore\PZResourceManager.cs" />
     <Compile Include="GameCore\PZScreenManager.cs" />
     <Compile Include="GameObjects\GameObjectCenter.cs" />
+    <Compile Include="GameScreen\ExitScreen.cs" />
     <Compile Include="GameScreen\GamePlayScreen.cs" />
+    <Compile Include="GameScreen\HelpScreen.cs" />
+    <Compile Include="GameScreen\IntroductionScreen.cs" />
     <Compile Include="GameScreen\MainMenuScreen.cs" />
     <Compile Include="GameScreen\MessageScenes.cs" />
+    <Compile Include="GameScreen\OptionScreen.cs" />
     <Compile Include="GameScreen\ScreenFactory\GamePlayScreenFactory.cs" />
     <Compile Include="GrowSystem\IPvZGameCurrency.cs" />
     <Compile Include="GrowSystem\IPvZGameGrow.cs" />
@@ -412,9 +416,6 @@
     <None Include="Xml\Sun.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
-    </None>
-    <None Include="Xml\XMLFile1.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Xml\Zombies.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

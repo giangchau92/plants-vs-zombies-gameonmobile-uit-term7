@@ -3,6 +3,7 @@ using PlantsVsZombies.GameComponents;
 using PlantsVsZombies.GameComponents.Components;
 using PlantsVsZombies.GameCore;
 using PlantsVsZombies.GameObjects;
+using SCSEngine.Mathematics;
 using SCSEngine.Serialization;
 using System;
 using System.Collections.Generic;
@@ -184,8 +185,6 @@ namespace PlantsVsZombies.GameCore.Level
             get { return _currentState; }
         }
 
-        private Random rand = new Random();
-
         public Wave()
         {
             Zombies = new List<string>();
@@ -198,23 +197,23 @@ namespace PlantsVsZombies.GameCore.Level
         {
             if (_numberZombie == 0)
             {
-                _numberZombie = rand.Next(NumberFrom, NumberTo);
+                _numberZombie = GRandom.RandomInt(NumberFrom, NumberTo);//rand.Next(NumberFrom, NumberTo);
             }
 
             if (_currentState == WaveState.WAVING)
             {
                 if (_nextZombieTime == TimeSpan.Zero)
                 {
-                    _nextZombieTime = TimeSpan.FromSeconds(TimeNextZombieFrom + rand.NextDouble() * (TimeNextZombieTo - TimeNextZombieFrom)); // Calc time to drop zombie
+                    _nextZombieTime = TimeSpan.FromSeconds(GRandom.RandomDouble(TimeNextZombieFrom, TimeNextZombieTo)); // Calc time to drop zombie
                     //Debug.WriteLine("WAVE: Tha ZOMBIE trong {0} giay", _nextZombieTime);
                 }
 
                 if (_currentTime >= _nextZombieTime) // Tha zombie
                 {
-                    
-                    string zombieString = Zombies[rand.Next(0, Zombies.Count)];
+
+                    string zombieString = Zombies[GRandom.RandomInt(Zombies.Count)];//rand.Next(0, Zombies.Count)];
                     ObjectEntity obj = GameObjectCenter.Instance.CreateObject(zombieString);
-                    int row = rand.Next(0, 4);
+                    int row = GRandom.RandomInt(4);
                     //Debug.WriteLine("LEVEL: Tha ZOMBIE at row {0}", row);
                     board.AddObjectAt(obj, row, 10);
                     _currentTime = TimeSpan.Zero;

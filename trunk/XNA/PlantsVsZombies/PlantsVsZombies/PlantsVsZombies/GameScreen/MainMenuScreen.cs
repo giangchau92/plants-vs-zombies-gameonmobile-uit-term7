@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using SCSEngine.Audio;
 using SCSEngine.Control;
@@ -63,7 +64,7 @@ namespace PlantsVsZombies.GameScreen
 
 
         public MainMenuScreen(IGameScreenManager screenManager, IGestureManager gMan)
-            : base(screenManager)
+            : base(screenManager, "MainMenu")
         {
             this.gestureManager = gMan;
         }
@@ -83,6 +84,11 @@ namespace PlantsVsZombies.GameScreen
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+            {
+                this.Manager.AddPopup(this.Manager.Bank.GetScreen("Exit"));
+            }
         }
 
         // Button event do
@@ -143,7 +149,7 @@ namespace PlantsVsZombies.GameScreen
         private void quit_Clicked(Button button)
         {
             SCSServices.Instance.AudioManager.PlaySound(this.exitGameSound, false, true);
-            this.Game.Exit();
+                this.Manager.AddPopup(this.Manager.Bank.GetScreen("Exit"));
         }
 
         public override void Draw(GameTime gameTime)

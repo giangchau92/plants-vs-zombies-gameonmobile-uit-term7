@@ -2,6 +2,7 @@
 using PlantsVsZombies.GameComponents.Behaviors;
 using PlantsVsZombies.GameComponents.Behaviors.Implements;
 using PlantsVsZombies.GameComponents.Components;
+using SCSEngine.Mathematics;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -18,11 +19,9 @@ namespace PlantsVsZombies.GameComponents.Effect.Implements
         Vector2 v0 = new Vector2(0, 50);
         Vector2 a = new Vector2(0, 0);
 
-
-        static Random rand = new Random();
         public SunFlyDownEffect()
         {
-            double time = rand.NextDouble() * 3 + 3;
+            double time = GRandom.RandomDouble(3, 6);
             ////Debug.WriteLine(time);
             TimeDurring = TimeSpan.FromSeconds(time);
         }

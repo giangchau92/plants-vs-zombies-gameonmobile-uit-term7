@@ -96,7 +96,7 @@ namespace PlantsVsZombies
                 this.Components.Add(gestureManager);
 
                 screenManager = new PZScreenManager(this, gestureManager);
-                screenManager.AddExclusive(screenManager.Bank.GetNewScreen("MainMenu"));
+                screenManager.AddExclusive(screenManager.Bank.GetScreen("Introduction"));
             }
             catch (Exception e)
             {

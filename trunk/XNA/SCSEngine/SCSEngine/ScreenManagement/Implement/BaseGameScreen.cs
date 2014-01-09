@@ -8,10 +8,11 @@ namespace SCSEngine.ScreenManagement.Implement
 {
     public class BaseGameScreen : DrawableGameComponent, IGameScreen
     {
-        public BaseGameScreen(IGameScreenManager manager)
+        public BaseGameScreen(IGameScreenManager manager, string name)
             : base(manager.Game)
         {
             this.Manager = manager;
+            this.Name = name;
             this.Components = new GameComponentCollection();
         }
 

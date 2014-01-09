@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
 using PlantsVsZombies.GameComponents;
 using PlantsVsZombies.GameComponents.Components;
@@ -52,7 +53,7 @@ namespace PlantsVsZombies.GameScreen
         private PlayState state = PlayState.START;
 
         public GamePlayScreen(IGameScreenManager screenManager, IGestureManager gm)
-            : base(screenManager)
+            : base(screenManager, "PlayScreen")
         {
             gameBoard = new PZBoard(9, 4, objectManager);
             gameBoard.Board = new int[,] {
@@ -97,7 +98,7 @@ namespace PlantsVsZombies.GameScreen
 
             this.growSystem = new PvZGrowSystem(this.Game, new PvZGameGrow(gameBoard));
             this.growSystem.Deserialize(XmlSerialization.Instance.Deserialize(File.Open(@"Xml\PlantGrowButtons.xml", FileMode.Open, FileAccess.Read, FileShare.None)));
-            var chooseSys = new PvZChooseSystem(this.Game, this.growSystem.ButtonFactoryBank, this.uiControlManager, _sunSystem, 2);
+            var chooseSys = new PvZChooseSystem(this.Game, this.growSystem.ButtonFactoryBank, this.uiControlManager, _sunSystem, 3);
             chooseSys.Initialize();
             chooseSys.OnCameOut += this.OnChooseSystemCompleted;
             this.Components.Add(chooseSys);
@@ -124,12 +125,17 @@ namespace PlantsVsZombies.GameScreen
                 if (isWin())
                 {
                     PZLevelManager.Instance.UnlockLevel();
-                    this.Manager.AddExclusive(this.Manager.Bank.GetNewScreen("PlayScreen"));
+                    var winGame = (MessageGameScreen)this.Manager.Bank.GetNewScreen("WinGame");
+                    winGame.OnScreenCompleted += this.TryToNextLevel;
+                    this.Manager.AddExclusive(winGame);
                 }
 
                 if (isLose())
                 {
-                    //Debug.WriteLine("LOSE CMNR!");
+                    PZLevelManager.Instance.ResetGame();
+                    var loseGame = (MessageGameScreen)this.Manager.Bank.GetNewScreen("LoseGame");
+                    loseGame.OnScreenCompleted += this.OnGameLost;
+                    this.Manager.AddExclusive(loseGame);
                 }
 
                 // Update game
@@ -139,7 +145,42 @@ namespace PlantsVsZombies.GameScreen
                 objectManager.SendMessage(updateMessage, gameTime);
             }
 
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+            {
+                if (this.state == PlayState.RUNNING)
+                {
+                    this.ShowConfirmDialog();
+                }
+                else
+                {
+                    this.Manager.RemoveCurrent();
+                }
+            }
+
             base.Update(gameTime);
+        }
+
+        private void OnGameLost(MessageGameScreen background)
+        {
+            this.Manager.AddExclusive(this.Manager.Bank.GetScreen("MainMenu"));
+        }
+
+        private void TryToNextLevel(MessageGameScreen background)
+        {
+            if (PZLevelManager.Instance.IsLevelAvailable)
+            {
+                this.Manager.AddExclusive(this.Manager.Bank.GetNewScreen("PlayScreen"));
+            }
+            else
+            {
+                PZLevelManager.Instance.ResetGame();
+                this.Manager.AddExclusive(this.Manager.Bank.GetScreen("MainMenu"));
+            }
+        }
+
+        private void ShowConfirmDialog()
+        {
+            this.Manager.AddPopup(this.Manager.Bank.GetScreen("Option"));
         }
 
         public override void Draw(GameTime gameTime)
@@ -195,13 +236,25 @@ namespace PlantsVsZombies.GameScreen
             switch (this.State)
             {
                 case GameScreenState.Activated:
-                    this.dispatcher.Enabled = true;
-                    this.uiControlManager.Enabled = true;
+                    if (this.dispatcher != null)
+                    {
+                        this.dispatcher.Enabled = true;
+                    }
+                    if (this.uiControlManager != null)
+                    {
+                        this.uiControlManager.Enabled = true;
+                    }
                     break;
                 case GameScreenState.Deactivated:
                 case GameScreenState.Paused:
-                    this.dispatcher.Enabled = false;
-                    this.uiControlManager.Enabled = false;
+                    if (this.dispatcher != null)
+                    {
+                        this.dispatcher.Enabled = false;
+                    }
+                    if (this.uiControlManager != null)
+                    {
+                        this.uiControlManager.Enabled = false;
+                    }
                     break;
             }
 

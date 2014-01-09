@@ -1,5 +1,71 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Zombies>
+  <!--Spider-->
+  <Zombie>
+    <Name>xml_Spider_zombie</Name>
+    <Type>Zombie</Type>
+    <Components>
+      <Component>
+        <Type>xml_move</Type>
+        <Behavior>
+          <Type>xml_move_stand</Type>
+          <Velocity>
+            <X>0</X>
+            <Y>0</Y>
+          </Velocity>
+        </Behavior>
+        <Behavior>
+          <Type>xml_move_run</Type>
+          <Velocity>
+            <X>-31</X>
+            <Y>0</Y>
+          </Velocity>
+        </Behavior>
+      </Component>
+      <Component>
+        <Type>xml_render</Type>
+        <Behavior>
+          <Type>xml_render_eat</Type>
+          <ResourceName>Images/Zombies/Spiders/Spider/Attack</ResourceName>
+          <FootPosition>
+            <X>12</X>
+            <Y>38</Y>
+          </FootPosition>
+          <TimeFrame>0.03</TimeFrame>
+
+        </Behavior>
+        <Behavior>
+          <Type>xml_render_run</Type>
+          <ResourceName>Images/Zombies/Skeletons/BarrowWight/Walk</ResourceName>
+          <FootPosition>
+            <X>5</X>
+            <Y>29</Y>
+          </FootPosition>
+          <TimeFrame>0.04</TimeFrame>
+        </Behavior>
+        <Behavior>
+          <Type>xml_render_death</Type>
+          <ResourceName>Images/Zombies/Skeletons/BarrowWight/Death</ResourceName>
+          <FootPosition>
+            <X>2</X>
+            <Y>36</Y>
+          </FootPosition>
+          <TimeFrame>0.04</TimeFrame>
+        </Behavior>
+      </Component>
+      <Component>
+        <Type>xml_physic</Type>
+      </Component>
+      <Component>
+        <Type>xml_logic</Type>
+        <Behavior>
+          <Type>xml_NormalZombie</Type>
+          <Health>70</Health>
+          <Damage>7</Damage>
+        </Behavior>
+      </Component>
+    </Components>
+  </Zombie>
 
   <!--BarrowWight-->
   <Zombie>
@@ -18,7 +84,7 @@
         <Behavior>
           <Type>xml_move_run</Type>
           <Velocity>
-            <X>-12</X>
+            <X>-170</X>
             <Y>0</Y>
           </Velocity>
         </Behavior>
@@ -29,41 +95,29 @@
           <Type>xml_render_eat</Type>
           <ResourceName>Images/Zombies/Skeletons/BarrowWight/Attack</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>18</X>
+            <Y>92</Y>
           </FootPosition>
-          <TimeFrame>0.06</TimeFrame>
-          <Bound>
-            <X>73</X>
-            <Y>101</Y>
-          </Bound>
+          <TimeFrame>0.03</TimeFrame>
 
         </Behavior>
         <Behavior>
           <Type>xml_render_run</Type>
           <ResourceName>Images/Zombies/Skeletons/BarrowWight/Walk</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>10</X>
+            <Y>72</Y>
           </FootPosition>
           <TimeFrame>0.04</TimeFrame>
-          <Bound>
-            <X>64</X>
-            <Y>81</Y>
-          </Bound>
         </Behavior>
         <Behavior>
           <Type>xml_render_death</Type>
           <ResourceName>Images/Zombies/Skeletons/BarrowWight/Death</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>18</X>
+            <Y>92</Y>
           </FootPosition>
           <TimeFrame>0.04</TimeFrame>
-          <Bound>
-            <X>103</X>
-            <Y>105</Y>
-          </Bound>
         </Behavior>
       </Component>
       <Component>
@@ -73,86 +127,8 @@
         <Type>xml_logic</Type>
         <Behavior>
           <Type>xml_NormalZombie</Type>
-          <Health>80</Health>
+          <Health>100</Health>
           <Damage>12</Damage>
-        </Behavior>
-      </Component>
-    </Components>
-  </Zombie>
-
-  <!--Spider-->
-  <Zombie>
-    <Name>xml_Spider_zombie</Name>
-    <Type>Zombie</Type>
-    <Components>
-      <Component>
-        <Type>xml_move</Type>
-        <Behavior>
-          <Type>xml_move_stand</Type>
-          <Velocity>
-            <X>0</X>
-            <Y>0</Y>
-          </Velocity>
-        </Behavior>
-        <Behavior>
-          <Type>xml_move_run</Type>
-          <Velocity>
-            <X>-26</X>
-            <Y>0</Y>
-          </Velocity>
-        </Behavior>
-      </Component>
-      <Component>
-        <Type>xml_render</Type>
-        <Behavior>
-          <Type>xml_render_eat</Type>
-          <ResourceName>Images/Zombies/Spiders/Spider/Attack</ResourceName>
-          <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
-          </FootPosition>
-          <TimeFrame>0.06</TimeFrame>
-          <Bound>
-            <X>65</X>
-            <Y>50</Y>
-          </Bound>
-        </Behavior>
-        <Behavior>
-          <Type>xml_render_run</Type>
-          <ResourceName>Images/Zombies/Spiders/Spider/Walk</ResourceName>
-          <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
-          </FootPosition>
-          <TimeFrame>0.04</TimeFrame>
-          <Bound>
-            <X>51</X>
-            <Y>43</Y>
-          </Bound>
-        </Behavior>
-        <Behavior>
-          <Type>xml_render_death</Type>
-          <ResourceName>Images/Zombies/Spiders/Spider/Death</ResourceName>
-          <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
-          </FootPosition>
-          <TimeFrame>0.04</TimeFrame>
-          <Bound>
-            <X>43</X>
-            <Y>44</Y>
-          </Bound>
-        </Behavior>
-      </Component>
-      <Component>
-        <Type>xml_physic</Type>
-      </Component>
-      <Component>
-        <Type>xml_logic</Type>
-        <Behavior>
-          <Type>xml_NormalZombie</Type>
-          <Health>70</Health>
-          <Damage>7</Damage>
         </Behavior>
       </Component>
     </Components>
@@ -186,40 +162,29 @@
           <Type>xml_render_eat</Type>
           <ResourceName>Images/Zombies/Zombies/Nupperibo/Attack</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
-          </FootPosition>
-          <TimeFrame>0.06</TimeFrame>
-          <Bound>
-            <X>81</X>
+            <X>19</X>
             <Y>82</Y>
-          </Bound>
+          </FootPosition>
+          <TimeFrame>0.03</TimeFrame>
+
         </Behavior>
         <Behavior>
           <Type>xml_render_run</Type>
-          <ResourceName>Images/Zombies/Zombies/Nupperibo/Walk</ResourceName>
+          <ResourceName>Images/Zombies/Skeletons/BarrowWight/Walk</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>10</X>
+            <Y>62</Y>
           </FootPosition>
           <TimeFrame>0.04</TimeFrame>
-          <Bound>
-            <X>69</X>
-            <Y>69</Y>
-          </Bound>
         </Behavior>
         <Behavior>
           <Type>xml_render_death</Type>
-          <ResourceName>Images/Zombies/Zombies/Nupperibo/Death</ResourceName>
+          <ResourceName>Images/Zombies/Skeletons/BarrowWight/Death</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>18</X>
+            <Y>71</Y>
           </FootPosition>
           <TimeFrame>0.04</TimeFrame>
-          <Bound>
-            <X>80</X>
-            <Y>83</Y>
-          </Bound>
         </Behavior>
       </Component>
       <Component>
@@ -229,7 +194,7 @@
         <Type>xml_logic</Type>
         <Behavior>
           <Type>xml_NormalZombie</Type>
-          <Health>100</Health>
+          <Health>140</Health>
           <Damage>13</Damage>
         </Behavior>
       </Component>
@@ -253,7 +218,7 @@
         <Behavior>
           <Type>xml_move_run</Type>
           <Velocity>
-            <X>-12</X>
+            <X>-17</X>
             <Y>0</Y>
           </Velocity>
         </Behavior>
@@ -264,40 +229,29 @@
           <Type>xml_render_eat</Type>
           <ResourceName>Images/Zombies/Skeletons/Skeleton/Attack</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>32</X>
+            <Y>89</Y>
           </FootPosition>
-          <TimeFrame>0.06</TimeFrame>
-          <Bound>
-            <X>129</X>
-            <Y>102</Y>
-          </Bound>
+          <TimeFrame>0.03</TimeFrame>
+
         </Behavior>
         <Behavior>
           <Type>xml_render_run</Type>
-          <ResourceName>Images/Zombies/Skeletons/Skeleton/Walk</ResourceName>
+          <ResourceName>Images/Zombies/Skeletons/BarrowWight/Walk</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>3</X>
+            <Y>74</Y>
           </FootPosition>
           <TimeFrame>0.04</TimeFrame>
-          <Bound>
-            <X>62</X>
-            <Y>82</Y>
-          </Bound>
         </Behavior>
         <Behavior>
           <Type>xml_render_death</Type>
-          <ResourceName>Images/Zombies/Skeletons/Skeleton/Death</ResourceName>
+          <ResourceName>Images/Zombies/Skeletons/BarrowWight/Death</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>52</X>
+            <Y>97</Y>
           </FootPosition>
           <TimeFrame>0.04</TimeFrame>
-          <Bound>
-            <X>156</X>
-            <Y>134</Y>
-          </Bound>
         </Behavior>
       </Component>
       <Component>
@@ -331,7 +285,7 @@
         <Behavior>
           <Type>xml_move_run</Type>
           <Velocity>
-            <X>-12</X>
+            <X>-17</X>
             <Y>0</Y>
           </Velocity>
         </Behavior>
@@ -342,40 +296,29 @@
           <Type>xml_render_eat</Type>
           <ResourceName>Images/Zombies/Zombies/Mummy/Attack</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>32</X>
+            <Y>81</Y>
           </FootPosition>
-          <TimeFrame>0.06</TimeFrame>
-          <Bound>
-            <X>103</X>
-            <Y>92</Y>
-          </Bound>
+          <TimeFrame>0.03</TimeFrame>
+
         </Behavior>
         <Behavior>
           <Type>xml_render_run</Type>
-          <ResourceName>Images/Zombies/Zombies/Mummy/Walk</ResourceName>
+          <ResourceName>Images/Zombies/Skeletons/BarrowWight/Walk</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>5</X>
+            <Y>72</Y>
           </FootPosition>
           <TimeFrame>0.04</TimeFrame>
-          <Bound>
-            <X>53</X>
-            <Y>88</Y>
-          </Bound>
         </Behavior>
         <Behavior>
           <Type>xml_render_death</Type>
-          <ResourceName>Images/Zombies/Zombies/Mummy/Death</ResourceName>
+          <ResourceName>Images/Zombies/Skeletons/BarrowWight/Death</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>20</X>
+            <Y>79</Y>
           </FootPosition>
           <TimeFrame>0.04</TimeFrame>
-          <Bound>
-            <X>79</X>
-            <Y>105</Y>
-          </Bound>
         </Behavior>
       </Component>
       <Component>
@@ -409,7 +352,7 @@
         <Behavior>
           <Type>xml_move_run</Type>
           <Velocity>
-            <X>-12</X>
+            <X>-17</X>
             <Y>0</Y>
           </Velocity>
         </Behavior>
@@ -420,40 +363,29 @@
           <Type>xml_render_eat</Type>
           <ResourceName>Images/Zombies/Skeletons/Tattered/Attack</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>20</X>
+            <Y>99</Y>
           </FootPosition>
-          <TimeFrame>0.06</TimeFrame>
-          <Bound>
-            <X>90</X>
-            <Y>105</Y>
-          </Bound>
+          <TimeFrame>0.03</TimeFrame>
+
         </Behavior>
         <Behavior>
           <Type>xml_render_run</Type>
-          <ResourceName>Images/Zombies/Skeletons/Tattered/Walk</ResourceName>
+          <ResourceName>Images/Zombies/Skeletons/BarrowWight/Walk</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>10</X>
+            <Y>87</Y>
           </FootPosition>
           <TimeFrame>0.04</TimeFrame>
-          <Bound>
-            <X>64</X>
-            <Y>95</Y>
-          </Bound>
         </Behavior>
         <Behavior>
           <Type>xml_render_death</Type>
-          <ResourceName>Images/Zombies/Skeletons/Tattered/Death</ResourceName>
+          <ResourceName>Images/Zombies/Skeletons/BarrowWight/Death</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>26</X>
+            <Y>93</Y>
           </FootPosition>
           <TimeFrame>0.04</TimeFrame>
-          <Bound>
-            <X>103</X>
-            <Y>114</Y>
-          </Bound>
         </Behavior>
       </Component>
       <Component>
@@ -487,7 +419,7 @@
         <Behavior>
           <Type>xml_move_run</Type>
           <Velocity>
-            <X>-7</X>
+            <X>-12</X>
             <Y>0</Y>
           </Velocity>
         </Behavior>
@@ -498,40 +430,29 @@
           <Type>xml_render_eat</Type>
           <ResourceName>Images/Zombies/Zombies/Drowded/Attack</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
-          </FootPosition>
-          <TimeFrame>0.06</TimeFrame>
-          <Bound>
-            <X>86</X>
+            <X>14</X>
             <Y>78</Y>
-          </Bound>
+          </FootPosition>
+          <TimeFrame>0.03</TimeFrame>
+
         </Behavior>
         <Behavior>
           <Type>xml_render_run</Type>
-          <ResourceName>Images/Zombies/Zombies/Drowded/Walk</ResourceName>
+          <ResourceName>Images/Zombies/Skeletons/BarrowWight/Walk</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>14</X>
+            <Y>77</Y>
           </FootPosition>
           <TimeFrame>0.04</TimeFrame>
-          <Bound>
-            <X>83</X>
-            <Y>87</Y>
-          </Bound>
         </Behavior>
         <Behavior>
           <Type>xml_render_death</Type>
-          <ResourceName>Images/Zombies/Zombies/Drowded/Death</ResourceName>
+          <ResourceName>Images/Zombies/Skeletons/BarrowWight/Death</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>19</X>
+            <Y>76</Y>
           </FootPosition>
           <TimeFrame>0.04</TimeFrame>
-          <Bound>
-            <X>97</X>
-            <Y>91</Y>
-          </Bound>
         </Behavior>
       </Component>
       <Component>
@@ -565,7 +486,7 @@
         <Behavior>
           <Type>xml_move_run</Type>
           <Velocity>
-            <X>-24</X>
+            <X>-29</X>
             <Y>0</Y>
           </Velocity>
         </Behavior>
@@ -576,40 +497,29 @@
           <Type>xml_render_eat</Type>
           <ResourceName>Images/Zombies/Zombies/Nameless/Attack</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
-          </FootPosition>
-          <TimeFrame>0.06</TimeFrame>
-          <Bound>
-            <X>89</X>
+            <X>15</X>
             <Y>101</Y>
-          </Bound>
+          </FootPosition>
+          <TimeFrame>0.03</TimeFrame>
+
         </Behavior>
         <Behavior>
           <Type>xml_render_run</Type>
-          <ResourceName>Images/Zombies/Zombies/Nameless/Walk</ResourceName>
+          <ResourceName>Images/Zombies/Skeletons/BarrowWight/Walk</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>3</X>
+            <Y>93</Y>
           </FootPosition>
           <TimeFrame>0.04</TimeFrame>
-          <Bound>
-            <X>73</X>
-            <Y>100</Y>
-          </Bound>
         </Behavior>
         <Behavior>
           <Type>xml_render_death</Type>
-          <ResourceName>Images/Zombies/Zombies/Nameless/Death</ResourceName>
+          <ResourceName>Images/Zombies/Skeletons/BarrowWight/Death</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>48</X>
+            <Y>95</Y>
           </FootPosition>
           <TimeFrame>0.04</TimeFrame>
-          <Bound>
-            <X>155</X>
-            <Y>130</Y>
-          </Bound>
         </Behavior>
       </Component>
       <Component>
@@ -643,7 +553,7 @@
         <Behavior>
           <Type>xml_move_run</Type>
           <Velocity>
-            <X>-12</X>
+            <X>-17</X>
             <Y>0</Y>
           </Velocity>
         </Behavior>
@@ -654,40 +564,29 @@
           <Type>xml_render_eat</Type>
           <ResourceName>Images/Zombies/Skeletons/GiantSkeletonSword/Attack</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>30</X>
+            <Y>122</Y>
           </FootPosition>
-          <TimeFrame>0.06</TimeFrame>
-          <Bound>
-            <X>131</X>
-            <Y>125</Y>
-          </Bound>
+          <TimeFrame>0.03</TimeFrame>
+
         </Behavior>
         <Behavior>
           <Type>xml_render_run</Type>
-          <ResourceName>Images/Zombies/Skeletons/GiantSkeletonSword/Walk</ResourceName>
+          <ResourceName>Images/Zombies/Skeletons/BarrowWight/Walk</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>27</X>
+            <Y>94</Y>
           </FootPosition>
           <TimeFrame>0.04</TimeFrame>
-          <Bound>
-            <X>112</X>
-            <Y>99</Y>
-          </Bound>
         </Behavior>
         <Behavior>
           <Type>xml_render_death</Type>
-          <ResourceName>Images/Zombies/Skeletons/GiantSkeletonSword/Death</ResourceName>
+          <ResourceName>Images/Zombies/Skeletons/BarrowWight/Death</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>35</X>
+            <Y>99</Y>
           </FootPosition>
           <TimeFrame>0.04</TimeFrame>
-          <Bound>
-            <X>139</X>
-            <Y>146</Y>
-          </Bound>
         </Behavior>
       </Component>
       <Component>
@@ -721,7 +620,7 @@
         <Behavior>
           <Type>xml_move_run</Type>
           <Velocity>
-            <X>-24</X>
+            <X>-29</X>
             <Y>0</Y>
           </Velocity>
         </Behavior>
@@ -732,40 +631,29 @@
           <Type>xml_render_eat</Type>
           <ResourceName>Images/Zombies/Zombies/Ghoul/Attack</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>18</X>
+            <Y>98</Y>
           </FootPosition>
-          <TimeFrame>0.06</TimeFrame>
-          <Bound>
-            <X>107</X>
-            <Y>107</Y>
-          </Bound>
+          <TimeFrame>0.03</TimeFrame>
+
         </Behavior>
         <Behavior>
           <Type>xml_render_run</Type>
-          <ResourceName>Images/Zombies/Zombies/Ghoul/Walk</ResourceName>
+          <ResourceName>Images/Zombies/Skeletons/BarrowWight/Walk</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>13</X>
+            <Y>84</Y>
           </FootPosition>
           <TimeFrame>0.04</TimeFrame>
-          <Bound>
-            <X>81</X>
-            <Y>91</Y>
-          </Bound>
         </Behavior>
         <Behavior>
           <Type>xml_render_death</Type>
-          <ResourceName>Images/Zombies/Zombies/Ghoul/Death</ResourceName>
+          <ResourceName>Images/Zombies/Skeletons/BarrowWight/Death</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>67</X>
+            <Y>89</Y>
           </FootPosition>
           <TimeFrame>0.04</TimeFrame>
-          <Bound>
-            <X>199</X>
-            <Y>136</Y>
-          </Bound>
         </Behavior>
       </Component>
       <Component>
@@ -799,7 +687,7 @@
         <Behavior>
           <Type>xml_move_run</Type>
           <Velocity>
-            <X>-4</X>
+            <X>-9</X>
             <Y>0</Y>
           </Velocity>
         </Behavior>
@@ -810,40 +698,29 @@
           <Type>xml_render_eat</Type>
           <ResourceName>Images/Zombies/Zombies/Lemure/Attack</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>22</X>
+            <Y>97</Y>
           </FootPosition>
-          <TimeFrame>0.06</TimeFrame>
-          <Bound>
-            <X>133</X>
-            <Y>108</Y>
-          </Bound>
+          <TimeFrame>0.03</TimeFrame>
+
         </Behavior>
         <Behavior>
           <Type>xml_render_run</Type>
-          <ResourceName>Images/Zombies/Zombies/Lemure/Walk</ResourceName>
+          <ResourceName>Images/Zombies/Skeletons/BarrowWight/Walk</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>6</X>
+            <Y>78</Y>
           </FootPosition>
           <TimeFrame>0.04</TimeFrame>
-          <Bound>
-            <X>109</X>
-            <Y>87</Y>
-          </Bound>
         </Behavior>
         <Behavior>
           <Type>xml_render_death</Type>
-          <ResourceName>Images/Zombies/Zombies/Lemure/Death</ResourceName>
+          <ResourceName>Images/Zombies/Skeletons/BarrowWight/Death</ResourceName>
           <FootPosition>
             <X>0</X>
-            <Y>0</Y>
+            <Y>85</Y>
           </FootPosition>
           <TimeFrame>0.04</TimeFrame>
-          <Bound>
-            <X>97</X>
-            <Y>107</Y>
-          </Bound>
         </Behavior>
       </Component>
       <Component>
@@ -877,7 +754,7 @@
         <Behavior>
           <Type>xml_move_run</Type>
           <Velocity>
-            <X>-33</X>
+            <X>-38</X>
             <Y>0</Y>
           </Velocity>
         </Behavior>
@@ -888,40 +765,29 @@
           <Type>xml_render_eat</Type>
           <ResourceName>Images/Zombies/Zombies/Vampire/Attack</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>4</X>
+            <Y>66</Y>
           </FootPosition>
-          <TimeFrame>0.06</TimeFrame>
-          <Bound>
-            <X>65</X>
-            <Y>76</Y>
-          </Bound>
+          <TimeFrame>0.03</TimeFrame>
+
         </Behavior>
         <Behavior>
           <Type>xml_render_run</Type>
-          <ResourceName>Images/Zombies/Zombies/Vampire/Walk</ResourceName>
+          <ResourceName>Images/Zombies/Skeletons/BarrowWight/Walk</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>-1</X>
+            <Y>61</Y>
           </FootPosition>
           <TimeFrame>0.04</TimeFrame>
-          <Bound>
-            <X>81</X>
-            <Y>79</Y>
-          </Bound>
         </Behavior>
         <Behavior>
           <Type>xml_render_death</Type>
-          <ResourceName>Images/Zombies/Zombies/Vampire/Death</ResourceName>
+          <ResourceName>Images/Zombies/Skeletons/BarrowWight/Death</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>15</X>
+            <Y>62</Y>
           </FootPosition>
           <TimeFrame>0.04</TimeFrame>
-          <Bound>
-            <X>89</X>
-            <Y>92</Y>
-          </Bound>
         </Behavior>
       </Component>
       <Component>
@@ -955,7 +821,7 @@
         <Behavior>
           <Type>xml_move_run</Type>
           <Velocity>
-            <X>-36</X>
+            <X>-41</X>
             <Y>0</Y>
           </Velocity>
         </Behavior>
@@ -966,40 +832,29 @@
           <Type>xml_render_eat</Type>
           <ResourceName>Images/Zombies/Spiders/Giant/Attack</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>38</X>
+            <Y>74</Y>
           </FootPosition>
-          <TimeFrame>0.06</TimeFrame>
-          <Bound>
-            <X>141</X>
-            <Y>104</Y>
-          </Bound>
+          <TimeFrame>0.03</TimeFrame>
+
         </Behavior>
         <Behavior>
           <Type>xml_render_run</Type>
-          <ResourceName>Images/Zombies/Spiders/Giant/Walk</ResourceName>
+          <ResourceName>Images/Zombies/Skeletons/BarrowWight/Walk</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>24</X>
+            <Y>56</Y>
           </FootPosition>
           <TimeFrame>0.04</TimeFrame>
-          <Bound>
-            <X>107</X>
-            <Y>86</Y>
-          </Bound>
         </Behavior>
         <Behavior>
           <Type>xml_render_death</Type>
-          <ResourceName>Images/Zombies/Spiders/Giant/Death</ResourceName>
+          <ResourceName>Images/Zombies/Skeletons/BarrowWight/Death</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>8</X>
+            <Y>69</Y>
           </FootPosition>
           <TimeFrame>0.04</TimeFrame>
-          <Bound>
-            <X>89</X>
-            <Y>93</Y>
-          </Bound>
         </Behavior>
       </Component>
       <Component>
@@ -1033,7 +888,7 @@
         <Behavior>
           <Type>xml_move_run</Type>
           <Velocity>
-            <X>-14</X>
+            <X>-19</X>
             <Y>0</Y>
           </Velocity>
         </Behavior>
@@ -1044,40 +899,29 @@
           <Type>xml_render_eat</Type>
           <ResourceName>Images/Zombies/Spiders/Remorhaz/Attack</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>57</X>
+            <Y>159</Y>
           </FootPosition>
-          <TimeFrame>0.06</TimeFrame>
-          <Bound>
-            <X>236</X>
-            <Y>209</Y>
-          </Bound>
+          <TimeFrame>0.03</TimeFrame>
+
         </Behavior>
         <Behavior>
           <Type>xml_render_run</Type>
-          <ResourceName>Images/Zombies/Spiders/Remorhaz/Walk</ResourceName>
+          <ResourceName>Images/Zombies/Skeletons/BarrowWight/Walk</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>18</X>
+            <Y>146</Y>
           </FootPosition>
           <TimeFrame>0.04</TimeFrame>
-          <Bound>
-            <X>190</X>
-            <Y>190</Y>
-          </Bound>
         </Behavior>
         <Behavior>
           <Type>xml_render_death</Type>
-          <ResourceName>Images/Zombies/Spiders/Remorhaz/Death</ResourceName>
+          <ResourceName>Images/Zombies/Skeletons/BarrowWight/Death</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>18</X>
+            <Y>129</Y>
           </FootPosition>
           <TimeFrame>0.04</TimeFrame>
-          <Bound>
-            <X>190</X>
-            <Y>190</Y>
-          </Bound>
         </Behavior>
       </Component>
       <Component>
@@ -1111,7 +955,7 @@
         <Behavior>
           <Type>xml_move_run</Type>
           <Velocity>
-            <X>-22</X>
+            <X>-27</X>
             <Y>0</Y>
           </Velocity>
         </Behavior>
@@ -1122,40 +966,29 @@
           <Type>xml_render_eat</Type>
           <ResourceName>Images/Zombies/Zombies/Histachii/Attack</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>23</X>
+            <Y>73</Y>
           </FootPosition>
-          <TimeFrame>0.06</TimeFrame>
-          <Bound>
-            <X>106</X>
-            <Y>91</Y>
-          </Bound>
+          <TimeFrame>0.03</TimeFrame>
+
         </Behavior>
         <Behavior>
           <Type>xml_render_run</Type>
-          <ResourceName>Images/Zombies/Zombies/Histachii/Walk</ResourceName>
+          <ResourceName>Images/Zombies/Skeletons/BarrowWight/Walk</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>33</X>
+            <Y>72</Y>
           </FootPosition>
           <TimeFrame>0.04</TimeFrame>
-          <Bound>
-            <X>53</X>
-            <Y>92</Y>
-          </Bound>
         </Behavior>
         <Behavior>
           <Type>xml_render_death</Type>
-          <ResourceName>Images/Zombies/Zombies/Histachii/Death</ResourceName>
+          <ResourceName>Images/Zombies/Skeletons/BarrowWight/Death</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>13</X>
+            <Y>76</Y>
           </FootPosition>
           <TimeFrame>0.04</TimeFrame>
-          <Bound>
-            <X>87</X>
-            <Y>133</Y>
-          </Bound>
         </Behavior>
       </Component>
       <Component>
@@ -1189,7 +1022,7 @@
         <Behavior>
           <Type>xml_move_run</Type>
           <Velocity>
-            <X>-19</X>
+            <X>-24</X>
             <Y>0</Y>
           </Velocity>
         </Behavior>
@@ -1200,40 +1033,29 @@
           <Type>xml_render_eat</Type>
           <ResourceName>Images/Zombies/Zombies/Ravel/Attack</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
-          </FootPosition>
-          <TimeFrame>0.06</TimeFrame>
-          <Bound>
-            <X>115</X>
+            <X>32</X>
             <Y>84</Y>
-          </Bound>
+          </FootPosition>
+          <TimeFrame>0.03</TimeFrame>
+
         </Behavior>
         <Behavior>
           <Type>xml_render_run</Type>
-          <ResourceName>Images/Zombies/Zombies/Ravel/Walk</ResourceName>
+          <ResourceName>Images/Zombies/Skeletons/BarrowWight/Walk</ResourceName>
           <FootPosition>
             <X>0</X>
-            <Y>0</Y>
+            <Y>74</Y>
           </FootPosition>
           <TimeFrame>0.04</TimeFrame>
-          <Bound>
-            <X>51</X>
-            <Y>74</Y>
-          </Bound>
         </Behavior>
         <Behavior>
           <Type>xml_render_death</Type>
-          <ResourceName>Images/Zombies/Zombies/Ravel/Death</ResourceName>
+          <ResourceName>Images/Zombies/Skeletons/BarrowWight/Death</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>26</X>
+            <Y>78</Y>
           </FootPosition>
           <TimeFrame>0.04</TimeFrame>
-          <Bound>
-            <X>105</X>
-            <Y>96</Y>
-          </Bound>
         </Behavior>
       </Component>
       <Component>
@@ -1267,7 +1089,7 @@
         <Behavior>
           <Type>xml_move_run</Type>
           <Velocity>
-            <X>-6</X>
+            <X>-11</X>
             <Y>0</Y>
           </Velocity>
         </Behavior>
@@ -1278,40 +1100,29 @@
           <Type>xml_render_eat</Type>
           <ResourceName>Images/Zombies/Skeletons/BoneGolem/Attack</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>68</X>
+            <Y>186</Y>
           </FootPosition>
-          <TimeFrame>0.06</TimeFrame>
-          <Bound>
-            <X>275</X>
-            <Y>273</Y>
-          </Bound>
+          <TimeFrame>0.03</TimeFrame>
+
         </Behavior>
         <Behavior>
           <Type>xml_render_run</Type>
-          <ResourceName>Images/Zombies/Skeletons/BoneGolem/Walk</ResourceName>
+          <ResourceName>Images/Zombies/Skeletons/BarrowWight/Walk</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>13</X>
+            <Y>109</Y>
           </FootPosition>
           <TimeFrame>0.04</TimeFrame>
-          <Bound>
-            <X>153</X>
-            <Y>149</Y>
-          </Bound>
         </Behavior>
         <Behavior>
           <Type>xml_render_death</Type>
-          <ResourceName>Images/Zombies/Skeletons/BoneGolem/Death</ResourceName>
+          <ResourceName>Images/Zombies/Skeletons/BarrowWight/Death</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>-9</X>
+            <Y>103</Y>
           </FootPosition>
           <TimeFrame>0.04</TimeFrame>
-          <Bound>
-            <X>121</X>
-            <Y>134</Y>
-          </Bound>
         </Behavior>
       </Component>
       <Component>
@@ -1345,7 +1156,7 @@
         <Behavior>
           <Type>xml_move_run</Type>
           <Velocity>
-            <X>-12</X>
+            <X>-17</X>
             <Y>0</Y>
           </Velocity>
         </Behavior>
@@ -1356,40 +1167,29 @@
           <Type>xml_render_eat</Type>
           <ResourceName>Images/Zombies/Skeletons/GiantSkeletonBlade/Attack</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>49</X>
+            <Y>153</Y>
           </FootPosition>
-          <TimeFrame>0.06</TimeFrame>
-          <Bound>
-            <X>202</X>
-            <Y>191</Y>
-          </Bound>
+          <TimeFrame>0.03</TimeFrame>
+
         </Behavior>
         <Behavior>
           <Type>xml_render_run</Type>
-          <ResourceName>Images/Zombies/Skeletons/GiantSkeletonBlade/Walk</ResourceName>
+          <ResourceName>Images/Zombies/Skeletons/BarrowWight/Walk</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>7</X>
+            <Y>106</Y>
           </FootPosition>
           <TimeFrame>0.04</TimeFrame>
-          <Bound>
-            <X>159</X>
-            <Y>141</Y>
-          </Bound>
         </Behavior>
         <Behavior>
           <Type>xml_render_death</Type>
-          <ResourceName>Images/Zombies/Skeletons/GiantSkeletonBlade/Death</ResourceName>
+          <ResourceName>Images/Zombies/Skeletons/BarrowWight/Death</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>33</X>
+            <Y>145</Y>
           </FootPosition>
           <TimeFrame>0.04</TimeFrame>
-          <Bound>
-            <X>169</X>
-            <Y>193</Y>
-          </Bound>
         </Behavior>
       </Component>
       <Component>
@@ -1423,7 +1223,7 @@
         <Behavior>
           <Type>xml_move_run</Type>
           <Velocity>
-            <X>-30</X>
+            <X>-35</X>
             <Y>0</Y>
           </Velocity>
         </Behavior>
@@ -1434,40 +1234,29 @@
           <Type>xml_render_eat</Type>
           <ResourceName>Images/Zombies/Spiders/Drider/Attack</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>25</X>
+            <Y>85</Y>
           </FootPosition>
-          <TimeFrame>0.06</TimeFrame>
-          <Bound>
-            <X>126</X>
-            <Y>115</Y>
-          </Bound>
+          <TimeFrame>0.03</TimeFrame>
+
         </Behavior>
         <Behavior>
           <Type>xml_render_run</Type>
-          <ResourceName>Images/Zombies/Spiders/Drider/Walk</ResourceName>
+          <ResourceName>Images/Zombies/Skeletons/BarrowWight/Walk</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>55</X>
+            <Y>92</Y>
           </FootPosition>
           <TimeFrame>0.04</TimeFrame>
-          <Bound>
-            <X>186</X>
-            <Y>156</Y>
-          </Bound>
         </Behavior>
         <Behavior>
           <Type>xml_render_death</Type>
-          <ResourceName>Images/Zombies/Spiders/Drider/Death</ResourceName>
+          <ResourceName>Images/Zombies/Skeletons/BarrowWight/Death</ResourceName>
           <FootPosition>
-            <X>0</X>
-            <Y>0</Y>
+            <X>44</X>
+            <Y>79</Y>
           </FootPosition>
           <TimeFrame>0.04</TimeFrame>
-          <Bound>
-            <X>163</X>
-            <Y>134</Y>
-          </Bound>
         </Behavior>
       </Component>
       <Component>

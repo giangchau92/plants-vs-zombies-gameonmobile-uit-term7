@@ -3,6 +3,7 @@ using PlantsVsZombies.GameComponents.Behaviors.Bullet;
 using PlantsVsZombies.GameCore;
 using SCSEngine.GestureHandling;
 using SCSEngine.GestureHandling.Implements.Events;
+using SCSEngine.Mathematics;
 using SCSEngine.Services;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,7 @@ namespace PlantsVsZombies.GrowSystem
             this.CurrentMoney = money;
             _collectionPoint = new Vector2(20, 430);
             _gestureDispatcher = gestureDispatcher;
+            this.DrawOrder = 2;
         }
 
         public int CurrentMoney
@@ -37,15 +39,12 @@ namespace PlantsVsZombies.GrowSystem
             set;
         }
 
-
-        Random rand = new Random();
-
         public override void Update(GameTime gameTime)
         {
             if (_currentTime > _timeGiveSun)
             {
                 // Give sun
-                float posX = (float)(rand.NextDouble() * 800);
+                float posX = GRandom.RandomFloat(800f);
 
                 AddSun(new Vector2(posX, 0), eSunState.PLYING);
                 _currentTime = TimeSpan.Zero;
@@ -70,7 +69,7 @@ namespace PlantsVsZombies.GrowSystem
 
         public override void Draw(GameTime gameTime)
         {
-            SCSServices.Instance.SpriteBatch.DrawString(SCSServices.Instance.DebugFont, CurrentMoney.ToString(), new Vector2(40, 430), Color.Red, 0, Vector2.Zero, 1f, Microsoft.Xna.Framework.Graphics.SpriteEffects.None, 1);
+            SCSServices.Instance.SpriteBatch.DrawString(SCSServices.Instance.DebugFont, CurrentMoney.ToString(), new Vector2(20, 420), Color.Red, 0, Vector2.Zero, 1f, Microsoft.Xna.Framework.Graphics.SpriteEffects.None, 1);
         }
 
         private static Vector2 _collectionPoint;
