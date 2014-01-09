@@ -236,9 +236,9 @@ namespace PlantsVsZombies.GrowSystem
             base.Update(gameTime);
         }
 
-        public PvZGrowList MakeGrowList()
+        public PvZGrowList MakeGrowList(IPvZGameGrow gameGrow)
         {
-            var growList = new PvZGrowList(this.Game, this.chosenList.ElementWidth, this.chosenList.ElemPad, this.uiManager, _currency);
+            var growList = new PvZGrowList(this.Game, this.chosenList.ElementWidth, this.chosenList.ElemPad, this.uiManager, _currency, gameGrow);
             growList.Canvas.Bound.Alter(this.chosenList.Canvas.Bound);
             growList.Canvas.Content.Alter(this.chosenList.Canvas.Content);
             growList.Background = this.chosenList.Background;

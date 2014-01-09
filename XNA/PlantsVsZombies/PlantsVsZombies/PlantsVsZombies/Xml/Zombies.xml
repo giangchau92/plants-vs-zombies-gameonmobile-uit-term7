@@ -84,7 +84,7 @@
         <Behavior>
           <Type>xml_move_run</Type>
           <Velocity>
-            <X>-170</X>
+            <X>-17</X>
             <Y>0</Y>
           </Velocity>
         </Behavior>

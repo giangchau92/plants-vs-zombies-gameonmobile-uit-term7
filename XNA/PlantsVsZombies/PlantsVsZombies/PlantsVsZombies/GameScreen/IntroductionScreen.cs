@@ -87,7 +87,7 @@ namespace PlantsVsZombies.GameScreen
             else
             {
                 double dA = (1.0 / FADE_TIME) * gameTime.ElapsedGameTime.TotalMilliseconds;
-                alpha += dA;
+                alpha -= dA;
 
                 this.timer -= gameTime.ElapsedGameTime.TotalMilliseconds;
 

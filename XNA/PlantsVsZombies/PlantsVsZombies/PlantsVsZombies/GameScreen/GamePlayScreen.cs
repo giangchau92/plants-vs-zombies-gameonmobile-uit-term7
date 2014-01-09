@@ -51,10 +51,11 @@ namespace PlantsVsZombies.GameScreen
         private UIControlManager uiControlManager;
         private IGestureDispatcher dispatcher;
         private PvZGrowSystem growSystem;
+        private IPvZGameGrow gameGrow;
 
         private PlayState state = PlayState.START;
 
-        public GamePlayScreen(IGameScreenManager screenManager, IGestureManager gm)
+        public GamePlayScreen(IGameScreenManager screenManager, IGestureManager gm, PvZGrowSystem growSys)
             : base(screenManager, "PlayScreen")
         {
             gameBoard = new PZBoard(9, 4, objectManager);
@@ -73,6 +74,8 @@ namespace PlantsVsZombies.GameScreen
             this.playBacground.StartAnimate();
 
             _messageCenter = new MessageCenter(this.Game);
+
+            this.growSystem = growSys;
         }
 
         private void OnBackgroundAnimatingCompleted(PlayBackground background)
@@ -100,8 +103,8 @@ namespace PlantsVsZombies.GameScreen
             SCSServices.Instance.Game.Services.AddService(typeof(PvZSunSystem), _sunSystem);
             this.Components.Add(_sunSystem);
 
-            this.growSystem = new PvZGrowSystem(this.Game, new PvZGameGrow(gameBoard));
-            this.growSystem.Deserialize(XmlSerialization.Instance.Deserialize(File.Open(@"Xml\PlantGrowButtons.xml", FileMode.Open, FileAccess.Read, FileShare.None)));
+            this.gameGrow = new PvZGameGrow(this.gameBoard);
+
             var chooseSys = new PvZChooseSystem(this.Game, this.growSystem.ButtonFactoryBank, this.uiControlManager, _sunSystem, 3);
             chooseSys.Initialize();
             chooseSys.OnCameOut += this.OnChooseSystemCompleted;
@@ -112,7 +115,7 @@ namespace PlantsVsZombies.GameScreen
 
         private void OnChooseSystemCompleted(PvZChooseSystem chooseSys)
         {
-            var growList = chooseSys.MakeGrowList();
+            var growList = chooseSys.MakeGrowList(this.gameGrow);
             this.uiControlManager.Add(growList);
             chooseSys.RemoveAll();
 
