@@ -1,0 +1,65 @@
+<Levels>
+	<Level>
+		<Name>Level 1 - 1</Name>
+		<Wave>
+			<Name>Wave 1</Name>
+			<Zombie><Value>xml_Lemure_zombie</Value></Zombie>
+			<Number>
+				<From>1</From>
+				<To>1</To>
+			</Number>
+      <TimeNextZombieFrom>1</TimeNextZombieFrom>
+      <TimeNextZombieTo>1</TimeNextZombieTo>
+			<TimeWave>2</TimeWave>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>20</TimeNextWave>
+  </Wave>
+    
+		<Wave>
+			<Name>Wave 2</Name>
+			<Zombie><Value>xml_Spider_zombie</Value></Zombie>
+      <Zombie><Value>xml_BarrowWight_zombie</Value></Zombie>
+			<Number>
+				<From>2</From>
+				<To>2</To>
+			</Number>
+      <TimeNextZombieFrom>6</TimeNextZombieFrom>
+      <TimeNextZombieTo>10</TimeNextZombieTo>
+			<TimeWave>2</TimeWave>
+      <TimeBeginWave>5</TimeBeginWave>
+      <TimeNextWave>5</TimeNextWave>
+		</Wave>
+	</Level>
+  
+    
+    
+	<Level>
+		<Name>Level 1 - 2</Name>
+		<Wave>
+			<Name>Wave 1</Name>
+			<Zombie><Value>xml_Skeleton_zombie</Value></Zombie>
+			<Number>
+				<From>5</From>
+				<To>10</To>
+			</Number>
+      <TimeNextZombieFrom>3</TimeNextZombieFrom>
+      <TimeNextZombieTo>5</TimeNextZombieTo>
+			<TimeWave>500</TimeWave>
+      <TimeBeginWave>2</TimeBeginWave>
+      <TimeNextWave>500</TimeNextWave>
+		</Wave>
+		<Wave>
+			<Name>Wave 2</Name>
+			<Zombie><Value>xml_Skeleton_zombie</Value></Zombie>
+			<Number>
+				<From>3</From>
+				<To>8</To>
+			</Number>
+      <TimeNextZombieFrom>3</TimeNextZombieFrom>
+      <TimeNextZombieTo>5</TimeNextZombieTo>
+			<TimeWave>500</TimeWave>
+      <TimeBeginWave>500</TimeBeginWave>
+      <TimeNextWave>500</TimeNextWave>
+		</Wave>
+	</Level>
+</Levels>

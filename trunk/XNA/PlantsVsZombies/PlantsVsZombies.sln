@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlantsVsZombies", "PlantsVsZombies\PlantsVsZombies\PlantsVsZombies.csproj", "{71E9FE7C-17A8-407C-B480-84A073FC969F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlantsVsZombiesContent", "PlantsVsZombies\PlantsVsZombiesContent\PlantsVsZombiesContent.contentproj", "{48F8DCA8-F4BA-4092-8FB3-D14B231BEFB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCSEngine", "..\SCSEngine\SCSEngine\SCSEngine.csproj", "{95B5EF0B-D0CF-4101-B64A-666ED651E91F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Windows Phone = Debug|Windows Phone
+		Release|Windows Phone = Release|Windows Phone
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{71E9FE7C-17A8-407C-B480-84A073FC969F}.Debug|Windows Phone.ActiveCfg = Debug|Windows Phone
+		{71E9FE7C-17A8-407C-B480-84A073FC969F}.Debug|Windows Phone.Build.0 = Debug|Windows Phone
+		{71E9FE7C-17A8-407C-B480-84A073FC969F}.Debug|Windows Phone.Deploy.0 = Debug|Windows Phone
+		{71E9FE7C-17A8-407C-B480-84A073FC969F}.Release|Windows Phone.ActiveCfg = Release|Windows Phone
+		{71E9FE7C-17A8-407C-B480-84A073FC969F}.Release|Windows Phone.Build.0 = Release|Windows Phone
+		{71E9FE7C-17A8-407C-B480-84A073FC969F}.Release|Windows Phone.Deploy.0 = Release|Windows Phone
+		{48F8DCA8-F4BA-4092-8FB3-D14B231BEFB5}.Debug|Windows Phone.ActiveCfg = Debug|Windows Phone
+		{48F8DCA8-F4BA-4092-8FB3-D14B231BEFB5}.Release|Windows Phone.ActiveCfg = Release|Windows Phone
+		{95B5EF0B-D0CF-4101-B64A-666ED651E91F}.Debug|Windows Phone.ActiveCfg = Debug|Windows Phone
+		{95B5EF0B-D0CF-4101-B64A-666ED651E91F}.Debug|Windows Phone.Build.0 = Debug|Windows Phone
+		{95B5EF0B-D0CF-4101-B64A-666ED651E91F}.Release|Windows Phone.ActiveCfg = Release|Windows Phone
+		{95B5EF0B-D0CF-4101-B64A-666ED651E91F}.Release|Windows Phone.Build.0 = Release|Windows Phone
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
