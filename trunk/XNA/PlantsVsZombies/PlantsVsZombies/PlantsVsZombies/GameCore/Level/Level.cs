@@ -119,6 +119,7 @@ namespace PlantsVsZombies.GameCore.Level
         {
             Level clone = new Level();
             clone.Name = Name;
+            clone.Background = Background;
             foreach (var item in Waves)
             {
                 Wave wave = item.Clone();
