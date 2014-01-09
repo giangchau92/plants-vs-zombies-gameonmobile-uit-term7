@@ -22,6 +22,7 @@ namespace PlantsVsZombies.GameComponents.Components
 
         STANDING,
         PL_SHOOTING,
+        PL_EXPLOSION,
 
         B_FLYING
     }
@@ -119,6 +120,8 @@ namespace PlantsVsZombies.GameComponents.Components
                     renderTypr = eMoveRenderBehaviorType.STANDING;
                 else if (type == "xml_render_death")
                     renderTypr = eMoveRenderBehaviorType.ZO_NORMAL_DEATH;
+                else if (type == "xml_render_explosion")
+                    renderTypr = eMoveRenderBehaviorType.PL_EXPLOSION;
 
                 string resourceName = behaviorDeser.DeserializeString("ResourceName");
                 double timeFrame = behaviorDeser.DeserializeDouble("TimeFrame");

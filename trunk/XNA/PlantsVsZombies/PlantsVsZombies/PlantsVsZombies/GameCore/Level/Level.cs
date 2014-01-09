@@ -17,7 +17,7 @@ namespace PlantsVsZombies.GameCore.Level
 {
     public enum LevelState
     {
-        BEGIN, WAVING, ENDWAVE, END
+        BEGINWAVING, WAVING, ENDWAVE, END
     }
     public class Level : ISerializable
     {
@@ -30,6 +30,9 @@ namespace PlantsVsZombies.GameCore.Level
         private TimeSpan _currentTime;
         private int _currentWave;
 
+        public delegate void OnBeginWaveHandler(int currentWave, bool isFinalWave);
+        public event OnBeginWaveHandler OnBeginWave = null;
+
         public LevelState LevelState
         {
             get { return _currentState; }
@@ -38,18 +41,22 @@ namespace PlantsVsZombies.GameCore.Level
         public Level()
         {
             Waves = new List<Wave>();
-            _currentState = LevelState.BEGIN;
+            _currentState = LevelState.BEGINWAVING;
             _currentTime = TimeSpan.Zero;
             _currentWave = 0;
             IsFirstZombie = true;
             ////Debug.WriteLine("LEVEL: Begin Wave");
         }
 
-
         public void Update(PZBoard board, GameTime gameTime)
         {
-            if (_currentState == LevelState.BEGIN)
+            if (_currentState == LevelState.BEGINWAVING)
             {
+                if (_currentTime == TimeSpan.Zero)
+                {
+                    if (OnBeginWave != null)
+                        OnBeginWave(_currentWave, _currentWave + 1 == Waves.Count);
+                }
                 if (_currentTime >= Waves[_currentWave].TimeBeginWave)
                 {
                     ////Debug.WriteLine("LEVEL: Start Wave " + _currentWave);
@@ -80,7 +87,7 @@ namespace PlantsVsZombies.GameCore.Level
                             _currentState = LevelState.END;
                         else
                         {
-                            _currentState = LevelState.WAVING;
+                            _currentState = LevelState.BEGINWAVING;
                             _currentTime = TimeSpan.Zero;
                         }
                     }
@@ -237,6 +244,7 @@ namespace PlantsVsZombies.GameCore.Level
                         Owner.IsFirstZombie = false;
                         IsFirstZombie = false;
                     }
+                    
                     _currentZombie++;
                 }
                 else
