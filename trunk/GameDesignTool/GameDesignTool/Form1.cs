@@ -109,7 +109,7 @@ namespace GameDesignTool
                     int zIndex = Convert.ToInt32(temp[i]);
                     if (zombieList.Length > zIndex)
                     {
-                        zombies.Add(zombieList[zIndex]);
+                        zombies.Add(zombieList[zIndex - 1]);
                     }
                 }
 

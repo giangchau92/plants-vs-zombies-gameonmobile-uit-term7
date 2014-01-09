@@ -118,37 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="rTxtZResult.Location" type="System.Drawing.Point, System.Drawing">
-    <value>252, 6</value>
-  </data>
-  <data name="rTxtZResult.Size" type="System.Drawing.Size, System.Drawing">
-    <value>395, 358</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="rTxtZResult.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="rTxtZResult.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;rTxtZResult.Name" xml:space="preserve">
-    <value>rTxtZResult</value>
-  </data>
-  <data name="&gt;&gt;rTxtZResult.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;rTxtZResult.Parent" xml:space="preserve">
-    <value>tabPage_Zombie</value>
-  </data>
-  <data name="&gt;&gt;rTxtZResult.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="zombieFormat.Location" type="System.Drawing.Point, System.Drawing">
     <value>252, 6</value>
   </data>
   <data name="zombieFormat.Size" type="System.Drawing.Size, System.Drawing">
     <value>377, 346</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="zombieFormat.TabIndex" type="System.Int32, mscorlib">
     <value>26</value>
   </data>
@@ -194,7 +170,7 @@
             &lt;X&gt;{8}&lt;/X&gt;
             &lt;Y&gt;{9}&lt;/Y&gt;
           &lt;/FootPosition&gt;
-          &lt;TimeFrame&gt;{5}&lt;/TimeFrame&gt;
+          &lt;TimeFrame&gt;{4}&lt;/TimeFrame&gt;
         &lt;/Behavior&gt;
         &lt;Behavior&gt;
           &lt;Type&gt;xml_render_death&lt;/Type&gt;
@@ -203,7 +179,7 @@
             &lt;X&gt;{10}&lt;/X&gt;
             &lt;Y&gt;{11}&lt;/Y&gt;
           &lt;/FootPosition&gt;
-          &lt;TimeFrame&gt;{11}&lt;/TimeFrame&gt;
+          &lt;TimeFrame&gt;{5}&lt;/TimeFrame&gt;
         &lt;/Behavior&gt;
       &lt;/Component&gt;
       &lt;Component&gt;
@@ -233,7 +209,7 @@
     <value>tabPage_Zombie</value>
   </data>
   <data name="&gt;&gt;zombieFormat.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnZScript.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -261,7 +237,7 @@
     <value>tabPage_Zombie</value>
   </data>
   <data name="&gt;&gt;btnZScript.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="label17.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -291,7 +267,7 @@
     <value>tabPage_Zombie</value>
   </data>
   <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="txtZType.AutoCompleteCustomSource" xml:space="preserve">
     <value>Skeletons</value>
@@ -321,7 +297,7 @@
     <value>tabPage_Zombie</value>
   </data>
   <data name="&gt;&gt;txtZType.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="btnZMake.Location" type="System.Drawing.Point, System.Drawing">
     <value>208, 370</value>
@@ -345,7 +321,7 @@
     <value>tabPage_Zombie</value>
   </data>
   <data name="&gt;&gt;btnZMake.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="label16.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -375,7 +351,7 @@
     <value>tabPage_Zombie</value>
   </data>
   <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="label9.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -405,7 +381,7 @@
     <value>tabPage_Zombie</value>
   </data>
   <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="txtZWalkRate.Location" type="System.Drawing.Point, System.Drawing">
     <value>190, 344</value>
@@ -426,7 +402,7 @@
     <value>tabPage_Zombie</value>
   </data>
   <data name="&gt;&gt;txtZWalkRate.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>7</value>
   </data>
   <data name="txtZDeathRate.Location" type="System.Drawing.Point, System.Drawing">
     <value>190, 259</value>
@@ -447,7 +423,7 @@
     <value>tabPage_Zombie</value>
   </data>
   <data name="&gt;&gt;txtZDeathRate.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>8</value>
   </data>
   <data name="label15.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -477,7 +453,7 @@
     <value>tabPage_Zombie</value>
   </data>
   <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>9</value>
   </data>
   <data name="label10.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -507,7 +483,7 @@
     <value>tabPage_Zombie</value>
   </data>
   <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>10</value>
   </data>
   <data name="txtZWalkY.Location" type="System.Drawing.Point, System.Drawing">
     <value>110, 344</value>
@@ -528,7 +504,7 @@
     <value>tabPage_Zombie</value>
   </data>
   <data name="&gt;&gt;txtZWalkY.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>11</value>
   </data>
   <data name="txtZDeathY.Location" type="System.Drawing.Point, System.Drawing">
     <value>110, 259</value>
@@ -549,7 +525,7 @@
     <value>tabPage_Zombie</value>
   </data>
   <data name="&gt;&gt;txtZDeathY.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>12</value>
   </data>
   <data name="label14.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -579,7 +555,7 @@
     <value>tabPage_Zombie</value>
   </data>
   <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>13</value>
   </data>
   <data name="label11.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -609,7 +585,7 @@
     <value>tabPage_Zombie</value>
   </data>
   <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>14</value>
   </data>
   <data name="txtZWalkX.Location" type="System.Drawing.Point, System.Drawing">
     <value>41, 344</value>
@@ -630,7 +606,7 @@
     <value>tabPage_Zombie</value>
   </data>
   <data name="&gt;&gt;txtZWalkX.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>15</value>
   </data>
   <data name="txtZDeathX.Location" type="System.Drawing.Point, System.Drawing">
     <value>41, 259</value>
@@ -651,7 +627,7 @@
     <value>tabPage_Zombie</value>
   </data>
   <data name="&gt;&gt;txtZDeathX.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>16</value>
   </data>
   <data name="label13.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -681,7 +657,7 @@
     <value>tabPage_Zombie</value>
   </data>
   <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>17</value>
   </data>
   <data name="label12.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -711,7 +687,7 @@
     <value>tabPage_Zombie</value>
   </data>
   <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>18</value>
   </data>
   <data name="label8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -741,7 +717,7 @@
     <value>tabPage_Zombie</value>
   </data>
   <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>19</value>
   </data>
   <data name="txtZAttackRate.Location" type="System.Drawing.Point, System.Drawing">
     <value>190, 173</value>
@@ -762,7 +738,7 @@
     <value>tabPage_Zombie</value>
   </data>
   <data name="&gt;&gt;txtZAttackRate.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>20</value>
   </data>
   <data name="label7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -792,7 +768,7 @@
     <value>tabPage_Zombie</value>
   </data>
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>21</value>
   </data>
   <data name="txtZAttackY.Location" type="System.Drawing.Point, System.Drawing">
     <value>110, 173</value>
@@ -813,7 +789,7 @@
     <value>tabPage_Zombie</value>
   </data>
   <data name="&gt;&gt;txtZAttackY.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>22</value>
   </data>
   <data name="label6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -843,7 +819,7 @@
     <value>tabPage_Zombie</value>
   </data>
   <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>24</value>
+    <value>23</value>
   </data>
   <data name="txtZAttackX.Location" type="System.Drawing.Point, System.Drawing">
     <value>41, 173</value>
@@ -864,7 +840,7 @@
     <value>tabPage_Zombie</value>
   </data>
   <data name="&gt;&gt;txtZAttackX.ZOrder" xml:space="preserve">
-    <value>25</value>
+    <value>24</value>
   </data>
   <data name="label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -894,7 +870,7 @@
     <value>tabPage_Zombie</value>
   </data>
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>26</value>
+    <value>25</value>
   </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -924,7 +900,7 @@
     <value>tabPage_Zombie</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>27</value>
+    <value>26</value>
   </data>
   <data name="txtZHP.Location" type="System.Drawing.Point, System.Drawing">
     <value>59, 84</value>
@@ -945,7 +921,7 @@
     <value>tabPage_Zombie</value>
   </data>
   <data name="&gt;&gt;txtZHP.ZOrder" xml:space="preserve">
-    <value>28</value>
+    <value>27</value>
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -975,7 +951,7 @@
     <value>tabPage_Zombie</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>29</value>
+    <value>28</value>
   </data>
   <data name="txtZDamage.Location" type="System.Drawing.Point, System.Drawing">
     <value>59, 58</value>
@@ -996,7 +972,7 @@
     <value>tabPage_Zombie</value>
   </data>
   <data name="&gt;&gt;txtZDamage.ZOrder" xml:space="preserve">
-    <value>30</value>
+    <value>29</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1026,7 +1002,7 @@
     <value>tabPage_Zombie</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>31</value>
+    <value>30</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1053,7 +1029,7 @@
     <value>tabPage_Zombie</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>32</value>
+    <value>31</value>
   </data>
   <data name="txtZSpeed.Location" type="System.Drawing.Point, System.Drawing">
     <value>59, 110</value>
@@ -1074,7 +1050,7 @@
     <value>tabPage_Zombie</value>
   </data>
   <data name="&gt;&gt;txtZSpeed.ZOrder" xml:space="preserve">
-    <value>33</value>
+    <value>32</value>
   </data>
   <data name="txtZName.Location" type="System.Drawing.Point, System.Drawing">
     <value>59, 6</value>
@@ -1095,6 +1071,30 @@
     <value>tabPage_Zombie</value>
   </data>
   <data name="&gt;&gt;txtZName.ZOrder" xml:space="preserve">
+    <value>33</value>
+  </data>
+  <data name="rTxtZResult.Location" type="System.Drawing.Point, System.Drawing">
+    <value>252, 6</value>
+  </data>
+  <data name="rTxtZResult.Size" type="System.Drawing.Size, System.Drawing">
+    <value>395, 358</value>
+  </data>
+  <data name="rTxtZResult.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="rTxtZResult.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;rTxtZResult.Name" xml:space="preserve">
+    <value>rTxtZResult</value>
+  </data>
+  <data name="&gt;&gt;rTxtZResult.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rTxtZResult.Parent" xml:space="preserve">
+    <value>tabPage_Zombie</value>
+  </data>
+  <data name="&gt;&gt;rTxtZResult.ZOrder" xml:space="preserve">
     <value>34</value>
   </data>
   <data name="tabPage_Zombie.Location" type="System.Drawing.Point, System.Drawing">

@@ -30,11 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmZombie));
             this.tabPage_Zombie = new System.Windows.Forms.TabPage();
+            this.rTxtZResult = new System.Windows.Forms.RichTextBox();
             this.zombieFormat = new System.Windows.Forms.RichTextBox();
+            this.btnZScript = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
             this.txtZType = new System.Windows.Forms.TextBox();
             this.btnZMake = new System.Windows.Forms.Button();
-            this.rTxtZResult = new System.Windows.Forms.RichTextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.txtZWalkRate = new System.Windows.Forms.TextBox();
@@ -93,7 +94,6 @@
             this.waveHeaderFormat = new System.Windows.Forms.RichTextBox();
             this.rTxtLResult = new System.Windows.Forms.RichTextBox();
             this.btnTop = new System.Windows.Forms.Button();
-            this.btnZScript = new System.Windows.Forms.Button();
             this.tabPage_Zombie.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage_Levels.SuspendLayout();
@@ -103,7 +103,6 @@
             // 
             // tabPage_Zombie
             // 
-            this.tabPage_Zombie.Controls.Add(this.rTxtZResult);
             this.tabPage_Zombie.Controls.Add(this.zombieFormat);
             this.tabPage_Zombie.Controls.Add(this.btnZScript);
             this.tabPage_Zombie.Controls.Add(this.label17);
@@ -138,14 +137,27 @@
             this.tabPage_Zombie.Controls.Add(this.label1);
             this.tabPage_Zombie.Controls.Add(this.txtZSpeed);
             this.tabPage_Zombie.Controls.Add(this.txtZName);
+            this.tabPage_Zombie.Controls.Add(this.rTxtZResult);
             resources.ApplyResources(this.tabPage_Zombie, "tabPage_Zombie");
             this.tabPage_Zombie.Name = "tabPage_Zombie";
             this.tabPage_Zombie.UseVisualStyleBackColor = true;
+            // 
+            // rTxtZResult
+            // 
+            resources.ApplyResources(this.rTxtZResult, "rTxtZResult");
+            this.rTxtZResult.Name = "rTxtZResult";
             // 
             // zombieFormat
             // 
             resources.ApplyResources(this.zombieFormat, "zombieFormat");
             this.zombieFormat.Name = "zombieFormat";
+            // 
+            // btnZScript
+            // 
+            resources.ApplyResources(this.btnZScript, "btnZScript");
+            this.btnZScript.Name = "btnZScript";
+            this.btnZScript.UseVisualStyleBackColor = true;
+            this.btnZScript.Click += new System.EventHandler(this.btnZScript_Click);
             // 
             // label17
             // 
@@ -169,11 +181,6 @@
             this.btnZMake.Name = "btnZMake";
             this.btnZMake.UseVisualStyleBackColor = true;
             this.btnZMake.Click += new System.EventHandler(this.btnMake_Click);
-            // 
-            // rTxtZResult
-            // 
-            resources.ApplyResources(this.rTxtZResult, "rTxtZResult");
-            this.rTxtZResult.Name = "rTxtZResult";
             // 
             // label16
             // 
@@ -504,13 +511,6 @@
             this.btnTop.Name = "btnTop";
             this.btnTop.UseVisualStyleBackColor = true;
             this.btnTop.Click += new System.EventHandler(this.btnTop_Click);
-            // 
-            // btnZScript
-            // 
-            resources.ApplyResources(this.btnZScript, "btnZScript");
-            this.btnZScript.Name = "btnZScript";
-            this.btnZScript.UseVisualStyleBackColor = true;
-            this.btnZScript.Click += new System.EventHandler(this.btnZScript_Click);
             // 
             // frmZombie
             // 
