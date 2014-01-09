@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmZombie));
             this.tabPage_Zombie = new System.Windows.Forms.TabPage();
-            this.rTxtZResult = new System.Windows.Forms.RichTextBox();
             this.zombieFormat = new System.Windows.Forms.RichTextBox();
             this.btnZScript = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
@@ -65,6 +64,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtZSpeed = new System.Windows.Forms.TextBox();
             this.txtZName = new System.Windows.Forms.TextBox();
+            this.rTxtZResult = new System.Windows.Forms.RichTextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage_Levels = new System.Windows.Forms.TabPage();
             this.btnLScript = new System.Windows.Forms.Button();
@@ -141,11 +141,6 @@
             resources.ApplyResources(this.tabPage_Zombie, "tabPage_Zombie");
             this.tabPage_Zombie.Name = "tabPage_Zombie";
             this.tabPage_Zombie.UseVisualStyleBackColor = true;
-            // 
-            // rTxtZResult
-            // 
-            resources.ApplyResources(this.rTxtZResult, "rTxtZResult");
-            this.rTxtZResult.Name = "rTxtZResult";
             // 
             // zombieFormat
             // 
@@ -326,6 +321,11 @@
             // 
             resources.ApplyResources(this.txtZName, "txtZName");
             this.txtZName.Name = "txtZName";
+            // 
+            // rTxtZResult
+            // 
+            resources.ApplyResources(this.rTxtZResult, "rTxtZResult");
+            this.rTxtZResult.Name = "rTxtZResult";
             // 
             // tabControl1
             // 

@@ -9,6 +9,8 @@ using PlantsVsZombies.GameComponents.Behaviors.Implements;
 using PlantsVsZombies.GameComponents.Components;
 using PlantsVsZombies.GameCore;
 using SCSEngine.Serialization;
+using SCSEngine.Audio;
+using SCSEngine.Services;
 
 namespace PlantsVsZombies.GameComponents.Behaviors.Zombie
 {
@@ -76,7 +78,11 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Zombie
                 LogicComponent logicCOm = plant.GetComponent(typeof(LogicComponent)) as LogicComponent;
                 if (logicCOm == null)
                     throw new Exception("Z_NormalLogicBehavior: Expect Target Logic Component");
-                logicCOm.Health-= (float)damagePerSecond / 30; 
+                logicCOm.Health-= (float)damagePerSecond / 30;
+
+                // HARDCODE
+                Sound zombieEatSound = SCSServices.Instance.ResourceManager.GetResource<Sound>("Sounds/HitPlant");
+                SCSServices.Instance.AudioManager.PlaySound(zombieEatSound, false, true);
             }
             else
             {
