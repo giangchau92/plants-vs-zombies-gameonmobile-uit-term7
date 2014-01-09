@@ -31,9 +31,9 @@ namespace PlantsVsZombies.GameCore.MessageCenter.Inplements
         {
             if (_owner.State == EffectState.HIDING)
             {
-                _percent += (float)(ratio * gameTime.ElapsedGameTime.TotalSeconds);
+                _percent -= (float)(ratio * gameTime.ElapsedGameTime.TotalSeconds);
                 alpha = (int)(1 * _percent);
-                Scale = (int)(1 * _percent);
+                Scale = (float)(1 * _percent);
 
                 if (_percent <= 0)
                     _owner.State = EffectState.HIDED;
@@ -43,7 +43,7 @@ namespace PlantsVsZombies.GameCore.MessageCenter.Inplements
 
         public void Draw(GameTime gameTime)
         {
-            if (_owner.State == EffectState.SHOWING)
+            if (_owner.State == EffectState.HIDING)
             {
                 SCSServices.Instance.SpriteBatch.DrawString(Font, _content, Positon, Color.Red, 0, new Vector2(0.5f, 0.5f), Scale, SpriteEffects.None, 0);
             }
@@ -59,7 +59,7 @@ namespace PlantsVsZombies.GameCore.MessageCenter.Inplements
             Vector2 size = Font.MeasureString(_content);
             Viewport view = SCSServices.Instance.Game.GraphicsDevice.Viewport;
 
-            Positon = new Vector2(view.Height / 2 - size.X / 2, view.Width / 2 - size.Y / 2);
+            Positon = new Vector2(view.Width / 2 - size.X / 2, view.Height / 2 - size.Y / 2);
 
         }
     }

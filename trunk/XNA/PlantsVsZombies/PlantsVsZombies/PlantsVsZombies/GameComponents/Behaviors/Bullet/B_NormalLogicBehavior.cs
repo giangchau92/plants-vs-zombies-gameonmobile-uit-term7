@@ -9,12 +9,26 @@ using PlantsVsZombies.GameObjects;
 using PlantsVsZombies.GameComponents.Components;
 using PlantsVsZombies.GameCore;
 using SCSEngine.Serialization;
+using SCSEngine.Audio;
+using SCSEngine.Services;
 
 namespace PlantsVsZombies.GameComponents.Behaviors.Bullet
 {
     public class B_NormalLogicBehavior : BaseLogicBehavior
     {
+        private static TimeSpan _lastTimeSound;
+        private static TimeSpan _timeDelaySound = TimeSpan.FromSeconds(1);
+        private bool justCollect = false;
+        private Sound _sound;
+
         private float _damage = 0;
+
+        public B_NormalLogicBehavior()
+            : base()
+        {
+            _sound = SCSServices.Instance.ResourceManager.GetResource<Sound>("Sounds/IceBulletCollide");
+        }
+
         public override void Update(IMessage<MessageType> message, GameTime gameTime)
         {
 
@@ -23,6 +37,7 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Bullet
 
         public override void OnCollison(IMessage<MessageType> msg, GameTime gameTime)
         {
+
             CollisionDetectedMsg message = msg as CollisionDetectedMsg;
             if (msg == null)
                 throw new Exception("B_NormalLogicBehavior: message is not CollisionDetectedMsg");
@@ -36,7 +51,20 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Bullet
                     throw new Exception("B_NormalLogicBehavior: Expect Target Logic Component");
                 logicCOm.Health -= _damage;
                 PZObjectManager.Instance.RemoveObject(Owner.Owner.ObjectId);
+                justCollect = true;
             }
+
+            // Sound
+            if (justCollect)
+            {
+                if (gameTime.TotalGameTime - _lastTimeSound > _timeDelaySound)
+                {
+                    SCSServices.Instance.AudioManager.PlaySound(_sound, false, true);
+                    _lastTimeSound = gameTime.TotalGameTime;
+                }
+            }
+            justCollect = false;
+            //
 
             base.OnCollison(msg, gameTime);
         }

@@ -5,7 +5,9 @@ using PlantsVsZombies.GameComponents.Effect.Implements;
 using PlantsVsZombies.GameComponents.GameMessages;
 using PlantsVsZombies.GameCore;
 using PlantsVsZombies.GameObjects;
+using SCSEngine.Audio;
 using SCSEngine.Serialization;
+using SCSEngine.Services;
 using SCSEngine.Utils.GameObject.Component;
 using System;
 using System.Collections.Generic;
@@ -16,7 +18,19 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Bullet
 {
     class B_IceBulletLogicBehavior : BaseLogicBehavior
     {
+        private static TimeSpan _lastTimeSound;
+        private static TimeSpan _timeDelaySound = TimeSpan.FromSeconds(1);
+        private bool justCollect = false;
+        private Sound _sound;
+        public B_IceBulletLogicBehavior()
+            : base()
+        {
+            _sound = SCSServices.Instance.ResourceManager.GetResource<Sound>("Sounds/BulletCollide");
+        }
+
         private float _damage = 9;
+
+
         public override void Update(IMessage<MessageType> message, GameTime gameTime)
         {
 
@@ -44,8 +58,20 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Bullet
                 logicCOm.LogicBehavior.AddEffect(slowEff);
 
                 PZObjectManager.Instance.RemoveObject(Owner.Owner.ObjectId);
+                justCollect = true;
             }
 
+            // Sound
+            if (justCollect)
+            {
+                if (gameTime.TotalGameTime - _lastTimeSound > _timeDelaySound)
+                {
+                    SCSServices.Instance.AudioManager.PlaySound(_sound, false, true);
+                    _lastTimeSound = gameTime.TotalGameTime;
+                }
+            }
+            justCollect = false;
+            //
             base.OnCollison(msg, gameTime);
         }
 

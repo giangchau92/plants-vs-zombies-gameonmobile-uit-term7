@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using PlantsVsZombies.GameComponents.Components;
 using PlantsVsZombies.GameComponents.GameMessages;
 using PlantsVsZombies.GameCore;
+using SCSEngine.Audio;
 using SCSEngine.Serialization;
 using SCSEngine.Services;
 using SCSEngine.Utils.GameObject.Component;
@@ -14,10 +15,22 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Plant
 {
     public class P_IcePlantLogicBehavior : BaseLogicBehavior
     {
+        private static TimeSpan _lastTimeSound;
+        private static TimeSpan _timeDelaySound = TimeSpan.FromSeconds(1);
+        private bool justCollect = false;
+
         eNormalPlantState PlantState { get; set; }
         TimeSpan currentTimeShoot = TimeSpan.Zero;
         TimeSpan shootTime = new TimeSpan(0, 0, 0, 0, 500);
         Vector2 shootPoint = new Vector2(90, 45);
+
+        Sound _soundShoot;
+
+        public P_IcePlantLogicBehavior()
+            : base()
+        {
+            _soundShoot = SCSServices.Instance.ResourceManager.GetResource<Sound>("Sounds/Shot");
+        }
 
         public Double DShootTime
         {
@@ -28,6 +41,17 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Plant
         public override void Update(IMessage<MessageType> msg, GameTime gameTime)
         {
             PlantState = eNormalPlantState.STANDING;
+            // Sound
+            if (justCollect)
+            {
+                if (gameTime.TotalGameTime - _lastTimeSound > _timeDelaySound)
+                {
+                    SCSServices.Instance.AudioManager.PlaySound(_soundShoot, false, true);
+                    _lastTimeSound = gameTime.TotalGameTime;
+                }
+            }
+            justCollect = false;
+
             // Shoot
             IDictionary<ulong, ObjectEntity> objs = new Dictionary<ulong, ObjectEntity>(PZObjectManager.Instance.GetObjects());
             foreach (var item in objs)
@@ -58,6 +82,8 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Plant
                     ObjectEntity bullet = PZObjectFactory.Instance.createIceBullet(new Vector2(pos.X + shootPoint.X, pos.Y - shootPoint.Y));
                     //bullet.SetPosition();
                     PZObjectManager.Instance.AddObject(bullet);
+                    //SCSServices.Instance.AudioManager.PlaySound(_soundShoot, false, true);
+                    justCollect = true;
                     currentTimeShoot = TimeSpan.Zero;
                 }
                 else

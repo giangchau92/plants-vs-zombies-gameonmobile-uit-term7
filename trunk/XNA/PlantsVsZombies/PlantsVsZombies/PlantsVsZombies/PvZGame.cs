@@ -121,7 +121,6 @@ namespace PlantsVsZombies
         protected override void Update(GameTime gameTime)
         {
             // Allows the game to exit
-
             try
             {
 
