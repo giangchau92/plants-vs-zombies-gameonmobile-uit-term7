@@ -76,7 +76,6 @@
     <Compile Include="GameComponents\Behaviors\Plant\P_NormalLogicBehavior.cs" />
     <Compile Include="GameComponents\Behaviors\Plant\P_StoneLogicBehavior.cs" />
     <Compile Include="GameComponents\Behaviors\Plant\P_SunFlowerLogicBehavior.cs" />
-    <Compile Include="GameComponents\Behaviors\Zombie\Z_HistachiiLogicBehavior.cs" />
     <Compile Include="GameComponents\Behaviors\Zombie\Z_NormalLogicBehavior.cs" />
     <Compile Include="GameComponents\Components\LogicComponent.cs" />
     <Compile Include="GameComponents\Components\LogicComponentFactory.cs" />

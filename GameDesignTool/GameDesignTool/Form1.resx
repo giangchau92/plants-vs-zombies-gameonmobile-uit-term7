@@ -165,7 +165,7 @@
         &lt;/Behavior&gt;
         &lt;Behavior&gt;
           &lt;Type&gt;xml_render_run&lt;/Type&gt;
-          &lt;ResourceName&gt;Images/Zombies/Skeletons/BarrowWight/Walk&lt;/ResourceName&gt;
+          &lt;ResourceName&gt;Images/Zombies/{2}/{0}/Walk&lt;/ResourceName&gt;
           &lt;FootPosition&gt;
             &lt;X&gt;{8}&lt;/X&gt;
             &lt;Y&gt;{9}&lt;/Y&gt;
@@ -174,7 +174,7 @@
         &lt;/Behavior&gt;
         &lt;Behavior&gt;
           &lt;Type&gt;xml_render_death&lt;/Type&gt;
-          &lt;ResourceName&gt;Images/Zombies/Skeletons/BarrowWight/Death&lt;/ResourceName&gt;
+          &lt;ResourceName&gt;Images/Zombies/{2}/{0}/Death&lt;/ResourceName&gt;
           &lt;FootPosition&gt;
             &lt;X&gt;{10}&lt;/X&gt;
             &lt;Y&gt;{11}&lt;/Y&gt;
