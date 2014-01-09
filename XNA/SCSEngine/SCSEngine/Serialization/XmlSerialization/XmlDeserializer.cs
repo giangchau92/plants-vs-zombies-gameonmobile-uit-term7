@@ -34,7 +34,44 @@ namespace SCSEngine.Serialization.XmlSerialization
 
         public double DeserializeDouble(string serName)
         {
-            return double.Parse(this.elem.Element(serName).Value);
+            return this.parseStringToDouble(this.elem.Element(serName).Value);
+        }
+
+        // device 520 error
+        private double parseStringToDouble(string s)
+        {
+            try
+            {
+
+                double rez = 0, fact = 1;
+                int i = 0;
+                if (s[i] == '-')
+                {
+                    ++i;
+                    fact = -1;
+                }
+
+                for (bool point_seen = false; i < s.Length; ++i)
+                {
+                    if (s[i] == '.')
+                    {
+                        point_seen = true;
+                        continue;
+                    }
+                    int d = s[i] - '0';
+                    if (d >= 0 && d <= 9)
+                    {
+                        if (point_seen) fact /= 10.0;
+                        rez = rez * 10.0 + (double)d;
+                    }
+                }
+
+                return rez * fact;
+            }
+            catch
+            {
+                return 0.0;
+            }
         }
 
         public ICollection<IDeserializer> DeserializeAll(string serName)
