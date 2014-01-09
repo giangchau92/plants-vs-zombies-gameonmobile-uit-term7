@@ -66,8 +66,8 @@ namespace PlantsVsZombies.GameScreen
             };
 
             this.gm = gm;
-
-            this.playBacground = new PlayBackground(this.Game, SCSServices.Instance.ResourceManager.GetResource<Texture2D>(backgroundNames[GRandom.RandomInt(backgroundNames.Length)]));
+            level = PZLevelManager.Instance.GetLevel();
+            this.playBacground = new PlayBackground(this.Game, SCSServices.Instance.ResourceManager.GetResource<Texture2D>(level.Background));
             this.playBacground.Initialize();
             this.playBacground.OnAnimatingCompleted += this.OnBackgroundAnimatingCompleted;
             this.playBacground.StartAnimate();
@@ -83,7 +83,7 @@ namespace PlantsVsZombies.GameScreen
 
         private void InitGamePlay()
         {
-            level = PZLevelManager.Instance.GetLevel();
+            
             PZObjectManager.Instance.RemoveAllObject();
             
             this.dispatcher = DefaultGestureHandlingFactory.Instance.CreateDispatcher();
@@ -118,6 +118,7 @@ namespace PlantsVsZombies.GameScreen
 
             state = PlayState.RUNNING;
             _messageCenter.PushMessage("Ablooo");
+            _messageCenter.PushMessage("Ablooo2");
         }
 
         public override void Update(GameTime gameTime)

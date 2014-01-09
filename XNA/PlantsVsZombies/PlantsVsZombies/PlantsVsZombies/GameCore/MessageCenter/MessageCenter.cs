@@ -28,6 +28,8 @@ namespace PlantsVsZombies.GameCore.MessageCenter
             set { _state = value; }
         }
 
+        public SpriteFont MessageFont { get { return _messageFont; } }
+
         private IMessageEffect _showingEffect;
         private IMessageEffect _hidingEffect;
 
@@ -38,6 +40,7 @@ namespace PlantsVsZombies.GameCore.MessageCenter
             _state = EffectState.READY;
             _showingEffect = new ShowingEffect(this);
             _hidingEffect = new HidingEffect(this);
+            _messageFont = SCSServices.Instance.ResourceManager.GetResource<SpriteFont>("Fonts/StatusFont");
         }
 
         public void PushMessage(String message)

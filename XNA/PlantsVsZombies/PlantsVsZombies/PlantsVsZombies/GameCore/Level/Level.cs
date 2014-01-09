@@ -24,6 +24,7 @@ namespace PlantsVsZombies.GameCore.Level
         public string Name { get; set; }
         public List<Wave> Waves { get; set; }
         public bool IsFirstZombie { get; set; }
+        public string Background { get; set; }
 
         private LevelState _currentState;
         private TimeSpan _currentTime;
@@ -103,7 +104,7 @@ namespace PlantsVsZombies.GameCore.Level
         public void Deserialize(IDeserializer deserializer)
         {
             Name = deserializer.DeserializeString("Name");
-
+            Background = deserializer.DeserializeString("Background");
             var waveDers = deserializer.DeserializeAll("Wave");
             foreach (var item in waveDers)
             {
