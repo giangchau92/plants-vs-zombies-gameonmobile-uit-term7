@@ -426,6 +426,7 @@
     </None>
     <None Include="Xml\Zombies.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>

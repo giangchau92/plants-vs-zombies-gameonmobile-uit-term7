@@ -30,11 +30,11 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Implements
             VelocityAdd = Vector2.Zero;
             moveCom.UpdatePosition(gameTime);
             // Update Frame rate in Render Component
-            RenderBehavior renBehavior = (this.Owner.Owner.GetComponent(typeof(RenderComponent)) as RenderComponent).currentBehavior as RenderBehavior;
-            if (Math.Abs(moveCom.Velocity.X) >= 2)
-            {
-                renBehavior.Sprite.TimeDelay = TimeSpan.FromSeconds(3 / Math.Abs(moveCom.Velocity.X));
-            }
+            //RenderBehavior renBehavior = (this.Owner.Owner.GetComponent(typeof(RenderComponent)) as RenderComponent).currentBehavior as RenderBehavior;
+            //if (Math.Abs(moveCom.Velocity.X) >= 2)
+            //{
+            //    renBehavior.Sprite.TimeDelay = TimeSpan.FromSeconds(3 / Math.Abs(moveCom.Velocity.X));
+            //}
             base.Update(message, gameTime);
         }
 
