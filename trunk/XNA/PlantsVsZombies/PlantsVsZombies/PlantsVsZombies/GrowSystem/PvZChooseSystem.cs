@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SCSEngine.Audio;
 using SCSEngine.Control;
 using SCSEngine.Services;
 using SCSEngine.Sprite;
@@ -15,6 +16,9 @@ namespace PlantsVsZombies.GrowSystem
 
     public class PvZChooseSystem : GameComponent
     {
+        private const string BUTTONCHOOSED_SOUNDNAME = "Sounds/ButtonClick";
+        private const string BUTTON_TOUCHED_FAIL_SOUNDNAME = "Sounds/FailChoose";
+
         private enum ChooseSystemState
         {
             OUTSIDE,
@@ -40,14 +44,19 @@ namespace PlantsVsZombies.GrowSystem
         private float readyButtonMargin = 190f;
         private float moveVelocity;
 
+        private int maxButtons;
+
+        private Sound buttonChoosedSound, buttonTouchedFail;
+
         public event ChooseSystemEventHandler OnCameOut;
 
-        public PvZChooseSystem(Game game, PvZGrowButtonFactoryBank btnFB, UIControlManager uiMan, IPvZGameCurrency currency)
+        public PvZChooseSystem(Game game, PvZGrowButtonFactoryBank btnFB, UIControlManager uiMan, IPvZGameCurrency currency, int maxButtons)
             : base(game)
         {
             this.buttonFB = btnFB;
             this.uiManager = uiMan;
             _currency = currency;
+            this.maxButtons = maxButtons;
         }
 
         public override void Initialize()
@@ -66,6 +75,7 @@ namespace PlantsVsZombies.GrowSystem
             this.chosenList.Canvas.Bound.Size = new Vector2(460, 70);
             this.chosenList.Canvas.Content.Position = new Vector2(90, 5);
             this.chosenList.Canvas.Content.Size = new Vector2(440, 56);
+            this.chosenList.MaxButtons = this.maxButtons;
             this.chosenList.Background = SCSServices.Instance.ResourceManager.GetResource<ISprite>("BuyPlant");
 
             foreach (var buttonF in this.buttonFB)
@@ -90,12 +100,23 @@ namespace PlantsVsZombies.GrowSystem
 
             this.state = ChooseSystemState.OUTSIDE;
 
+            this.buttonChoosedSound = SCSServices.Instance.ResourceManager.GetResource<Sound>(BUTTONCHOOSED_SOUNDNAME);
+            this.buttonTouchedFail = SCSServices.Instance.ResourceManager.GetResource<Sound>(BUTTON_TOUCHED_FAIL_SOUNDNAME);
+
             base.Initialize();
         }
 
         private void OnReadyButtonTouched(Button button)
         {
-            this.ComeOut();
+            if (this.chosenList.NumberOfBufferedButtons == this.maxButtons)
+            {
+                SCSServices.Instance.AudioManager.PlaySound(this.buttonChoosedSound, false, true);
+                this.ComeOut();
+            }
+            else
+            {
+                SCSServices.Instance.AudioManager.PlaySound(this.buttonTouchedFail, false, true);
+            }
         }
 
         public void ComeIn()
@@ -125,6 +146,7 @@ namespace PlantsVsZombies.GrowSystem
             RectangleF destRect = this.chosenList.MakeDestination();
             if (!destRect.IsEmpty && !button.IsDisabled)
             {
+                SCSServices.Instance.AudioManager.PlaySound(this.buttonChoosedSound, false, true);
                 PvZChooseButtonAvatar avatar = new PvZChooseButtonAvatar(this.Game, 1f, 0.2f, 0.5f);
                 avatar.Background = button.Background;
                 avatar.Canvas.Bound.Alter(button.Canvas.Bound);
@@ -132,8 +154,13 @@ namespace PlantsVsZombies.GrowSystem
                 avatar.OnCompleteAnimating += this.OnAvatarCompleted;
                 this.uiManager.Add(avatar);
                 avatar.StartAnimating(destRect);
+                this.chosenList.NumberOfBufferedButtons++;
 
                 button.IsDisabled = true;
+            }
+            else
+            {
+                SCSServices.Instance.AudioManager.PlaySound(this.buttonTouchedFail, false, true);
             }
         }
 
@@ -142,10 +169,12 @@ namespace PlantsVsZombies.GrowSystem
             var chButton = this.waitList.GetButton(button.Name);
             if (chButton != null)
             {
+                SCSServices.Instance.AudioManager.PlaySound(this.buttonChoosedSound, false, true);
                 chButton.IsDisabled = false;
             }
 
             this.chosenList.RemoveChooseButton(button);
+            this.chosenList.NumberOfBufferedButtons--;
         }
 
         private void OnAvatarCompleted(PvZChooseButtonAvatar avatar)

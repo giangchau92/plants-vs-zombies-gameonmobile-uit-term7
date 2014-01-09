@@ -95,7 +95,7 @@ namespace PlantsVsZombies.GameScreen
 
             this.growSystem = new PvZGrowSystem(this.Game, new PvZGameGrow(gameBoard));
             this.growSystem.Deserialize(XmlSerialization.Instance.Deserialize(File.Open(@"Xml\PlantGrowButtons.xml", FileMode.Open, FileAccess.Read, FileShare.None)));
-            var chooseSys = new PvZChooseSystem(this.Game, this.growSystem.ButtonFactoryBank, this.uiControlManager, _sunSystem);
+            var chooseSys = new PvZChooseSystem(this.Game, this.growSystem.ButtonFactoryBank, this.uiControlManager, _sunSystem, 2);
             chooseSys.Initialize();
             chooseSys.OnCameOut += this.OnChooseSystemCompleted;
             this.Components.Add(chooseSys);

@@ -17,7 +17,6 @@ namespace PlantsVsZombies.GrowSystem
 {
     public class PvZGrowList : BaseUIControl
     {
-        private const string BUTTONCHOOSED_SOUNDNAME = "Sounds/ButtonPlantBuy";
 
         private UIControlManager uiManager;
 
@@ -26,8 +25,6 @@ namespace PlantsVsZombies.GrowSystem
 
         private List<PvZGrowButton> growButtons = new List<PvZGrowButton>();
         private IPvZGameCurrency currencySystem;
-
-        private Sound buttonChoosedSound;
 
         public List<PvZGrowButton> GrowButtons
         {
@@ -69,7 +66,6 @@ namespace PlantsVsZombies.GrowSystem
             this.spritePlayer = ((SCSServices)game.Services.GetService(typeof(SCSServices))).SpritePlayer;
             this.uiManager = uiManager;
             this.currencySystem = currSys;
-            this.buttonChoosedSound = SCSServices.Instance.ResourceManager.GetResource<Sound>(BUTTONCHOOSED_SOUNDNAME);
         }
 
         public void AddGrowButton(PvZGrowButton grButton)
@@ -163,7 +159,6 @@ namespace PlantsVsZombies.GrowSystem
             contentInBound.Position += this.Canvas.Bound.Position;
             if (!contentInBound.Contains(leaveGesture.Current))
             {
-                SCSServices.Instance.AudioManager.PlaySound(this.buttonChoosedSound, false, true);
                 //create plant-shadow
                 var shadow = button.ShadowFactory.CreatePlantShadow();
                 shadow.CreatorButton = button;
