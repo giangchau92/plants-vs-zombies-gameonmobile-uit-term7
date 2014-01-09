@@ -17,13 +17,13 @@ namespace PlantsVsZombies.GameCore.MessageCenter.Inplements
         private MessageCenter _owner;
         private float ratio = 1;
         private float _percent = 0; // 0 -> 1
+        private Vector2 _origin;
 
-        public SpriteFont Font { get; set; }
+        public SpriteFont Font { get { return _owner.MessageFont; } }
 
         public HidingEffect(MessageCenter ower)
         {
             _owner = ower;
-            Font = SCSServices.Instance.DebugFont;
         }
         
 
@@ -31,7 +31,7 @@ namespace PlantsVsZombies.GameCore.MessageCenter.Inplements
         {
             if (_owner.State == EffectState.HIDING)
             {
-                _percent -= (float)(ratio * gameTime.ElapsedGameTime.TotalSeconds);
+                _percent -= (float)(ratio * gameTime.ElapsedGameTime.TotalSeconds * 2);
                 alpha = (int)(1 * _percent);
                 Scale = (float)(1 * _percent);
 
@@ -45,7 +45,7 @@ namespace PlantsVsZombies.GameCore.MessageCenter.Inplements
         {
             if (_owner.State == EffectState.HIDING)
             {
-                SCSServices.Instance.SpriteBatch.DrawString(Font, _content, Positon, Color.Red, 0, new Vector2(0.5f, 0.5f), Scale, SpriteEffects.None, 0);
+                SCSServices.Instance.SpriteBatch.DrawString(Font, _content, Positon, Color.Red, 0, _origin, Scale, SpriteEffects.None, 0);
             }
         }
 
@@ -58,8 +58,8 @@ namespace PlantsVsZombies.GameCore.MessageCenter.Inplements
             // Calc position string
             Vector2 size = Font.MeasureString(_content);
             Viewport view = SCSServices.Instance.Game.GraphicsDevice.Viewport;
-
-            Positon = new Vector2(view.Width / 2 - size.X / 2, view.Height / 2 - size.Y / 2);
+            _origin = new Vector2(size.X / 2, size.Y / 2);
+            Positon = new Vector2(view.Width / 2, view.Height / 2);
 
         }
     }
