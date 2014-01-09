@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using PlantsVsZombies.GameComponents.Components;
+using PlantsVsZombies.GameCore;
 using SCSEngine.Services;
 using SCSEngine.Services.Sprite;
 using SCSEngine.Sprite;
@@ -26,13 +27,23 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Implements
             }
         }
 
-        public Rectangle SpriteBound { get; set; }
+        public Rectangle SpriteBound
+        {
+            get
+            {
+                return new Rectangle(0, 0, _sprite.CurrentFrame.Width, _sprite.CurrentFrame.Height);
+            }
+        }
+
+        public Vector2 FootPositon { get; set; }
+
+        public Color Color { get; set; }
 
         public RenderBehavior()
             : base()
         {
             Sprite = null;
-            SpriteBound = Rectangle.Empty;
+            this.Color = new Color(255, 255, 255, 255);
         }
 
         public override void Update(IMessage<MessageType> message, Microsoft.Xna.Framework.GameTime gameTime)
@@ -43,9 +54,12 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Implements
             if (moveCom == null)
                 throw new Exception("RenderBehavior: Move Components not exist!");
 
+
             Sprite.TimeStep(gameTime);
+            Vector2 drawPos = new Vector2(moveCom.Frame.X, moveCom.Frame.Y + moveCom.Frame.Height - SpriteBound.Height + PZBoard.CELL_HEIGHT - 90);//FootPositon.Y - tam thoi de 90
+
             //spritePlayer.Draw(Sprite, new Vector2(moveCom.Frame.X, moveCom.Frame.Y), Color.White);
-            spritePlayer.Draw(Sprite, moveCom.Frame, Color.White);
+            spritePlayer.Draw(Sprite, drawPos, this.Color);
 
             base.Update(message, gameTime);
         }
@@ -56,6 +70,7 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Implements
             if (phyCom == null)
                 throw new Exception("RenderBehavior: Physic Component not exist!");
             phyCom.Bound = SpriteBound;
+            phyCom.Bound = new Rectangle(0, 0, PZBoard.CELL_WIDTH, PZBoard.CELL_HEIGHT);
             if (Sprite == null)
                 throw new Exception("RenderBehavior: Sprite null exception!");
             Sprite.Play();
@@ -77,7 +92,8 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Implements
         {
             RenderBehavior renderBehavior = new RenderBehavior();
             renderBehavior.Sprite = new Sprite(Sprite.SpriteData);
-            renderBehavior.SpriteBound = this.SpriteBound;
+            renderBehavior.Sprite.TimeDelay = Sprite.TimeDelay;
+            renderBehavior.FootPositon = FootPositon;
             return renderBehavior;
         }
     }

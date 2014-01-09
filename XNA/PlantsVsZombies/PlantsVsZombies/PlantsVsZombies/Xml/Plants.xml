@@ -20,6 +20,10 @@
 		  <Behavior>
 			  <Type>xml_render_stand</Type>
 			  <ResourceName>Images/Plants/DoublePea</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
         <TimeFrame>0.03333</TimeFrame>
 			  <Bound>
 				  <X>100</X>
@@ -60,6 +64,10 @@
 		  <Behavior>
 			  <Type>xml_render_stand</Type>
 			  <ResourceName>Images/Plants/IcePea</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
         <TimeFrame>0.03333</TimeFrame>
 			  <Bound>
 				  <X>118</X>
@@ -101,6 +109,10 @@
         <Behavior>
           <Type>xml_render_stand</Type>
           <ResourceName>Images/Plants/Stone</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.03333</TimeFrame>
           <Bound>
             <X>101</X>
@@ -142,6 +154,10 @@
         <Behavior>
           <Type>xml_render_stand</Type>
           <ResourceName>Images/Plants/Sunflower</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.03333</TimeFrame>
           <Bound>
             <X>84</X>

@@ -68,7 +68,12 @@ namespace PlantsVsZombies.GameScreen
         public override void Update(GameTime gameTime)
         {
             this.delayTime -= (float) gameTime.ElapsedGameTime.TotalSeconds;
-
+            if (delayTime < 0)
+            {
+                delayTime = delayDuration;
+                if (this.OnScreenCompleted != null)
+                    OnScreenCompleted(this);
+            }
             base.Update(gameTime);
         }
 

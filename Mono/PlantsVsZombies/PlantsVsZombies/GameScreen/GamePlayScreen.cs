@@ -49,6 +49,7 @@ namespace PlantsVsZombies.GameScreen
         private PvZGrowSystem growSystem;
 
         private PlayState state = PlayState.START;
+        private int m_level;
 
         public GamePlayScreen(IGameScreenManager screenManager, IGestureManager gm)
             : base(screenManager)
@@ -64,21 +65,31 @@ namespace PlantsVsZombies.GameScreen
             this.gm = gm;
 
             this.playBacground = new PlayBackground(this.Game, SCSServices.Instance.ResourceManager.GetResource<Texture2D>(backgroundNames[GRandom.RandomInt(backgroundNames.Length)]));
+            ResetGame(0);
+        }
+
+        public void ResetGame(int _level)
+        {
+            m_level = _level;
+            this.playBacground = new PlayBackground(this.Game, SCSServices.Instance.ResourceManager.GetResource<Texture2D>(@"Images\Controls\Background_Forest"));
             this.playBacground.Initialize();
             this.playBacground.OnAnimatingCompleted += this.OnBackgroundAnimatingCompleted;
             this.playBacground.StartAnimate();
+
+            // Clear
+            PZObjectManager.Instance.RemoveAll();
         }
+
 
         private void OnBackgroundAnimatingCompleted(PlayBackground background)
         {
             this.state = PlayState.RUNNING;
-            this.InitGamePlay();
+            this.InitGamePlayAtLevel();
         }
 
-        private void InitGamePlay()
+        private void InitGamePlayAtLevel()
         {
-            level = PZLevelManager.Instance.GetLevel(0);
-            
+            level = PZLevelManager.Instance.GetLevel(m_level);
             IGestureDispatcher dp = DefaultGestureHandlingFactory.Instance.CreateDispatcher();
             gm.AddDispatcher(dp);
 
@@ -121,11 +132,17 @@ namespace PlantsVsZombies.GameScreen
                 if (isWin())
                 {
                     //Debug.WriteLine("WIN CMNR!");
+                    var winScreen = (MessageGameScreen)this.Manager.Bank.GetNewScreen("WinGame");
+                    winScreen.OnScreenCompleted += winScreen_OnScreenCompleted;
+                    this.Manager.AddExclusive(winScreen);
+                    this.gm.RemoveDispatcher(this.uiControlManager);
                 }
 
                 if (isLose())
                 {
                     //Debug.WriteLine("LOSE CMNR!");
+                    var loseScreen = (MessageGameScreen)this.Manager.Bank.GetNewScreen("LoseGame");
+                    loseScreen.OnScreenCompleted += loseScreen_OnScreenCompleted;
                 }
 
                 // Update game
@@ -136,6 +153,27 @@ namespace PlantsVsZombies.GameScreen
             }
 
             base.Update(gameTime);
+        }
+
+        void loseScreen_OnScreenCompleted(MessageGameScreen background)
+        {
+            //
+            this.Manager.AddExclusive(this.Manager.Bank.GetNewScreen("MainMenu"));
+        }
+
+        void winScreen_OnScreenCompleted(MessageGameScreen background)
+        {
+            //PlayScreen
+            if (m_level + 1 == PZLevelManager.Instance.GetLevels().Count)
+            {
+                this.Manager.AddExclusive(this.Manager.Bank.GetNewScreen("MainMenu"));
+                return;
+            }
+
+            IGameScreen gamePlay = this.Manager.Bank.GetNewScreen("PlayScreen");
+            (gamePlay as GamePlayScreen).ResetGame(m_level + 1);
+            level.LevelState = LevelState.BEGIN;
+            this.Manager.AddExclusive(gamePlay);
         }
 
         public override void Draw(GameTime gameTime)

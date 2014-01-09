@@ -10,6 +10,7 @@ using PlantsVsZombies.GameComponents.GameMessages;
 using PlantsVsZombies.GameComponents.Behaviors.Implements;
 using SCSEngine.Serialization.XNASerializationHelper;
 using SCSEngine.Sprite;
+using PlantsVsZombies.GameCore;
 
 namespace PlantsVsZombies.GameComponents.Components
 {
@@ -73,6 +74,11 @@ namespace PlantsVsZombies.GameComponents.Components
             SCSServices.Instance.SpriteBatch.DrawString(SCSServices.Instance.DebugFont, ((int)logicCOm.Health).ToString(), moveCOm.Position, Color.Red);
         }
 
+        public IBehavior<MessageType> GetCurrentBehavior()
+        {
+            return this.currentBehavior;
+        }
+
         public void AddBehavior(eMoveRenderBehaviorType type, IBehavior<MessageType> behavior)
         {
             behavior.Owner = this;
@@ -116,12 +122,19 @@ namespace PlantsVsZombies.GameComponents.Components
 
                 string resourceName = behaviorDeser.DeserializeString("ResourceName");
                 double timeFrame = behaviorDeser.DeserializeDouble("TimeFrame");
-                Vector2 bound = XNASerialization.Instance.DeserializeVector2(behaviorDeser, "Bound");
-
+                Vector2 footPos;
+                try
+                {
+                    footPos = XNASerialization.Instance.DeserializeVector2(behaviorDeser, "FootPosition");
+                }
+                catch (Exception e)
+                {
+                    footPos = new Vector2(PZBoard.CELL_WIDTH, PZBoard.CELL_HEIGHT);
+                }
                 RenderBehavior renderBehavior = new RenderBehavior();
                 renderBehavior.Sprite = SCSServices.Instance.ResourceManager.GetResource<ISprite>(resourceName);
                 renderBehavior.Sprite.TimeDelay = TimeSpan.FromSeconds(timeFrame);
-                renderBehavior.SpriteBound = new Rectangle(0, 0, (int)bound.X, (int)bound.Y);
+                renderBehavior.FootPositon = footPos;
                 this.AddBehavior(renderTypr, renderBehavior);
             }
         }

@@ -127,7 +127,7 @@ namespace PlantsVsZombies.GameScreen
         private void start_Clicked(Button button)
         {
             SCSServices.Instance.AudioManager.PlaySound(this.playGameSound, false, true);
-            this.Manager.AddExclusive(this.Manager.Bank.GetScreen("PlayScreen"));
+            this.Manager.AddExclusive(this.Manager.Bank.GetNewScreen("PlayScreen"));
         }
 
         private void option_Clicked(Button button)

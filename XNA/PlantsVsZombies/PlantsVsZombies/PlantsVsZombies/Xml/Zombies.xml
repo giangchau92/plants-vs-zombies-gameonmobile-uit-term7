@@ -28,15 +28,24 @@
         <Behavior>
           <Type>xml_render_eat</Type>
           <ResourceName>Images/Zombies/Skeletons/BarrowWight/Attack</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.06</TimeFrame>
           <Bound>
             <X>73</X>
             <Y>101</Y>
           </Bound>
+
         </Behavior>
         <Behavior>
           <Type>xml_render_run</Type>
           <ResourceName>Images/Zombies/Skeletons/BarrowWight/Walk</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.04</TimeFrame>
           <Bound>
             <X>64</X>
@@ -46,6 +55,10 @@
         <Behavior>
           <Type>xml_render_death</Type>
           <ResourceName>Images/Zombies/Skeletons/BarrowWight/Death</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.04</TimeFrame>
           <Bound>
             <X>103</X>
@@ -94,6 +107,10 @@
         <Behavior>
           <Type>xml_render_eat</Type>
           <ResourceName>Images/Zombies/Spiders/Spider/Attack</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.06</TimeFrame>
           <Bound>
             <X>65</X>
@@ -103,6 +120,10 @@
         <Behavior>
           <Type>xml_render_run</Type>
           <ResourceName>Images/Zombies/Spiders/Spider/Walk</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.04</TimeFrame>
           <Bound>
             <X>51</X>
@@ -112,6 +133,10 @@
         <Behavior>
           <Type>xml_render_death</Type>
           <ResourceName>Images/Zombies/Spiders/Spider/Death</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.04</TimeFrame>
           <Bound>
             <X>43</X>
@@ -160,6 +185,10 @@
         <Behavior>
           <Type>xml_render_eat</Type>
           <ResourceName>Images/Zombies/Zombies/Nupperibo/Attack</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.06</TimeFrame>
           <Bound>
             <X>81</X>
@@ -169,6 +198,10 @@
         <Behavior>
           <Type>xml_render_run</Type>
           <ResourceName>Images/Zombies/Zombies/Nupperibo/Walk</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.04</TimeFrame>
           <Bound>
             <X>69</X>
@@ -178,6 +211,10 @@
         <Behavior>
           <Type>xml_render_death</Type>
           <ResourceName>Images/Zombies/Zombies/Nupperibo/Death</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.04</TimeFrame>
           <Bound>
             <X>80</X>
@@ -226,6 +263,10 @@
         <Behavior>
           <Type>xml_render_eat</Type>
           <ResourceName>Images/Zombies/Skeletons/Skeleton/Attack</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.06</TimeFrame>
           <Bound>
             <X>129</X>
@@ -235,6 +276,10 @@
         <Behavior>
           <Type>xml_render_run</Type>
           <ResourceName>Images/Zombies/Skeletons/Skeleton/Walk</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.04</TimeFrame>
           <Bound>
             <X>62</X>
@@ -244,6 +289,10 @@
         <Behavior>
           <Type>xml_render_death</Type>
           <ResourceName>Images/Zombies/Skeletons/Skeleton/Death</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.04</TimeFrame>
           <Bound>
             <X>156</X>
@@ -292,6 +341,10 @@
         <Behavior>
           <Type>xml_render_eat</Type>
           <ResourceName>Images/Zombies/Zombies/Mummy/Attack</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.06</TimeFrame>
           <Bound>
             <X>103</X>
@@ -301,6 +354,10 @@
         <Behavior>
           <Type>xml_render_run</Type>
           <ResourceName>Images/Zombies/Zombies/Mummy/Walk</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.04</TimeFrame>
           <Bound>
             <X>53</X>
@@ -310,6 +367,10 @@
         <Behavior>
           <Type>xml_render_death</Type>
           <ResourceName>Images/Zombies/Zombies/Mummy/Death</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.04</TimeFrame>
           <Bound>
             <X>79</X>
@@ -358,6 +419,10 @@
         <Behavior>
           <Type>xml_render_eat</Type>
           <ResourceName>Images/Zombies/Skeletons/Tattered/Attack</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.06</TimeFrame>
           <Bound>
             <X>90</X>
@@ -367,6 +432,10 @@
         <Behavior>
           <Type>xml_render_run</Type>
           <ResourceName>Images/Zombies/Skeletons/Tattered/Walk</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.04</TimeFrame>
           <Bound>
             <X>64</X>
@@ -376,6 +445,10 @@
         <Behavior>
           <Type>xml_render_death</Type>
           <ResourceName>Images/Zombies/Skeletons/Tattered/Death</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.04</TimeFrame>
           <Bound>
             <X>103</X>
@@ -424,6 +497,10 @@
         <Behavior>
           <Type>xml_render_eat</Type>
           <ResourceName>Images/Zombies/Zombies/Drowded/Attack</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.06</TimeFrame>
           <Bound>
             <X>86</X>
@@ -433,6 +510,10 @@
         <Behavior>
           <Type>xml_render_run</Type>
           <ResourceName>Images/Zombies/Zombies/Drowded/Walk</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.04</TimeFrame>
           <Bound>
             <X>83</X>
@@ -442,6 +523,10 @@
         <Behavior>
           <Type>xml_render_death</Type>
           <ResourceName>Images/Zombies/Zombies/Drowded/Death</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.04</TimeFrame>
           <Bound>
             <X>97</X>
@@ -490,6 +575,10 @@
         <Behavior>
           <Type>xml_render_eat</Type>
           <ResourceName>Images/Zombies/Zombies/Nameless/Attack</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.06</TimeFrame>
           <Bound>
             <X>89</X>
@@ -499,6 +588,10 @@
         <Behavior>
           <Type>xml_render_run</Type>
           <ResourceName>Images/Zombies/Zombies/Nameless/Walk</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.04</TimeFrame>
           <Bound>
             <X>73</X>
@@ -508,6 +601,10 @@
         <Behavior>
           <Type>xml_render_death</Type>
           <ResourceName>Images/Zombies/Zombies/Nameless/Death</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.04</TimeFrame>
           <Bound>
             <X>155</X>
@@ -556,6 +653,10 @@
         <Behavior>
           <Type>xml_render_eat</Type>
           <ResourceName>Images/Zombies/Skeletons/GiantSkeletonSword/Attack</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.06</TimeFrame>
           <Bound>
             <X>131</X>
@@ -565,6 +666,10 @@
         <Behavior>
           <Type>xml_render_run</Type>
           <ResourceName>Images/Zombies/Skeletons/GiantSkeletonSword/Walk</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.04</TimeFrame>
           <Bound>
             <X>112</X>
@@ -574,6 +679,10 @@
         <Behavior>
           <Type>xml_render_death</Type>
           <ResourceName>Images/Zombies/Skeletons/GiantSkeletonSword/Death</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.04</TimeFrame>
           <Bound>
             <X>139</X>
@@ -622,6 +731,10 @@
         <Behavior>
           <Type>xml_render_eat</Type>
           <ResourceName>Images/Zombies/Zombies/Ghoul/Attack</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.06</TimeFrame>
           <Bound>
             <X>107</X>
@@ -631,6 +744,10 @@
         <Behavior>
           <Type>xml_render_run</Type>
           <ResourceName>Images/Zombies/Zombies/Ghoul/Walk</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.04</TimeFrame>
           <Bound>
             <X>81</X>
@@ -640,6 +757,10 @@
         <Behavior>
           <Type>xml_render_death</Type>
           <ResourceName>Images/Zombies/Zombies/Ghoul/Death</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.04</TimeFrame>
           <Bound>
             <X>199</X>
@@ -688,6 +809,10 @@
         <Behavior>
           <Type>xml_render_eat</Type>
           <ResourceName>Images/Zombies/Zombies/Lemure/Attack</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.06</TimeFrame>
           <Bound>
             <X>133</X>
@@ -697,6 +822,10 @@
         <Behavior>
           <Type>xml_render_run</Type>
           <ResourceName>Images/Zombies/Zombies/Lemure/Walk</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.04</TimeFrame>
           <Bound>
             <X>109</X>
@@ -706,6 +835,10 @@
         <Behavior>
           <Type>xml_render_death</Type>
           <ResourceName>Images/Zombies/Zombies/Lemure/Death</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.04</TimeFrame>
           <Bound>
             <X>97</X>
@@ -754,6 +887,10 @@
         <Behavior>
           <Type>xml_render_eat</Type>
           <ResourceName>Images/Zombies/Zombies/Vampire/Attack</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.06</TimeFrame>
           <Bound>
             <X>65</X>
@@ -763,6 +900,10 @@
         <Behavior>
           <Type>xml_render_run</Type>
           <ResourceName>Images/Zombies/Zombies/Vampire/Walk</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.04</TimeFrame>
           <Bound>
             <X>81</X>
@@ -772,6 +913,10 @@
         <Behavior>
           <Type>xml_render_death</Type>
           <ResourceName>Images/Zombies/Zombies/Vampire/Death</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.04</TimeFrame>
           <Bound>
             <X>89</X>
@@ -820,6 +965,10 @@
         <Behavior>
           <Type>xml_render_eat</Type>
           <ResourceName>Images/Zombies/Spiders/Giant/Attack</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.06</TimeFrame>
           <Bound>
             <X>141</X>
@@ -829,6 +978,10 @@
         <Behavior>
           <Type>xml_render_run</Type>
           <ResourceName>Images/Zombies/Spiders/Giant/Walk</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.04</TimeFrame>
           <Bound>
             <X>107</X>
@@ -838,6 +991,10 @@
         <Behavior>
           <Type>xml_render_death</Type>
           <ResourceName>Images/Zombies/Spiders/Giant/Death</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.04</TimeFrame>
           <Bound>
             <X>89</X>
@@ -886,6 +1043,10 @@
         <Behavior>
           <Type>xml_render_eat</Type>
           <ResourceName>Images/Zombies/Spiders/Remorhaz/Attack</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.06</TimeFrame>
           <Bound>
             <X>236</X>
@@ -895,6 +1056,10 @@
         <Behavior>
           <Type>xml_render_run</Type>
           <ResourceName>Images/Zombies/Spiders/Remorhaz/Walk</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.04</TimeFrame>
           <Bound>
             <X>190</X>
@@ -904,6 +1069,10 @@
         <Behavior>
           <Type>xml_render_death</Type>
           <ResourceName>Images/Zombies/Spiders/Remorhaz/Death</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.04</TimeFrame>
           <Bound>
             <X>190</X>
@@ -952,6 +1121,10 @@
         <Behavior>
           <Type>xml_render_eat</Type>
           <ResourceName>Images/Zombies/Zombies/Histachii/Attack</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.06</TimeFrame>
           <Bound>
             <X>106</X>
@@ -961,6 +1134,10 @@
         <Behavior>
           <Type>xml_render_run</Type>
           <ResourceName>Images/Zombies/Zombies/Histachii/Walk</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.04</TimeFrame>
           <Bound>
             <X>53</X>
@@ -970,6 +1147,10 @@
         <Behavior>
           <Type>xml_render_death</Type>
           <ResourceName>Images/Zombies/Zombies/Histachii/Death</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.04</TimeFrame>
           <Bound>
             <X>87</X>
@@ -1018,6 +1199,10 @@
         <Behavior>
           <Type>xml_render_eat</Type>
           <ResourceName>Images/Zombies/Zombies/Ravel/Attack</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.06</TimeFrame>
           <Bound>
             <X>115</X>
@@ -1027,6 +1212,10 @@
         <Behavior>
           <Type>xml_render_run</Type>
           <ResourceName>Images/Zombies/Zombies/Ravel/Walk</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.04</TimeFrame>
           <Bound>
             <X>51</X>
@@ -1036,6 +1225,10 @@
         <Behavior>
           <Type>xml_render_death</Type>
           <ResourceName>Images/Zombies/Zombies/Ravel/Death</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.04</TimeFrame>
           <Bound>
             <X>105</X>
@@ -1084,6 +1277,10 @@
         <Behavior>
           <Type>xml_render_eat</Type>
           <ResourceName>Images/Zombies/Skeletons/BoneGolem/Attack</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.06</TimeFrame>
           <Bound>
             <X>275</X>
@@ -1093,6 +1290,10 @@
         <Behavior>
           <Type>xml_render_run</Type>
           <ResourceName>Images/Zombies/Skeletons/BoneGolem/Walk</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.04</TimeFrame>
           <Bound>
             <X>153</X>
@@ -1102,6 +1303,10 @@
         <Behavior>
           <Type>xml_render_death</Type>
           <ResourceName>Images/Zombies/Skeletons/BoneGolem/Death</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.04</TimeFrame>
           <Bound>
             <X>121</X>
@@ -1150,6 +1355,10 @@
         <Behavior>
           <Type>xml_render_eat</Type>
           <ResourceName>Images/Zombies/Skeletons/GiantSkeletonBlade/Attack</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.06</TimeFrame>
           <Bound>
             <X>202</X>
@@ -1159,6 +1368,10 @@
         <Behavior>
           <Type>xml_render_run</Type>
           <ResourceName>Images/Zombies/Skeletons/GiantSkeletonBlade/Walk</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.04</TimeFrame>
           <Bound>
             <X>159</X>
@@ -1168,6 +1381,10 @@
         <Behavior>
           <Type>xml_render_death</Type>
           <ResourceName>Images/Zombies/Skeletons/GiantSkeletonBlade/Death</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.04</TimeFrame>
           <Bound>
             <X>169</X>
@@ -1216,6 +1433,10 @@
         <Behavior>
           <Type>xml_render_eat</Type>
           <ResourceName>Images/Zombies/Spiders/Drider/Attack</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.06</TimeFrame>
           <Bound>
             <X>126</X>
@@ -1225,6 +1446,10 @@
         <Behavior>
           <Type>xml_render_run</Type>
           <ResourceName>Images/Zombies/Spiders/Drider/Walk</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.04</TimeFrame>
           <Bound>
             <X>186</X>
@@ -1234,6 +1459,10 @@
         <Behavior>
           <Type>xml_render_death</Type>
           <ResourceName>Images/Zombies/Spiders/Drider/Death</ResourceName>
+          <FootPosition>
+            <X>0</X>
+            <Y>0</Y>
+          </FootPosition>
           <TimeFrame>0.04</TimeFrame>
           <Bound>
             <X>163</X>

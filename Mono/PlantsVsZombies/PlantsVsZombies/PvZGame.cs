@@ -207,6 +207,15 @@ namespace PlantsVsZombies
             SpriteFramesBank.Instance.Add("Zombies/Nameless/Walk", FramesGenerator.Generate(73, 100, 1024, 16));
             SpriteFramesBank.Instance.Add("Zombies/Nameless/Attack", FramesGenerator.Generate(89, 101, 1024, 16));
             SpriteFramesBank.Instance.Add("Zombies/Nameless/Death", FramesGenerator.Generate(155, 130, 1024, 16));
+            SpriteFramesBank.Instance.Add("Zombies/Lemure/Walk", FramesGenerator.Generate(109, 87, 1024, 16));
+            SpriteFramesBank.Instance.Add("Zombies/Lemure/Attack", FramesGenerator.Generate(133, 108, 1024, 16));
+            SpriteFramesBank.Instance.Add("Zombies/Lemure/Death", FramesGenerator.Generate(97, 107, 1024, 16));
+            SpriteFramesBank.Instance.Add("Zombies/Mummy/Walk", FramesGenerator.Generate(53, 88, 1024, 20));
+            SpriteFramesBank.Instance.Add("Zombies/Mummy/Attack", FramesGenerator.Generate(103, 92, 1024, 15));
+            SpriteFramesBank.Instance.Add("Zombies/Mummy/Death", FramesGenerator.Generate(79, 105, 1024, 16));
+            SpriteFramesBank.Instance.Add("Zombies/Remorhaz/Walk", FramesGenerator.Generate(190, 190, 1024, 28));
+            SpriteFramesBank.Instance.Add("Zombies/Remorhaz/Attack", FramesGenerator.Generate(236, 209, 1024, 15));
+            SpriteFramesBank.Instance.Add("Zombies/Remorhaz/Death", FramesGenerator.Generate(190, 190, 1024, 21));
             // Histachii
             SpriteFramesBank.Instance.Add("Zombies/Histachii/Walk", FramesGenerator.Generate(53, 92, 1024, 12));
             SpriteFramesBank.Instance.Add("Zombies/Histachii/Attack", FramesGenerator.Generate(106, 91, 1024, 15));

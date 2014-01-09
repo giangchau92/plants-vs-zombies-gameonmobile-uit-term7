@@ -52,7 +52,12 @@ namespace PlantsVsZombies.GameCore
 
         public Level.Level GetLevel(int level)
         {
-            return _listLevel[level];
+            return _listLevel[level].Clone();
+        }
+
+        public List<Level.Level> GetLevels()
+        {
+            return _listLevel;
         }
     }
 }

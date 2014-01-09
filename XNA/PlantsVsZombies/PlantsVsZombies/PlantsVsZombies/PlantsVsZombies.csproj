@@ -109,15 +109,7 @@
     <Compile Include="GameCore\PZObjectManager.cs" />
     <Compile Include="GameCore\PZResourceManager.cs" />
     <Compile Include="GameCore\PZScreenManager.cs" />
-    <Compile Include="GameObjects\BaseBullet.cs" />
-    <Compile Include="GameObjects\BasePlant.cs" />
-    <Compile Include="GameObjects\BaseZombie.cs" />
     <Compile Include="GameObjects\GameObjectCenter.cs" />
-    <Compile Include="GameObjects\Implements\IceBullet.cs" />
-    <Compile Include="GameObjects\Implements\IcePlant.cs" />
-    <Compile Include="GameObjects\Implements\NormalBullet.cs" />
-    <Compile Include="GameObjects\Implements\NormalPlant.cs" />
-    <Compile Include="GameObjects\Implements\NormalZombie.cs" />
     <Compile Include="GameScreen\GamePlayScreen.cs" />
     <Compile Include="GameScreen\MainMenuScreen.cs" />
     <Compile Include="GameScreen\MessageScenes.cs" />
@@ -441,6 +433,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="GameComponents\States\MoveStates\" />
+    <Folder Include="GameObjects\Implements\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />

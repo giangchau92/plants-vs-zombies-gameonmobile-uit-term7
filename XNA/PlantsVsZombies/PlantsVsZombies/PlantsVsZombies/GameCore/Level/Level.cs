@@ -107,6 +107,18 @@ namespace PlantsVsZombies.GameCore.Level
                 Waves.Add(wave);
             }
         }
+
+        public Level Clone()
+        {
+            Level clone = new Level();
+            clone.Name = Name;
+            foreach (var item in Waves)
+            {
+                clone.Waves.Add(item.Clone());
+            }
+
+            return clone;
+        }
     }
 
     public enum WaveState
@@ -236,11 +248,29 @@ namespace PlantsVsZombies.GameCore.Level
             var numberDer = deserializer.SubDeserializer("Number");
             NumberFrom = numberDer.DeserializeInteger("From");
             NumberTo = numberDer.DeserializeInteger("To");
-            _timeWave = deserializer.DeserializeDouble("TimeWave");
+            
             _timeNextWave = deserializer.DeserializeDouble("TimeNextWave");
             _timeBeginWave = deserializer.DeserializeDouble("TimeBeginWave");
             _timeNextZombieFrom = deserializer.DeserializeDouble("TimeNextZombieFrom");
             _timeNextZombieTo = deserializer.DeserializeDouble("TimeNextZombieTo");
+        }
+
+        public Wave Clone()
+        {
+            Wave clone = new Wave();
+            clone.Name = Name;
+            foreach (var item in Zombies)
+            {
+                clone.Zombies.Add(item);
+            }
+            clone.NumberFrom = NumberFrom;
+            clone.NumberTo = NumberTo;
+            clone._timeNextWave = _timeNextWave;
+            clone._timeBeginWave = _timeBeginWave;
+            clone._timeNextZombieFrom = _timeNextZombieFrom;
+            clone._timeNextZombieTo = _timeNextZombieTo;
+
+            return clone;
         }
     }
 }
