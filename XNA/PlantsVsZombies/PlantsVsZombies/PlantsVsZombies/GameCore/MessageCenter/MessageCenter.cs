@@ -13,13 +13,13 @@ namespace PlantsVsZombies.GameCore.MessageCenter
     {
         READY, SHOWING, SHOWED, HIDING, HIDED
     }
-    public class MessageCenter
+    public class MessageCenter : DrawableGameComponent
     {
         private Game _game;
         private SpriteFont _messageFont;
         private List<String> _listMessage = new List<string>();
         private TimeSpan _currentTime;
-        private TimeSpan _timeDelay = TimeSpan.FromSeconds(1);
+        private TimeSpan _timeDelay = TimeSpan.FromSeconds(2);
 
         private EffectState _state;
         public EffectState State
@@ -32,7 +32,7 @@ namespace PlantsVsZombies.GameCore.MessageCenter
         private IMessageEffect _hidingEffect;
 
 
-        public MessageCenter(Game game)
+        public MessageCenter(Game game) : base(game)
         {
             _game = game;
             _state = EffectState.READY;
@@ -44,7 +44,7 @@ namespace PlantsVsZombies.GameCore.MessageCenter
         {
             _listMessage.Add(message);
         }
-        public void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
             if (_listMessage.Count == 0)
             {
@@ -78,9 +78,9 @@ namespace PlantsVsZombies.GameCore.MessageCenter
             }
         }
 
-        public void Draw(GameTime gameTime)
+        public override void Draw(GameTime gameTime)
         {
-            if (State == EffectState.SHOWING)
+            if (State == EffectState.SHOWING || State == EffectState.SHOWED)
             {
                 _showingEffect.Draw(gameTime);
             } else if (State == EffectState.HIDING)

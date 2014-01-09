@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using SCSEngine.Services;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
@@ -33,8 +34,8 @@ namespace PlantsVsZombies.GameCore.MessageCenter.Inplements
             {
                 _percent += (float)(ratio * gameTime.ElapsedGameTime.TotalSeconds);
                 alpha = (int)(1 * _percent);
-                Scale = (int)(1 * _percent);
-
+                Scale = (float)(1 * _percent);
+                Debug.WriteLine("ABC: " + _percent.ToString());
                 if (_percent >= 1)
                     _owner.State = EffectState.SHOWED;
             }
@@ -43,9 +44,10 @@ namespace PlantsVsZombies.GameCore.MessageCenter.Inplements
 
         public void Draw(GameTime gameTime)
         {
-            if (_owner.State == EffectState.SHOWING)
+            if (_owner.State == EffectState.SHOWING || _owner.State == EffectState.SHOWED)
             {
                 SCSServices.Instance.SpriteBatch.DrawString(Font, _content, Positon, Color.Red, 0, new Vector2(0.5f, 0.5f), Scale, SpriteEffects.None, 0);
+                Debug.WriteLine(Scale.ToString());
             }
         }
 
@@ -59,7 +61,7 @@ namespace PlantsVsZombies.GameCore.MessageCenter.Inplements
             Vector2 size = Font.MeasureString(_content);
             Viewport view = SCSServices.Instance.Game.GraphicsDevice.Viewport;
 
-            Positon = new Vector2(view.Height / 2 - size.X / 2, view.Width / 2 - size.Y / 2);
+            Positon = new Vector2(view.Width / 2 - size.X / 2, view.Height / 2 - size.Y / 2);
         }
     }
 }

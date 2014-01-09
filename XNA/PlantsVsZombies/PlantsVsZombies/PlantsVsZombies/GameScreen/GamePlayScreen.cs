@@ -6,6 +6,7 @@ using PlantsVsZombies.GameComponents;
 using PlantsVsZombies.GameComponents.Components;
 using PlantsVsZombies.GameCore;
 using PlantsVsZombies.GameCore.Level;
+using PlantsVsZombies.GameCore.MessageCenter;
 using PlantsVsZombies.GrowSystem;
 using SCSEngine.Control;
 using SCSEngine.GestureHandling;
@@ -44,6 +45,7 @@ namespace PlantsVsZombies.GameScreen
         PvZSunSystem _sunSystem;
         IGestureManager gm;
         PlayBackground playBacground;
+        MessageCenter _messageCenter;
 
         // UI
         private UIControlManager uiControlManager;
@@ -69,6 +71,8 @@ namespace PlantsVsZombies.GameScreen
             this.playBacground.Initialize();
             this.playBacground.OnAnimatingCompleted += this.OnBackgroundAnimatingCompleted;
             this.playBacground.StartAnimate();
+
+            _messageCenter = new MessageCenter(this.Game);
         }
 
         private void OnBackgroundAnimatingCompleted(PlayBackground background)
@@ -103,6 +107,7 @@ namespace PlantsVsZombies.GameScreen
             chooseSys.OnCameOut += this.OnChooseSystemCompleted;
             this.Components.Add(chooseSys);
             chooseSys.ComeIn();
+
         }
 
         private void OnChooseSystemCompleted(PvZChooseSystem chooseSys)
@@ -112,10 +117,12 @@ namespace PlantsVsZombies.GameScreen
             chooseSys.RemoveAll();
 
             state = PlayState.RUNNING;
+            _messageCenter.PushMessage("Ablooo");
         }
 
         public override void Update(GameTime gameTime)
         {
+            _messageCenter.Update(gameTime);
             this.playBacground.Update(gameTime);
 
             if (this.state == PlayState.RUNNING)
@@ -194,7 +201,7 @@ namespace PlantsVsZombies.GameScreen
                 updateMessage.DestinationObjectId = 0; // For every object
                 objectManager.SendMessage(updateMessage, gameTime);
             }
-
+            _messageCenter.Draw(gameTime);
             base.Draw(gameTime);
 
             spriteBatch.End();

@@ -3,8 +3,10 @@ using PlantsVsZombies.GameComponents;
 using PlantsVsZombies.GameComponents.Components;
 using PlantsVsZombies.GameCore;
 using PlantsVsZombies.GameObjects;
+using SCSEngine.Audio;
 using SCSEngine.Mathematics;
 using SCSEngine.Serialization;
+using SCSEngine.Services;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -21,6 +23,7 @@ namespace PlantsVsZombies.GameCore.Level
     {
         public string Name { get; set; }
         public List<Wave> Waves { get; set; }
+        public bool IsFirstZombie { get; set; }
 
         private LevelState _currentState;
         private TimeSpan _currentTime;
@@ -37,6 +40,7 @@ namespace PlantsVsZombies.GameCore.Level
             _currentState = LevelState.BEGIN;
             _currentTime = TimeSpan.Zero;
             _currentWave = 0;
+            IsFirstZombie = true;
             ////Debug.WriteLine("LEVEL: Begin Wave");
         }
 
@@ -105,6 +109,7 @@ namespace PlantsVsZombies.GameCore.Level
             {
                 Wave wave = new Wave();
                 wave.Deserialize(item);
+                wave.Owner = this;
                 Waves.Add(wave);
             }
         }
@@ -115,7 +120,9 @@ namespace PlantsVsZombies.GameCore.Level
             clone.Name = Name;
             foreach (var item in Waves)
             {
-                clone.Waves.Add(item.Clone());
+                Wave wave = item.Clone();
+                wave.Owner = clone;
+                clone.Waves.Add(wave);
             }
 
             return clone;
@@ -128,10 +135,13 @@ namespace PlantsVsZombies.GameCore.Level
     }
     public class Wave : ISerializable
     {
+        private Sound _soundFirst;
         public string Name { get; set; }
         public List<string> Zombies { get; set; }
         public int NumberFrom { get; set; }
         public int NumberTo { get; set; }
+        public Level Owner { get; set; }
+        public bool IsFirstZombie { get; set; }
         private double _timeWave;
         public TimeSpan TimeWave
         {
@@ -191,6 +201,7 @@ namespace PlantsVsZombies.GameCore.Level
             _currentState = WaveState.WAVING;
             _currentTime = TimeSpan.Zero;
             _nextZombieTime = TimeSpan.Zero;
+            IsFirstZombie = true;
         }
 
         public void Update(PZBoard board, GameTime gameTime)
@@ -218,6 +229,12 @@ namespace PlantsVsZombies.GameCore.Level
                     board.AddObjectAt(obj, row, 10);
                     _currentTime = TimeSpan.Zero;
                     _nextZombieTime = TimeSpan.Zero;
+                    if (IsFirstZombie && Owner.IsFirstZombie)
+                    {
+                        SCSServices.Instance.AudioManager.PlaySound(_soundFirst, false, true);
+                        Owner.IsFirstZombie = false;
+                        IsFirstZombie = false;
+                    }
                     _currentZombie++;
                 }
                 else
@@ -268,7 +285,7 @@ namespace PlantsVsZombies.GameCore.Level
             clone._timeBeginWave = _timeBeginWave;
             clone._timeNextZombieFrom = _timeNextZombieFrom;
             clone._timeNextZombieTo = _timeNextZombieTo;
-
+            clone._soundFirst = SCSServices.Instance.ResourceManager.GetResource<Sound>("Sounds/Evillaugh");
             return clone;
         }
     }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using PlantsVsZombies.GameComponents.Behaviors.Bullet;
 using PlantsVsZombies.GameCore;
+using SCSEngine.Audio;
 using SCSEngine.GestureHandling;
 using SCSEngine.GestureHandling.Implements.Events;
 using SCSEngine.Mathematics;
@@ -24,12 +25,16 @@ namespace PlantsVsZombies.GrowSystem
         private TimeSpan _currentTime = TimeSpan.Zero;
         private TimeSpan _timeGiveSun = TimeSpan.FromSeconds(20);
 
+        private Sound _soundSunCreate;
+
         public PvZSunSystem(Game game, int money, IGestureDispatcher gestureDispatcher)
             : base(game)
         {
             this.CurrentMoney = money;
             _collectionPoint = new Vector2(20, 430);
             _gestureDispatcher = gestureDispatcher;
+
+            _soundSunCreate = SCSServices.Instance.ResourceManager.GetResource<Sound>("Sounds/CreateSun");
             this.DrawOrder = 2;
         }
 
@@ -58,6 +63,8 @@ namespace PlantsVsZombies.GrowSystem
             ObjectEntityGesture sun = PZObjectFactory.Instance.createSun(position, state) as ObjectEntityGesture;
             PZObjectManager.Instance.AddObject(sun);
             _gestureDispatcher.AddTarget<Tap>(sun);
+
+            SCSServices.Instance.AudioManager.PlaySound(_soundSunCreate, false, true);
         }
 
         public void RemoveSun(ObjectEntityGesture obj)
