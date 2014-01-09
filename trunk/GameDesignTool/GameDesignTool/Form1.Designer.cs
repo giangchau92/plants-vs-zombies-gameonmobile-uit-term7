@@ -94,6 +94,8 @@
             this.waveHeaderFormat = new System.Windows.Forms.RichTextBox();
             this.rTxtLResult = new System.Windows.Forms.RichTextBox();
             this.btnTop = new System.Windows.Forms.Button();
+            this.label27 = new System.Windows.Forms.Label();
+            this.txtLNOP = new System.Windows.Forms.TextBox();
             this.tabPage_Zombie.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage_Levels.SuspendLayout();
@@ -454,6 +456,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label27);
+            this.groupBox1.Controls.Add(this.txtLNOP);
             this.groupBox1.Controls.Add(this.label26);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.txtLBackground);
@@ -511,6 +515,16 @@
             this.btnTop.Name = "btnTop";
             this.btnTop.UseVisualStyleBackColor = true;
             this.btnTop.Click += new System.EventHandler(this.btnTop_Click);
+            // 
+            // label27
+            // 
+            resources.ApplyResources(this.label27, "label27");
+            this.label27.Name = "label27";
+            // 
+            // txtLNOP
+            // 
+            resources.ApplyResources(this.txtLNOP, "txtLNOP");
+            this.txtLNOP.Name = "txtLNOP";
             // 
             // frmZombie
             // 
@@ -599,6 +613,8 @@
         private System.Windows.Forms.Button btnTop;
         private System.Windows.Forms.Button btnLScript;
         private System.Windows.Forms.Button btnZScript;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.TextBox txtLNOP;
 
     }
 }

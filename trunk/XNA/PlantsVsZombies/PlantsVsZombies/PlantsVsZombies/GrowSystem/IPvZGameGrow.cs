@@ -28,22 +28,22 @@ namespace PlantsVsZombies.GrowSystem
 
         public CRectangleF CellContains(CRectangleF growRect)
         {
-            if (!_gameBoard.Bound.Contains(new Point((int)growRect.Position.X, (int)growRect.Position.Y)))
+            if (!_gameBoard.Bound.Contains(new Point((int)growRect.Center.X, (int)growRect.Center.Y)))
             {
                 return null;
             }
 
-            if (isExistPlant(growRect))
+            if (getPlantAt(growRect) != null)
                 return null;
 
-            CRectangleF rect = _gameBoard.GetRectAtPoint(growRect.Position);
+            CRectangleF rect = _gameBoard.GetRectAtPoint(growRect.Center);
             ////Debug.WriteLine("CellContains at " + rect.X + " " + rect.Y);
-            //rect.Position.Y += rect.Size.Y;
+            //rect.Center.Y += rect.Size.Y;
             return rect;
             
         }
 
-        private bool isExistPlant(CRectangleF rect)
+        private ObjectEntity getPlantAt(CRectangleF rect)
         {
             IDictionary<ulong, ObjectEntity> fullList = PZObjectManager.Instance.GetObjects();
             IDictionary<ulong, ObjectEntity> listPlant = new Dictionary<ulong, ObjectEntity>();
@@ -54,25 +54,25 @@ namespace PlantsVsZombies.GrowSystem
                     continue;
                 PhysicComponent phyCom = item.Value.GetComponent(typeof(PhysicComponent)) as PhysicComponent;
                 Rectangle frame = phyCom.Frame;
-                ////Debug.WriteLine(rect.Position.X + " - " + rect.Position.Y + " || " + frame.X + " - " + frame.Y);
-                if (frame.Contains((int)rect.Position.X, (int)rect.Position.Y))
-                    return true;
+
+                if (frame.Contains((int)rect.Center.X, (int)rect.Center.Y))
+                    return item.Value;
             }
-            return false;
+            return null;
         }
 
         public bool GrowPlant(string plantName, CRectangleF growRect)
         {
             // call on release touch
-            if (!_gameBoard.Bound.Contains(new Point((int)growRect.Position.X, (int)growRect.Position.Y)))
+            if (!_gameBoard.Bound.Contains(new Point((int)growRect.Center.X, (int)growRect.Center.Y)))
             {
                 return false;
             }
 
-            if (isExistPlant(growRect))
+            if (getPlantAt(growRect) != null)
                 return false;
 
-            CRectangleF rect = _gameBoard.GetRectAtPoint(growRect.Position);
+            CRectangleF rect = _gameBoard.GetRectAtPoint(growRect.Center);
 
             ////Debug.WriteLine("GrowPlant at " + rect.X + " " + rect.Y);
 

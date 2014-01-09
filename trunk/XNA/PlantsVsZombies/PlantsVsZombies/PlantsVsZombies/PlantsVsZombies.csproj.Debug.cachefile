@@ -65,7 +65,6 @@ Content\Images\Plants\MineGrow.xnb
 Content\Images\Plants\Pea.xnb
 Content\Images\Plants\SeaMushroom.xnb
 Content\Images\Plants\Stone.xnb
-Content\Images\Plants\Sun.xnb
 Content\Images\Plants\Sunflower.xnb
 Content\Images\Plants\SunMushroom.xnb
 Content\Images\Plants\SunMushroomGreater.xnb
@@ -95,14 +94,22 @@ Content\Sounds\Horns.xnb
 Content\Sounds\Patriot.xnb
 Content\Sounds\Vampires.xnb
 Content\Fonts\StatusFont.xnb
+Content\Bullets\B_Cherry.xnb
+Content\Bullets\B_Chili.xnb
+Content\Bullets\B_FreeMush.xnb
+Content\Bullets\B_FreeMushEffect.xnb
+Content\Bullets\B_IcePea.xnb
+Content\Bullets\B_IcePeaEffect.xnb
+Content\Bullets\B_Pea.xnb
+Content\Bullets\B_PeaEffect.xnb
+Content\Bullets\B_WaterMush.xnb
+Content\Bullets\B_WaterMushEffect.xnb
+Content\Bullets\Sun.xnb
 Content\Sounds\Wind stalker.wma
 Content\Sounds\Horns.wma
 Content\Sounds\Patriot.wma
 Content\Sounds\Vampires.wma
 Content\bullet.xnb
-Content\Bullets\B_IcePea.xnb
-Content\Bullets\B_Pea.xnb
-Content\Bullets\Sun.xnb
 Content\BuyPlant.xnb
 Content\ChoosePlant.xnb
 Content\DebugFont.xnb

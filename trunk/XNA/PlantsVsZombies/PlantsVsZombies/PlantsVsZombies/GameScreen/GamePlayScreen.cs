@@ -2,12 +2,14 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
+using Microsoft.Xna.Framework.Media;
 using PlantsVsZombies.GameComponents;
 using PlantsVsZombies.GameComponents.Components;
 using PlantsVsZombies.GameCore;
 using PlantsVsZombies.GameCore.Level;
 using PlantsVsZombies.GameCore.MessageCenter;
 using PlantsVsZombies.GrowSystem;
+using SCSEngine.Audio;
 using SCSEngine.Control;
 using SCSEngine.GestureHandling;
 using SCSEngine.GestureHandling.Implements.Detectors;
@@ -27,10 +29,8 @@ namespace PlantsVsZombies.GameScreen
 {
     public class GamePlayScreen : BaseGameScreen
     {
-        private readonly string[] backgroundNames = {@"Images\Controls\Background_Forest",
-                                                    @"Images\Controls\Background_Hospital",
-                                                    @"Images\Controls\Background_House",
-                                                    @"Images\Controls\Background_Ocean"};
+        private readonly string[] backgroundSongNames = { "Sounds/Horns", "Sounds/Patriot", "Sounds/Vampires", "Sounds/Wind stalker" };
+        private readonly string[] backgroundSoundEffectNames = { "Sounds/Groan", "Sounds/LowFly" };
 
         private enum PlayState
         {
@@ -52,6 +52,9 @@ namespace PlantsVsZombies.GameScreen
         private IGestureDispatcher dispatcher;
         private PvZGrowSystem growSystem;
         private IPvZGameGrow gameGrow;
+
+        // Sounds
+        private double songTimer = 0;
 
         private PlayState state = PlayState.START;
 
@@ -77,6 +80,13 @@ namespace PlantsVsZombies.GameScreen
             _messageCenter = new MessageCenter(this.Game);
 
             this.growSystem = growSys;
+        }
+
+        public override void Initialize()
+        {
+            this.PlaySong();
+
+            base.Initialize();
         }
 
         private void level_OnBeginWave(int currentWave, bool isFinalWave)
@@ -111,7 +121,7 @@ namespace PlantsVsZombies.GameScreen
 
             this.gameGrow = new PvZGameGrow(this.gameBoard);
 
-            var chooseSys = new PvZChooseSystem(this.Game, this.growSystem.ButtonFactoryBank, this.uiControlManager, _sunSystem, 3);
+            var chooseSys = new PvZChooseSystem(this.Game, this.growSystem.ButtonFactoryBank, this.uiControlManager, _sunSystem, level.NumberOfPlants);
             chooseSys.Initialize();
             chooseSys.OnCameOut += this.OnChooseSystemCompleted;
             this.Components.Add(chooseSys);
@@ -129,6 +139,19 @@ namespace PlantsVsZombies.GameScreen
             _messageCenter.PushMessage(level.Name);
         }
 
+        public void PlaySong()
+        {
+            Song backgroundSong = SCSServices.Instance.ResourceManager.GetResource<Song>(backgroundSongNames[GRandom.RandomInt(backgroundSongNames.Length)]);
+            songTimer = backgroundSong.Duration.TotalMilliseconds;
+            SCSServices.Instance.AudioManager.PlaySong(backgroundSong, false, true);
+        }
+
+        public void PlaySoundEffects()
+        {
+            Sound backgroundSE = SCSServices.Instance.ResourceManager.GetResource<Sound>(backgroundSoundEffectNames[GRandom.RandomInt(backgroundSoundEffectNames.Length)]);
+            SCSServices.Instance.AudioManager.PlaySound(backgroundSE, false, true);
+        }
+
         public override void Update(GameTime gameTime)
         {
             _messageCenter.Update(gameTime);
@@ -140,6 +163,8 @@ namespace PlantsVsZombies.GameScreen
 //
                 if (isWin())
                 {
+                    Sound winSound = SCSServices.Instance.ResourceManager.GetResource<Sound>("Sounds/WinGame");
+                    SCSServices.Instance.AudioManager.PlaySound(winSound, false, true);
                     PZLevelManager.Instance.UnlockLevel();
                     var winGame = (MessageGameScreen)this.Manager.Bank.GetNewScreen("WinGame");
                     winGame.OnScreenCompleted += this.TryToNextLevel;
@@ -148,6 +173,10 @@ namespace PlantsVsZombies.GameScreen
 
                 if (isLose())
                 {
+                    Sound loseSound = SCSServices.Instance.ResourceManager.GetResource<Sound>("Sounds/LoseGame");
+                    SCSServices.Instance.AudioManager.PlaySound(loseSound, false, true);
+                    Sound backgroundSE = SCSServices.Instance.ResourceManager.GetResource<Sound>(backgroundSoundEffectNames[GRandom.RandomInt(backgroundSoundEffectNames.Length)]);
+                    SCSServices.Instance.AudioManager.PlaySound(backgroundSE, false, true);
                     PZLevelManager.Instance.ResetGame();
                     var loseGame = (MessageGameScreen)this.Manager.Bank.GetNewScreen("LoseGame");
                     loseGame.OnScreenCompleted += this.OnGameLost;
@@ -159,6 +188,17 @@ namespace PlantsVsZombies.GameScreen
                 updateMessage.DestinationObjectId = 0; // For all object
 
                 objectManager.SendMessage(updateMessage, gameTime);
+            }
+
+            songTimer -= gameTime.ElapsedGameTime.TotalMilliseconds;
+            if (songTimer <= 0.0)
+            {
+                this.PlaySong();
+            }
+
+            if (GRandom.RandomLogic(0.001))
+            {
+                this.PlaySoundEffects();
             }
 
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
@@ -260,6 +300,7 @@ namespace PlantsVsZombies.GameScreen
                     {
                         this.uiControlManager.Enabled = true;
                     }
+                    this.PlaySong();
                     break;
                 case GameScreenState.Deactivated:
                 case GameScreenState.Paused:
@@ -271,6 +312,7 @@ namespace PlantsVsZombies.GameScreen
                     {
                         this.uiControlManager.Enabled = false;
                     }
+                    SCSServices.Instance.AudioManager.StopSong();
                     break;
             }
 

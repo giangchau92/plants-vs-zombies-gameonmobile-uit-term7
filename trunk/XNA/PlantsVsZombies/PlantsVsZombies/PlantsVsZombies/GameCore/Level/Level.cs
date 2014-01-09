@@ -25,6 +25,7 @@ namespace PlantsVsZombies.GameCore.Level
         public List<Wave> Waves { get; set; }
         public bool IsFirstZombie { get; set; }
         public string Background { get; set; }
+        public int NumberOfPlants { get; set; }
 
         private LevelState _currentState;
         private TimeSpan _currentTime;
@@ -112,6 +113,7 @@ namespace PlantsVsZombies.GameCore.Level
         {
             Name = deserializer.DeserializeString("Name");
             Background = deserializer.DeserializeString("Background");
+            NumberOfPlants = deserializer.DeserializeInteger("NumberOfPlants");
             var waveDers = deserializer.DeserializeAll("Wave");
             foreach (var item in waveDers)
             {
@@ -127,6 +129,7 @@ namespace PlantsVsZombies.GameCore.Level
             Level clone = new Level();
             clone.Name = Name;
             clone.Background = Background;
+            clone.NumberOfPlants = NumberOfPlants;
             foreach (var item in Waves)
             {
                 Wave wave = item.Clone();
