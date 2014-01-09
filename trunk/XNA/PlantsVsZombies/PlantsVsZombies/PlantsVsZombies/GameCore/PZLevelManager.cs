@@ -24,6 +24,16 @@ namespace PlantsVsZombies.GameCore
 
         private const string level_config = "Xml/Levels/levels.xml";
         private List<Level.Level> _listLevel = new List<Level.Level>();
+        private int _currentLevel = 0;
+
+        public int CurrentLevel
+        {
+            get
+            {
+                return _currentLevel;
+            }
+        }
+
 
         private PZLevelManager()
         {
@@ -48,9 +58,16 @@ namespace PlantsVsZombies.GameCore
             return File.Open(config_url, FileMode.Open, FileAccess.Read, FileShare.None);
         }
 
-        public Level.Level GetLevel(int level)
+        public Level.Level GetLevel()
         {
-            return _listLevel[level];
+            return _listLevel[_currentLevel].Clone();
         }
+
+        public void UnlockLevel()
+        {
+            _currentLevel++;
+        }
+
+
     }
 }

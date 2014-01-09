@@ -29,6 +29,7 @@ namespace PlantsVsZombies.GameCore.Level
         public LevelState LevelState
         {
             get { return _currentState; }
+            set { _currentState = value; }
         }
 
         public Level()
@@ -107,6 +108,18 @@ namespace PlantsVsZombies.GameCore.Level
                 wave.Deserialize(item);
                 Waves.Add(wave);
             }
+        }
+
+        public Level Clone()
+        {
+            Level clone = new Level();
+            clone.Name = Name;
+            foreach (var item in Waves)
+            {
+                clone.Waves.Add(item.Clone());
+            }
+
+            return clone;
         }
     }
 
@@ -242,6 +255,26 @@ namespace PlantsVsZombies.GameCore.Level
             _timeBeginWave = deserializer.DeserializeDouble("TimeBeginWave");
             _timeNextZombieFrom = deserializer.DeserializeDouble("TimeNextZombieFrom");
             _timeNextZombieTo = deserializer.DeserializeDouble("TimeNextZombieTo");
+        }
+
+        public Wave Clone()
+        {
+            Wave clone = new Wave();
+            clone.Name = Name;
+            foreach (var item in Zombies)
+            {
+                clone.Zombies.Add(item);
+            }
+            clone.NumberFrom = NumberFrom;
+            clone.NumberTo = NumberTo;
+
+            clone._timeWave = _timeWave;
+            clone._timeNextWave = _timeNextWave;
+            clone._timeBeginWave = _timeBeginWave;
+            clone._timeNextZombieFrom = _timeNextZombieFrom;
+            clone._timeNextZombieTo = _timeNextZombieTo;
+
+            return clone;
         }
     }
 }

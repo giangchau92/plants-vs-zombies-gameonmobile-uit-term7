@@ -14,7 +14,8 @@ namespace PlantsVsZombies.GameComponents.Effect.Implements
         TimeSpan curentTime = TimeSpan.Zero;
         public TimeSpan TimeDurring { get; set; }
 
-        Vector2 slowVelocity = new Vector2(5, 0);
+        Vector2 slowVelocity = new Vector2(8, 0);
+        Color slowColor = new Color(124, 224, 245, 255);
 
         public SlowMoveEffect()
         {
@@ -26,6 +27,9 @@ namespace PlantsVsZombies.GameComponents.Effect.Implements
             if (curentTime >= TimeDurring)
             {
                 // Remove itseft
+                RenderComponent renCom = this.Owner.Owner.Owner.GetComponent(typeof(RenderComponent)) as RenderComponent;
+                RenderBehavior renBehavior = renCom.GetCurrentBehavior() as RenderBehavior;
+                renBehavior.Color = Color.White;
                 this.Owner.RemoveEffect(this);
             }
             else
@@ -43,6 +47,10 @@ namespace PlantsVsZombies.GameComponents.Effect.Implements
                     else
                         moveBehavior.VelocityAdd = new Vector2(-slowVelocity.X, -slowVelocity.Y);
                 }
+                //
+                RenderComponent renCom = this.Owner.Owner.Owner.GetComponent(typeof(RenderComponent)) as RenderComponent;
+                RenderBehavior renBehavior = renCom.GetCurrentBehavior() as RenderBehavior;
+                renBehavior.Color = slowColor;
                 curentTime += gameTime.ElapsedGameTime;
             }
         }

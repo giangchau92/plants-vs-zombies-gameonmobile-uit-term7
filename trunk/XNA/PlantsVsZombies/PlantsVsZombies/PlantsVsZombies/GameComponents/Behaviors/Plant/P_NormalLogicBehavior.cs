@@ -42,7 +42,7 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Plant
                 MoveComponent obj1 = this.Owner.Owner.GetComponent(typeof(MoveComponent)) as MoveComponent;
                 MoveComponent obj2 = item.Value.GetComponent(typeof(MoveComponent)) as MoveComponent;
 
-                if (obj2.Position.Y == obj1.Position.Y && (obj1.Position.X < obj2.Position.X) && obj2.Position.X < SCSServices.Instance.Game.GraphicsDevice.Viewport.Height
+                if (obj2.Position.Y == obj1.Position.Y && (obj1.Position.X < obj2.Position.X) && obj2.Position.X < SCSServices.Instance.Game.GraphicsDevice.Viewport.Width
                     && (obj2.Owner as ObjectEntity).ObjectType == eObjectType.ZOMBIE)
                 {
                     // Change to shoot

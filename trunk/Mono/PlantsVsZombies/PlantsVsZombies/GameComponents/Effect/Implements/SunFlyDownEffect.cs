@@ -24,7 +24,7 @@ namespace PlantsVsZombies.GameComponents.Effect.Implements
         public SunFlyDownEffect()
         {
             double time = rand.NextDouble() * 3 + 3;
-            ////Debug.WriteLine(time);
+            //Debug.WriteLine(time);
             TimeDurring = TimeSpan.FromSeconds(time);
         }
 

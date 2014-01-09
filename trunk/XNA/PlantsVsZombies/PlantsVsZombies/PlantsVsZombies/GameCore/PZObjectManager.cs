@@ -41,6 +41,11 @@ namespace PlantsVsZombies.GameCore
                 _listObject.Remove(id);
         }
 
+        public void RemoveAllObject()
+        {
+            _listObject.Clear();
+        }
+
         public void SendMessage(IMessage<MessageType> message, GameTime gameTime)
         {
             if (message.DestinationObjectId == 0)

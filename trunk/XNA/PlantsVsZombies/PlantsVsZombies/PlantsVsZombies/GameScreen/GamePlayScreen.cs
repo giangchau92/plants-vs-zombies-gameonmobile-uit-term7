@@ -33,6 +33,7 @@ namespace PlantsVsZombies.GameScreen
         private enum PlayState
         {
             START,
+            SELECT_LEVEL,
             RUNNING
         }
 
@@ -71,13 +72,14 @@ namespace PlantsVsZombies.GameScreen
 
         private void OnBackgroundAnimatingCompleted(PlayBackground background)
         {
-            this.state = PlayState.RUNNING;
+            this.state = PlayState.SELECT_LEVEL;
             this.InitGamePlay();
         }
 
         private void InitGamePlay()
         {
-            level = PZLevelManager.Instance.GetLevel(0);
+            level = PZLevelManager.Instance.GetLevel();
+            PZObjectManager.Instance.RemoveAllObject();
             
             this.dispatcher = DefaultGestureHandlingFactory.Instance.CreateDispatcher();
             gm.AddDispatcher(this.dispatcher);
@@ -106,8 +108,9 @@ namespace PlantsVsZombies.GameScreen
         {
             var growList = chooseSys.MakeGrowList();
             this.uiControlManager.Add(growList);
-
             chooseSys.RemoveAll();
+
+            state = PlayState.RUNNING;
         }
 
         public override void Update(GameTime gameTime)
@@ -120,7 +123,8 @@ namespace PlantsVsZombies.GameScreen
 //
                 if (isWin())
                 {
-                    //Debug.WriteLine("WIN CMNR!");
+                    PZLevelManager.Instance.UnlockLevel();
+                    this.Manager.AddExclusive(this.Manager.Bank.GetNewScreen("PlayScreen"));
                 }
 
                 if (isLose())

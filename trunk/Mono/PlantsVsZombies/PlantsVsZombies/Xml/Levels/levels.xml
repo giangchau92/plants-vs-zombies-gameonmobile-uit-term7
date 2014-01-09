@@ -3,7 +3,7 @@
 		<Name>Level 1 - 1</Name>
 		<Wave>
 			<Name>Wave 1</Name>
-			<Zombie><Value>xml_stand_zombie</Value></Zombie>
+			<Zombie><Value>xml_remorhaz_zombie</Value></Zombie>
 			<Number>
 				<From>1</From>
 				<To>1</To>
