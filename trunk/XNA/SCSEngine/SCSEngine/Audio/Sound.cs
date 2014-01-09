@@ -10,16 +10,10 @@ namespace SCSEngine.Audio
 {
     public class Sound
     {
-        protected enum SoundEffectState
-        {
-            PLAYING,
-            PAUSED,
-            STOPPED
-        }
+        private const int MAX_SOUND = 3;
 
         private List<SoundEffectInstance> instances;
         private SoundEffect soundEffect;
-        private SoundEffectState state;
             
         public Sound(SoundEffect soundEffect)
         {
@@ -36,52 +30,30 @@ namespace SCSEngine.Audio
             set;
         }
 
-        public SoundState State
-        {
-            get
-            {
-                switch (state)
-                {
-                    case SoundEffectState.PLAYING: return SoundState.Playing;
-                    case SoundEffectState.PAUSED: return SoundState.Paused;
-                    case SoundEffectState.STOPPED: return SoundState.Stopped;
-                    default: return SoundState.Playing;
-                }
-            }
-        }
-
-        public SoundEffectInstance CreateInstance()
+        private SoundEffectInstance CreateInstance()
         {
             return soundEffect.CreateInstance();
         }
 
         public void Play()
         {
-            state = SoundEffectState.PLAYING;
-            SoundEffectInstance newInstance = soundEffect.CreateInstance();
-            instances.Add(newInstance);
+            this.ClearStoppedSound();
 
-            foreach (SoundEffectInstance sei in instances)
+            if (this.instances.Count < MAX_SOUND)
             {
-                sei.Play();
-            }
-        }
+                SoundEffectInstance newInstance = soundEffect.CreateInstance();
+                instances.Add(newInstance);
 
-        public void Pause()
-        {
-            state = SoundEffectState.PAUSED;
-            foreach (SoundEffectInstance sei in instances)
-            {
-                sei.Pause();
+                newInstance.Play();
             }
         }
 
         public void Stop()
         {
-            state = SoundEffectState.STOPPED;
             foreach (SoundEffectInstance sei in instances)
             {
                 sei.Stop();
+                sei.Dispose();
             }
             this.Dispose();
         }
@@ -90,10 +62,28 @@ namespace SCSEngine.Audio
         {
             foreach (SoundEffectInstance sei in instances)
             {
+                sei.Stop();
                 sei.Dispose();
             }
-            //soundEffect.Dispose();
+
             instances.Clear();
+        }
+
+        private void ClearStoppedSound()
+        {
+            List<SoundEffectInstance> copyInst = new List<SoundEffectInstance>(this.instances);
+            this.instances.Clear();
+            foreach (SoundEffectInstance sei in copyInst)
+            {
+                if (sei.State != SoundState.Playing)
+                {
+                    sei.Dispose();
+                }
+                else
+                {
+                    this.instances.Add(sei);
+                }
+            }
         }
     }
 }
