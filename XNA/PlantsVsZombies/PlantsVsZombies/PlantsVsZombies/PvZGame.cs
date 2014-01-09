@@ -190,7 +190,7 @@ namespace PlantsVsZombies
             SpriteFramesBank.Instance.Add("Images/Plants/Chilly", FramesGenerator.Generate(78, 75, 1024, 24));
             SpriteFramesBank.Instance.Add("Images/Bullets/B_Chili", FramesGenerator.Generate(31, 44, 1024, 22));
 
-            SpriteFramesBank.Instance.Add("Images/Plants/DoublePea", FramesGenerator.Generate(100, 1024, 10, 40));
+            SpriteFramesBank.Instance.Add("Images/Plants/DoublePea", FramesGenerator.Generate(100, 55, 1024, 40));
 
             SpriteFramesBank.Instance.Add("Images/Plants/IcePea", FramesGenerator.Generate(118, 63, 1024, 33));
             SpriteFramesBank.Instance.Add("Images/Bullets/B_IcePea", FramesGenerator.Generate(29, 1024, 1, 1));

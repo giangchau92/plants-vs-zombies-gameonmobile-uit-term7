@@ -18,6 +18,19 @@ namespace PlantsVsZombies.GrowSystem
     public class PvZChooseList : BaseUIControl
     {
         private UIControlManager uiManager;
+        private int maxButtons, nBufferedButton;
+
+        public int MaxButtons
+        {
+            get { return maxButtons; }
+            set { maxButtons = value; }
+        }
+
+        public int NumberOfBufferedButtons
+        {
+            get { return nBufferedButton; }
+            set { nBufferedButton = value; }
+        }
 
         private SpritePlayer spritePlayer;
         public ISprite Background { get; set; }
@@ -66,6 +79,8 @@ namespace PlantsVsZombies.GrowSystem
             this.elemHeight = elemHeight;
             this.spritePlayer = SCSServices.Instance.SpritePlayer;
             this.uiManager = uiManager;
+            this.maxButtons = int.MaxValue;
+            this.nBufferedButton = 0;
         }
 
         public void AddChooseButton(PvZChooseButton chButton)
@@ -172,19 +187,24 @@ namespace PlantsVsZombies.GrowSystem
 
         public RectangleF MakeDestination()
         {
-            int i = this.chooseButtons.Count;
-            // if i < max
-            int nCols = (int)(this.Canvas.Content.Width / (this.elemWidth + this.elemPad));
-            int j = i / nCols;
-            i %= nCols;
-            RectangleF destRect;
+            if (this.nBufferedButton < this.maxButtons)
+            {
+                int i = this.nBufferedButton;
+                // if i < max
+                int nCols = (int)(this.Canvas.Content.Width / (this.elemWidth + this.elemPad));
+                int j = i / nCols;
+                i %= nCols;
+                RectangleF destRect;
 
-            destRect.X = this.Canvas.Bound.Position.X + this.Canvas.Content.Position.X + (this.elemWidth + this.ElemPad) * i;
-            destRect.Y = this.Canvas.Bound.Position.Y + this.Canvas.Content.Position.Y + (this.elemHeight + this.ElemPad) * j;
-            destRect.Width = this.elemWidth;
-            destRect.Height = this.elemHeight;
+                destRect.X = this.Canvas.Bound.Position.X + this.Canvas.Content.Position.X + (this.elemWidth + this.ElemPad) * i;
+                destRect.Y = this.Canvas.Bound.Position.Y + this.Canvas.Content.Position.Y + (this.elemHeight + this.ElemPad) * j;
+                destRect.Width = this.elemWidth;
+                destRect.Height = this.elemHeight;
 
-            return destRect;
+                return destRect;
+            }
+
+            return RectangleF.Empty;
         }
 
         public void OnPvZChooseButtonMoveComplete(PvZChooseButton chooseButton)

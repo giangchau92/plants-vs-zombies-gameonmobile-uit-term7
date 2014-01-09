@@ -1,65 +1,1129 @@
 <Levels>
-	<Level>
-		<Name>Level 1 - 1</Name>
-		<Wave>
-			<Name>Wave 1</Name>
-			<Zombie><Value>xml_Spider_zombie</Value></Zombie>
-			<Number>
-				<From>1</From>
-				<To>1</To>
-			</Number>
-      <TimeNextZombieFrom>1</TimeNextZombieFrom>
+  <!--Zombies are coming…-->
+  <Level>
+    <Name>Zombies are coming…</Name>
+    <Background>Hospital</Background>
+    <Wave>
+      <Name>Wave 1</Name>
+      <Zombie>
+        <Value>xml_BarrowWight_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>1</From>
+        <To>1</To>
+      </Number>
+      <TimeNextZombieFrom>0</TimeNextZombieFrom>
       <TimeNextZombieTo>1</TimeNextZombieTo>
-			<TimeWave>2</TimeWave>
+      <TimeBeginWave>10</TimeBeginWave>
+      <TimeNextWave>6</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 2</Name>
+      <Zombie>
+        <Value>xml_BarrowWight_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Nupperibo_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>2</From>
+        <To>2</To>
+      </Number>
+      <TimeNextZombieFrom>0.3</TimeNextZombieFrom>
+      <TimeNextZombieTo>2</TimeNextZombieTo>
       <TimeBeginWave>0</TimeBeginWave>
-      <TimeNextWave>20</TimeNextWave>
-  </Wave>
-    
-		<Wave>
-			<Name>Wave 2</Name>
-			<Zombie><Value>xml_Spider_zombie</Value></Zombie>
-      <Zombie><Value>xml_BarrowWight_zombie</Value></Zombie>
-			<Number>
-				<From>2</From>
-				<To>2</To>
-			</Number>
-      <TimeNextZombieFrom>6</TimeNextZombieFrom>
-      <TimeNextZombieTo>10</TimeNextZombieTo>
-			<TimeWave>2</TimeWave>
-      <TimeBeginWave>5</TimeBeginWave>
+      <TimeNextWave>2</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 3</Name>
+      <Zombie>
+        <Value>xml_BarrowWight_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Nupperibo_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Skeleton_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>3</From>
+        <To>5</To>
+      </Number>
+      <TimeNextZombieFrom>0.5</TimeNextZombieFrom>
+      <TimeNextZombieTo>1</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>3</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 4 - final wave</Name>
+      <Zombie>
+        <Value>xml_BarrowWight_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Nupperibo_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Skeleton_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Mummy_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>4</From>
+        <To>5</To>
+      </Number>
+      <TimeNextZombieFrom>0.1</TimeNextZombieFrom>
+      <TimeNextZombieTo>0.3</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>0</TimeNextWave>
+    </Wave>
+
+  </Level>
+
+  <!--Brain… brain…-->
+  <Level>
+    <Name>Brain… brain…</Name>
+    <Background>Hospital</Background>
+    <Wave>
+      <Name>Wave 1</Name>
+      <Zombie>
+        <Value>xml_Nupperibo_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>1</From>
+        <To>1</To>
+      </Number>
+      <TimeNextZombieFrom>0</TimeNextZombieFrom>
+      <TimeNextZombieTo>1</TimeNextZombieTo>
+      <TimeBeginWave>10</TimeBeginWave>
+      <TimeNextWave>6</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 2</Name>
+      <Zombie>
+        <Value>xml_Nupperibo_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Mummy_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>2</From>
+        <To>2</To>
+      </Number>
+      <TimeNextZombieFrom>0.3</TimeNextZombieFrom>
+      <TimeNextZombieTo>2</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>2</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 3</Name>
+      <Zombie>
+        <Value>xml_Nupperibo_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Mummy_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Tattered_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>3</From>
+        <To>5</To>
+      </Number>
+      <TimeNextZombieFrom>0.5</TimeNextZombieFrom>
+      <TimeNextZombieTo>1</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>3</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 4</Name>
+      <Zombie>
+        <Value>xml_Tattered_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Drowded_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Nameless_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>4</From>
+        <To>7</To>
+      </Number>
+      <TimeNextZombieFrom>0.3</TimeNextZombieFrom>
+      <TimeNextZombieTo>4</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>4</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 5</Name>
+      <Zombie>
+        <Value>xml_Skeleton_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Mummy_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Tattered_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Drowded_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Nameless_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>7</From>
+        <To>10</To>
+      </Number>
+      <TimeNextZombieFrom>0.3</TimeNextZombieFrom>
+      <TimeNextZombieTo>1</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>4</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 6 - final wave</Name>
+      <Zombie>
+        <Value>xml_Mummy_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Tattered_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Nameless_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_GiantSkeletonSword_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>12</From>
+        <To>15</To>
+      </Number>
+      <TimeNextZombieFrom>0.1</TimeNextZombieFrom>
+      <TimeNextZombieTo>0.3</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>0</TimeNextWave>
+    </Wave>
+
+  </Level>
+
+  <!--Who takes my cheese…-->
+  <Level>
+    <Name>Who takes my cheese…</Name>
+    <Background>Forest</Background>
+    <Wave>
+      <Name>Wave 1</Name>
+      <Zombie>
+        <Value>xml_Nupperibo_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>1</From>
+        <To>1</To>
+      </Number>
+      <TimeNextZombieFrom>0</TimeNextZombieFrom>
+      <TimeNextZombieTo>1</TimeNextZombieTo>
+      <TimeBeginWave>10</TimeBeginWave>
+      <TimeNextWave>6</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 2</Name>
+      <Zombie>
+        <Value>xml_Nupperibo_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Mummy_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>2</From>
+        <To>2</To>
+      </Number>
+      <TimeNextZombieFrom>0.3</TimeNextZombieFrom>
+      <TimeNextZombieTo>2</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>4</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 3</Name>
+      <Zombie>
+        <Value>xml_Nameless_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_GiantSkeletonSword_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Ghoul_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Lemure_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>2</From>
+        <To>3</To>
+      </Number>
+      <TimeNextZombieFrom>1</TimeNextZombieFrom>
+      <TimeNextZombieTo>2</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
       <TimeNextWave>5</TimeNextWave>
-		</Wave>
-	</Level>
-  
-    
-    
-	<Level>
-		<Name>Level 1 - 2</Name>
-		<Wave>
-			<Name>Wave 1</Name>
-			<Zombie><Value>xml_Skeleton_zombie</Value></Zombie>
-			<Number>
-				<From>5</From>
-				<To>10</To>
-			</Number>
-      <TimeNextZombieFrom>3</TimeNextZombieFrom>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 4</Name>
+      <Zombie>
+        <Value>xml_Nameless_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_GiantSkeletonSword_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Ghoul_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Lemure_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Vampire_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>3</From>
+        <To>7</To>
+      </Number>
+      <TimeNextZombieFrom>0.2</TimeNextZombieFrom>
+      <TimeNextZombieTo>0.8</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>3</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 5</Name>
+      <Zombie>
+        <Value>xml_Nameless_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_GiantSkeletonSword_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Ghoul_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Lemure_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Vampire_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Giant_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>7</From>
+        <To>10</To>
+      </Number>
+      <TimeNextZombieFrom>0.5</TimeNextZombieFrom>
+      <TimeNextZombieTo>1</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>4</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 6</Name>
+      <Zombie>
+        <Value>xml_Giant_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Remorhaz_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Histachii_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>3</From>
+        <To>4</To>
+      </Number>
+      <TimeNextZombieFrom>0.5</TimeNextZombieFrom>
+      <TimeNextZombieTo>3</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>2</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 7</Name>
+      <Zombie>
+        <Value>xml_Remorhaz_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Histachii_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Ravel_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>8</From>
+        <To>12</To>
+      </Number>
+      <TimeNextZombieFrom>0.5</TimeNextZombieFrom>
+      <TimeNextZombieTo>1</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>4</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 8</Name>
+      <Zombie>
+        <Value>xml_Nameless_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_GiantSkeletonSword_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Ghoul_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Lemure_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Vampire_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Giant_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Remorhaz_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Histachii_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Ravel_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>12</From>
+        <To>15</To>
+      </Number>
+      <TimeNextZombieFrom>0.3</TimeNextZombieFrom>
+      <TimeNextZombieTo>0.5</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>5</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 9 - final wave</Name>
+      <Zombie>
+        <Value>xml_Nameless_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_GiantSkeletonSword_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Ghoul_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Lemure_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Vampire_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Giant_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Remorhaz_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Histachii_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Ravel_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>15</From>
+        <To>20</To>
+      </Number>
+      <TimeNextZombieFrom>0.1</TimeNextZombieFrom>
+      <TimeNextZombieTo>0.3</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>0</TimeNextWave>
+    </Wave>
+
+  </Level>
+
+  <!--Zombilize…-->
+  <Level>
+    <Name>Zombilize…</Name>
+    <Background>Forest</Background>
+    <Wave>
+      <Name>Wave 1</Name>
+      <Zombie>
+        <Value>xml_Nupperibo_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>1</From>
+        <To>1</To>
+      </Number>
+      <TimeNextZombieFrom>0</TimeNextZombieFrom>
+      <TimeNextZombieTo>1</TimeNextZombieTo>
+      <TimeBeginWave>10</TimeBeginWave>
+      <TimeNextWave>6</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 2</Name>
+      <Zombie>
+        <Value>xml_Nupperibo_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Mummy_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>2</From>
+        <To>2</To>
+      </Number>
+      <TimeNextZombieFrom>0.3</TimeNextZombieFrom>
+      <TimeNextZombieTo>2</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>4</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 3</Name>
+      <Zombie>
+        <Value>xml_Nameless_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_GiantSkeletonSword_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Ghoul_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Lemure_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>2</From>
+        <To>3</To>
+      </Number>
+      <TimeNextZombieFrom>1</TimeNextZombieFrom>
+      <TimeNextZombieTo>2</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>4</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 4</Name>
+      <Zombie>
+        <Value>xml_Ghoul_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Lemure_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Remorhaz_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>7</From>
+        <To>10</To>
+      </Number>
+      <TimeNextZombieFrom>0.2</TimeNextZombieFrom>
+      <TimeNextZombieTo>0.8</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>5</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 5</Name>
+      <Zombie>
+        <Value>xml_Remorhaz_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Histachii_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_BoneGolem_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>7</From>
+        <To>10</To>
+      </Number>
+      <TimeNextZombieFrom>0.5</TimeNextZombieFrom>
+      <TimeNextZombieTo>1</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>6</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 6</Name>
+      <Zombie>
+        <Value>xml_BoneGolem_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_GiantSkeletonBlade_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>3</From>
+        <To>4</To>
+      </Number>
+      <TimeNextZombieFrom>0.5</TimeNextZombieFrom>
+      <TimeNextZombieTo>3</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>4</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 7</Name>
+      <Zombie>
+        <Value>xml_Remorhaz_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Histachii_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_GiantSkeletonBlade_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>8</From>
+        <To>12</To>
+      </Number>
+      <TimeNextZombieFrom>0.5</TimeNextZombieFrom>
+      <TimeNextZombieTo>1</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>7</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 8</Name>
+      <Zombie>
+        <Value>xml_GiantSkeletonBlade_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Drider_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>3</From>
+        <To>5</To>
+      </Number>
+      <TimeNextZombieFrom>0.5</TimeNextZombieFrom>
+      <TimeNextZombieTo>1</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>5</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 9</Name>
+      <Zombie>
+        <Value>xml_Drider_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>1</From>
+        <To>2</To>
+      </Number>
+      <TimeNextZombieFrom>0.5</TimeNextZombieFrom>
+      <TimeNextZombieTo>1</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>5</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 10</Name>
+      <Zombie>
+        <Value>xml_Drider_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>3</From>
+        <To>5</To>
+      </Number>
+      <TimeNextZombieFrom>0.3</TimeNextZombieFrom>
+      <TimeNextZombieTo>0.8</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>5</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 11</Name>
+      <Number>
+        <From>3</From>
+        <To>3</To>
+      </Number>
+      <TimeNextZombieFrom>1</TimeNextZombieFrom>
+      <TimeNextZombieTo>1.2</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>6</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 12 - final wave</Name>
+      <Zombie>
+        <Value>xml_Drider_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>5</From>
+        <To>6</To>
+      </Number>
+      <TimeNextZombieFrom>0.1</TimeNextZombieFrom>
+      <TimeNextZombieTo>1.5</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>0</TimeNextWave>
+    </Wave>
+
+  </Level>
+
+  <!--The death roar…-->
+  <Level>
+    <Name>The death roar…</Name>
+    <Background>House</Background>
+    <Wave>
+      <Name>Wave 1</Name>
+      <Zombie>
+        <Value>xml_Nupperibo_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>1</From>
+        <To>1</To>
+      </Number>
+      <TimeNextZombieFrom>0</TimeNextZombieFrom>
+      <TimeNextZombieTo>1</TimeNextZombieTo>
+      <TimeBeginWave>10</TimeBeginWave>
+      <TimeNextWave>6</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 2</Name>
+      <Zombie>
+        <Value>xml_Nupperibo_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Mummy_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>2</From>
+        <To>2</To>
+      </Number>
+      <TimeNextZombieFrom>0.3</TimeNextZombieFrom>
+      <TimeNextZombieTo>2</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>4</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 3</Name>
+      <Zombie>
+        <Value>xml_Nameless_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_GiantSkeletonSword_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Ghoul_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Lemure_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>2</From>
+        <To>3</To>
+      </Number>
+      <TimeNextZombieFrom>1</TimeNextZombieFrom>
+      <TimeNextZombieTo>2</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>4</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 4</Name>
+      <Zombie>
+        <Value>xml_Ghoul_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Lemure_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Remorhaz_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>7</From>
+        <To>10</To>
+      </Number>
+      <TimeNextZombieFrom>0.2</TimeNextZombieFrom>
+      <TimeNextZombieTo>0.5</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>4</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 5</Name>
+      <Zombie>
+        <Value>xml_Remorhaz_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Histachii_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_BoneGolem_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>7</From>
+        <To>10</To>
+      </Number>
+      <TimeNextZombieFrom>0.2</TimeNextZombieFrom>
+      <TimeNextZombieTo>0.8</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>4</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 6</Name>
+      <Zombie>
+        <Value>xml_BoneGolem_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_GiantSkeletonBlade_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>3</From>
+        <To>4</To>
+      </Number>
+      <TimeNextZombieFrom>0.4</TimeNextZombieFrom>
+      <TimeNextZombieTo>3</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>4</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 7</Name>
+      <Zombie>
+        <Value>xml_Remorhaz_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Histachii_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_GiantSkeletonBlade_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>8</From>
+        <To>12</To>
+      </Number>
+      <TimeNextZombieFrom>0.3</TimeNextZombieFrom>
+      <TimeNextZombieTo>0.7</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>4</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 8</Name>
+      <Zombie>
+        <Value>xml_GiantSkeletonBlade_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Drider_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>3</From>
+        <To>5</To>
+      </Number>
+      <TimeNextZombieFrom>0.5</TimeNextZombieFrom>
+      <TimeNextZombieTo>3</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>5</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 9</Name>
+      <Zombie>
+        <Value>xml_Drider_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>1</From>
+        <To>2</To>
+      </Number>
+      <TimeNextZombieFrom>0.5</TimeNextZombieFrom>
+      <TimeNextZombieTo>0.7</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>5</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 10</Name>
+      <Zombie>
+        <Value>xml_Drider_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>3</From>
+        <To>5</To>
+      </Number>
+      <TimeNextZombieFrom>0.3</TimeNextZombieFrom>
+      <TimeNextZombieTo>3</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>5</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 11</Name>
+      <Number>
+        <From>5</From>
+        <To>5</To>
+      </Number>
+      <TimeNextZombieFrom>0.8</TimeNextZombieFrom>
       <TimeNextZombieTo>5</TimeNextZombieTo>
-			<TimeWave>500</TimeWave>
-      <TimeBeginWave>2</TimeBeginWave>
-      <TimeNextWave>500</TimeNextWave>
-		</Wave>
-		<Wave>
-			<Name>Wave 2</Name>
-			<Zombie><Value>xml_Skeleton_zombie</Value></Zombie>
-			<Number>
-				<From>3</From>
-				<To>8</To>
-			</Number>
-      <TimeNextZombieFrom>3</TimeNextZombieFrom>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>6</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 12 - final wave</Name>
+      <Zombie>
+        <Value>xml_Drider_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>5</From>
+        <To>6</To>
+      </Number>
+      <TimeNextZombieFrom>0.1</TimeNextZombieFrom>
+      <TimeNextZombieTo>0.8</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>0</TimeNextWave>
+    </Wave>
+
+  </Level>
+
+  <!--KING-->
+  <Level>
+    <Name>KING</Name>
+    <Background>Ocean</Background>
+    <Wave>
+      <Name>Wave 1</Name>
+      <Zombie>
+        <Value>xml_Nupperibo_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>1</From>
+        <To>1</To>
+      </Number>
+      <TimeNextZombieFrom>0</TimeNextZombieFrom>
+      <TimeNextZombieTo>1</TimeNextZombieTo>
+      <TimeBeginWave>10</TimeBeginWave>
+      <TimeNextWave>6</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 2</Name>
+      <Zombie>
+        <Value>xml_Nupperibo_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Mummy_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>2</From>
+        <To>2</To>
+      </Number>
+      <TimeNextZombieFrom>0.3</TimeNextZombieFrom>
+      <TimeNextZombieTo>2</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>4</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 3</Name>
+      <Zombie>
+        <Value>xml_Nameless_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_GiantSkeletonSword_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Ghoul_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Lemure_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>2</From>
+        <To>3</To>
+      </Number>
+      <TimeNextZombieFrom>1</TimeNextZombieFrom>
+      <TimeNextZombieTo>2</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>4</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 4</Name>
+      <Zombie>
+        <Value>xml_Ghoul_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Lemure_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Remorhaz_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>7</From>
+        <To>10</To>
+      </Number>
+      <TimeNextZombieFrom>0.2</TimeNextZombieFrom>
+      <TimeNextZombieTo>0.5</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>4</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 5</Name>
+      <Zombie>
+        <Value>xml_Remorhaz_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Histachii_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_BoneGolem_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>7</From>
+        <To>10</To>
+      </Number>
+      <TimeNextZombieFrom>0.2</TimeNextZombieFrom>
+      <TimeNextZombieTo>0.4</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>2</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 6</Name>
+      <Zombie>
+        <Value>xml_BoneGolem_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_GiantSkeletonBlade_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>3</From>
+        <To>4</To>
+      </Number>
+      <TimeNextZombieFrom>0.2</TimeNextZombieFrom>
+      <TimeNextZombieTo>3</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>2</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 7</Name>
+      <Zombie>
+        <Value>xml_Remorhaz_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Histachii_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_GiantSkeletonBlade_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>8</From>
+        <To>12</To>
+      </Number>
+      <TimeNextZombieFrom>0.1</TimeNextZombieFrom>
+      <TimeNextZombieTo>0.3</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>2</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 8</Name>
+      <Zombie>
+        <Value>xml_GiantSkeletonBlade_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Drider_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>3</From>
+        <To>5</To>
+      </Number>
+      <TimeNextZombieFrom>0.2</TimeNextZombieFrom>
+      <TimeNextZombieTo>3</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>2</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 9</Name>
+      <Zombie>
+        <Value>xml_Drider_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>1</From>
+        <To>2</To>
+      </Number>
+      <TimeNextZombieFrom>0.2</TimeNextZombieFrom>
+      <TimeNextZombieTo>0.3</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>3</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 10</Name>
+      <Zombie>
+        <Value>xml_Drider_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>3</From>
+        <To>5</To>
+      </Number>
+      <TimeNextZombieFrom>0.1</TimeNextZombieFrom>
+      <TimeNextZombieTo>3</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>3</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 11</Name>
+      <Number>
+        <From>5</From>
+        <To>5</To>
+      </Number>
+      <TimeNextZombieFrom>0.4</TimeNextZombieFrom>
       <TimeNextZombieTo>5</TimeNextZombieTo>
-			<TimeWave>500</TimeWave>
-      <TimeBeginWave>500</TimeBeginWave>
-      <TimeNextWave>500</TimeNextWave>
-		</Wave>
-	</Level>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>4</TimeNextWave>
+    </Wave>
+
+    <Wave>
+      <Name>Wave 12 - final wave</Name>
+      <Zombie>
+        <Value>xml_Remorhaz_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Histachii_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Ravel_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_BoneGolem_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_GiantSkeletonBlade_zombie</Value>
+      </Zombie>
+      <Zombie>
+        <Value>xml_Drider_zombie</Value>
+      </Zombie>
+      <Number>
+        <From>30</From>
+        <To>40</To>
+      </Number>
+      <TimeNextZombieFrom>0.1</TimeNextZombieFrom>
+      <TimeNextZombieTo>0.4</TimeNextZombieTo>
+      <TimeBeginWave>0</TimeBeginWave>
+      <TimeNextWave>0</TimeNextWave>
+    </Wave>
+
+  </Level>
 </Levels>
