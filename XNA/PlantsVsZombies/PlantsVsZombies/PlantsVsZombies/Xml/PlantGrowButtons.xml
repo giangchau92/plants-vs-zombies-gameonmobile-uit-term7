@@ -24,6 +24,12 @@
       <Picture>SunFlowerShadow</Picture>
       <Plant>xml_Plant_Sunflower</Plant>
     </Shadow>
+
+    <Shadow>
+      <Name>Shovel</Name>
+      <Picture>Images\Controls\Shovel</Picture>
+      <Plant>SHOVEL</Plant>
+    </Shadow>
   </PlantShadows>
 
   <Buttons>
@@ -77,6 +83,20 @@
         </Data>
       </DrawComponent>
       <Shadow>Sun Flower</Shadow>
+    </Button>
+
+
+    <Button>
+      <Name>Shovel</Name>
+      <Delay>0</Delay>
+      <Price>0</Price>
+      <DrawComponent>
+        <Type>Standard</Type>
+        <Data>
+          <Picture>Images\Controls\ShovelButton</Picture>
+        </Data>
+      </DrawComponent>
+      <Shadow>Shovel</Shadow>
     </Button>
   </Buttons>
 </GrowSystems>

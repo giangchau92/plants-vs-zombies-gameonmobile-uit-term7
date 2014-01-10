@@ -114,7 +114,7 @@ namespace PlantsVsZombies.GameScreen
 
             //
             // Sun system
-            _sunSystem = new PvZSunSystem(this.Game, 500, this.dispatcher);
+            _sunSystem = new PvZSunSystem(this.Game, 50, this.dispatcher);
             SCSServices.Instance.Game.Services.RemoveService(typeof(PvZSunSystem));
             SCSServices.Instance.Game.Services.AddService(typeof(PvZSunSystem), _sunSystem);
             this.Components.Add(_sunSystem);
@@ -134,6 +134,10 @@ namespace PlantsVsZombies.GameScreen
             var growList = chooseSys.MakeGrowList(this.gameGrow);
             this.uiControlManager.Add(growList);
             chooseSys.RemoveAll();
+
+            PvZGrowButton shovel = this.growSystem.ButtonFactoryBank["Shovel"].CreateButton(this.Game);
+            shovel.Canvas.Bound.Position = new Vector2(480, growList.Canvas.Bound.Top);
+            shovel.Canvas.Bound.Size = new Vector2(52, 56);
 
             state = PlayState.RUNNING;
             _messageCenter.PushMessage(level.Name);
