@@ -28,6 +28,7 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Bullet
         private static TimeSpan _timeDelaySound = TimeSpan.FromSeconds(1);
         private bool justCollect = false;
         private eSunState SunState { get; set; }
+        private double sunTime = 3000.0;
 
         private Sound _soundCollectSun;
 
@@ -82,12 +83,19 @@ namespace PlantsVsZombies.GameComponents.Behaviors.Bullet
             if (listEffect.Count == 0 && SunState == eSunState.COLLECT)
             {
                 // Self remove sun
-                (SCSServices.Instance.Game.Services.GetService(typeof(PvZSunSystem)) as PvZSunSystem).RemoveSun(this.Owner.Owner as ObjectEntityGesture);
+                (SCSServices.Instance.Game.Services.GetService(typeof(PvZSunSystem)) as PvZSunSystem).RemoveSun(this.Owner.Owner as ObjectEntityGesture, true);
                 //PZObjectManager.Instance.RemoveObject(this.Owner.Owner.ObjectId);
                 //PvZHardCurrency._gestureDispatcher.RemoveTarget<Tap>(Owner.Owner as IGestureTarget<Tap>);
             }
 
-      
+            if (SunState == eSunState.STAND)
+            {
+                this.sunTime -= gameTime.ElapsedGameTime.TotalMilliseconds;
+                if (this.sunTime <= 0)
+                {
+                    (SCSServices.Instance.Game.Services.GetService(typeof(PvZSunSystem)) as PvZSunSystem).RemoveSun(this.Owner.Owner as ObjectEntityGesture, false);
+                }
+            }
 
             // Die
             LogicComponent logicCOm = this.Owner as LogicComponent;

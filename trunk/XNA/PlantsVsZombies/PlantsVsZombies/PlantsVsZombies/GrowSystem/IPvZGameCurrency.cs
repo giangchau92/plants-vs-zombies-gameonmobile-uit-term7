@@ -67,11 +67,14 @@ namespace PlantsVsZombies.GrowSystem
             SCSServices.Instance.AudioManager.PlaySound(_soundSunCreate, false, true);
         }
 
-        public void RemoveSun(ObjectEntityGesture obj)
+        public void RemoveSun(ObjectEntityGesture obj, bool getMoney)
         {
             PZObjectManager.Instance.RemoveObject(obj.ObjectId);
             PvZSunSystem._gestureDispatcher.RemoveTarget<Tap>(obj as IGestureTarget<Tap>);
-            CurrentMoney += MoneyPerSun;
+            if (getMoney)
+            {
+                CurrentMoney += MoneyPerSun;
+            }
         }
 
         public override void Draw(GameTime gameTime)
